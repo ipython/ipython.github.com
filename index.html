@@ -1,0 +1,179 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>IPython: An Interactive Computing Environment &mdash; IPython</title>
+    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="IPython" href="#" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <div class="logo"><a href="#">
+            <img class="logo" src="_static/logo.png" alt="Logo"/>
+          </a></div>
+       
+        <div class="rel">
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+             
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"> 
+<h3>Versions</h3>
+
+<div class="tile"><h4>Stable</h4>
+     0.10.2 &ndash; April&nbsp;2011<br/>
+    <a href="download.html">Download</a>
+</div>
+
+<div class="tile"><h4>Development</h4>
+    pre-0.11<br/>
+    <a href="https://github.com/ipython/ipython">Github</a>
+</div>
+<h3>Links</h3>
+
+  <ul class="simple">
+    <li><a class="reference external"
+    href="#">Home</a></li>           
+    <li><a class="reference external"
+    href="http://ipython.github.com/ipython-doc/">Documentation</a></li>
+    <li><a class="reference external" href="https://github.com/ipython/ipython/issues">
+            Issue tracker</a></li>
+    <li>Mailing lists:<br/><span style="padding-left: 1em;">
+        <a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-user">
+            User</a> · 
+        <a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-dev">
+            Dev</a>
+        </li></span>
+    <li><a class="reference external" href="http://webchat.freenode.net/?channels=ipython&uio=d4">
+            IRC channel</a><br/>
+            <span style="font-size: 0.7em; padding-left: 1em;">(Freenode, #ipython)</span></li>
+  </ul>
+  
+  
+  <br/>
+  <ul class="simple">
+    <li><a class="reference external" href="news.html">News</a></li>
+    <li><a class="reference external"
+    href="presentation.html">Presentations</a></li>
+    <li><a class="reference external" href="faq.html">FAQ</a></li>
+    <li><a class="reference external"
+    href="http://ipython.scipy.org/moin/Cookbook">Cookbook</a></li>
+    <li><a class="reference external"
+    href="http://ipython.scipy.org/moin/Developer_Zone">Developer Zone</a></li>
+    <li><a class="reference external"
+    href="http://ipython.scipy.org/moin/About/Projects_Using_IPython">Projects using IPython</a></li>
+  </ul>
+        </div>
+      </div>
+        
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="ipython-an-interactive-computing-environment">
+<h1>IPython: An Interactive Computing Environment<a class="headerlink" href="#ipython-an-interactive-computing-environment" title="Permalink to this headline">¶</a></h1>
+<p>The goal of IPython is to create a comprehensive environment for
+interactive and exploratory computing.  To support, this goal, IPython
+has two main components:</p>
+<blockquote>
+<div><ul class="simple">
+<li>An enhanced interactive Python shell.</li>
+<li>An architecture for interactive parallel computing.</li>
+</ul>
+</div></blockquote>
+<p>All of IPython is open source (released under the revised BSD license), and it is
+used by a range of <a class="reference external" href="http://ipython.scipy.org/moin/About/Projects_Using_IPython">other projects</a>.
+Have a look at the <a class="reference external" href="presentation.html">talks and presentations</a> we have given
+about IPython.</p>
+<p>IPython supports Python 2.5 to 2.7 officially. If you need to use Python 2.4,
+the 0.10 series probably works OK but has not been extensively tested with 2.4.</p>
+<div class="section" id="announcements">
+<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>Testing:</strong> We aim to release 0.11 soon, but there are a lot of changes, so
+we&#8217;re looking for users to test it. If you&#8217;re interested, please download or
+check out the code <a class="reference external" href="https://github.com/ipython/ipython">from Github</a>, and
+let us know of any problems on the <a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-dev">mailing list</a>
+or <a class="reference external" href="https://github.com/ipython/ipython/issues">bug tracker</a>.</li>
+<li><strong>Python 3:</strong> An <em>experimental</em> Python 3 port has been started recently. The
+code is currently only available
+<a class="reference external" href="http://github.com/ipython/ipython-py3k">in source form from github</a> but we
+welcome testing, contributions and improvements. Please join the
+<a class="reference external" href="http://mail.scipy.org/mailman/listinfo/ipython-dev">developers list</a>
+to participate!</li>
+<li><strong>User survey:</strong> We&#8217;d like to know a bit about who uses IPython. Please
+<a class="reference external" href="https://spreadsheets.google.com/viewform?formkey=dDMzREtNSk9pX282N3lxaXhiTmxyN0E6MQ">fill in</a>
+a short, anonymous survey. The <a class="reference external" href="https://spreadsheets.google.com/spreadsheet/ccc?key=0AqIElKUDQl8tdDMzREtNSk9pX282N3lxaXhiTmxyN0E&amp;hl=en_GB&amp;authkey=CNOmu-QC#gid=0">results</a>
+are publically visible and automatically updated.</li>
+</ul>
+<p><a class="reference external" href="news.html">More news...</a></p>
+</div>
+<div class="section" id="citing-ipython">
+<h2>Citing IPython<a class="headerlink" href="#citing-ipython" title="Permalink to this headline">¶</a></h2>
+<p>Several of the authors of IPython are connected with academic and scientific
+research, so it is important to us to be able to show the impact of our work in
+other projects and fields.</p>
+<p>If IPython contributes to a project that leads to a scientific publication,
+please acknowledge this fact by citing the project. You can use this
+<a class="reference external" href="citing.html">ready-made citation entry</a>.</p>
+</div>
+<div class="section" id="hosting">
+<h2>Hosting<a class="headerlink" href="#hosting" title="Permalink to this headline">¶</a></h2>
+<p>IPython has been generously hosted by <a class="reference external" href="http://enthought.com/">Enthought</a> almost since its inception.  We also use <a class="reference external" href="http://github.com/">GitHub</a> and <a class="reference external" href="http://git-scm.com/">Git</a> for code hosting and distributed version control.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+    </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

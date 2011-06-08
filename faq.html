@@ -1,0 +1,236 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FAQ &mdash; IPython</title>
+    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="IPython" href="index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <div class="logo"><a href="index.html">
+            <img class="logo" src="_static/logo.png" alt="Logo"/>
+          </a></div>
+       
+        <div class="rel">
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+             
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"> 
+<h3>Versions</h3>
+
+<div class="tile"><h4>Stable</h4>
+     0.10.2 &ndash; April&nbsp;2011<br/>
+    <a href="download.html">Download</a>
+</div>
+
+<div class="tile"><h4>Development</h4>
+    pre-0.11<br/>
+    <a href="https://github.com/ipython/ipython">Github</a>
+</div>
+<h3>Links</h3>
+
+  <ul class="simple">
+    <li><a class="reference external"
+    href="index.html">Home</a></li>           
+    <li><a class="reference external"
+    href="http://ipython.github.com/ipython-doc/">Documentation</a></li>
+    <li><a class="reference external" href="https://github.com/ipython/ipython/issues">
+            Issue tracker</a></li>
+    <li>Mailing lists:<br/><span style="padding-left: 1em;">
+        <a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-user">
+            User</a> · 
+        <a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-dev">
+            Dev</a>
+        </li></span>
+    <li><a class="reference external" href="http://webchat.freenode.net/?channels=ipython&uio=d4">
+            IRC channel</a><br/>
+            <span style="font-size: 0.7em; padding-left: 1em;">(Freenode, #ipython)</span></li>
+  </ul>
+  
+  
+  <br/>
+  <ul class="simple">
+    <li><a class="reference external" href="news.html">News</a></li>
+    <li><a class="reference external"
+    href="presentation.html">Presentations</a></li>
+    <li><a class="reference external" href="#">FAQ</a></li>
+    <li><a class="reference external"
+    href="http://ipython.scipy.org/moin/Cookbook">Cookbook</a></li>
+    <li><a class="reference external"
+    href="http://ipython.scipy.org/moin/Developer_Zone">Developer Zone</a></li>
+    <li><a class="reference external"
+    href="http://ipython.scipy.org/moin/About/Projects_Using_IPython">Projects using IPython</a></li>
+  </ul>
+        </div>
+      </div>
+        
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="faq">
+<h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
+<p>If your question isn&#8217;t answered below, check <a class="reference external" href="http://ipython.github.com/ipython-doc/">the docs</a>, then ask on the <a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-user">user mailing list</a>.</p>
+<div class="section" id="running-ipython-against-multiple-versions-of-python">
+<h2>Running IPython against multiple versions of Python<a class="headerlink" href="#running-ipython-against-multiple-versions-of-python" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>I would like to know if there is an easy way to install parallel versions of ipython ? Actually, I would like to be able to use ipython with python 2.4 which is the default on my machine, and with python2.5 (compiled by hand); is changing the python interpreter in the ipython script the only required change ? (I was thinking about having ipython with the default interpreter and ipython2.5 using the python2.5 interpreter) ?</div></blockquote>
+<p><strong>Answer:</strong> You can install IPython against various interpreters by using the following call:</p>
+<div class="highlight-python"><pre>$ python2.4 setup.py install --prefix=$HOME/usr
+$ python2.5 setup.py install --prefix=$HOME/usr</pre>
+</div>
+<p>In this case, the second call will overwrite the startup script of the first in <cite>$HOME/usr/bin</cite>, but those are the same. The important point is that each Python will find the IPython imports under <cite>$HOME/usr/lib/python2.X/site-packages/IPython</cite>, and assuming you have set up your <cite>$PYTHONPATH</cite> variable accordingly, this will work. The final step is to have aliases to call each of the IPython versions quickly, those can be defined as (using tcsh syntax):</p>
+<div class="highlight-python"><pre>alias ip4 "python2.4 $HOME/usr/bin/ipython"
+alias ip5 "python2.5 $HOME/usr/bin/ipython"</pre>
+</div>
+<p>or you can just have two copies of the ipython startup script named differently and with their first line changed to point to the actual interpreter.</p>
+</div>
+<div class="section" id="ipython-crashes-under-os-x-when-using-the-arrow-keys">
+<h2>IPython crashes under OS X when using the arrow keys<a class="headerlink" href="#ipython-crashes-under-os-x-when-using-the-arrow-keys" title="Permalink to this headline">¶</a></h2>
+<p>Under some circumstances, using the arrow keys to navigate your input history can cause a complete crash of the Python interpreter.</p>
+<p><strong>Answer:</strong> This is due to a bug in the readline library from the official builds. There are a few solutions you can take:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">Use a different Python version from Apple&#8217;s default (MacPython or Fink have been reported to work)</p>
+</li>
+<li><p class="first">You can disable in your ipythonrc file the following lines by commenting them out:</p>
+<div class="highlight-python"><pre>readline_parse_and_bind "\e[A": history-search-backward
+readline_parse_and_bind "\e[B": history-search-forward</pre>
+</div>
+</li>
+</ol>
+</div></blockquote>
+<p>You will lose searching in your history with the arrow keys, but at least Python won&#8217;t crash.</p>
+</div>
+<div class="section" id="does-ipython-play-well-with-windows">
+<h2>Does IPython play well with Windows?<a class="headerlink" href="#does-ipython-play-well-with-windows" title="Permalink to this headline">¶</a></h2>
+<p>Yes, it most definitely does! There are some things that should be noted: <a class="reference external" href="http://ipython.scipy.org/moin/IpythonOnWindows">see the wiki</a>.</p>
+</div>
+<div class="section" id="what-is-the-best-way-to-install-ipython">
+<h2>What is the best way to install IPython?<a class="headerlink" href="#what-is-the-best-way-to-install-ipython" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>The classic <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> still works, of course, and is recommended for Linux boxes where you have root privileges.</li>
+<li>On windows you&#8217;ll probably want to run the .exe installer to get the shortcuts and ipython.py in python25scripts.</li>
+<li><tt class="docutils literal"><span class="pre">easy_install</span> <span class="pre">ipython==dev</span></tt> is the easiest way to install the SVN trunk version.</li>
+<li><tt class="docutils literal"><span class="pre">easy_install</span> <span class="pre">ipython</span></tt> is a quick way to get ipython without downloading or unzipping anything manually, but you&#8217;ll miss windows shortcuts, and documentation (man pages, pdf...) will not be where it normally is.</li>
+<li>If you want to run the latest ipython instead of an older version provided with your linux distro, and don&#8217;t want to remove/mess with the already existing version, don&#8217;t have root privileges to install ipython, or just want to run multiple ipython versions for some reason, just untar the source distribution somewhere and launch ipython.py.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="why-do-i-get-garbage-characters-when-long-information-is-displayed-by-the-pager">
+<h2>Why do I get garbage characters when long information is displayed by the pager?<a class="headerlink" href="#why-do-i-get-garbage-characters-when-long-information-is-displayed-by-the-pager" title="Permalink to this headline">¶</a></h2>
+<p>The color escapes used by IPython are not correctly interpreted by default by many common pagers (&#8216;less&#8217; included). The manual describes <a class="reference external" href="http://ipython.scipy.org/doc/stable/html/config/initial_config.html#object-details-types-docstrings-source-code-etc">here</a> the problem and its solution in detail, but the short version is that your bashrc file should contain:</p>
+<div class="highlight-python"><pre>export PAGER=less
+export LESS=-r</pre>
+</div>
+</div>
+<div class="section" id="why-doesn-t-running-doctests-from-within-ipython-work">
+<h2>Why doesn&#8217;t running doctests from within IPython work?<a class="headerlink" href="#why-doesn-t-running-doctests-from-within-ipython-work" title="Permalink to this headline">¶</a></h2>
+<p>This is a known problem, but there&#8217;s a workaround. The reason, deep
+down, is a clash between ipython&#8217;s modification of sys.displayhook so
+you get nice output prompts, and the fact that the exec builtin is
+internally hardcoded to run sys.displayhook. So ipython collides with
+doctest (which uses &#8216;exec&#8217;) and all hell breaks loose.</p>
+<p>Fernando Perez fperez.net at gmail.com
+Thu Jan 18 01:01:39 CST 2007</p>
+<hr class="docutils" />
+<p>Here&#8217;s the workaround. First, your error (I called your file &#8216;dtest&#8217;):</p>
+<div class="highlight-python"><pre>In [5]: doctest.testmod(dtest)
+Out[5]: 1
+**********************************************************************
+File "dtest.py", line 8, in dtest
+Failed example:
+    x()
+Expected:
+    1
+Got nothing
+**********************************************************************
+1 items had failures:
+1 of   3 in dtest
+***Test Failed*** 1 failures.
+Out[5]: (1, 3)</pre>
+</div>
+<p>Now the workaround:</p>
+<div class="highlight-python"><pre>In [6]: iphook = sys.displayhook
+In [7]: sys.displayhook = sys.__displayhook__
+In [8]: doctest.testmod(dtest)
+
+*** DocTestRunner.merge: 'dtest' in both testers; summing outcomes.
+(0, 3)</pre>
+</div>
+<p>Now you can reactivate ipython&#8217;s displayhook if you want:</p>
+<div class="highlight-python"><pre>In [9]: sys.displayhook = iphook</pre>
+</div>
+<p>You could wrap this little sys.displayhook dance in a utility function
+to ease things up.</p>
+</div>
+<div class="section" id="can-ipython-run-under-ironpython-pypy-jython-other-python-interpreters">
+<h2>Can IPython run under IronPython/PyPy/Jython/other Python interpreters?<a class="headerlink" href="#can-ipython-run-under-ironpython-pypy-jython-other-python-interpreters" title="Permalink to this headline">¶</a></h2>
+<p>The terminal-based shell should run on any interpreter which complies with
+the necessary version of Python. For the 0.11 release, we will require Python 2.6
+or above, and as of June 2011, IronPython and PyPy both support this.</p>
+<p>The most likely problems would come from Readline and from using the undocumented
+sys._getframe() function. On Windows we ship our own <a class="reference external" href="pyreadline.html">pyreadline</a>,
+which might also work under IronPython.</p>
+<p>If IPython does not work under a supported interpreter, please
+<a class="reference external" href="https://github.com/ipython/ipython/issues">file a bug</a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+    </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Job Control &mdash; IPython</title>
+    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="IPython" href="index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <div class="logo"><a href="index.html">
+            <img class="logo" src="_static/logo.png" alt="Logo"/>
+          </a></div>
+       
+        <div class="rel">
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+             
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"> 
+<h3>Versions</h3>
+
+<div class="tile"><h4>Stable</h4>
+     0.10.2 &ndash; April&nbsp;2011<br/>
+    <a href="download.html">Download</a>
+</div>
+
+<div class="tile"><h4>Development</h4>
+    pre-0.11<br/>
+    <a href="https://github.com/ipython/ipython">Github</a>
+</div>
+<h3>Links</h3>
+
+  <ul class="simple">
+    <li><a class="reference external"
+    href="index.html">Home</a></li>           
+    <li><a class="reference external"
+    href="http://ipython.github.com/ipython-doc/">Documentation</a></li>
+    <li><a class="reference external" href="https://github.com/ipython/ipython/issues">
+            Issue tracker</a></li>
+    <li>Mailing lists:<br/><span style="padding-left: 1em;">
+        <a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-user">
+            User</a> · 
+        <a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-dev">
+            Dev</a>
+        </li></span>
+    <li><a class="reference external" href="http://webchat.freenode.net/?channels=ipython&uio=d4">
+            IRC channel</a><br/>
+            <span style="font-size: 0.7em; padding-left: 1em;">(Freenode, #ipython)</span></li>
+  </ul>
+  
+  
+  <br/>
+  <ul class="simple">
+    <li><a class="reference external" href="news.html">News</a></li>
+    <li><a class="reference external"
+    href="presentation.html">Presentations</a></li>
+    <li><a class="reference external" href="faq.html">FAQ</a></li>
+    <li><a class="reference external"
+    href="http://ipython.scipy.org/moin/Cookbook">Cookbook</a></li>
+    <li><a class="reference external"
+    href="http://ipython.scipy.org/moin/Developer_Zone">Developer Zone</a></li>
+    <li><a class="reference external"
+    href="http://ipython.scipy.org/moin/About/Projects_Using_IPython">Projects using IPython</a></li>
+  </ul>
+        </div>
+      </div>
+        
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="job-control">
+<h1>Job Control<a class="headerlink" href="#job-control" title="Permalink to this headline">¶</a></h1>
+<p>Import module &#8216;jobctrl&#8217; to launch and interact with background processes by prepending system commands with &#8216;&amp;&#8217;, or to kill foreground tasks that are preventing you from continuing with your work and are just too stubborn to die with the usual ctrl+C.</p>
+<div class="section" id="killing-foreground-tasks">
+<h2>Killing foreground tasks<a class="headerlink" href="#killing-foreground-tasks" title="Permalink to this headline">¶</a></h2>
+<p>Launch IPython instance, run a blocking command:</p>
+<div class="highlight-python"><pre>[Q:/ipython]|1&gt; import jobctrl
+[Q:/ipython]|2&gt; cat</pre>
+</div>
+<p>Observe that it starts blocking.</p>
+<p>Now launch a new IPython prompt and kill the &#8216;cat&#8217; process:</p>
+<div class="highlight-python"><pre>IPython 0.8.3.svn.r2919   [on Py 2.5]
+[Q:/ipython]|1&gt; import jobctrl
+[Q:/ipython]|2&gt; %tasks
+6020: 'cat ' (Q:\ipython)
+[Q:/ipython]|3&gt; %kill
+SUCCESS: The process with PID 6020 has been terminated.
+[Q:/ipython]|4&gt;</pre>
+</div>
+<p>(you don&#8217;t need to specify PID for %kill if only one task is running)</p>
+<p>Note that only the processes that are launched when &#8216;jobctrl&#8217; is enabled are affected.</p>
+</div>
+<div class="section" id="background-jobs">
+<h2>Background jobs<a class="headerlink" href="#background-jobs" title="Permalink to this headline">¶</a></h2>
+<p>See the example below. &#8220;IPython job&#8221; object is just a very thin wrapper over
+subprocess.Popen object, with an added __repr__ and &#8220;go&#8221; method.:</p>
+<div class="highlight-python"><pre>[ipython]|1&gt; import jobctrl
+[ipython]|2&gt; &amp;ls C*
+         &lt;2&gt; &lt;IPython job "ls C*"&gt;
+[ipython]|3&gt; &amp;ls e*
+         &lt;3&gt; &lt;IPython job "ls e*"&gt;
+[ipython]|4&gt; &amp;ls e*
+         &lt;4&gt; &lt;IPython job "ls e*"&gt;
+[ipython]|5&gt; &amp;ls RE*
+         &lt;5&gt; &lt;IPython job "ls RE*"&gt;
+
+[ipython]|7&gt; _2.go
+-----------&gt; _2.go()
+ChangeLog
+[ipython]|8&gt; _3.go
+-----------&gt; _3.go()
+eggsetup.py
+[ipython]|9&gt; _5.go
+-----------&gt; _5.go()
+README
+README_Windows.txt
+[ipython]|10&gt; _4.go
+------------&gt; _4.go()
+eggsetup.py</pre>
+</div>
+<p>Note how &#8220;jobs&#8221; are just objects in the output history. You can use all the subprocess.Popen methods on the object, but this example just uses &#8220;go&#8221;.</p>
+<p>See <a class="reference external" href="http://docs.python.org/dev/lib/node531.html">http://docs.python.org/dev/lib/node531.html</a></p>
+</div>
+<div class="section" id="net-radio-example">
+<h2>Net radio example<a class="headerlink" href="#net-radio-example" title="Permalink to this headline">¶</a></h2>
+<p>Here&#8217;s another example: I want to make a macro radio_trance that launches VLC on a net radio stream. I have the &#8220;vlc&#8221; alias that points to the actual binary of vlc, so I launch it via the alias:</p>
+<div class="highlight-python"><pre>[ipython]|1&gt; import jobctrl
+[ipython]|2&gt; vlc http://di.fm/mp3/trance.pls</pre>
+</div>
+<p>But this blocks the ipython window, while I want to listen to it on the background!</p>
+<p>I check out the command history to get the expanded version of the command:</p>
+<div class="highlight-python"><pre>[ipython]|3&gt; hist
+1: import jobctrl
+2: _ip.system("q:/opt/VLC/vlc.exe http://di.fm/mp3/trance.pls")
+3: _ip.magic("hist ")</pre>
+</div>
+<p>I copy-paste the command string from line #2 (and add &#8216;&amp;&#8217; to make it a background process:</p>
+<div class="highlight-python"><pre>[ipython]|4&gt; &amp;q:/opt/VLC/vlc.exe http://di.fm/mp3/trance.pls
+        &lt;4&gt; &lt;IPython job "q:/opt/VLC/vlc.exe http://di.fm/mp3/trance.pls"&gt;</pre>
+</div>
+<p>(&#8216;&#8217;&#8217; Note that this is unnecessarily hard &#8216;&#8217;&#8216;. In fact, with the new recursive alias expansion, you can do this simply with aliases without having to resort to manual copy-paste)</p>
+<p>So far so good, I can hear the music playing in the background! Now I&#8217;ll make a macro that both imports jobctrl and launches vlc (lines 1 and 4), and %store it:</p>
+<div class="highlight-python"><pre>[ipython]|5&gt; hist
+1: import jobctrl
+2: _ip.system("q:/opt/VLC/vlc.exe http://di.fm/mp3/trance.pls")
+3: _ip.magic("hist ")
+4: _ip.startjob("q:/opt/VLC/vlc.exe http://di.fm/mp3/trance.pls")
+5: _ip.magic("hist ")
+
+[ipython]|6&gt; macro radio_trance 1 4
+Macro `radio_trance` created. To execute, type its name (without quotes).
+Macro contents:
+import jobctrl
+_ip.startjob("q:/opt/VLC/vlc.exe http://di.fm/mp3/trance.pls")
+
+[ipython]|7&gt; store radio_trance
+Stored 'radio_trance' (Macro)</pre>
+</div>
+<p>Now I restart ipython and try the macro:</p>
+<div class="highlight-python"><pre>Q:\ipython&gt;python IPython.py -p sh
+Py 2.5 (r25:51908, Sep 19 2006, 09:52:17) [MSC v.1310 32 bit (Intel)] IPy 0.7.3.svn
+[ipython]|1&gt; radio_trance
+         &lt;1&gt; Executing Macro...
+         &lt;3&gt; &lt;IPython job "q:/opt/VLC/vlc.exe http://di.fm/mp3/trance.pls"&gt;
+[ipython]|4&gt; hist
+1: radio_trance
+2: import jobctrl
+3: _ip.startjob("q:/opt/VLC/vlc.exe http://di.fm/mp3/trance.pls")
+4: _ip.magic("hist ")</pre>
+</div>
+<p>And verify that it works.</p>
+</div>
+<div class="section" id="things-to-do-with-jobs">
+<h2>Things to do with jobs<a class="headerlink" href="#things-to-do-with-jobs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="killing">
+<h3>Killing<a class="headerlink" href="#killing" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>[ipython]|1&gt; &amp;rad_trance
+         &lt;1&gt; &lt;IPython job "q:/opt/VLC/vlc.exe http://di.fm/mp3/harddance.pls " PID=196&gt;
+[ipython]|2&gt; # this music is boring me.... I want it to stop right now!
+[ipython]|3&gt; _1.kill
+-----------&gt; _1.kill()
+SUCCESS: The process with PID 196 has been terminated.</pre>
+</div>
+</div>
+</div>
+<div class="section" id="finding-out-more">
+<h2>Finding out more<a class="headerlink" href="#finding-out-more" title="Permalink to this headline">¶</a></h2>
+<p>See the source of <a class="reference external" href="http://projects.scipy.org/ipython/ipython/browser/ipython/trunk/IPython/Extensions/jobctrl.py">jobctrl.py</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+    </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

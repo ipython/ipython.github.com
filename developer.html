@@ -1,0 +1,181 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Developer Zone &mdash; IPython</title>
+    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="IPython" href="index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <div class="logo"><a href="index.html">
+            <img class="logo" src="_static/logo.png" alt="Logo"/>
+          </a></div>
+       
+        <div class="rel">
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+             
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"> 
+<h3>Versions</h3>
+
+<div class="tile"><h4>Stable</h4>
+     0.10.2 &ndash; April&nbsp;2011<br/>
+    <a href="download.html">Download</a>
+</div>
+
+<div class="tile"><h4>Development</h4>
+    pre-0.11<br/>
+    <a href="https://github.com/ipython/ipython">Github</a>
+</div>
+<h3>Links</h3>
+
+  <ul class="simple">
+    <li><a class="reference external"
+    href="index.html">Home</a></li>           
+    <li><a class="reference external"
+    href="http://ipython.github.com/ipython-doc/">Documentation</a></li>
+    <li><a class="reference external" href="https://github.com/ipython/ipython/issues">
+            Issue tracker</a></li>
+    <li>Mailing lists:<br/><span style="padding-left: 1em;">
+        <a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-user">
+            User</a> · 
+        <a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-dev">
+            Dev</a>
+        </li></span>
+    <li><a class="reference external" href="http://webchat.freenode.net/?channels=ipython&uio=d4">
+            IRC channel</a><br/>
+            <span style="font-size: 0.7em; padding-left: 1em;">(Freenode, #ipython)</span></li>
+  </ul>
+  
+  
+  <br/>
+  <ul class="simple">
+    <li><a class="reference external" href="news.html">News</a></li>
+    <li><a class="reference external"
+    href="presentation.html">Presentations</a></li>
+    <li><a class="reference external" href="faq.html">FAQ</a></li>
+    <li><a class="reference external"
+    href="http://ipython.scipy.org/moin/Cookbook">Cookbook</a></li>
+    <li><a class="reference external"
+    href="http://ipython.scipy.org/moin/Developer_Zone">Developer Zone</a></li>
+    <li><a class="reference external"
+    href="http://ipython.scipy.org/moin/About/Projects_Using_IPython">Projects using IPython</a></li>
+  </ul>
+        </div>
+      </div>
+        
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="developer-zone">
+<h1><strong>Developer Zone</strong><a class="headerlink" href="#developer-zone" title="Permalink to this headline">¶</a></h1>
+<p>Welcome to IPython&#8217;s Developer Zone.  This page has information about IPython&#8217;s development.  IPython is developed by a distributed team of developers using
+tools like <a class="reference external" href="http://git-scm.com">Git</a> and <a class="reference external" href="http://github.com">GitHub</a>.</p>
+<div class="section" id="git-repositories">
+<h2>Git Repositories<a class="headerlink" href="#git-repositories" title="Permalink to this headline">¶</a></h2>
+<p>IPython development has been moved to <a class="reference external" href="http://github.com/ipython">GitHub</a>, using the  <a class="reference external" href="http://git-scm.com">Git</a> distributed version control system.</p>
+<p>The development version of IPython can be downloaded from our GitHub repository by doing:</p>
+<div class="highlight-python"><pre>git clone git://github.com/ipython/ipython.git</pre>
+</div>
+</div>
+<div class="section" id="running-from-a-git-checkout-without-reinstalling-after-every-update">
+<h2>Running from a Git checkout without reinstalling after every update<a class="headerlink" href="#running-from-a-git-checkout-without-reinstalling-after-every-update" title="Permalink to this headline">¶</a></h2>
+<p>The best way to run IPython from Git development code is to install setuptools and run:</p>
+<div class="highlight-python"><pre>setupegg.py develop</pre>
+</div>
+<p>in your git checkout directory. This way, the development version will be available as your &#8220;system&#8221; IPython, and this will also work for projects that embed IPython.</p>
+<p>Another way is to add a couple symlinks; however, this wont support embedding IPython. As an example, let&#8217;s assume that your <cite>$PYTHONPATH</cite> includes the directory <cite>$HOME/usr/local/lib/python2.4/site-packages</cite> (a convenient choice if you usually install locally downloaded pacakges via <cite>setup.py install &#8211;prefix=$HOME/usr/local</cite>).  Lets imagine you&#8217;ve also just done the checkout of the IPython trunk, as indicated above, and put it in <cite>$HOME/usr/local/src</cite>. Then, the IPython library directory would be <cite>$HOME/usr/local/src/ipython/IPython</cite>. To make this available to python, add the following symlink:</p>
+<div class="highlight-python"><pre>ln -s $HOME/usr/local/src/ipython/IPython $HOME/usr/local/lib/python2.4/site-packages/IPython</pre>
+</div>
+<p>You will also need to symlink several IPython startup scripts so that they can be found by your $PATH. In the above example, you might do:</p>
+<div class="highlight-python"><pre>ln -s $HOME/usr/local/src/ipython/scripts/ipython /usr/local/bin/ipython</pre>
+</div>
+<p>and:</p>
+<div class="highlight-python"><pre>ln -s $HOME/usr/local/src/ipython/scripts/pycolor /usr/local/bin/pycolor</pre>
+</div>
+<p>Note that even if the code were to contain C extensions (IPython currently doesn&#8217;t), you don&#8217;t need to issue a <cite>python setup.py</cite> command. Rather, you&#8217;d just manually rebuild the extensions via:</p>
+<div class="highlight-python"><pre>python setup.py build_ext --inplace</pre>
+</div>
+<p>The <cite>inplace</cite> option ensures that the extension module is left in the library directory, so the above symlink trick finds all the code (pure python and extensions) together.</p>
+</div>
+<div class="section" id="contributing-to-ipython">
+<h2>Contributing to IPython<a class="headerlink" href="#contributing-to-ipython" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="http://ipython.scipy.org/doc/stable/html/development">developer guide in the official documentation</a> provides basic information on how to contribute to IPython as a developer.</p>
+</div>
+<div class="section" id="bug-reports-and-feature-requests">
+<h2>Bug Reports and Feature Requests<a class="headerlink" href="#bug-reports-and-feature-requests" title="Permalink to this headline">¶</a></h2>
+<p>We want IPython to be as bug-free as possible, so we encourage our users to  <a class="reference external" href="http://github.com/ipython/ipython/issues">report</a> all bugs they find, as well as important feature requests (those should be marked as &#8220;Whishlist&#8221; items).  If you don&#8217;t have a Github account yet, you can <a class="reference external" href="https://github.com/signup/free">create one for free</a>.</p>
+<p>From 2008 until 2010 we used Launchpad for bug tracking; all of the active bugs we had on Launchpad have been ported with their entire comment history over to Git``Hub.</p>
+<p>Our old <a class="reference external" href="http://projects.scipy.org/ipython/ipython">Trac site</a> contains a number of open tickets.  These will still be dealt with, it&#8217;s just that &#8216;&#8217;new&#8217;&#8217; bugs go to Git.  We will work on closing all the old Trac tickets just as much as new ones opened on GitHub.</p>
+</div>
+<div class="section" id="developer-mailing-list">
+<h2>Developer Mailing List<a class="headerlink" href="#developer-mailing-list" title="Permalink to this headline">¶</a></h2>
+<p>We have a <a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-dev">mailing list</a> for discussions about the development of IPython.  There is also a web-based <a class="reference external" href="http://news.gmane.org/thread.php?group=gmane.comp.python.ipython.devel">gmane mirror</a> of this list.</p>
+</div>
+<div class="section" id="external-dependencies">
+<h2>External Dependencies<a class="headerlink" href="#external-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>We are fully committed to having the core of IPython depend on nothing outside of the Python standard library.  This point is non-negotiable.  Here is why:</p>
+<ol class="arabic simple">
+<li>IPython needs to run on Jython and IronPython</li>
+<li>IPython ships on the OLPC.   Space is a huge concern on this platform.</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+    </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Saving the session on exit like the R shell &mdash; IPython</title>
+    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="IPython" href="index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <div class="logo"><a href="index.html">
+            <img class="logo" src="_static/logo.png" alt="Logo"/>
+          </a></div>
+       
+        <div class="rel">
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+             
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"> 
+<h3>Versions</h3>
+
+<div class="tile"><h4>Stable</h4>
+     0.10.2 &ndash; April&nbsp;2011<br/>
+    <a href="download.html">Download</a>
+</div>
+
+<div class="tile"><h4>Development</h4>
+    pre-0.11<br/>
+    <a href="https://github.com/ipython/ipython">Github</a>
+</div>
+<h3>Links</h3>
+
+  <ul class="simple">
+    <li><a class="reference external"
+    href="index.html">Home</a></li>           
+    <li><a class="reference external"
+    href="http://ipython.github.com/ipython-doc/">Documentation</a></li>
+    <li><a class="reference external" href="https://github.com/ipython/ipython/issues">
+            Issue tracker</a></li>
+    <li>Mailing lists:<br/><span style="padding-left: 1em;">
+        <a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-user">
+            User</a> · 
+        <a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-dev">
+            Dev</a>
+        </li></span>
+    <li><a class="reference external" href="http://webchat.freenode.net/?channels=ipython&uio=d4">
+            IRC channel</a><br/>
+            <span style="font-size: 0.7em; padding-left: 1em;">(Freenode, #ipython)</span></li>
+  </ul>
+  
+  
+  <br/>
+  <ul class="simple">
+    <li><a class="reference external" href="news.html">News</a></li>
+    <li><a class="reference external"
+    href="presentation.html">Presentations</a></li>
+    <li><a class="reference external" href="faq.html">FAQ</a></li>
+    <li><a class="reference external"
+    href="http://ipython.scipy.org/moin/Cookbook">Cookbook</a></li>
+    <li><a class="reference external"
+    href="http://ipython.scipy.org/moin/Developer_Zone">Developer Zone</a></li>
+    <li><a class="reference external"
+    href="http://ipython.scipy.org/moin/About/Projects_Using_IPython">Projects using IPython</a></li>
+  </ul>
+        </div>
+      </div>
+        
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="saving-the-session-on-exit-like-the-r-shell">
+<h1>Saving the session on exit like the R shell<a class="headerlink" href="#saving-the-session-on-exit-like-the-r-shell" title="Permalink to this headline">¶</a></h1>
+<p>Even if we can start the logger in the current session by calling the magic function
+%logstart, and control it with %logoff, %logon and %logstate, I like the way R ask to save
+the session before exit.
+Here is a simple code to transform the Ipython shell logger like the R one. Just copy
+the code below in ~/.ipython/logger.py (or whatever you want) and append
+ip.ex(&#8220;import logger&#8221;)
+to ~/.ipython/ipy_user_conf.py</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">IPython.ipapi</span>
+<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
+
+<span class="n">ip</span> <span class="o">=</span> <span class="n">IPython</span><span class="o">.</span><span class="n">ipapi</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="n">LOGNAME</span> <span class="o">=</span> <span class="s">&quot;.ipython_history.log&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">startup_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Executed at the ipython startup for loading last saved session</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">LOGNAME</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&quot;Load last saved session in the current directory ([y]/n)? &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;y&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">p</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">):</span>
+            <span class="n">ip</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="s">&#39;run -i -e </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span><span class="n">LOGNAME</span><span class="p">)</span>
+    <span class="k">return</span>
+
+<span class="k">def</span> <span class="nf">shutdown_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Prompts for saving the current session during shutdown</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">p</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&quot;Save current session (y/[n])? &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;y&#39;</span><span class="p">:</span>
+        <span class="c">#ip.magic(&#39;logstart %s over&#39; %LOGNAME)</span>
+        <span class="n">shell</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">IP</span><span class="o">.</span><span class="n">shell</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">shell</span><span class="o">.</span><span class="n">logger</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="n">shell</span><span class="o">.</span><span class="n">loghead_tpl</span> <span class="o">%</span> <span class="p">(</span><span class="n">LOGNAME</span><span class="p">,</span> <span class="s">&#39;[]&#39;</span><span class="p">)</span>
+        <span class="c">#head = &quot;#saved session in the current directory&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">started</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">logstart</span><span class="p">(</span><span class="n">logfname</span><span class="o">=</span><span class="n">LOGNAME</span><span class="p">,</span> <span class="n">loghead</span><span class="o">=</span><span class="n">head</span><span class="p">,</span> <span class="n">logmode</span><span class="o">=</span><span class="s">&#39;append&#39;</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&quot;Couldn&#39;t save session: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">input_hist</span> <span class="o">=</span> <span class="n">shell</span><span class="o">.</span><span class="n">input_hist</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="n">input_hist</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="k">return</span>
+
+<span class="n">ip</span><span class="o">.</span><span class="n">set_hook</span><span class="p">(</span><span class="s">&#39;late_startup_hook&#39;</span><span class="p">,</span> <span class="n">startup_logger</span><span class="p">)</span>
+<span class="n">ip</span><span class="o">.</span><span class="n">set_hook</span><span class="p">(</span><span class="s">&#39;shutdown_hook&#39;</span><span class="p">,</span> <span class="n">shutdown_logger</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+    </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

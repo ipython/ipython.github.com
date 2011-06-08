@@ -1,0 +1,176 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>WhatsNew082 &mdash; IPython</title>
+    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="IPython" href="index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <div class="logo"><a href="index.html">
+            <img class="logo" src="_static/logo.png" alt="Logo"/>
+          </a></div>
+       
+        <div class="rel">
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+             
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"> 
+<h3>Versions</h3>
+
+<div class="tile"><h4>Stable</h4>
+     0.10.2 &ndash; April&nbsp;2011<br/>
+    <a href="download.html">Download</a>
+</div>
+
+<div class="tile"><h4>Development</h4>
+    pre-0.11<br/>
+    <a href="https://github.com/ipython/ipython">Github</a>
+</div>
+<h3>Links</h3>
+
+  <ul class="simple">
+    <li><a class="reference external"
+    href="index.html">Home</a></li>           
+    <li><a class="reference external"
+    href="http://ipython.github.com/ipython-doc/">Documentation</a></li>
+    <li><a class="reference external" href="https://github.com/ipython/ipython/issues">
+            Issue tracker</a></li>
+    <li>Mailing lists:<br/><span style="padding-left: 1em;">
+        <a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-user">
+            User</a> · 
+        <a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-dev">
+            Dev</a>
+        </li></span>
+    <li><a class="reference external" href="http://webchat.freenode.net/?channels=ipython&uio=d4">
+            IRC channel</a><br/>
+            <span style="font-size: 0.7em; padding-left: 1em;">(Freenode, #ipython)</span></li>
+  </ul>
+  
+  
+  <br/>
+  <ul class="simple">
+    <li><a class="reference external" href="news.html">News</a></li>
+    <li><a class="reference external"
+    href="presentation.html">Presentations</a></li>
+    <li><a class="reference external" href="faq.html">FAQ</a></li>
+    <li><a class="reference external"
+    href="http://ipython.scipy.org/moin/Cookbook">Cookbook</a></li>
+    <li><a class="reference external"
+    href="http://ipython.scipy.org/moin/Developer_Zone">Developer Zone</a></li>
+    <li><a class="reference external"
+    href="http://ipython.scipy.org/moin/About/Projects_Using_IPython">Projects using IPython</a></li>
+  </ul>
+        </div>
+      </div>
+        
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="whatsnew082">
+<h1>WhatsNew082<a class="headerlink" href="#whatsnew082" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="new-features-in-0-8-2">
+<h2>New features in 0.8.2<a class="headerlink" href="#new-features-in-0-8-2" title="Permalink to this headline">¶</a></h2>
+<p>This does not list bugfixes, enhanced internals or api additions.</p>
+<blockquote>
+<div><ul class="simple">
+<li>&#8220;Shadow history&#8221; remembers everything you&#8217;ve entered, forever. Remember that arcane command line you entered three weeks ago? Just grep the shadow history with &#8220;%hist -g&#8221;! <a class="reference external" href="shadowhistory.html">See cookbook</a> for details.</li>
+<li>%rep is a new magic function that allows you to fetch command lines from history for editing. Do &#8220;%rep?&#8221; for details.</li>
+<li>System command aliases (created by %rehashx) are lower case in win32.</li>
+<li>Macros can now take arguments. <a class="reference external" href="MacroArguments.html">See cookbook</a>.</li>
+<li>%macro without arguments lists available macros.</li>
+<li>Directory history (the easiest way to see it is by doing &#8216;cd -&lt;TAB&gt;&#8217;) is now persistent across sessions.</li>
+<li>ipython -i -c &lt;cmd&gt;: -i (interact) prevents IPython session from exiting after executing &lt;cmd&gt;. &lt;cmd&gt; can now contain IPython syntax (!foo, %magic etc).</li>
+<li>new profiles: doctest, zope. scipy is now in ipy_profile_scipy.py instead of ipythonrc-scipy.</li>
+<li>new extensions:<ul>
+<li>ipy_traits_completer.py: complete Traits attributes</li>
+<li>ipy_legacy.py: enable deprecated features</li>
+<li>mglob.py: enhanced globbing - &#8216;%mglob !.svn/ rec:<a href="#id2"><span class="problematic" id="id3">*</span></a>.py&#8217;</li>
+<li>ipy_exportdb.py: create a portable .py file from your %store&#8217;d macros, aliases, strings and bookmarks for distribution. <a class="reference external" href="ipexport.html">See cookbook</a> .</li>
+<li>ipy_render.py: win32: render templates using Itpl format to clipboard (e.g. render &#8216;hello $a&#8217;).  <a class="reference external" href="ipyrenderdb.html">See cookbook</a>.</li>
+<li>ipy_editors.py: Bunch of popular editors readily configured for IPython. See ipy_user_conf.py for instructions on how to enable them.</li>
+<li>ipy_fsops.py: Has useful shell utils for plain (non-cygwin enabled) win32 installations: icp, imv, imkdir, igrep, irm, collect (collect is useful for others as well).</li>
+</ul>
+</li>
+<li>py2exe version supported (ipykit)</li>
+<li>The title bar of IPython window shows the currently executing system command.</li>
+<li>Prompt on win32 in pysh (&#8216;-p sh&#8217; profile) now has the drive letter for enhanced location awareness, and uses / instead of .</li>
+<li>Errors from misusing magics are much less verbose now (due to UserError exception).</li>
+<li>String Lists provide a convenient way to manipulate command output.See <a class="reference external" href="stringlistprocessing.html">Cookbook</a>.</li>
+<li>Directory stack (%pushd, %popd, %dirs) works more predictably now.</li>
+<li>%time allows IPython expressions (which includes system commands - e.g. try &#8220;%time !ls&#8221;)</li>
+<li>Callable aliases can be used to extend IPython (provide new commands) in a more elegant manner than magic commands. Also, no % is necessary/allowed. See ipy_fsops.py for examples.</li>
+<li>Improved Leopard support for tab-completion, though a few issues remain.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="known-issues">
+<h2>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>We still get crashes from KeyboardInterrupt occasionally (caused by pressing ctrl+C or ctrl+break)</li>
+<li>Unicode support is not yet perfect, so expect problems on Unicode input/output.</li>
+<li>The manual is hopelessly out of date. This is something we will look into during 0.8.3 cycle; in the meantime, see the documentation page on the wiki [superseded], and the user-maintained <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook">cookbook</a>.</li>
+<li>Under OSX Leopard, we are seeing some readline-related problems with history recall.  It is not clear yet whether the issue is with IPython or Leopard&#8217;s readline support itself.  We&#8217;re investigating the issue.</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+    </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>
