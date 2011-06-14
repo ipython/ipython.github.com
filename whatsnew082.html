@@ -104,10 +104,10 @@
 <p>This does not list bugfixes, enhanced internals or api additions.</p>
 <blockquote>
 <div><ul class="simple">
-<li>&#8220;Shadow history&#8221; remembers everything you&#8217;ve entered, forever. Remember that arcane command line you entered three weeks ago? Just grep the shadow history with &#8220;%hist -g&#8221;! <a class="reference external" href="shadowhistory.html">See cookbook</a> for details.</li>
+<li>&#8220;Shadow history&#8221; remembers everything you&#8217;ve entered, forever. Remember that arcane command line you entered three weeks ago? Just grep the shadow history with &#8220;%hist -g&#8221;! <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/ShadowHistory">See cookbook</a> for details.</li>
 <li>%rep is a new magic function that allows you to fetch command lines from history for editing. Do &#8220;%rep?&#8221; for details.</li>
 <li>System command aliases (created by %rehashx) are lower case in win32.</li>
-<li>Macros can now take arguments. <a class="reference external" href="MacroArguments.html">See cookbook</a>.</li>
+<li>Macros can now take arguments. <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/MacroArguments">See cookbook</a>.</li>
 <li>%macro without arguments lists available macros.</li>
 <li>Directory history (the easiest way to see it is by doing &#8216;cd -&lt;TAB&gt;&#8217;) is now persistent across sessions.</li>
 <li>ipython -i -c &lt;cmd&gt;: -i (interact) prevents IPython session from exiting after executing &lt;cmd&gt;. &lt;cmd&gt; can now contain IPython syntax (!foo, %magic etc).</li>
@@ -115,9 +115,9 @@
 <li>new extensions:<ul>
 <li>ipy_traits_completer.py: complete Traits attributes</li>
 <li>ipy_legacy.py: enable deprecated features</li>
-<li>mglob.py: enhanced globbing - &#8216;%mglob !.svn/ rec:<a href="#id2"><span class="problematic" id="id3">*</span></a>.py&#8217;</li>
-<li>ipy_exportdb.py: create a portable .py file from your %store&#8217;d macros, aliases, strings and bookmarks for distribution. <a class="reference external" href="ipexport.html">See cookbook</a> .</li>
-<li>ipy_render.py: win32: render templates using Itpl format to clipboard (e.g. render &#8216;hello $a&#8217;).  <a class="reference external" href="ipyrenderdb.html">See cookbook</a>.</li>
+<li>mglob.py: enhanced globbing - <tt class="docutils literal"><span class="pre">%mglob</span> <span class="pre">!.svn/</span> <span class="pre">rec:*.py</span></tt></li>
+<li>ipy_exportdb.py: create a portable .py file from your %store&#8217;d macros, aliases, strings and bookmarks for distribution. <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/IpyExportDb">See cookbook</a> .</li>
+<li>ipy_render.py: win32: render templates using Itpl format to clipboard (e.g. render &#8216;hello $a&#8217;).  <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/IpyRender">See cookbook</a>.</li>
 <li>ipy_editors.py: Bunch of popular editors readily configured for IPython. See ipy_user_conf.py for instructions on how to enable them.</li>
 <li>ipy_fsops.py: Has useful shell utils for plain (non-cygwin enabled) win32 installations: icp, imv, imkdir, igrep, irm, collect (collect is useful for others as well).</li>
 </ul>
@@ -126,7 +126,7 @@
 <li>The title bar of IPython window shows the currently executing system command.</li>
 <li>Prompt on win32 in pysh (&#8216;-p sh&#8217; profile) now has the drive letter for enhanced location awareness, and uses / instead of .</li>
 <li>Errors from misusing magics are much less verbose now (due to UserError exception).</li>
-<li>String Lists provide a convenient way to manipulate command output.See <a class="reference external" href="stringlistprocessing.html">Cookbook</a>.</li>
+<li>String Lists provide a convenient way to manipulate command output. See <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/StringListProcessing">Cookbook</a>.</li>
 <li>Directory stack (%pushd, %popd, %dirs) works more predictably now.</li>
 <li>%time allows IPython expressions (which includes system commands - e.g. try &#8220;%time !ls&#8221;)</li>
 <li>Callable aliases can be used to extend IPython (provide new commands) in a more elegant manner than magic commands. Also, no % is necessary/allowed. See ipy_fsops.py for examples.</li>
