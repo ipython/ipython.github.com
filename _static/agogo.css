@@ -138,20 +138,23 @@ dt:target, .highlighted {
 
 /* Header */
 
-div.header {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
+div.header {}
 
 div.header h1 {
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
   font-weight: normal;
-  font-size: 180%;
+  font-size: 250%;
   letter-spacing: .08em;
+  line-height: 70px;
+  margin-bottom: 0;
 }
 
 div.header h1 a {
   color: white;
+}
+
+div.header h1 a:hover {
+  text-decoration: none;
 }
 
 div.header div.rel {
@@ -164,8 +167,10 @@ div.header div.rel a {
   text-transform: uppercase;
 }
 
-p.logo {
-    float: left;
+div.logo {
+  float: left;
+  /* Extra padding on the right*/
+  padding: 10px 30px 10px 10px;
 }
 
 img.logo {
