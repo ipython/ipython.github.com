@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>WhatsNew083 &mdash; IPython</title>
+    <title>New features in 0.8.3 &mdash; IPython</title>
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -87,11 +87,11 @@
     <li><a class="reference external"
     href="presentation.html">Presentations</a></li>
     <li><a class="reference external"
-    href="http://ipython.scipy.org/moin/Cookbook">Cookbook</a></li>
+    href="http://wiki.ipython.org/Cookbook">Cookbook</a></li>
     <li><a class="reference external"
-    href="http://ipython.scipy.org/moin/Developer_Zone">Developer Zone</a></li>
+    href="http://wiki.ipython.org/Developer_Info">Developer Info</a></li>
     <li><a class="reference external"
-    href="http://ipython.scipy.org/moin/About/Projects_Using_IPython">Projects using IPython</a></li>
+    href="http://wiki.ipython.org/Projects_using_IPython">Projects using IPython</a></li>
   </ul>          
 </div>
         </div>
@@ -103,10 +103,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="whatsnew083">
-<h1>WhatsNew083<a class="headerlink" href="#whatsnew083" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="new-features-in-0-8-3">
-<h2>New features in 0.8.3<a class="headerlink" href="#new-features-in-0-8-3" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="new-features-in-0-8-3">
+<h1>New features in 0.8.3<a class="headerlink" href="#new-features-in-0-8-3" title="Permalink to this headline">¶</a></h1>
 <p>This does not list bugfixes, enhanced internals or api additions.</p>
 <blockquote>
 <div><ul>
@@ -124,12 +122,12 @@ deadlocks. IPython also recovers from deadlock within few seconds if it happens,
 </li>
 <li><p class="first">%edit MyClass works also when MyClass was created in another %edit session.</p>
 </li>
-<li><p class="first">New command line arguments:
-* -pydb to tell ipython to use pydb as the default debugger (it is no longer assumed when pydb is installed)
-* -twisted installs a twisted reactor in IPython process, where all entered commands are run in a deferred twisted call.</p>
-<blockquote>
-<div><p>This ensures that everything, apart from input IPython line entry, occurs in same thread.</p>
-</div></blockquote>
+<li><p class="first">New command line arguments:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">-pydb</span></tt> to tell ipython to use pydb as the default debugger (it is no longer assumed when pydb is installed)</li>
+<li><tt class="docutils literal"><span class="pre">-twisted</span></tt> installs a twisted reactor in IPython process, where all entered commands are run in a deferred twisted call.
+This ensures that everything, apart from input IPython line entry, occurs in same thread.</li>
+</ul>
 </li>
 <li><p class="first">var = !cmd no longer prints the output in addition to storing it in variable</p>
 </li>
@@ -161,7 +159,6 @@ Recommended if you have used &#8220;bzr shell&#8221; from bzrtools previously.</
 </li>
 </ul>
 </div></blockquote>
-</div>
 </div>
 
 
