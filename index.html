@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>IPython: An Interactive Computing Environment &mdash; IPython</title>
+    <title>IPython: Tools for Productive Interactive Computing &mdash; IPython</title>
+    
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
@@ -103,30 +106,30 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="ipython-an-interactive-computing-environment">
-<h1>IPython: An Interactive Computing Environment<a class="headerlink" href="#ipython-an-interactive-computing-environment" title="Permalink to this headline">¶</a></h1>
-<p>The goal of IPython is to create a comprehensive environment for interactive
-and exploratory computing.  To support, this goal, IPython has two main
-components:</p>
-<blockquote>
-<div><ul class="simple">
-<li>An set of powerful interactive Python shells (terminal and Qt).</li>
-<li>An architecture for interactive parallel computing.</li>
+  <div class="section" id="ipython-tools-for-productive-interactive-computing">
+<h1>IPython: Tools for Productive Interactive Computing<a class="headerlink" href="#ipython-tools-for-productive-interactive-computing" title="Permalink to this headline">¶</a></h1>
+<p>IPython provides a rich toolkit to help you make the most out of using Python
+interactively.  Its main components are:</p>
+<ul class="simple">
+<li>Powerful interactive Python shells (terminal- and Qt-based).</li>
+<li>Support for interactive data visualization and use of GUI toolkits.</li>
+<li>Flexible, embeddable interpreters to load into your own projects.</li>
+<li>Tools for high level and interactive parallel computing.</li>
 </ul>
-</div></blockquote>
-<p>All of IPython is open source (released under the revised BSD license), and it
-is used by a range of <a class="reference external" href="http://wiki.ipython.org/Projects_using_IPython">other projects</a>.  Have a look at the <a class="reference external" href="presentation.html">talks
-and presentations</a> we have given about IPython.</p>
-<p>IPython supports Python 2.6 to 2.7, and 3.1 to 3.2 (via a separate download, for
-now).  Our 0.10 series supports Python 2.5, and probably works well with 2.4,
-though we haven&#8217;t tested it extensively with that version.</p>
+<p>IPython is open source (released under the revised BSD license), and is used by
+a range of <a class="reference external" href="http://wiki.ipython.org/Projects_using_IPython">other projects</a>.
+The <a class="reference external" href="presentation.html">talks and presentations</a> we have given about IPython
+provide a good overview of its capabilities.</p>
+<p>IPython supports Python 2.6 to 2.7 and 3.1 to 3.2.  Using it with Python 3
+requires a separate download, described in our <a class="reference external" href="http://wiki.ipython.org/Python_3">Python 3 wiki page</a>.  Our
+older 0.10 series supports Python 2.5, and probably works well with 2.4.</p>
 <div class="section" id="announcements">
 <h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><strong>IPython 0.11</strong>: We&#8217;re pleased to announce the immediate release of IPython
-0.11, a major new version and the result of over two years of changes.
-<a class="reference external" href="download.html">Download</a> it now, or look at <a class="reference external" href="http://ipython.org/ipython-doc/dev/whatsnew/version0.11.html">what&#8217;s new</a>.  At the
-recent SciPy 2011 conference we gave a talk about this version, you can
+0.11, a major new version and the result of over two years of work.
+<a class="reference external" href="download.html">Download</a> it now, or look at <a class="reference external" href="http://ipython.org/ipython-doc/rel-0.11/whatsnew/version0.11.html">what&#8217;s new</a>.  At
+the recent SciPy 2011 conference we gave a talk about this version, you can
 <a class="reference external" href="http://fperez.org/talks/1107_ipython_scipy.pdf">download the slides</a> or <a class="reference external" href="http://www.archive.org/details/Wednesday-203-6-IpythonANewArchitectureForInteractiveAndParallel">watch the talk</a>; afterwards Chris Fonnesbeck
 wrote an excellent post with a <a class="reference external" href="http://stronginference.com/weblog/2011/7/15/innovations-in-ipython.html">visual tour of the new features</a>.</li>
 </ul>
@@ -148,11 +151,33 @@ other projects and fields.</p>
 please acknowledge this fact by citing the project. You can use this
 <a class="reference external" href="citing.html">ready-made citation entry</a>.</p>
 </div>
-<div class="section" id="hosting">
-<h2>Hosting<a class="headerlink" href="#hosting" title="Permalink to this headline">¶</a></h2>
-<p>IPython&#8217;s mailing lists are hosted by <a class="reference external" href="http://enthought.com/">Enthought</a> (who
-also hosted much of the project for many years).  We also use <a class="reference external" href="http://github.com/">GitHub</a> and <a class="reference external" href="http://git-scm.com/">Git</a> for code,
-documentation, and distributed version control.</p>
+<div class="section" id="support">
+<h2>Support<a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h2>
+<p>We gratefully acknowledge the support we&#8217;ve received over the years:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://enthought.com">Enthought Inc</a> has supported IPython since its beginning in multiple forms,
+including &#8211;but not limited to&#8211; the funding of our Qt console, hosting our
+website for many years, the continued hosting of our mailing lists, and the
+inclusion of IPython in the <a class="reference external" href="http://www.enthought.com/products/epd.php">Enthought Python Distribution</a>.</li>
+<li><a class="reference external" href="http://nipy.org">NiPy</a>/NIH: funding via the NiPy project (NIH grant 5R01MH081909-02) supported
+our 2009 refactoring work.</li>
+<li><a class="reference external" href="http://saegemath.org">Sage</a>/NSF: funding via the grant <a class="reference external" href="http://modular.math.washington.edu/grants/compmath09">Sage: Unifying Mathematical Software for
+Scientists, Engineers, and Mathematicians</a> (NSF grant
+DMS-1015114) supported our Seattle 2011 developer meeting.</li>
+<li>Microsoft&#8217;s team working on <a class="reference external" href="http://pytools.codeplex.com">Python Tools for Visual Studio</a> developed the integraton of IPython into the
+Python plugin for Visual Studio 2010.</li>
+<li><a class="reference external" href="http://txcorp.com">Tech-X Corporation</a> supported in 2008 the development
+of our parallel computing tools.</li>
+<li>Google Summer of Code: in 2005 and 2010 we&#8217;ve had GSoC support for prototypes
+in several areas of the project.</li>
+<li>The Ohio Supercomputer Center and the Department of Defense High Performance
+Computing Modernization Program (HPCMP), for sponsoring work in 2009 on our
+parallel computing tools.</li>
+<li><a class="reference external" href="http://www.bivio.biz">Bivio Software</a> hosted an IPython sprint in 2006, in
+addition to their support of the Front Range Pythoneers group in Boulder, CO.</li>
+<li><a class="reference external" href="http://github.com/">GitHub</a> hosts our development workflow and
+documentation.</li>
+</ul>
 </div>
 </div>
 
@@ -169,7 +194,7 @@ documentation, and distributed version control.</p>
       
     <div class="footer">
         &copy; Copyright the IPython development team.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1pre.
     </div>
     </div>
 
