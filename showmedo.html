@@ -37,12 +37,40 @@
           </a></div>
        
         <div class="rel">
-          <a href="index.html">Home</a> · 
+          <div id="google-search-box" style="float: right; width: 25%;">
+  <div id="cse-search-form" style="width: 100%;">Loading</div>
+</div>
+
+<a href="index.html">Home</a> · 
 <a href="download.html">Download</a> · 
 <a href="documentation.html">Documentation</a> · 
 <a href="http://wiki.ipython.org">Wiki</a> · 
 <a href="news.html">News</a> · 
 <a href="citing.html">Citation</a>
+
+
+<script src="http://www.google.co.uk/jsapi" type="text/javascript"></script>
+<script type="text/javascript"> 
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl(
+      '017950022472296044740:wfr9nyfshwo');
+
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.enableSearchboxOnly("http://ipython.org/searchresults.html");
+    customSearchControl.draw('cse-search-form', options);
+  }, true);
+</script>
+<link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css" /> <style type="text/css">
+  input.gsc-input {
+    border-color: #BCCDF0;
+  }
+  input.gsc-search-button {
+    border-color: #666666;
+    background-color: #CECECE;
+  }
+</style>
         </div>
        </div>
     </div>
@@ -66,21 +94,26 @@
     <a href="https://github.com/ipython/ipython">Github</a>
 </div>
 
-<div id="ohloh">
-  <div id="ohloh-use">
+<div id="buttons">
+  <div id="ohloh-use" style="margin-right: 25px; margin-top: -2px;">
     <script type="text/javascript"
             src="http://www.ohloh.net/p/6565/widgets/project_users_logo.js">
     </script>
   </div><!-- use -->
-  <div id="ohloh-stats">
-    <script type="text/javascript"
-	    src="http://www.ohloh.net/p/6565/widgets/project_thin_badge.js">
-    </script>
-  </div><!-- stats -->
+    <g:plusone size="medium" annotation="none"></g:plusone>
   <div class="clear"></div> 
-</div><!-- ohloh container -->
+</div><!-- buttons container -->
 
 </div>
+
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
 <div class="sidebarblock">
 <h3>Links</h3>
 
