@@ -165,12 +165,13 @@
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><a class="reference internal" href="#running-ipython-against-multiple-versions-of-python" id="id1">Running IPython against multiple versions of Python</a></li>
-<li><a class="reference internal" href="#ipython-crashes-under-os-x-when-using-the-arrow-keys" id="id2">IPython crashes under OS X when using the arrow keys</a></li>
-<li><a class="reference internal" href="#does-ipython-play-well-with-windows" id="id3">Does IPython play well with Windows?</a></li>
-<li><a class="reference internal" href="#what-is-the-best-way-to-install-ipython" id="id4">What is the best way to install IPython?</a></li>
-<li><a class="reference internal" href="#why-do-i-get-garbage-characters-when-long-information-is-displayed-by-the-pager" id="id5">Why do I get garbage characters when long information is displayed by the pager?</a></li>
-<li><a class="reference internal" href="#why-doesn-t-running-doctests-from-within-ipython-work" id="id6">Why doesn&#8217;t running doctests from within IPython work?</a></li>
-<li><a class="reference internal" href="#can-ipython-run-under-ironpython-pypy-jython-other-python-interpreters" id="id7">Can IPython run under IronPython/PyPy/Jython/other Python interpreters?</a></li>
+<li><a class="reference internal" href="#can-ipython-run-under-ironpython-pypy-jython-other-python-interpreters" id="id2">Can IPython run under IronPython/PyPy/Jython/other Python interpreters?</a></li>
+<li><a class="reference internal" href="#how-do-i-make-ipython-recognise-my-virtualenvs" id="id3">How do I make IPython recognise my virtualenvs?</a></li>
+<li><a class="reference internal" href="#ipython-crashes-under-os-x-when-using-the-arrow-keys" id="id4">IPython crashes under OS X when using the arrow keys</a></li>
+<li><a class="reference internal" href="#does-ipython-play-well-with-windows" id="id5">Does IPython play well with Windows?</a></li>
+<li><a class="reference internal" href="#what-is-the-best-way-to-install-ipython" id="id6">What is the best way to install IPython?</a></li>
+<li><a class="reference internal" href="#why-do-i-get-garbage-characters-when-long-information-is-displayed-by-the-pager" id="id7">Why do I get garbage characters when long information is displayed by the pager?</a></li>
+<li><a class="reference internal" href="#why-doesn-t-running-doctests-from-within-ipython-work" id="id8">Why doesn&#8217;t running doctests from within IPython work?</a></li>
 </ul>
 </div>
 <div class="section" id="running-ipython-against-multiple-versions-of-python">
@@ -186,6 +187,34 @@ $ python2.5 setup.py install --prefix=$HOME/usr</pre>
 alias ip5 "python2.5 $HOME/usr/bin/ipython"</pre>
 </div>
 <p>or you can just have two copies of the ipython startup script named differently and with their first line changed to point to the actual interpreter.</p>
+</div>
+<div class="section" id="can-ipython-run-under-ironpython-pypy-jython-other-python-interpreters">
+<h2>Can IPython run under IronPython/PyPy/Jython/other Python interpreters?<a class="headerlink" href="#can-ipython-run-under-ironpython-pypy-jython-other-python-interpreters" title="Permalink to this headline">¶</a></h2>
+<p>The terminal-based shell should run on any interpreter which complies with
+the necessary version of Python. IPython 0.11 requires Python 2.6
+or above, and as of June 2011, IronPython and PyPy both support this.</p>
+<p>The most likely problems would come from Readline and from using the undocumented
+sys._getframe() function. On Windows we ship our own <a class="reference external" href="pyreadline.html">pyreadline</a>,
+which might also work under IronPython. PyPy ships its own readline module,
+which IPython 0.11 doesn&#8217;t use properly; this is fixed in trunk.</p>
+<p>If IPython does not work under a supported interpreter, please
+<a class="reference external" href="https://github.com/ipython/ipython/issues">file a bug</a>.</p>
+</div>
+<div class="section" id="how-do-i-make-ipython-recognise-my-virtualenvs">
+<h2>How do I make IPython recognise my virtualenvs?<a class="headerlink" href="#how-do-i-make-ipython-recognise-my-virtualenvs" title="Permalink to this headline">¶</a></h2>
+<p>On Linux and OS X, find the ipython script (<tt class="docutils literal"><span class="pre">which</span> <span class="pre">ipython</span></tt>) and ensure that
+the first line is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+</pre></div>
+</div>
+<p>Unfortunately, we can&#8217;t pre-set it like that, because that line is written by the
+setup process. For most executable Python scripts, it makes sense to always use
+the system version of Python.</p>
+<p>For Windows, shebang lines won&#8217;t work. You&#8217;ll need to use config to run <a class="reference external" href="https://gist.github.com/1176035">code
+like this</a> when IPython starts. For IPython
+0.12, put a file in <tt class="docutils literal"><span class="pre">$IPYTHONDIR/profile_default/startup</span></tt>. For IPython 0.11,
+add the location of the file to <tt class="docutils literal"><span class="pre">c.InteractiveShellApp.exec_files</span></tt> in your
+<tt class="file docutils literal"><span class="pre">ipython_config.py</span></tt> file.</p>
 </div>
 <div class="section" id="ipython-crashes-under-os-x-when-using-the-arrow-keys">
 <h2>IPython crashes under OS X when using the arrow keys<a class="headerlink" href="#ipython-crashes-under-os-x-when-using-the-arrow-keys" title="Permalink to this headline">¶</a></h2>
@@ -206,7 +235,8 @@ readline_parse_and_bind "\e[B": history-search-forward</pre>
 </div>
 <div class="section" id="does-ipython-play-well-with-windows">
 <h2>Does IPython play well with Windows?<a class="headerlink" href="#does-ipython-play-well-with-windows" title="Permalink to this headline">¶</a></h2>
-<p>Yes, it most definitely does! There are some things that should be noted: <a class="reference external" href="http://wiki.ipython.org/IPython_on_Windows">see the wiki</a>.</p>
+<p>Yes, it most definitely does! There are some things that should be noted: <a class="reference external" href="http://wiki.ipython.org/IPython_on_Windows">see
+the wiki</a>.</p>
 </div>
 <div class="section" id="what-is-the-best-way-to-install-ipython">
 <h2>What is the best way to install IPython?<a class="headerlink" href="#what-is-the-best-way-to-install-ipython" title="Permalink to this headline">¶</a></h2>
@@ -266,18 +296,6 @@ In [8]: doctest.testmod(dtest)
 </div>
 <p>You could wrap this little sys.displayhook dance in a utility function
 to ease things up.</p>
-</div>
-<div class="section" id="can-ipython-run-under-ironpython-pypy-jython-other-python-interpreters">
-<h2>Can IPython run under IronPython/PyPy/Jython/other Python interpreters?<a class="headerlink" href="#can-ipython-run-under-ironpython-pypy-jython-other-python-interpreters" title="Permalink to this headline">¶</a></h2>
-<p>The terminal-based shell should run on any interpreter which complies with
-the necessary version of Python. IPython 0.11 requires Python 2.6
-or above, and as of June 2011, IronPython and PyPy both support this.</p>
-<p>The most likely problems would come from Readline and from using the undocumented
-sys._getframe() function. On Windows we ship our own <a class="reference external" href="pyreadline.html">pyreadline</a>,
-which might also work under IronPython. PyPy ships its own readline module,
-which IPython 0.11 doesn&#8217;t use properly; this is fixed in trunk.</p>
-<p>If IPython does not work under a supported interpreter, please
-<a class="reference external" href="https://github.com/ipython/ipython/issues">file a bug</a>.</p>
 </div>
 </div>
 
