@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>WhatsNew082 &mdash; IPython</title>
+    <title>Videos and Screencasts &mdash; IPython</title>
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -24,8 +24,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="IPython" href="index.html" />
-    <link rel="next" title="New features in 0.8.3" href="whatsnew083.html" />
-    <link rel="prev" title="Videos and Screencasts" href="video.html" />
+    <link rel="next" title="WhatsNew082" href="whatsnew082.html" />
+    <link rel="prev" title="IPython User Survey 2011" href="usersurvey2011.html" />
 <link rel="stylesheet" href="_static/ipython.css" type="text/css" />
 
   </head>
@@ -166,78 +166,58 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="whatsnew082">
-<h1>WhatsNew082<a class="headerlink" href="#whatsnew082" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="new-features-in-0-8-2">
-<h2>New features in 0.8.2<a class="headerlink" href="#new-features-in-0-8-2" title="Permalink to this headline">¶</a></h2>
-<p>This does not list bugfixes, enhanced internals or api additions.</p>
-<blockquote>
-<div><ul class="simple">
-<li>&#8220;Shadow history&#8221; remembers everything you&#8217;ve entered, forever. Remember that
-arcane command line you entered three weeks ago? Just grep the shadow
-history with &#8220;%hist -g&#8221;! <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/ShadowHistory">See cookbook</a> for details.</li>
-<li>%rep is a new magic function that allows you to fetch command lines from
-history for editing. Do &#8220;%rep?&#8221; for details.</li>
-<li>System command aliases (created by %rehashx) are lower case in win32.</li>
-<li>Macros can now take arguments. <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/MacroArguments">See cookbook</a>.</li>
-<li>%macro without arguments lists available macros.</li>
-<li>Directory history (the easiest way to see it is by doing &#8216;cd -&lt;TAB&gt;&#8217;) is now
-persistent across sessions.</li>
-<li>ipython -i -c &lt;cmd&gt;: -i (interact) prevents IPython session from exiting
-after executing &lt;cmd&gt;. &lt;cmd&gt; can now contain IPython syntax (!foo, %magic
-etc).</li>
-<li>new profiles: doctest, zope. scipy is now in ipy_profile_scipy.py instead of
-ipythonrc-scipy.</li>
-<li>new extensions:<ul>
-<li>ipy_traits_completer.py: complete Traits attributes</li>
-<li>ipy_legacy.py: enable deprecated features</li>
-<li>mglob.py: enhanced globbing - <tt class="docutils literal"><span class="pre">%mglob</span> <span class="pre">!.svn/</span> <span class="pre">rec:*.py</span></tt></li>
-<li>ipy_exportdb.py: create a portable .py file from your %store&#8217;d macros,
-aliases, strings and bookmarks for distribution. <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/IpyExportDb">See cookbook</a> .</li>
-<li>ipy_render.py: win32: render templates using Itpl format to clipboard
-(e.g. render &#8216;hello $a&#8217;).  <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/IpyRender">See cookbook</a>.</li>
-<li>ipy_editors.py: Bunch of popular editors readily configured for
-IPython. See ipy_user_conf.py for instructions on how to enable them.</li>
-<li>ipy_fsops.py: Has useful shell utils for plain (non-cygwin enabled) win32
-installations: icp, imv, imkdir, igrep, irm, collect (collect is useful
-for others as well).</li>
+  <div class="section" id="videos-and-screencasts">
+<span id="videos"></span><h1>Videos and Screencasts<a class="headerlink" href="#videos-and-screencasts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="key-illustrative-ones">
+<h2>Key illustrative ones<a class="headerlink" href="#key-illustrative-ones" title="Permalink to this headline">¶</a></h2>
+<p><em>IPython: Python at your fingertips</em>: an overview of IPython (40 min) (<a class="reference external" href="http://fperez.org/talks/1203_ipython_pycon.pdf">PDF
+slides</a>), delivered by
+<a class="reference external" href="http://fperez.org">Fernando Perez</a> at the PyCon 2012 conference in Santa
+Clara, CA.  It combines a rapid overview of the IPython project with hands-on
+demos using the new HTML notebook interface.</p>
+<div align="center"> <iframe title="YouTube video player2" width="480"
+height="390" src="http://www.youtube.com/embed/26wgEsg9Mcc" frameborder="0"
+allowfullscreen></iframe></div><br><p><em>Notebook intro screencast</em>: a quick look at the notebook running on Amazon
+with <a class="reference external" href="http://web.mit.edu/star/cluster">StarCluster</a> (8 min) by <a class="reference external" href="http://ivory.idyll.org/blog">Titus Brown</a>.</p>
+<div align="center"> <iframe title="YouTube video player2" width="480"
+height="390" src="http://www.youtube.com/embed/HaS4NXxL5Qc" frameborder="0"
+allowfullscreen></iframe></div><br><p><em>IPython in depth: high-productivity interactive and parallel python</em>: a long
+tutorial (3:14h) presented at PyCon 2012 by <a class="reference external" href="http://fperez.org">Fernando Perez</a>, <a class="reference external" href="http://www.calpoly.edu/~phys/faculty_pages/bgranger.html">Brian Granger</a>
+and <a class="reference external" href="https://github.com/minrk">Min Ragan-Kelley</a> (PDF slides for the <a class="reference external" href="http://archive.ipython.org/media/PyCon2012-IPythonTutorial-Intro.pdf">introduction</a> and
+for the <a class="reference external" href="http://archive.ipython.org/media/PyCon2012-IPythonTutorial-Notebook.pdf">notebook</a>.</p>
+<div align="center"> <iframe title="YouTube video player2" width="480"
+height="390" src="http://www.youtube.com/embed/2G5YTlheCbw" frameborder="0"
+allowfullscreen></iframe></div><br></div>
+<div class="section" id="all-videos-and-screencasts">
+<h2>All videos and screencasts<a class="headerlink" href="#all-videos-and-screencasts" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Brian Granger has a number of screencasts on his <a class="reference external" href="http://www.youtube.com/user/ellisonbg">YouTube channel</a> about using IPython&#8217;s parallel
+computing capabilities.  These include a number of examples and a guide to
+getting started with IPython and Windows HPC Server 2008. Two of <a class="reference external" href="http://channel9.msdn.com/shows/The+HPC+Show/Open-source-HPC-code-Episode-11-IPython-Grid-Engine-running-on-Windows-HPC-Server-2008/">these</a>
+<a class="reference external" href="http://channel9.msdn.com/shows/The+HPC+Show/Open-source-HPC-code-Episode-12-IPython-computes-150-million-digits-of-Pi-in-Parallel/">videos</a>
+are also being hosted on Microsoft&#8217;s channel 9.</li>
+<li>The <a class="reference external" href="http://showmedo.com">ShowMeDo</a> site contains instructional videos on a
+number of topics.  <a class="reference external" href="http://wiki.ipython.org/ShowMeDo">This page</a>
+(from our own wiki) contains further information on ideas for new
+IPython-related videos.</li>
+<li>Jose Unpingco has created a set of screencasts on using the Vision/IPython
+combo for parallel computing. They are available both at the <a class="reference external" href="https://www.osc.edu/cms/sip/node/17">Ohio
+Supercomputer Center&#8217;s user site</a> and
+at <a class="reference external" href="http://showmedo.com/videotutorials/series?name=XCsI4bsup">ShowMeDo</a>.</li>
+<li>Another series by Jose Unpingco makes up a tutorial on IPython with a focus
+on scientific computing, which also include a lot of useful tips on Windows
+setup and configuration. This series is also available both at the <a class="reference external" href="https://www.osc.edu/cms/sip/">OSC user
+site</a> and at <a class="reference external" href="http://showmedo.com/videotutorials/series?name=N49qyIFOh">ShowMeDo</a>.</li>
+<li>A new <a class="reference external" href="http://showmedo.com/videos/series?name=CnluURUTV">5-part series</a> by
+Jeff Rush, approximately 1 hour long. Jeff uses a working IPython to show
+many features. Created 2007.
+&#8221;...but I have to say that I loved the videos. And honestly, I (re)learned a
+few tricks along the way!...&#8221; - Fernando Perez.</li>
+<li>A new <a class="reference external" href="http://showmedo.com/videos/video?name=980000&amp;amp;fromSeriesID=98">5-minute slideshow overview</a> by Jeff
+Rush entitled &#8220;Python and the Interactive Shell &#8216;IPython&#8217;&#8221;. Created 2007.</li>
+<li>A set <a class="reference external" href="http://showmedo.com/videos/series?name=PythonIPythonSeries">of 4 videos</a> by Ian Ozsvald
+showing various aspects of IPython. Created 2006.</li>
 </ul>
-</li>
-<li>py2exe version supported (ipykit)</li>
-<li>The title bar of IPython window shows the currently executing system
-command.</li>
-<li>Prompt on win32 in pysh (&#8216;-p sh&#8217; profile) now has the drive letter for
-enhanced location awareness, and uses / instead of .</li>
-<li>Errors from misusing magics are much less verbose now (due to UserError
-exception).</li>
-<li>String Lists provide a convenient way to manipulate command output. See
-<a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/StringListProcessing">Cookbook</a>.</li>
-<li>Directory stack (%pushd, %popd, %dirs) works more predictably now.</li>
-<li>%time allows IPython expressions (which includes system commands - e.g. try
-&#8220;%time !ls&#8221;)</li>
-<li>Callable aliases can be used to extend IPython (provide new commands) in a
-more elegant manner than magic commands. Also, no % is
-necessary/allowed. See ipy_fsops.py for examples.</li>
-<li>Improved Leopard support for tab-completion, though a few issues remain.</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="known-issues">
-<h2>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li>We still get crashes from KeyboardInterrupt occasionally (caused by pressing
-ctrl+C or ctrl+break)</li>
-<li>Unicode support is not yet perfect, so expect problems on Unicode
-input/output.</li>
-<li>The manual is hopelessly out of date. This is something we will look into
-during 0.8.3 cycle; in the meantime, see the documentation page on the wiki
-[superseded], and the user-maintained <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook">cookbook</a>.</li>
-<li>Under OSX Leopard, we are seeing some readline-related problems with history
-recall.  It is not clear yet whether the issue is with IPython or Leopard&#8217;s
-readline support itself.  We&#8217;re investigating the issue.</li>
-</ul>
-</div></blockquote>
 </div>
 </div>
 
