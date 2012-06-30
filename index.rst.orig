@@ -19,16 +19,23 @@ project <citing>`.
 IPython supports Python 2.6 to 2.7 and 3.1 or newer. Our older 0.10 series
 supports Python 2.5, and can be used with Python 2.4.
 
-.. image:: _static/ipy_0.13.png
+.. image:: _static/ipy_0.12.png
 
 Announcements
 =============
 
+<<<<<<< HEAD
+- **IPython 0.13**: We're pleased to announce a major new release, IPython 0.13.
+  Key changes include a redesigned IPython Notebook and the introduction of cell
+  magic functions. `Download <download.html>`_ it now, or read more about
+  `what's new <http://ipython.org/ipython-doc/rel-0.13/whatsnew/version0.13.html>`_.
+=======
 - **IPython 0.13**: a major new release, made on June 30, 2012.  This release,
   closed 1115 issues Github and comes with major improvements to the notebook
   and parallel computing APIs, a new cell magic system, unified interactive and
   parallel kernels, and `much, much more
   <http://ipython.org/ipython-doc/rel-0.13/whatsnew/version0.13.html>`_.
+>>>>>>> master
 
 - **IPython 0.12.1**: A bugfix-only release, that fixes over 70 issues, has
   been released on April 21, 2012.  All users of IPython 0.12 are encouraged to
@@ -40,6 +47,15 @@ Announcements
   of IPython's architecture and hands-on examples on customization, embedding,
   effective uses of the various applications, the architecture of the web
   notebook and how to use IPython for parallel and distributed computing.
+<<<<<<< HEAD
+=======
+
+- **IPython 0.12**: We're pleased to announce the release of IPython 0.12, a
+  major new version. The highlight of this release is the `IPython Notebook
+  <ipython-doc/stable/interactive/htmlnotebook.html>`_, an interactive Python
+  interface running in the browser. `Download <download.html>`_ it now, or read
+  more about `what's new <http://ipython.org/ipython-doc/rel-0.12/whatsnew/version0.12.html>`_.
+>>>>>>> master
   
 `More news... <news.html>`_
 
