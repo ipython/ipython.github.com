@@ -44,7 +44,6 @@
 <a href="download.html">Download</a> · 
 <a href="documentation.html">Documentation</a> · 
 <a href="videos.html">Videos</a> · 
-<a href="http://wiki.ipython.org">Wiki</a> · 
 <a href="news.html">News</a> · 
 <a href="citing.html">Citation</a> ·
 <a href="donate.html">Donate</a>
@@ -136,23 +135,6 @@
 </script>
 
 <div class="sidebarblock">
-<h3>Donate</h3>
-
-<div class="tile" id="donate">
-  <h4>Support IPython</h4>
-
-<a href="donate.html">Find out more...</a>
- 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="SMCAHLP2ST42G">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-</div>
-</div>
-
-<div class="sidebarblock">
 <h3>Links</h3>
 
   <ul class="simple">
@@ -178,8 +160,7 @@
     <li><a href="#">FAQ</a></li>
     <li><a class="reference external"
     href="presentation.html">Presentations</a></li>
-    <li><a class="reference external"
-    href="videos.html">Videos</a></li>
+    <li><a class="reference external" href="http://wiki.ipython.org">Wiki</a></li>
     <li><a class="reference external"
     href="http://wiki.ipython.org/Cookbook">Cookbook</a></li>
     <li><a class="reference external"
@@ -191,6 +172,26 @@
     <li>Status: <a class="reference external" href="http://travis-ci.org/#!/ipython/ipython">
         Travis CI</a></li>
   </ul>          
+</div>
+
+<div class="sidebarblock">
+<h3>Donate</h3>
+
+<div class="tile" id="donate">
+  <h4>Support IPython</h4>
+ 
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="SMCAHLP2ST42G">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+    border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"
+    style="display:block; margin-left:auto; margin-right:auto;">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+
+<a href="donate.html">Find out more...</a>
+
+</form>
+</div>
 </div>
         </div>
       </div>
@@ -206,29 +207,11 @@
 <p>If your question isn&#8217;t answered below, check <a class="reference external" href="http://ipython.github.com/ipython-doc/">the docs</a>, then ask on the <a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-user">user mailing list</a>.</p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#running-ipython-against-multiple-versions-of-python" id="id1">Running IPython against multiple versions of Python</a></li>
-<li><a class="reference internal" href="#can-ipython-run-under-ironpython-pypy-jython-other-python-interpreters" id="id2">Can IPython run under IronPython/PyPy/Jython/other Python interpreters?</a></li>
-<li><a class="reference internal" href="#how-do-i-make-ipython-recognise-my-virtualenvs" id="id3">How do I make IPython recognise my virtualenvs?</a></li>
-<li><a class="reference internal" href="#ipython-crashes-under-os-x-when-using-the-arrow-keys" id="id4">IPython crashes under OS X when using the arrow keys</a></li>
-<li><a class="reference internal" href="#does-ipython-play-well-with-windows" id="id5">Does IPython play well with Windows?</a></li>
-<li><a class="reference internal" href="#what-is-the-best-way-to-install-ipython" id="id6">What is the best way to install IPython?</a></li>
-<li><a class="reference internal" href="#why-do-i-get-garbage-characters-when-long-information-is-displayed-by-the-pager" id="id7">Why do I get garbage characters when long information is displayed by the pager?</a></li>
-<li><a class="reference internal" href="#why-doesn-t-running-doctests-from-within-ipython-work" id="id8">Why doesn&#8217;t running doctests from within IPython work?</a></li>
+<li><a class="reference internal" href="#can-ipython-run-under-ironpython-pypy-jython-other-python-interpreters" id="id1">Can IPython run under IronPython/PyPy/Jython/other Python interpreters?</a></li>
+<li><a class="reference internal" href="#ipython-crashes-under-os-x-when-using-the-arrow-keys" id="id2">IPython crashes under OS X when using the arrow keys</a></li>
+<li><a class="reference internal" href="#does-ipython-play-well-with-windows" id="id3">Does IPython play well with Windows?</a></li>
+<li><a class="reference internal" href="#what-is-the-best-way-to-install-ipython" id="id4">What is the best way to install IPython?</a></li>
 </ul>
-</div>
-<div class="section" id="running-ipython-against-multiple-versions-of-python">
-<h2>Running IPython against multiple versions of Python<a class="headerlink" href="#running-ipython-against-multiple-versions-of-python" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div>I would like to know if there is an easy way to install parallel versions of ipython ? Actually, I would like to be able to use ipython with python 2.4 which is the default on my machine, and with python2.5 (compiled by hand); is changing the python interpreter in the ipython script the only required change ? (I was thinking about having ipython with the default interpreter and ipython2.5 using the python2.5 interpreter)?</div></blockquote>
-<p><strong>Answer:</strong> You can install IPython against various interpreters by using the following call:</p>
-<div class="highlight-python"><pre>$ python2.4 setup.py install --prefix=$HOME/usr
-$ python2.5 setup.py install --prefix=$HOME/usr</pre>
-</div>
-<p>In this case, the second call will overwrite the startup script of the first in <cite>$HOME/usr/bin</cite>, but those are the same. The important point is that each Python will find the IPython imports under <cite>$HOME/usr/lib/python2.X/site-packages/IPython</cite>, and assuming you have set up your <cite>$PYTHONPATH</cite> variable accordingly, this will work. The final step is to have aliases to call each of the IPython versions quickly, those can be defined as (using tcsh syntax):</p>
-<div class="highlight-python"><pre>alias ip4 "python2.4 $HOME/usr/bin/ipython"
-alias ip5 "python2.5 $HOME/usr/bin/ipython"</pre>
-</div>
-<p>or you can just have two copies of the ipython startup script named differently and with their first line changed to point to the actual interpreter.</p>
 </div>
 <div class="section" id="can-ipython-run-under-ironpython-pypy-jython-other-python-interpreters">
 <h2>Can IPython run under IronPython/PyPy/Jython/other Python interpreters?<a class="headerlink" href="#can-ipython-run-under-ironpython-pypy-jython-other-python-interpreters" title="Permalink to this headline">¶</a></h2>
@@ -238,25 +221,9 @@ or above, and as of June 2011, IronPython and PyPy both support this.</p>
 <p>The most likely problems would come from Readline and from using the undocumented
 sys._getframe() function. On Windows we ship our own <a class="reference external" href="pyreadline.html">pyreadline</a>,
 which might also work under IronPython. PyPy ships its own readline module,
-which IPython 0.11 doesn&#8217;t use properly; this is fixed in trunk.</p>
+which should now work.</p>
 <p>If IPython does not work under a supported interpreter, please
 <a class="reference external" href="https://github.com/ipython/ipython/issues">file a bug</a>.</p>
-</div>
-<div class="section" id="how-do-i-make-ipython-recognise-my-virtualenvs">
-<h2>How do I make IPython recognise my virtualenvs?<a class="headerlink" href="#how-do-i-make-ipython-recognise-my-virtualenvs" title="Permalink to this headline">¶</a></h2>
-<p>On Linux and OS X, find the ipython script (<tt class="docutils literal"><span class="pre">which</span> <span class="pre">ipython</span></tt>) and ensure that
-the first line is:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
-</pre></div>
-</div>
-<p>Unfortunately, we can&#8217;t pre-set it like that, because that line is written by the
-setup process. For most executable Python scripts, it makes sense to always use
-the system version of Python.</p>
-<p>For Windows, shebang lines won&#8217;t work. You&#8217;ll need to use config to run <a class="reference external" href="https://gist.github.com/1176035">code
-like this</a> when IPython starts. For IPython
-0.12, put a file in <tt class="docutils literal"><span class="pre">$IPYTHONDIR/profile_default/startup</span></tt>. For IPython 0.11,
-add the location of the file to <tt class="docutils literal"><span class="pre">c.InteractiveShellApp.exec_files</span></tt> in your
-<tt class="file docutils literal"><span class="pre">ipython_config.py</span></tt> file.</p>
 </div>
 <div class="section" id="ipython-crashes-under-os-x-when-using-the-arrow-keys">
 <h2>IPython crashes under OS X when using the arrow keys<a class="headerlink" href="#ipython-crashes-under-os-x-when-using-the-arrow-keys" title="Permalink to this headline">¶</a></h2>
@@ -282,62 +249,9 @@ the wiki</a>.</p>
 </div>
 <div class="section" id="what-is-the-best-way-to-install-ipython">
 <h2>What is the best way to install IPython?<a class="headerlink" href="#what-is-the-best-way-to-install-ipython" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li>The classic <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> still works, of course, and is recommended for Linux boxes where you have root privileges.</li>
-<li>On windows you&#8217;ll probably want to run the .exe installer to get the shortcuts and ipython.py in python27scripts.</li>
-<li><tt class="docutils literal"><span class="pre">easy_install</span> <span class="pre">ipython==dev</span></tt> is the easiest way to install the SVN trunk version.</li>
-<li><tt class="docutils literal"><span class="pre">easy_install</span> <span class="pre">ipython</span></tt> is a quick way to get ipython without downloading or unzipping anything manually, but you&#8217;ll miss windows shortcuts, and documentation (man pages, pdf...) will not be where it normally is.</li>
-<li>If you want to run the latest ipython instead of an older version provided with your linux distro, and don&#8217;t want to remove/mess with the already existing version, don&#8217;t have root privileges to install ipython, or just want to run multiple ipython versions for some reason, just untar the source distribution somewhere and launch ipython.py.</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="why-do-i-get-garbage-characters-when-long-information-is-displayed-by-the-pager">
-<h2>Why do I get garbage characters when long information is displayed by the pager?<a class="headerlink" href="#why-do-i-get-garbage-characters-when-long-information-is-displayed-by-the-pager" title="Permalink to this headline">¶</a></h2>
-<p>The color escapes used by IPython are not correctly interpreted by default by many common pagers (&#8216;less&#8217; included). The manual describes <a class="reference external" href="http://ipython.org/ipython-doc/stable/config/old.html#object-details-types-docstrings-source-code-etc">here</a> the problem and its solution in detail, but the short version is that your bashrc file should contain:</p>
-<div class="highlight-python"><pre>export PAGER=less
-export LESS=-r</pre>
-</div>
-</div>
-<div class="section" id="why-doesn-t-running-doctests-from-within-ipython-work">
-<h2>Why doesn&#8217;t running doctests from within IPython work?<a class="headerlink" href="#why-doesn-t-running-doctests-from-within-ipython-work" title="Permalink to this headline">¶</a></h2>
-<p>This is a known problem, but there&#8217;s a workaround. The reason, deep
-down, is a clash between ipython&#8217;s modification of sys.displayhook so
-you get nice output prompts, and the fact that the exec builtin is
-internally hardcoded to run sys.displayhook. So ipython collides with
-doctest (which uses &#8216;exec&#8217;) and all hell breaks loose.</p>
-<p>Fernando Perez fperez.net at gmail.com
-Thu Jan 18 01:01:39 CST 2007</p>
-<hr class="docutils" />
-<p>Here&#8217;s the workaround. First, your error (I called your file &#8216;dtest&#8217;):</p>
-<div class="highlight-python"><pre>In [5]: doctest.testmod(dtest)
-Out[5]: 1
-**********************************************************************
-File "dtest.py", line 8, in dtest
-Failed example:
-    x()
-Expected:
-    1
-Got nothing
-**********************************************************************
-1 items had failures:
-1 of   3 in dtest
-***Test Failed*** 1 failures.
-Out[5]: (1, 3)</pre>
-</div>
-<p>Now the workaround:</p>
-<div class="highlight-python"><pre>In [6]: iphook = sys.displayhook
-In [7]: sys.displayhook = sys.__displayhook__
-In [8]: doctest.testmod(dtest)
-
-*** DocTestRunner.merge: 'dtest' in both testers; summing outcomes.
-(0, 3)</pre>
-</div>
-<p>Now you can reactivate ipython&#8217;s displayhook if you want:</p>
-<div class="highlight-python"><pre>In [9]: sys.displayhook = iphook</pre>
-</div>
-<p>You could wrap this little sys.displayhook dance in a utility function
-to ease things up.</p>
+<p>See <a class="reference external" href="http://ipython.org/ipython-doc/stable/install/install.html#installing-ipython-itself">the installation documentation</a> for full details.</p>
+<p>The standard Python installation mechanisms (<tt class="docutils literal"><span class="pre">setup.py</span></tt>, <tt class="docutils literal"><span class="pre">pip</span></tt> or <tt class="docutils literal"><span class="pre">easy_install</span></tt>) all work for installing IPython to use in a terminal. Windows users are best off installing <a class="reference external" href="http://pypi.python.org/pypi/distribute">distribute</a>, then running the .exe installer, to create start menu shortcuts.</p>
+<p>To use the notebook or the Qt console, it&#8217;s easiest to install through a package manager, or download a Python distribution such as <a class="reference external" href="https://store.continuum.io/cshop/anaconda">Anaconda</a> or <a class="reference external" href="http://www.enthought.com/products/epd.php">EPD</a>. Otherwise, you will need to install pyzmq, along with tornado for the notebook, and PyQt4/PySide and pygments for the Qt console.</p>
 </div>
 </div>
 
