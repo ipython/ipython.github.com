@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,48 +7,46 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Search &mdash; IPython</title>
+    <title> &mdash; IPython</title>
     
-    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/ipython.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/fancybox/jquery.fancybox.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/ipython.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    '../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/searchtools.js"></script>
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="IPython" href="index.html" />
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-   
-
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
+    <script type="text/javascript" src="../_static/fancybox/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="../_static/fancybox/ipython.fancybox.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="IPython" href="../index.html" /> 
   </head>
   <body>
     <div class="header-wrapper">
       <div class="header">
-          <div class="logo"><a href="index.html">
-            <img class="logo" src="_static/IPy_header.png" alt="Logo"/>
+          <div class="logo"><a href="../index.html">
+            <img class="logo" src="../_static/IPy_header.png" alt="Logo"/>
           </a></div>
        
         <div class="rel">
-          <a href="index.html">Home</a> ·
-<a href="download.html">Download</a> · 
-<a href="documentation.html">Documentation</a> · 
-<a href="videos.html">Videos</a> · 
-<a href="news.html">News</a> · 
-<a href="citing.html">Citation</a> ·
-<a href="donate.html">Donate</a>
+          <a href="../index.html">Home</a> ·
+<a href="../download.html">Download</a> · 
+<a href="../documentation.html">Documentation</a> · 
+<a href="../videos.html">Videos</a> · 
+<a href="../news.html">News</a> · 
+<a href="../citing.html">Citation</a> ·
+<a href="../donate.html">Donate</a>
         </div>
        </div>
     </div>
@@ -72,7 +69,7 @@
 
             customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
             var options = new google.search.DrawOptions();
-            options.enableSearchboxOnly("searchresults.html");
+            options.enableSearchboxOnly("../searchresults.html");
             customSearchControl.draw('cse-search-form', options);
         }, true);
     </script>
@@ -107,7 +104,7 @@
 
 <div class="tile"><h4>Stable</h4>
      0.13.1 &ndash; October&nbsp;2012<br/>
-    <a href="download.html">Download</a>
+    <a href="../download.html">Download</a>
 </div>
 
 <div class="tile"><h4>Development</h4>
@@ -160,9 +157,9 @@
 <div class="sidebarblock">
   <h3>More Info</h3>
   <ul class="simple">
-    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="../faq.html">FAQ</a></li>
     <li><a class="reference external"
-    href="presentation.html">Presentations</a></li>
+    href="../presentation.html">Presentations</a></li>
     <li><a class="reference external" href="http://wiki.ipython.org">Wiki</a></li>
     <li><a class="reference external"
     href="http://wiki.ipython.org/Cookbook">Cookbook</a></li>
@@ -191,7 +188,7 @@
     style="display:block; margin-left:auto; margin-right:auto;">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 
-<a href="donate.html">Find out more...</a>
+<a href="../donate.html">Find out more...</a>
 
 </form>
 </div>
@@ -205,29 +202,20 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <h1 id="search-documentation">Search</h1>
-  <div id="fallback" class="admonition warning">
-  <script type="text/javascript">$('#fallback').hide();</script>
-  <p>
-    Please activate JavaScript to enable the search
-    functionality.
-  </p>
-  </div>
-  <p>
-    From here you can search these documents. Enter your search
-    words into the box below and click "search". Note that the search
-    function will automatically search for all of the words. Pages
-    containing fewer words won't appear in the result list.
-  </p>
-  <form action="" method="get">
-    <input type="text" name="q" value="" />
-    <input type="submit" value="search" />
-    <span id="search-progress" style="padding-left: 10px"></span>
-  </form>
-  
-  <div id="search-results">
-  
-  </div>
+<h1>Screenshots</h1>
+<p>Below are screenshots of IPython running in a terminal, the Qt console, and a web browser via the HTML notebook.</p>
+<h2>Terminal</h2>
+<p>
+<a class="fancybox" href="../_static/screenshots/ipython-terminal.png" data-fancybox-group="gallery" title="IPython running in a terminal"><img src="../_static/screenshots/ipython-terminal-thumb.png" alt="IPython shell in a terminal"/></a>
+</p>
+<h2>Qt Console</h2>
+<p>
+<a class="fancybox" href="../_static/screenshots/ipython-qtconsole.png" data-fancybox-group="gallery" title="The IPython Qt console"><img src="../_static/screenshots/ipython-qtconsole-thumb.png" alt="IPython Qt console app"/></a>
+</p>
+<h2>HTML Notebook</h2>
+<p>
+<a class="fancybox" href="../_static/screenshots/ipython-notebook.png" data-fancybox-group="gallery" title="The IPython HTML notebook"><img src="../_static/screenshots/ipython-notebook-thumb.png" alt="IPython HTML notebook"/></a>
+</p>
 
           </div>
         </div>
