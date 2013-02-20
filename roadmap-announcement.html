@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Support IPython Development &mdash; IPython</title>
+    <title>Roadmap to 1.0 and Beyond &mdash; IPython</title>
     
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -28,7 +28,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="IPython" href="index.html" />
-    <link rel="prev" title="Roadmap to 1.0 and Beyond" href="roadmap-announcement.html" /> 
+    <link rel="next" title="Support IPython Development" href="donate.html" />
+    <link rel="prev" title="Sloan Foundation Grant" href="sloan-grant.html" /> 
   </head>
   <body>
     <div class="header-wrapper">
@@ -45,7 +46,7 @@
 <a href="news.html">News</a> · 
 <a href="http://nbviewer.ipython.org">Notebook Viewer</a> ·
 <a href="citing.html">Cite</a> ·
-<a href="#">Donate</a>
+<a href="donate.html">Donate</a>
         </div>
        </div>
     </div>
@@ -187,7 +188,7 @@
     style="display:block; margin-left:auto; margin-right:auto;">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 
-<a href="#">Find out more...</a>
+<a href="donate.html">Find out more...</a>
 
 </form>
 </div>
@@ -201,30 +202,46 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="support-ipython-development">
-<h1>Support IPython Development<a class="headerlink" href="#support-ipython-development" title="Permalink to this headline">¶</a></h1>
-<p>IPython will always be 100% open source software, free for all to use and
-released under the liberal terms of the modified BSD license.  But while the
-whole team does its best to work efficiently, and we actively try to find
-funding from multiple sources, the reality is that we have limited resources
-and this fact hinders our development capabilities.</p>
-<p>If you have found IPython to be useful in your work, research or company,
-please consider making a donation to the project commensurate with your
-resources.  Any amount helps!</p>
-<div class="tile" id="donate" align="center" style="margin:20px">
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="SMCAHLP2ST42G">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-</div><p>All donations will be used strictly to fund IPython development, by supporting
-tasks such as developer sprints, better installers, improved documentation and
-paying for hosting costs for services such as the <a class="reference external" href="http://nbviewer.ipython.org">IPython Notebook Viewer</a>.</p>
-<p>Our donations are managed by the <a class="reference external" href="http://numfocus.org">NumFOCUS</a> foundation, which passes 100% of your
-contribution to the IPython project. NumFOCUS is a 501(c)3 non-profit
-foundation, so if you are subject to US Tax law, your contributions will be
-tax-deductible.</p>
+  <div class="section" id="roadmap-to-1-0-and-beyond">
+<h1>Roadmap to 1.0 and Beyond<a class="headerlink" href="#roadmap-to-1-0-and-beyond" title="Permalink to this headline">¶</a></h1>
+<p>TL;DR summary: Hi! IPython 1.0 coming mid-July 2013. See the <a class="reference external" href="http://ipython.org/sloan-grant.html">grant</a> which is
+funding the bulk of the work, as well as our <a class="reference external" href="https://github.com/ipython/ipython/wiki/Roadmap:-IPython">roadmap</a> for achieving the
+grant&#8217;s objectives.</p>
+<p>There&#8217;s been a lot of excitement on about the grant the IPython team received
+from the Sloan Foundation. The easiest way to communicate the contents of the
+Sloan grant is to just provide it in its entirety, which is what we&#8217;ve done
+with direct links for <a class="reference external" href="http://ipython.org/_static/sloangrant/sloan-grant.html">html</a> and  <a class="reference external" href="http://ipython.org/_static/sloangrant/sloan-grant.pdf">pdf</a> version.</p>
+<p>The interested reader will find a description of changes coming to IPython
+over the next two years, as well as the motivation behind them, and the
+personnel involved. (For example, the astute reader of the grant will
+correctly infer that this email is one way in which I am filling my
+responsibility as &#8220;community engagement and evangelism&#8221;... GO TEAM!)</p>
+<p>Two weeks ago, the bulk of IPython&#8217;s core contributors had a series of
+planning sessions.  For three days,  <a class="reference external" href="https://github.com/ellisonbg">Brian</a>,  <a class="reference external" href="https://github.com/fperez">Fernando</a>,  <a class="reference external" href="https://github.com/minrk">Min</a>, and
+<a class="reference external" href="https://github.com/ivanov">I</a> met on campus in Berkeley, with  <a class="reference external" href="https://github.com/takluyver">Thomas</a> and  <a class="reference external" href="https://github.com/Carreau">Matthias</a>
+joining in via video teleconference (and <a class="reference external" href="https://github.com/bfroehle">Brad</a>, for one of the days, too).</p>
+<p>You can see the  <a class="reference external" href="https://github.com/ipython/ipython/wiki/Dev:-Meeting-notes,-February-6,-2013">full notes from those meetings</a>.</p>
+<p>Our primary objective was to outline a plan of what work we want to accomplish
+in the next two years (broadly speaking) as well as to make concrete goals for
+our next (1.0!) release, which will land around Bastille Day (July 14th, 2013,
+for the uninitiated).</p>
+<p>It&#8217;s kind of funny that there&#8217;s a message from Fernando to [ipython-user] back
+in April of 2005 titled  <a class="reference external" href="http://mail.scipy.org/pipermail/ipython-user/2005-April/002648.html">&#8220;Towards IPython 1.0, the famous big cleanup&#8221;</a>. In
+it, Fernando makes a last call for outstanding critical bugs because he&#8217;s
+preparing users for a transition toward big changes in the IPython code base.
+Because, once he makes the first commit and starts working on the cleanup,
+he&#8217;ll have to ignore every request made &#8220;until the new shiny ipython emerges
+from the process, reborn in a glory which shall blind the world.&#8221; Toward the
+end of the email, he finishes with: &#8220;I hope the changes will be worth it, and
+when the dust settles, we&#8217;ll have something we can call IPython 1.0&#8221;... And
+eight years and a few months after that email was sent, we will! :)</p>
+<p>What will 1.0 look like? Biggest changes on the user side will be the
+integration of  <a class="reference external" href="https://github.com/ipython/nbconvert">nbconvert</a> into IPython proper. But that&#8217;s just my summary
+of it, the interested reader is encouraged to read the gory details in the
+<a class="reference external" href="https://github.com/ipython/ipython/wiki/Roadmap:-IPython">roadmap</a>.</p>
+<p>that&#8217;s it from me for now,</p>
+<p>best,</p>
+<p>Paul Ivanov</p>
 </div>
 
 
