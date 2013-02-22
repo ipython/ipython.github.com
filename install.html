@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Download &mdash; IPython</title>
+    <title>Install &mdash; IPython</title>
     
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -28,8 +28,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="IPython" href="index.html" />
-    <link rel="next" title="FAQ" href="faq.html" />
-    <link rel="prev" title="Documentation" href="documentation.html" /> 
+    <link rel="next" title="The IPython Notebook" href="notebook.html" />
+    <link rel="prev" title="FAQ" href="faq.html" /> 
   </head>
   <body>
     <div class="header-wrapper">
@@ -39,11 +39,11 @@
           </a></div>
        
         <div class="rel">
-          <a href="#">Download</a> · 
+          <a href="#">Install</a> · 
 <a href="documentation.html">Docs</a> ·
 <a href="videos.html">Videos</a> · 
-<a href="news.html">News</a> · 
 <a href="http://nbviewer.ipython.org">Notebook Viewer</a> ·
+<a href="news.html">News</a> · 
 <a href="citing.html">Cite</a> ·
 <a href="donate.html">Donate</a>
         </div>
@@ -103,7 +103,7 @@
 
 <div class="tile"><h4>Stable</h4>
      0.13.1 &ndash; October&nbsp;2012<br/>
-    <a href="#">Download</a>
+    <a href="download.html">Download</a>
 </div>
 
 <div class="tile"><h4>Development</h4>
@@ -191,37 +191,54 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="download">
-<h1>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="stable-releases">
-<h2>Stable Releases<a class="headerlink" href="#stable-releases" title="Permalink to this headline">¶</a></h2>
-<p>You can download IPython from either <a class="reference external" href="http://github.com/ipython/ipython/downloads">Github</a> or <a class="reference external" href="http://pypi.python.org/pypi/ipython">PyPI</a>.  Those locations contain source
+  <div class="section" id="install">
+<h1>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h1>
+<p>There are multiple ways of installing IPython, and our official documentation
+contains <a class="reference external" href="http://ipython.org/ipython-doc/stable/install/install.html">detailed instructions</a> for manual
+installs from source, targeted at advanced users and developers.</p>
+<p>For new users who want to get up and running with minimal effort, we suggest
+you follow the instructions on this page, which provide a setup based on Python
+2.7.  This includes all the dependencies to run the notebook and optionally the
+basic libraries for scientific computing and data analysis.</p>
+<p><strong>Mac or Windows users</strong></p>
+<p>Download and install the free edition of the <a class="reference external" href="https://www.enthought.com/products/epd_free.php">Enthought Python Distribution
+(EPD)</a>.  You will also need
+to update the IPython notebook installation to the current version:</p>
+<ul>
+<li><p class="first">On a Mac, using the Terminal application:</p>
+<div class="highlight-python"><pre>sudo enpkg enstaller
+sudo enpkg ipython</pre>
+</div>
+</li>
+<li><p class="first">On Windows, at the Command Prompt (<tt class="docutils literal"><span class="pre">cmd.exe</span></tt> application):</p>
+<div class="highlight-python"><pre>enpkg enstaller
+enpkg ipython</pre>
+</div>
+</li>
+</ul>
+<p><strong>Linux users</strong></p>
+<p>On Linux, most distributions have everything you need in their package
+managers.</p>
+<p>On Ubuntu or other Debian-based distributions, type at the shell:</p>
+<div class="highlight-python"><pre>sudo apt-get install ipython-notebook
+
+# Only if you are interested in data analysis and scientific work
+sudo apt-get install python-matplotlib python-scipy \
+                     python-pandas python-sympy python-nose</pre>
+</div>
+<p>On Fedora 18 and newer related distributions, use:</p>
+<div class="highlight-python"><pre>sudo yum install python-ipython-notebook
+
+# Only if you are interested in data analysis and scientific work
+sudo yum install python-matplotlib scipy python-pandas sympy python-nose</pre>
+</div>
+<div class="section" id="downloads">
+<h2>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">¶</a></h2>
+<p>You can manually download IPython from either <a class="reference external" href="http://github.com/ipython/ipython/downloads">Github</a> or <a class="reference external" href="http://pypi.python.org/pypi/ipython">PyPI</a>.  Those locations contain source
 distributions as well as binary Windows installers, which will be recognized by
 <tt class="docutils literal"><span class="pre">easy_install</span></tt> and <tt class="docutils literal"><span class="pre">pip</span></tt> (for the source ones).</p>
-<p>This release of IPython can be installed in Python 2.6, 2.7, 3.1, 3.2 and 3.3.</p>
-<p>Note that most major Unix distributions now include IPython in their package
-systems (Ubuntu, Debian, Fedora, SUSE, fink, FreeBSD, OpenBSD,...). It is also
-available <a class="reference external" href="http://pypi.python.org/pypi/ipython">on PyPI</a>, so it can be
-installed with tools such as <tt class="docutils literal"><span class="pre">easy_install</span></tt> and <tt class="docutils literal"><span class="pre">pip</span></tt>.</p>
 <p>Our <a class="reference external" href="http://archive.ipython.org/release">downloads archive</a> also contains all
-IPython releases.</p>
-</div>
-<div class="section" id="installation-instructions">
-<h2>Installation instructions<a class="headerlink" href="#installation-instructions" title="Permalink to this headline">¶</a></h2>
-<p>Like most Python packages, IPython can be installed from source with the
-command <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>. Full installation instructions can be
-found in our official <a class="reference external" href="http://ipython.org/ipython-doc/stable/install/install.html">documentation</a>.</p>
-</div>
-<div class="section" id="readline">
-<h2>Readline<a class="headerlink" href="#readline" title="Permalink to this headline">¶</a></h2>
-<p>In the text terminal, IPython relies on the readline library for features like
-tab completion.</p>
-<ul class="simple">
-<li>Most Linux distributions will have readline already.</li>
-<li>For Mac OS X, readline can be installed <a class="reference external" href="http://pypi.python.org/pypi/readline">from PyPI</a>.  The alternative (libedit) shipped
-with OS X is known to cause problems in IPython.</li>
-<li>Under Windows, the functionality is provided by the <a class="reference external" href="pyreadline.html">PyReadline</a> project, also hosted on this site.</li>
-</ul>
+IPython releases, including old versions.</p>
 </div>
 </div>
 
