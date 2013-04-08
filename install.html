@@ -113,7 +113,7 @@
 <h3>Versions</h3>
 
 <div class="tile"><h4>Stable</h4>
-     0.13.1 &ndash; October&nbsp;2012<br/>
+     0.13.2 &ndash; April 2013<br/>
     <a href="download.html">Download</a>
 </div>
 
@@ -212,18 +212,28 @@ you follow the instructions on this page, which provide a setup based on Python
 2.7.  This includes all the dependencies to run the notebook and optionally the
 basic libraries for scientific computing and data analysis.</p>
 <p><strong>Mac or Windows</strong></p>
-<p>1. Download and install the free edition of the <a class="reference external" href="https://www.enthought.com/products/epd_free.php">Enthought Python Distribution
+<p>1. Download and install <a class="reference external" href="http://continuum.io/downloads.html">Anaconda</a> or the free edition of the <a class="reference external" href="https://www.enthought.com/products/epd_free.php">Enthought Python Distribution
 (EPD)</a>.</p>
 <ol class="arabic simple" start="2">
 <li>Update IPython to the current version:</li>
 </ol>
 <ul>
 <li><p class="first">On a Mac, using the Terminal application:</p>
+<p>Anaconda:</p>
+<div class="highlight-python"><pre>conda update conda
+conda update ipython</pre>
+</div>
+<p>EPD:</p>
 <div class="highlight-python"><pre>sudo enpkg enstaller
 sudo enpkg ipython</pre>
 </div>
 </li>
 <li><p class="first">On Windows, at the Command Prompt (<tt class="docutils literal"><span class="pre">cmd.exe</span></tt> application):</p>
+<p>Anaconda:</p>
+<div class="highlight-python"><pre>conda update conda
+conda update ipython</pre>
+</div>
+<p>EPD:</p>
 <div class="highlight-python"><pre>enpkg enstaller
 enpkg ipython</pre>
 </div>
