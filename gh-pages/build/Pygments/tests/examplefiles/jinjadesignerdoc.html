@@ -1,0 +1,892 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38683231-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>Designer Documentation &mdash; IPython</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/ipython.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+    <link rel="top" title="IPython" href="../../../../../index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <div class="logo"><a href="../../../../../index.html">
+            <img class="logo" src="../../../../../_static/IPy_header.png" alt="Logo"/>
+          </a></div>
+       
+        <div class="rel">
+          <a href="../../../../../install.html">Install</a> · 
+<a href="../../../../../documentation.html">Docs</a> ·
+<a href="../../../../../videos.html">Videos</a> · 
+<a href="http://nbviewer.ipython.org">Notebook Viewer</a> ·
+<a href="../../../../../news.html">News</a> · 
+<a href="../../../../../citing.html">Cite</a> ·
+<a href="../../../../../donate.html">Donate</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+             
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"> 
+<div class="sidebarblock">
+    <div id="cse-search-form" style="width: 100%;">Loading</div>
+
+    <script src="http://www.google.co.uk/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">
+        google.load('search', '1', {language : 'en'});
+        google.setOnLoadCallback(function() {
+            var customSearchControl = new google.search.CustomSearchControl(
+                    '017950022472296044740:wfr9nyfshwo');
+
+            customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+            var options = new google.search.DrawOptions();
+            options.enableSearchboxOnly("../../../../../searchresults.html");
+            customSearchControl.draw('cse-search-form', options);
+        }, true);
+    </script>
+    <link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css" /> <style type="text/css">
+        input.gsc-input {
+            border-color: #BCCDF0;
+        }
+        input.gsc-search-button {
+            border-color: #666666;
+            background-color: #CECECE;
+            padding: 0;
+        }
+        div.sphinxsidebar input[type="text"] {
+            width: 100%;
+        }
+        div.sphinxsidebar input[type="submit"] {
+            width: 100%;
+        }
+    </style>
+</div>
+<div class="sidebarblock">
+<h3>Versions</h3>
+
+<div class="tile"><h4>Stable</h4>
+     1.0 &ndash; August 2013<br/>
+    <a href="../../../../../install.html">Install</a>
+</div>
+
+<div class="tile"><h4>Development</h4>
+    2.0.dev<br/>
+    <a href="https://github.com/ipython/ipython">Github</a>
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<div class="sidebarblock">
+<h3>Notebook Viewer</h3>
+
+Share your notebooks
+
+<div class="nbviewer-thm-random">
+  <script src="_static/nbviewer_thm.js"></script>
+  <script type="text/javascript">
+    nbviewer_random_thumbnail();
+  </script>
+	       
+</div> 
+</div>
+
+<div class="sidebarblock">
+<h3>Community</h3>
+
+  <ul class="simple">
+    <li><a class="reference external" href="http://www.hipchat.com/ghSp7E1uY">
+            Help Chat Room</a></li>
+    <li><a class="reference external" href="http://stackoverflow.com/questions/tagged/ipython">
+            Stack Overflow</a></li>
+    <li><a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-dev">
+            Mailing list</a></li>
+    <li><a class="reference external" href="https://github.com/ipython/ipython/wiki">Wiki</a></li>
+    <li><a class="reference external" href="http://www.reddit.com/r/IPython">
+            Reddit</a></li>
+    <li><a class="reference external" href="https://github.com/ipython/ipython/issues">
+            File a bug</a></li>
+  </ul>
+
+<div style="margin-top:10px">  <!-- sharing buttons -->
+  <!-- twitter -->
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ipython.org" data-text="IPython - interactive computing." data-via="ipythondev" data-hashtags="ipython" data-dnt="true">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  <!-- google+ -->
+<g:plusone size="medium" annotation="none"></g:plusone>
+</div><!-- sharing buttons -->
+
+</div>
+
+
+<div class="sidebarblock">
+<h3>Book</h3>
+
+<a href="http://www.packtpub.com/learning-ipython-for-interactive-computing-and-data-visualization/book"><img src="_static/ipython-book.jpg"
+title="Packt Publishing donates a portion of the proceeds from this book to
+support IPython's development." > </a>
+
+</div>
+
+
+<div class="sidebarblock">
+  <h3>For developers</h3>
+  <ul class="simple">
+    <li><a class="reference external" href="http://www.hipchat.com/ghtNzvmfC">
+            Development Chat Room</a></li>
+    <li><a class="reference external"
+    href="https://github.com/ipython/ipython/wiki/Dev:-Index">Development information</a></li>
+    <li><a class="reference external" href="https://jenkins.shiningpanda.com/ipython/">
+        Shining Panda</a></li>
+    <li><a class="reference external" href="http://travis-ci.org/#!/ipython/ipython">
+        Travis CI</a></li>
+  </ul>          
+</div>
+
+<div class="sidebarblock">
+
+<div class="tile" id="donate">
+  <h4>Support IPython</h4>
+ 
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="SMCAHLP2ST42G">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+    border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"
+    style="display:block; margin-left:auto; margin-right:auto;">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+
+<a href="../../../../../donate.html">Find out more...</a>
+
+</form>
+</div>
+</div>
+        </div>
+      </div>
+        
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="designer-documentation">
+<h1>Designer Documentation<a class="headerlink" href="#designer-documentation" title="Permalink to this headline">¶</a></h1>
+<p>This part of the Jinja documentaton is meant for template designers.</p>
+<div class="section" id="basics">
+<h2>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
+<p>The Jinja template language is designed to strike a balance between content
+and application logic. Nevertheless you can use a python like statement
+language. You don&#8217;t have to know how Python works to create Jinja templates,
+but if you know it you can use some additional statements you may know from
+Python.</p>
+<p>Here is a small example template:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;</span>
+<span class="cp"> &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span> <span class="na">xml:lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>My Webpage<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">&quot;navigation&quot;</span><span class="nt">&gt;</span>
+    <span class="cp">{%</span> <span class="k">for</span> <span class="nv">item</span> <span class="k">in</span> <span class="nv">navigation</span> <span class="cp">%}</span>
+        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">item.href</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">item.caption</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span><span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+    <span class="nt">&lt;/ul&gt;</span>
+
+    <span class="nt">&lt;h1&gt;</span>My Webpage<span class="nt">&lt;/h1&gt;</span>
+    <span class="cp">{{</span> <span class="nv">variable</span> <span class="cp">}}</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<p>This covers the default settings. The application developer might have changed
+the syntax from <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">foo</span> <span class="pre">%}</span></tt> to <tt class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">foo</span> <span class="pre">%&gt;</span></tt> or something similar. This
+documentation just covers the default values.</p>
+<p>A variable looks like <tt class="docutils literal"><span class="pre">{{</span> <span class="pre">foobar</span> <span class="pre">}}</span></tt> where foobar is the variable name. Inside
+of statements (<tt class="docutils literal"><span class="pre">{%</span> <span class="pre">some</span> <span class="pre">content</span> <span class="pre">here</span> <span class="pre">%}</span></tt>) variables are just normal names
+without the braces around it. In fact <tt class="docutils literal"><span class="pre">{{</span> <span class="pre">foobar</span> <span class="pre">}}</span></tt> is just an alias for
+the statement <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">print</span> <span class="pre">foobar</span> <span class="pre">%}</span></tt>.</p>
+<p>Variables are coming from the context provided by the application. Normally there
+should be a documentation regarding the context contents but if you want to know
+the content of the current context, you can add this to your template:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;pre&gt;</span><span class="cp">{{</span> <span class="nv">debug</span><span class="o">()|</span><span class="nf">e</span> <span class="cp">}}</span><span class="nt">&lt;/pre&gt;</span>
+</pre></div>
+</div>
+<p>A context isn&#8217;t flat which means that each variable can has subvariables, as long
+as it is representable as python data structure. You can access attributes of
+a variable using the dot and bracket operators. The following examples show
+this:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{{</span> <span class="nv">user.username</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">    is the same as</span>
+<span class="cp">{{</span> <span class="nv">user</span><span class="o">[</span><span class="s1">&#39;username&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">    you can also use a variable to access an attribute:</span>
+<span class="cp">{{</span> <span class="nv">users</span><span class="o">[</span><span class="nv">current_user</span><span class="o">]</span><span class="nv">.username</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">    If you have numerical indices you have to use the [] syntax:</span>
+<span class="cp">{{</span> <span class="nv">users</span><span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="nv">.username</span> <span class="cp">}}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="filters">
+<h2>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h2>
+<p>In the examples above you might have noticed the pipe symbols. Pipe symbols tell
+the engine that it has to apply a filter on the variable. Here is a small example:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{{</span> <span class="nv">variable</span><span class="o">|</span><span class="nf">replace</span><span class="o">(</span><span class="s1">&#39;foo&#39;</span><span class="o">,</span> <span class="s1">&#39;bar&#39;</span><span class="o">)|</span><span class="nf">escape</span> <span class="cp">}}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>If you want, you can also put whitespace between the filters.</p>
+<p>This will look for a variable <cite>variable</cite>, pass it to the filter <cite>replace</cite>
+with the arguments <tt class="docutils literal"><span class="pre">'foo'</span></tt> and <tt class="docutils literal"><span class="pre">'bar'</span></tt>, and pass the result to the filter
+<cite>escape</cite> that automatically XML-escapes the value. The <cite>e</cite> filter is an alias for
+<cite>escape</cite>. Here is the complete list of supported filters:</p>
+<p>[[list_of_filters]]</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title">note</p>
+<p>Filters have a pretty low priority. If you want to add fitered values
+you have to put them into parentheses. The same applies if you want to access
+attributes:</p>
+<div class="last highlight-jinja"><div class="highlight"><pre><span class="x">correct:</span>
+<span class="x">    </span><span class="cp">{{</span> <span class="o">(</span><span class="nv">foo</span><span class="o">|</span><span class="nf">filter</span><span class="o">)</span> <span class="o">+</span> <span class="o">(</span><span class="nv">bar</span><span class="o">|</span><span class="nf">filter</span><span class="o">)</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">wrong:</span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">foo</span><span class="o">|</span><span class="nf">filter</span> <span class="o">+</span> <span class="nv">bar</span><span class="o">|</span><span class="nf">filter</span> <span class="cp">}}</span><span class="x"></span>
+
+<span class="x">correct:</span>
+<span class="x">    </span><span class="cp">{{</span> <span class="o">(</span><span class="nv">foo</span><span class="o">|</span><span class="nf">filter</span><span class="o">)</span><span class="nv">.attribute</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">wrong:</span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">foo</span><span class="o">|</span><span class="nf">filter</span><span class="nv">.attribute</span> <span class="cp">}}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tests">
+<h2>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h2>
+<p>You can use the <cite>is</cite> operator to perform tests on a value:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{{</span> <span class="m">42</span> <span class="k">is</span> <span class="nf">numeric</span> <span class="cp">}}</span><span class="x"> -&gt; true</span>
+<span class="cp">{{</span> <span class="s2">&quot;foobar&quot;</span> <span class="k">is</span> <span class="nf">numeric</span> <span class="cp">}}</span><span class="x"> -&gt; false</span>
+<span class="cp">{{</span> <span class="s1">&#39;FOO&#39;</span> <span class="k">is</span> <span class="nf">upper</span> <span class="cp">}}</span><span class="x"> -&gt; true</span>
+</pre></div>
+</div>
+<p>These tests are especially useful when used in <cite>if</cite> conditions.</p>
+<p>[[list_of_tests]]</p>
+</div>
+<div class="section" id="global-functions">
+<h2>Global Functions<a class="headerlink" href="#global-functions" title="Permalink to this headline">¶</a></h2>
+<p>Test functions and filter functions live in their own namespace. Global
+functions not. They behave like normal objects in the context. Beside the
+functions added by the application or framewhere there are two functions
+available per default:</p>
+<p><cite>range</cite></p>
+<blockquote>
+<div>Works like the python <a class="reference external" href="http://docs.python.org/tut/node6.html#SECTION006300000000000000000">range function</a> just that it doesn&#8217;t support
+ranges greater than <tt class="docutils literal"><span class="pre">1000000</span></tt>.</div></blockquote>
+<p><cite>debug</cite></p>
+<blockquote>
+<div>Function that outputs the contents of the context.</div></blockquote>
+</div>
+<div class="section" id="loops">
+<h2>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">¶</a></h2>
+<p>To iterate over a sequence, you can use the <cite>for</cite> loop. It basically looks like a
+normal Python <cite>for</cite> loop and works pretty much the same:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;h1&gt;</span>Members<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;ul&gt;</span>
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">user</span> <span class="k">in</span> <span class="nv">users</span> <span class="cp">%}</span>
+  <span class="nt">&lt;li&gt;</span><span class="cp">{{</span> <span class="nb">loop</span><span class="nv">.index</span> <span class="cp">}}</span> / <span class="cp">{{</span> <span class="nb">loop</span><span class="nv">.length</span> <span class="cp">}}</span> - <span class="cp">{{</span> <span class="nv">user.username</span><span class="o">|</span><span class="nf">escape</span> <span class="cp">}}</span><span class="nt">&lt;/li&gt;</span>
+<span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
+  <span class="nt">&lt;li&gt;&lt;em&gt;</span>no users found<span class="nt">&lt;/em&gt;&lt;/li&gt;</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+<span class="nt">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+<p><em>Important</em> Contrary to Python is the optional <tt class="docutils literal"><span class="pre">else</span></tt> block only
+executed if there was no iteration because the sequence was empty.</p>
+<p>Inside of a <cite>for</cite> loop block you can access some special variables:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Variable</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><cite>loop.index</cite></td>
+<td>The current iteration of the loop.</td>
+</tr>
+<tr class="row-odd"><td><cite>loop.index0</cite></td>
+<td>The current iteration of the loop,
+starting counting by 0.</td>
+</tr>
+<tr class="row-even"><td><cite>loop.revindex</cite></td>
+<td>The number of iterations from the end
+of the loop.</td>
+</tr>
+<tr class="row-odd"><td><cite>loop.revindex0</cite></td>
+<td>The number of iterations from the end
+of the loop, starting counting by 0.</td>
+</tr>
+<tr class="row-even"><td><cite>loop.first</cite></td>
+<td>True if first iteration.</td>
+</tr>
+<tr class="row-odd"><td><cite>loop.last</cite></td>
+<td>True if last iteration.</td>
+</tr>
+<tr class="row-even"><td><cite>loop.even</cite></td>
+<td>True if current iteration is even.</td>
+</tr>
+<tr class="row-odd"><td><cite>loop.odd</cite></td>
+<td>True if current iteration is odd.</td>
+</tr>
+<tr class="row-even"><td><cite>loop.length</cite></td>
+<td>Total number of items in the sequence.</td>
+</tr>
+<tr class="row-odd"><td><cite>loop.parent</cite></td>
+<td>The context of the parent loop.</td>
+</tr>
+</tbody>
+</table>
+<p>Loops also support recursion. Let&#8217;s assume you have a sitemap where each item
+might have a number of child items. A template for that could look like this:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;h1&gt;</span>Sitemap
+<span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">&quot;sitemap&quot;</span><span class="nt">&gt;</span>
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">item</span> <span class="k">in</span> <span class="nv">sitemap</span> <span class="k">recursive</span> <span class="cp">%}</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">item.url</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">item.title</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span><span class="nt">&lt;/a&gt;</span>
+  <span class="cp">{%</span> <span class="k">if</span> <span class="nv">item.children</span> <span class="cp">%}</span><span class="nt">&lt;ul&gt;</span><span class="cp">{{</span> <span class="nb">loop</span><span class="o">(</span><span class="nv">item.children</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/ul&gt;</span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="nt">&lt;/li&gt;</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+<span class="nt">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+<p>What happens here? Basically the first thing that is different to a normal
+loop is the additional <tt class="docutils literal"><span class="pre">recursive</span></tt> modifier in the <cite>for</cite>-loop declaration.
+It tells the template engine that we want recursion. If recursion is enabled
+the special <cite>loop</cite> variable is callable. If you call it with a sequence it will
+automatically render the loop at that position with the new sequence as argument.</p>
+</div>
+<div class="section" id="cycling">
+<h2>Cycling<a class="headerlink" href="#cycling" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes you might want to have different text snippets for each row in a list,
+for example to have alternating row colors. You can easily do this by using the
+<tt class="docutils literal"><span class="pre">{%</span> <span class="pre">cycle</span> <span class="pre">%}</span></tt> tag:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">&quot;messages&quot;</span><span class="nt">&gt;</span>
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">message</span> <span class="k">in</span> <span class="nv">messages</span> <span class="cp">%}</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;</span><span class="cp">{%</span> <span class="k">cycle</span> <span class="s1">&#39;row1&#39;</span><span class="o">,</span> <span class="s1">&#39;row2&#39;</span> <span class="cp">%}</span><span class="s">&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">message</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span><span class="nt">&lt;/li&gt;</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+<span class="nt">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+<p>Each time Jinja encounters a <cite>cycle</cite> tag it will cycle through the list
+of given items and return the next one. If you pass it one item jinja assumes
+that this item is a sequence from the context and uses this:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;li</span> <span class="na">style=</span><span class="s">&quot;color: </span><span class="cp">{%</span> <span class="k">cycle</span> <span class="nv">rowcolors</span> <span class="cp">%}</span><span class="s">&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/li&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="conditions">
+<h2>Conditions<a class="headerlink" href="#conditions" title="Permalink to this headline">¶</a></h2>
+<p>Jinja supports Python-like <cite>if</cite> / <cite>elif</cite> / <cite>else</cite> constructs:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">if</span> <span class="nv">user.active</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    user </span><span class="cp">{{</span> <span class="nv">user.name</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span><span class="x"> is active.</span>
+<span class="cp">{%</span> <span class="k">elif</span> <span class="nv">user.deleted</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    user </span><span class="cp">{{</span> <span class="nv">user.name</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span><span class="x"> was deleted some time ago.</span>
+<span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    i don&#39;t know what&#39;s wrong with </span><span class="cp">{{</span> <span class="nv">user.username</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>If the user is active the first block is rendered. If not and the user was
+deleted the second one, in all other cases the third one.</p>
+<p>You can also use comparison operators:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">if</span> <span class="nv">amount</span> <span class="o">&lt;</span> <span class="m">0</span> <span class="cp">%}</span>
+    <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: red&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">amount</span> <span class="cp">}}</span><span class="nt">&lt;/span&gt;</span>
+<span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
+    <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: black&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">amount</span> <span class="cp">}}</span><span class="nt">&lt;/span&gt;</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<div class="admonition-note admonition">
+<p class="first admonition-title">Note</p>
+<p class="last">Of course you can use <cite>or</cite> / <cite>and</cite> and parentheses to create more complex
+conditions, but usually the logic is already handled in the application and
+you don&#8217;t have to create such complex constructs in the template code. However
+in some situations it might be a good thing to have the abilities to create
+them.</p>
+</div>
+</div>
+<div class="section" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h2>
+<p>Inside <tt class="docutils literal"><span class="pre">{{</span> <span class="pre">variable</span> <span class="pre">}}</span></tt> blocks, <cite>if</cite> conditions and many other parts you can
+can use expressions. In expressions you can use any of the following operators:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">+</span></tt></td>
+<td>add the right operand to the left one.
+<tt class="docutils literal"><span class="pre">{{</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">}}</span></tt> would return <tt class="docutils literal"><span class="pre">3</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">-</span></tt></td>
+<td>subtract the right operand from the left one.
+<tt class="docutils literal"><span class="pre">{{</span> <span class="pre">1</span> <span class="pre">-</span> <span class="pre">1</span> <span class="pre">}}</span></tt> would return <tt class="docutils literal"><span class="pre">0</span></tt>.</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">/</span></tt></td>
+<td>divide the left operand by the right one.
+<tt class="docutils literal"><span class="pre">{{</span> <span class="pre">1</span> <span class="pre">/</span> <span class="pre">2</span> <span class="pre">}}</span></tt> would return <tt class="docutils literal"><span class="pre">0.5</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">*</span></tt></td>
+<td>multiply the left operand with the right one.
+<tt class="docutils literal"><span class="pre">{{</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">}}</span></tt> would return <tt class="docutils literal"><span class="pre">4</span></tt>.</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">**</span></tt></td>
+<td>raise the left operand to the power of the right
+operand. <tt class="docutils literal"><span class="pre">{{</span> <span class="pre">2**3</span> <span class="pre">}}</span></tt> would return <tt class="docutils literal"><span class="pre">8</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">in</span></tt></td>
+<td>perform sequence membership test. <tt class="docutils literal"><span class="pre">{{</span> <span class="pre">1</span> <span class="pre">in</span> <span class="pre">[1,2,3]</span> <span class="pre">}}</span></tt> would
+return true.</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">is</span></tt></td>
+<td>perform a test on the value. See the section about
+tests for more information.</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">|</span></tt></td>
+<td>apply a filter on the value. See the section about
+filters for more information.</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">and</span></tt></td>
+<td>return true if the left and the right operand is true.</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">or</span></tt></td>
+<td>return true if the left or the right operand is true.</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">not</span></tt></td>
+<td>negate a statement (see below)</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">()</span></tt></td>
+<td>call a callable: <tt class="docutils literal"><span class="pre">{{</span> <span class="pre">user.get_username()</span> <span class="pre">}}</span></tt>. Inside of the
+parentheses you can use variables: <tt class="docutils literal"><span class="pre">{{</span> <span class="pre">user.get(username)</span> <span class="pre">}}</span></tt>.</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Note that there is no support for any bit operations or something similar.</p>
+<ul class="simple">
+<li>special note regarding <cite>not</cite>: The <cite>is</cite> and <cite>in</cite> operators support negation
+using an infix notation too: <tt class="docutils literal"><span class="pre">foo</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">bar</span></tt> and <tt class="docutils literal"><span class="pre">foo</span> <span class="pre">not</span> <span class="pre">in</span> <span class="pre">bar</span></tt>
+instead of <tt class="docutils literal"><span class="pre">not</span> <span class="pre">foo</span> <span class="pre">is</span> <span class="pre">bar</span></tt> and <tt class="docutils literal"><span class="pre">not</span> <span class="pre">foo</span> <span class="pre">in</span> <span class="pre">bar</span></tt>. All other expressions
+require a prefix notation: <tt class="docutils literal"><span class="pre">not</span> <span class="pre">(foo</span> <span class="pre">and</span> <span class="pre">bar)</span></tt>.</li>
+</ul>
+</div>
+<div class="section" id="boolean-values">
+<h2>Boolean Values<a class="headerlink" href="#boolean-values" title="Permalink to this headline">¶</a></h2>
+<p>In If-Conditions Jinja performs a boolean check. All empty values (eg: empty
+lists <tt class="docutils literal"><span class="pre">[]</span></tt>, empty dicts <tt class="docutils literal"><span class="pre">{}</span></tt> etc) evaluate to <cite>false</cite>. Numbers that are
+equal to <cite>0</cite>/<cite>0.00</cite> are considered <cite>false</cite> too. The boolean value of other
+objects depends on the behavior the application developer gave it. Usually
+items are <cite>true</cite>.</p>
+<p>Here some examples that should explain it:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">if</span> <span class="o">[]</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    will always be false because it&#39;s an empty list</span>
+
+<span class="cp">{%</span> <span class="k">if</span> <span class="o">{}</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    false too.</span>
+
+<span class="cp">{%</span> <span class="k">if</span> <span class="o">[</span><span class="s1">&#39;foo&#39;</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    this is true. Because the list is not empty.</span>
+
+<span class="cp">{%</span> <span class="k">if</span> <span class="s2">&quot;foobar&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    this is also true because the string is not empty.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="slicing">
+<h2>Slicing<a class="headerlink" href="#slicing" title="Permalink to this headline">¶</a></h2>
+<p>Some objects support slicing operations. For example lists:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">for</span> <span class="nv">item</span> <span class="k">in</span> <span class="nv">items</span><span class="o">[:</span><span class="m">5</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    This will only iterate over the first 5 items of the list</span>
+
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">item</span> <span class="k">in</span> <span class="nv">items</span><span class="o">[</span><span class="m">5</span><span class="o">:</span><span class="m">10</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    This will only iterate from item 5 to 10.</span>
+
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">item</span> <span class="k">in</span> <span class="nv">items</span><span class="o">[:</span><span class="m">10</span><span class="o">:</span><span class="m">2</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    This will only yield items from start to ten and only returing</span>
+<span class="x">    even items.</span>
+</pre></div>
+</div>
+<p>For more informations about slicing have a look at the <a class="reference external" href="http://diveintopython.org/native_data_types/lists.html#odbchelper.list.slice">slicing chapter</a>
+in the &#8220;Dive into Python&#8221; e-book.</p>
+</div>
+<div class="section" id="macros">
+<h2>Macros<a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
+<p>If you want to use a partial template in more than one place, you might want to
+create a macro from it:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">macro</span> <span class="nv">show_user</span> <span class="nv">user</span> <span class="cp">%}</span>
+  <span class="nt">&lt;h1&gt;</span><span class="cp">{{</span> <span class="nv">user.name</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span><span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;test&quot;</span><span class="nt">&gt;</span>
+    <span class="cp">{{</span> <span class="nv">user.description</span> <span class="cp">}}</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="cp">{%</span> <span class="k">endmacro</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>Now you can use it from everywhere in the code by passing it an item:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">for</span> <span class="nv">user</span> <span class="k">in</span> <span class="nv">users</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">show_user</span><span class="o">(</span><span class="nv">user</span><span class="o">)</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>You can also specify more than one value:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">macro</span> <span class="nv">show_dialog</span> <span class="nv">title</span><span class="o">,</span> <span class="nv">text</span> <span class="cp">%}</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;dialog&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1&gt;</span><span class="cp">{{</span> <span class="nv">title</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span><span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;test&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">text</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span><span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="cp">{%</span> <span class="k">endmacro</span> <span class="cp">%}</span>
+
+<span class="cp">{{</span> <span class="nv">show_dialog</span><span class="o">(</span><span class="s1">&#39;Warning&#39;</span><span class="o">,</span> <span class="s1">&#39;something went wrong i guess&#39;</span><span class="o">)</span> <span class="cp">}}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inheritance">
+<h2>Inheritance<a class="headerlink" href="#inheritance" title="Permalink to this headline">¶</a></h2>
+<p>The most powerful part of Jinja is template inheritance. Template inheritance
+allows you to build a base &#8220;skeleton&#8221; template that contains all the common
+elements of your site and defines <strong>blocks</strong> that child templates can override.</p>
+<p>Sounds complicated but is very basic. It&#8217;s easiest to understand it by starting
+with an example.</p>
+<div class="section" id="base-template">
+<h3>Base Template<a class="headerlink" href="#base-template" title="Permalink to this headline">¶</a></h3>
+<p>This template, which we&#8217;ll call <tt class="docutils literal"><span class="pre">base.html</span></tt>, defines a simple HTML skeleton
+document that you might use for a simple two-column page. It&#8217;s the job of
+&#8220;child&#8221; templates to fill the empty blocks with content:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;</span>
+<span class="cp"> &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;style.css&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;title&gt;</span><span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}{%</span> <span class="k">endblock</span> <span class="cp">%}</span> - My Webpage<span class="nt">&lt;/title&gt;</span>
+  <span class="cp">{%</span> <span class="k">block</span> <span class="nv">html_head</span> <span class="cp">%}{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+    <span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span>
+    <span class="cp">{%</span> <span class="k">block</span> <span class="nv">footer</span> <span class="cp">%}</span>
+    <span class="ni">&amp;copy;</span> Copyright 2006 by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://mydomain.tld&quot;</span><span class="nt">&gt;</span>myself<span class="nt">&lt;/a&gt;</span>.
+    <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</pre></div>
+</div>
+<p>In this example, the <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">block</span> <span class="pre">%}</span></tt> tags define four blocks that child templates
+can fill in. All the <cite>block</cite> tag does is to tell the template engine that a
+child template may override those portions of the template.</p>
+</div>
+<div class="section" id="child-template">
+<h3>Child Template<a class="headerlink" href="#child-template" title="Permalink to this headline">¶</a></h3>
+<p>A child template might look like this:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;base.html&quot;</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}</span>Index<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">html_head</span> <span class="cp">%}</span>
+  <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span>
+    <span class="nc">.important</span> <span class="p">{</span>
+      <span class="k">color</span><span class="o">:</span> <span class="m">#336699</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="nt">&lt;/style&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="nt">&lt;h1&gt;</span>Index<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;important&quot;</span><span class="nt">&gt;</span>
+      Welcome on my awsome homepage.
+    <span class="nt">&lt;/p&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">extends</span> <span class="pre">%}</span></tt> tag is the key here. It tells the template engine that
+this template &#8220;extends&#8221; another template. When the template system evaluates
+this template, first it locates the parent.</p>
+<p>The filename of the template depends on the template loader. For example the
+<tt class="docutils literal"><span class="pre">FileSystemLoader</span></tt> allows you to access other templates by giving the
+filename. You can access templates in subdirectories with an slash:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;layout/default.html&quot;</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>But this behavior can depend on the application using Jinja.</p>
+<p>Note that since the child template didn&#8217;t define the <tt class="docutils literal"><span class="pre">footer</span></tt> block, the
+value from the parent template is used instead.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title">Note</p>
+<p class="last">You can&#8217;t define multiple <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">block</span> <span class="pre">%}</span></tt> tags with the same name in the
+same template. This limitation exists because a block tag works in &#8220;both&#8221;
+directions. That is, a block tag doesn&#8217;t just provide a hole to fill - it
+also defines the content that fills the hole in the <em>parent</em>. If there were
+two similarly-named <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">block</span> <span class="pre">%}</span></tt> tags in a template, that template&#8217;s
+parent wouldn&#8217;t know which one of the blocks&#8217; content to use.</p>
+</div>
+</div>
+</div>
+<div class="section" id="template-inclusion">
+<h2>Template Inclusion<a class="headerlink" href="#template-inclusion" title="Permalink to this headline">¶</a></h2>
+<p>You can load another template at a given position using <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">include</span> <span class="pre">%}</span></tt>.
+Usually it&#8217;s a better idea to use inheritance but if you for example want to
+load macros, <cite>include</cite> works better than <cite>extends</cite>:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">include</span> <span class="s2">&quot;myhelpers.html&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="nv">my_helper</span><span class="o">(</span><span class="s2">&quot;foo&quot;</span><span class="o">)</span> <span class="cp">}}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>If you define a macro called <tt class="docutils literal"><span class="pre">my_helper</span></tt> in <tt class="docutils literal"><span class="pre">myhelpers.html</span></tt>, you can now
+use it from the template as shown above.</p>
+</div>
+<div class="section" id="filtering-blocks">
+<h2>Filtering Blocks<a class="headerlink" href="#filtering-blocks" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes it could be a good idea to filter a complete block of text. For
+example, if you want to escape some html code:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">filter</span> <span class="nf">escape</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;html&gt;</span>
+<span class="x">      &lt;code&gt;goes here&lt;/code&gt;</span>
+<span class="x">    &lt;/html&gt;</span>
+<span class="cp">{%</span> <span class="k">endfilter</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>Of course you can chain filters too:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">filter</span> <span class="nf">lower</span><span class="o">|</span><span class="nf">escape</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;B&gt;SOME TEXT&lt;/B&gt;</span>
+<span class="cp">{%</span> <span class="k">endfilter</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>returns <tt class="docutils literal"><span class="pre">&quot;&amp;lt;b&amp;gt;some</span> <span class="pre">text&amp;lt;/b&amp;gt;&quot;</span></tt>.</p>
+</div>
+<div class="section" id="defining-variables">
+<h2>Defining Variables<a class="headerlink" href="#defining-variables" title="Permalink to this headline">¶</a></h2>
+<p>You can also define variables in the namespace using the <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">set</span> <span class="pre">%}</span></tt> tag:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">set</span> <span class="nv">foo</span> <span class="o">=</span> <span class="s1">&#39;foobar&#39;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="nv">foo</span> <span class="cp">}}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>This should ouput <tt class="docutils literal"><span class="pre">foobar</span></tt>.</p>
+</div>
+<div class="section" id="scopes">
+<h2>Scopes<a class="headerlink" href="#scopes" title="Permalink to this headline">¶</a></h2>
+<p>Jinja has multiple scopes. A scope is something like a new transparent foil on
+a stack of foils. You can only write to the outermost foil but read all of them
+since you can look through them. If you remove the top foil all data on that
+foil disappears. Some tags in Jinja add a new layer to the stack. Currently
+these are <cite>block</cite>, <cite>for</cite>, <cite>macro</cite> and <cite>filter</cite>. This means that variables and
+other elements defined inside a macro, loop or some of the other tags listed
+above will be only available in that block. Here an example:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">macro</span> <span class="nv">angryhello</span> <span class="nv">name</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">angryname</span> <span class="o">=</span> <span class="nv">name</span><span class="o">|</span><span class="nf">upper</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  Hello </span><span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span><span class="x">. Hello </span><span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span><span class="x">!</span>
+<span class="x">  HELLO </span><span class="cp">{{</span> <span class="nv">angryname</span> <span class="cp">}}</span><span class="x">!!!!!!111</span>
+<span class="cp">{%</span> <span class="k">endmacro</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>The variable <tt class="docutils literal"><span class="pre">angryname</span></tt> just exists inside the macro, not outside it.</p>
+<p>Defined macros appear on the context as variables. Because of this, they are
+affected by the scoping too. A macro defined inside of a macro is just available
+in those two macros (the macro itself and the macro it&#8217;s defined in). For <cite>set</cite>
+and <cite>macro</cite> two additional rules exist: If a macro is defined in an extended
+template but outside of a visible block (thus outside of any block) will be
+available in all blocks below. This allows you to use <cite>include</cite> statements to
+load often used macros at once.</p>
+</div>
+<div class="section" id="undefined-variables">
+<h2>Undefined Variables<a class="headerlink" href="#undefined-variables" title="Permalink to this headline">¶</a></h2>
+<p>If you have already worked with python you probably know about the fact that
+undefined variables raise an exception. This is different in Jinja. There is a
+special value called <cite>undefined</cite> that represents values that do not exist.</p>
+<p>This special variable works complete different from any variables you maybe
+know. If you print it using <tt class="docutils literal"><span class="pre">{{</span> <span class="pre">variable</span> <span class="pre">}}</span></tt> it will not appear because it&#8217;s
+literally empty. If you try to iterate over it, it will work. But no items
+are returned. Comparing this value to any other value results in <cite>false</cite>.
+Even if you compare it to itself:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{{</span> <span class="nv">undefined</span> <span class="o">==</span> <span class="nv">undefined</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">    will return false. Not even undefined is undefined :)</span>
+<span class="x">    Use `is defined` / `is not defined`:</span>
+
+<span class="cp">{{</span> <span class="nv">undefined</span> <span class="k">is</span> <span class="k">not</span> <span class="nf">defined</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">    will return true.</span>
+</pre></div>
+</div>
+<p>There are also some additional rules regarding this special value. Any
+mathematical operators (<tt class="docutils literal"><span class="pre">+</span></tt>, <tt class="docutils literal"><span class="pre">-</span></tt>, <tt class="docutils literal"><span class="pre">*</span></tt>, <tt class="docutils literal"><span class="pre">/</span></tt>) return the operand
+as result:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{{</span> <span class="nv">undefined</span> <span class="o">+</span> <span class="s2">&quot;foo&quot;</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">    returns &quot;foo&quot;</span>
+
+<span class="cp">{{</span> <span class="nv">undefined</span> <span class="o">-</span> <span class="m">42</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">    returns 42. Note: not -42!</span>
+</pre></div>
+</div>
+<p>In any expression <cite>undefined</cite> evaluates to <cite>false</cite>. It has no length, all
+attribute calls return undefined, calling too:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{{</span> <span class="nv">undefined.attribute</span><span class="o">()</span><span class="nv">.attribute_too</span><span class="o">[</span><span class="m">42</span><span class="o">]</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">    still returns `undefined`.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="escaping">
+<h2>Escaping<a class="headerlink" href="#escaping" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes you might want to add Jinja syntax elements into the template
+without executing them. In that case you have quite a few possibilities.</p>
+<p>For small parts this might be a good way:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{{</span> <span class="s2">&quot;{{ foo }} is variable syntax and {% foo %} is block syntax&quot;</span> <span class="cp">}}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>When you have multiple elements you can use the <tt class="docutils literal"><span class="pre">raw</span></tt> block:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>
+    Filtering blocks works like this in Jinja:
+    {% filter escape %}
+        &lt;html&gt;
+          &lt;code&gt;goes here&lt;/code&gt;
+        &lt;/html&gt;
+    {% endfilter %}
+<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reserved-keywords">
+<h2>Reserved Keywords<a class="headerlink" href="#reserved-keywords" title="Permalink to this headline">¶</a></h2>
+<p>Jinja has some keywords you cannot use a variable names. This limitation
+exists to make look coherent. Syntax highlighters won&#8217;t mess things up and
+you will don&#8217;t have unexpected output.</p>
+<p>The following keywords exist and cannot be used as identifiers:</p>
+<blockquote>
+<div><cite>and</cite>, <cite>block</cite>, <cite>cycle</cite>, <cite>elif</cite>, <cite>else</cite>, <cite>endblock</cite>, <cite>endfilter</cite>,
+<cite>endfor</cite>, <cite>endif</cite>, <cite>endmacro</cite>, <cite>endraw</cite>, <cite>endtrans</cite>, <cite>extends</cite>, <cite>filter</cite>,
+<cite>for</cite>, <cite>if</cite>, <cite>in</cite>, <cite>include</cite>, <cite>is</cite>, <cite>macro</cite>, <cite>not</cite>, <cite>or</cite>, <cite>pluralize</cite>,
+<cite>raw</cite>, <cite>recursive</cite>, <cite>set</cite>, <cite>trans</cite></div></blockquote>
+<p>If you want to use such a name you have to prefix or suffix it or use
+alternative names:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">for</span> <span class="nv">macro_</span> <span class="k">in</span> <span class="nv">macros</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">macro_</span><span class="o">(</span><span class="s1">&#39;foo&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>If future Jinja releases add new keywords those will be &#8220;light&#8221; keywords which
+means that they won&#8217;t raise an error for several releases but yield warnings
+on the application side. But it&#8217;s very unlikely that new keywords will be
+added.</p>
+</div>
+<div class="section" id="internationalization">
+<h2>Internationalization<a class="headerlink" href="#internationalization" title="Permalink to this headline">¶</a></h2>
+<p>If the application is configured for i18n, you can define translatable blocks
+for translators using the <cite>trans</cite> tag or the special underscore function:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">trans</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    this is a translatable block</span>
+<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">trans</span> <span class="s2">&quot;This is a translatable string&quot;</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{{</span> <span class="kp">_</span><span class="o">(</span><span class="s2">&quot;This is a translatable string&quot;</span><span class="o">)</span> <span class="cp">}}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>The latter one is useful if you want translatable arguments for filters etc.</p>
+<p>If you want to have plural forms too, use the <cite>pluralize</cite> block:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">trans</span> <span class="nv">users</span><span class="o">=</span><span class="nv">users</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    One user found.</span>
+<span class="cp">{%</span> <span class="k">pluralize</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">users</span> <span class="cp">}}</span><span class="x"> users found.</span>
+<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">trans</span> <span class="nv">first</span><span class="o">=(</span><span class="nv">users</span><span class="o">|</span><span class="nf">first</span><span class="o">)</span><span class="nv">.username</span><span class="o">|</span><span class="nf">escape</span><span class="o">,</span> <span class="nv">user</span><span class="o">=</span><span class="nv">users</span><span class="o">|</span><span class="nf">length</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    one user </span><span class="cp">{{</span> <span class="nv">first</span> <span class="cp">}}</span><span class="x"> found.</span>
+<span class="cp">{%</span> <span class="k">pluralize</span> <span class="nv">users</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">users</span> <span class="cp">}}</span><span class="x"> users found, the first one is called </span><span class="cp">{{</span> <span class="nv">first</span> <span class="cp">}}</span><span class="x">.</span>
+<span class="cp">{%</span> <span class="k">endtrans</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>If you have multiple arguments, the first one is assumed to be the indicator (the
+number that is used to determine the correct singular or plural form. If you
+don&#8217;t have the indicator variable on position 1 you have to tell the <cite>pluralize</cite>
+tag the correct variable name.</p>
+<p>Inside translatable blocks you cannot use blocks or expressions (however you can
+still use the <tt class="docutils literal"><span class="pre">raw</span></tt> block which will work as expected). The variable
+print syntax (<tt class="docutils literal"><span class="pre">{{</span> <span class="pre">variablename</span> <span class="pre">}}</span></tt>) is the only way to insert the variables
+defined in the <tt class="docutils literal"><span class="pre">trans</span></tt> header. Filters must be applied in the header.</p>
+<div class="admonition-note admonition">
+<p class="first admonition-title">note</p>
+<p>Please make sure that you always use pluralize blocks where required.
+Many languages have more complex plural forms than the English language.</p>
+<p>Never try to workaround that issue by using something like this:</p>
+<div class="last highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">if</span> <span class="nv">count</span> <span class="p">!</span><span class="o">=</span> <span class="m">1</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">count</span> <span class="cp">}}</span><span class="x"> users found.</span>
+<span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    one user found.</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+    </div>
+    </div>
+
+    <div class="footer-wrapper">
+      
+    <div class="footer">
+        &copy; Copyright the IPython development team.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+    </div>
+
+  </body>
+</html>

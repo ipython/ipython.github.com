@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38683231-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>commando - argparse in style &mdash; IPython</title>
+    
+    <link rel="stylesheet" href="../../../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/ipython.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="IPython" href="../../../index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <div class="logo"><a href="../../../index.html">
+            <img class="logo" src="../../../_static/IPy_header.png" alt="Logo"/>
+          </a></div>
+       
+        <div class="rel">
+          <a href="../../../install.html">Install</a> · 
+<a href="../../../documentation.html">Docs</a> ·
+<a href="../../../videos.html">Videos</a> · 
+<a href="http://nbviewer.ipython.org">Notebook Viewer</a> ·
+<a href="../../../news.html">News</a> · 
+<a href="../../../citing.html">Cite</a> ·
+<a href="../../../donate.html">Donate</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+             
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"> 
+<div class="sidebarblock">
+    <div id="cse-search-form" style="width: 100%;">Loading</div>
+
+    <script src="http://www.google.co.uk/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">
+        google.load('search', '1', {language : 'en'});
+        google.setOnLoadCallback(function() {
+            var customSearchControl = new google.search.CustomSearchControl(
+                    '017950022472296044740:wfr9nyfshwo');
+
+            customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+            var options = new google.search.DrawOptions();
+            options.enableSearchboxOnly("../../../searchresults.html");
+            customSearchControl.draw('cse-search-form', options);
+        }, true);
+    </script>
+    <link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css" /> <style type="text/css">
+        input.gsc-input {
+            border-color: #BCCDF0;
+        }
+        input.gsc-search-button {
+            border-color: #666666;
+            background-color: #CECECE;
+            padding: 0;
+        }
+        div.sphinxsidebar input[type="text"] {
+            width: 100%;
+        }
+        div.sphinxsidebar input[type="submit"] {
+            width: 100%;
+        }
+    </style>
+</div>
+<div class="sidebarblock">
+<h3>Versions</h3>
+
+<div class="tile"><h4>Stable</h4>
+     1.0 &ndash; August 2013<br/>
+    <a href="../../../install.html">Install</a>
+</div>
+
+<div class="tile"><h4>Development</h4>
+    2.0.dev<br/>
+    <a href="https://github.com/ipython/ipython">Github</a>
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<div class="sidebarblock">
+<h3>Notebook Viewer</h3>
+
+Share your notebooks
+
+<div class="nbviewer-thm-random">
+  <script src="_static/nbviewer_thm.js"></script>
+  <script type="text/javascript">
+    nbviewer_random_thumbnail();
+  </script>
+	       
+</div> 
+</div>
+
+<div class="sidebarblock">
+<h3>Community</h3>
+
+  <ul class="simple">
+    <li><a class="reference external" href="http://www.hipchat.com/ghSp7E1uY">
+            Help Chat Room</a></li>
+    <li><a class="reference external" href="http://stackoverflow.com/questions/tagged/ipython">
+            Stack Overflow</a></li>
+    <li><a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-dev">
+            Mailing list</a></li>
+    <li><a class="reference external" href="https://github.com/ipython/ipython/wiki">Wiki</a></li>
+    <li><a class="reference external" href="http://www.reddit.com/r/IPython">
+            Reddit</a></li>
+    <li><a class="reference external" href="https://github.com/ipython/ipython/issues">
+            File a bug</a></li>
+  </ul>
+
+<div style="margin-top:10px">  <!-- sharing buttons -->
+  <!-- twitter -->
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ipython.org" data-text="IPython - interactive computing." data-via="ipythondev" data-hashtags="ipython" data-dnt="true">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  <!-- google+ -->
+<g:plusone size="medium" annotation="none"></g:plusone>
+</div><!-- sharing buttons -->
+
+</div>
+
+
+<div class="sidebarblock">
+<h3>Book</h3>
+
+<a href="http://www.packtpub.com/learning-ipython-for-interactive-computing-and-data-visualization/book"><img src="_static/ipython-book.jpg"
+title="Packt Publishing donates a portion of the proceeds from this book to
+support IPython's development." > </a>
+
+</div>
+
+
+<div class="sidebarblock">
+  <h3>For developers</h3>
+  <ul class="simple">
+    <li><a class="reference external" href="http://www.hipchat.com/ghtNzvmfC">
+            Development Chat Room</a></li>
+    <li><a class="reference external"
+    href="https://github.com/ipython/ipython/wiki/Dev:-Index">Development information</a></li>
+    <li><a class="reference external" href="https://jenkins.shiningpanda.com/ipython/">
+        Shining Panda</a></li>
+    <li><a class="reference external" href="http://travis-ci.org/#!/ipython/ipython">
+        Travis CI</a></li>
+  </ul>          
+</div>
+
+<div class="sidebarblock">
+
+<div class="tile" id="donate">
+  <h4>Support IPython</h4>
+ 
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="SMCAHLP2ST42G">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+    border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"
+    style="display:block; margin-left:auto; margin-right:auto;">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+
+<a href="../../../donate.html">Find out more...</a>
+
+</form>
+</div>
+</div>
+        </div>
+      </div>
+        
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="commando-argparse-in-style">
+<h1>commando - argparse in style<a class="headerlink" href="#commando-argparse-in-style" title="Permalink to this headline">¶</a></h1>
+<p><strong>Version 0.3.2a</strong></p>
+<p>A simple wrapper for <tt class="docutils literal"><span class="pre">argparse</span></tt> that allows commands and arguments
+to be defined declaratively using decorators. Note that this does
+not support all the features of <tt class="docutils literal"><span class="pre">argparse</span></tt> yet.</p>
+<p>Commando also bundles a few utilities that are useful when building
+command line applications.</p>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Without commando:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s">&#39;hyde - a python static website generator&#39;</span><span class="p">,</span>
+                                  <span class="n">epilog</span><span class="o">=</span><span class="s">&#39;Use </span><span class="si">%(prog)s</span><span class="s"> {command} -h to get help on individual commands&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-v&#39;</span><span class="p">,</span> <span class="s">&#39;--version&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;version&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%(prog)s</span><span class="s"> &#39;</span> <span class="o">+</span> <span class="n">__version__</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-s&#39;</span><span class="p">,</span> <span class="s">&#39;--sitepath&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;.&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">&quot;Location of the hyde site&quot;</span><span class="p">)</span>
+    <span class="n">subcommands</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_subparsers</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Hyde commands&quot;</span><span class="p">,</span>
+                                     <span class="n">description</span><span class="o">=</span><span class="s">&quot;Entry points for hyde&quot;</span><span class="p">)</span>
+    <span class="n">init_command</span> <span class="o">=</span> <span class="n">subcommands</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span><span class="s">&#39;init&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">&#39;Create a new hyde site&#39;</span><span class="p">)</span>
+    <span class="n">init_command</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">run</span><span class="o">=</span><span class="n">init</span><span class="p">)</span>
+    <span class="n">init_command</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-t&#39;</span><span class="p">,</span> <span class="s">&#39;--template&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;basic&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s">&#39;template&#39;</span><span class="p">,</span>
+                     <span class="n">help</span><span class="o">=</span><span class="s">&#39;Overwrite the current site if it exists&#39;</span><span class="p">)</span>
+    <span class="n">init_command</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="s">&#39;--force&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s">&#39;force&#39;</span><span class="p">,</span>
+                     <span class="n">help</span><span class="o">=</span><span class="s">&#39;Overwrite the current site if it exists&#39;</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    <span class="n">args</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">params</span><span class="o">.</span><span class="n">sitepath</span>
+    <span class="k">print</span> <span class="n">params</span><span class="o">.</span><span class="n">template</span>
+    <span class="k">print</span> <span class="n">params</span><span class="o">.</span><span class="n">overwrite</span>
+</pre></div>
+</div>
+<p>With commando:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Engine</span><span class="p">(</span><span class="n">Application</span><span class="p">):</span>
+
+    <span class="nd">@command</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s">&#39;hyde - a python static website generator&#39;</span><span class="p">,</span>
+            <span class="n">epilog</span><span class="o">=</span><span class="s">&#39;Use </span><span class="si">%(prog)s</span><span class="s"> {command} -h to get help on individual commands&#39;</span><span class="p">)</span>
+    <span class="nd">@param</span><span class="p">(</span><span class="s">&#39;-v&#39;</span><span class="p">,</span> <span class="s">&#39;--version&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;version&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%(prog)s</span><span class="s"> &#39;</span> <span class="o">+</span> <span class="n">__version__</span><span class="p">)</span>
+    <span class="nd">@param</span><span class="p">(</span><span class="s">&#39;-s&#39;</span><span class="p">,</span> <span class="s">&#39;--sitepath&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;.&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">&quot;Location of the hyde site&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span> <span class="k">pass</span>
+
+    <span class="nd">@subcommand</span><span class="p">(</span><span class="s">&#39;init&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">&#39;Create a new hyde site&#39;</span><span class="p">)</span>
+    <span class="nd">@param</span><span class="p">(</span><span class="s">&#39;-t&#39;</span><span class="p">,</span> <span class="s">&#39;--template&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;basic&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s">&#39;template&#39;</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s">&#39;Overwrite the current site if it exists&#39;</span><span class="p">)</span>
+    <span class="nd">@param</span><span class="p">(</span><span class="s">&#39;-f&#39;</span><span class="p">,</span> <span class="s">&#39;--force&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s">&#39;overwrite&#39;</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s">&#39;Overwrite the current site if it exists&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+        <span class="k">print</span> <span class="n">params</span><span class="o">.</span><span class="n">sitepath</span>
+        <span class="k">print</span> <span class="n">params</span><span class="o">.</span><span class="n">template</span>
+        <span class="k">print</span> <span class="n">params</span><span class="o">.</span><span class="n">overwrite</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="CHANGELOG.rst">Changelog</a></li>
+<li><a class="reference external" href="LICENSE">License</a></li>
+<li><a class="reference external" href="CONTRIBUTING.rst">Contributing</a></li>
+<li><a class="reference external" href="AUTHORS.rst">Authors</a></li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+    </div>
+    </div>
+
+    <div class="footer-wrapper">
+      
+    <div class="footer">
+        &copy; Copyright the IPython development team.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+    </div>
+
+  </body>
+</html>
