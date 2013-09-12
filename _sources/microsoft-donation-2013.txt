@@ -1,0 +1,13 @@
+.. _microsoft-donation-2013:
+
+=========================================
+ Microsoft Corporation sponsors IPythhon
+=========================================
+
+We are thrilled to announce that in August 2013, Microsoft has completed a
+donation of $100,000 to sponsor IPython's continued development.  This donation
+was received through NumFOCUS_
+
+IPython
+
+.. include:: links.txt
