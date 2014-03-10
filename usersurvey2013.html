@@ -1,0 +1,421 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38683231-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>IPython User Survey 2013 &mdash; IPython</title>
+    
+    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/ipython.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="IPython" href="index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <div class="logo"><a href="index.html">
+            <img class="logo" src="_static/IPy_header.png" alt="Logo"/>
+          </a></div>
+       
+        <div class="rel">
+          <a href="install.html">Install</a> · 
+<a href="documentation.html">Docs</a> ·
+<a href="videos.html">Videos</a> · 
+<a href="news.html">News</a> · 
+<a href="citing.html">Cite</a> ·
+<a href="sponsors.html">Sponsors</a> ·
+<a href="donate.html">Donate</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+             
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"> 
+<div class="sidebarblock">
+    <div id="cse-search-form" style="width: 100%;">Loading</div>
+
+    <script src="http://www.google.co.uk/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">
+        google.load('search', '1', {language : 'en'});
+        google.setOnLoadCallback(function() {
+            var customSearchControl = new google.search.CustomSearchControl(
+                    '017950022472296044740:wfr9nyfshwo');
+
+            customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+            var options = new google.search.DrawOptions();
+            options.enableSearchboxOnly("searchresults.html");
+            customSearchControl.draw('cse-search-form', options);
+        }, true);
+    </script>
+    <link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css" /> <style type="text/css">
+        input.gsc-input {
+            border-color: #BCCDF0;
+        }
+        input.gsc-search-button {
+            border-color: #666666;
+            background-color: #CECECE;
+            padding: 0;
+        }
+        div.sphinxsidebar input[type="text"] {
+            width: 100%;
+        }
+        div.sphinxsidebar input[type="submit"] {
+            width: 100%;
+        }
+    </style>
+</div>
+<div class="sidebarblock">
+<h3>Versions</h3>
+
+<div class="tile"><h4>Stable</h4>
+     1.2.1 &ndash; February 2014<br/>
+    <a href="install.html">Install</a>
+</div>
+
+<div class="tile"><h4>Development</h4>
+    2.0.dev<br/>
+    <a href="https://github.com/ipython/ipython">Github</a>
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<div class="sidebarblock">
+<h3>Notebook Viewer</h3>
+
+Share your notebooks
+
+<div class="nbviewer-thm-random">
+  <script src="_static/nbviewer_thm.js"></script>
+  <script type="text/javascript">
+    nbviewer_random_thumbnail();
+  </script>
+	       
+</div> 
+</div>
+
+<div class="sidebarblock">
+<h3>Community</h3>
+
+  <ul class="simple">
+    <li><a class="reference external" href="http://www.hipchat.com/ghSp7E1uY">
+            Help Chat Room</a></li>
+    <li><a class="reference external" href="http://stackoverflow.com/questions/tagged/ipython">
+            Stack Overflow</a></li>
+    <li><a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-dev">
+            Mailing list</a></li>
+    <li><a class="reference external" href="https://github.com/ipython/ipython/wiki">Wiki</a></li>
+    <li><a class="reference external" href="http://www.reddit.com/r/IPython">
+            Reddit</a></li>
+    <li><a class="reference external" href="https://github.com/ipython/ipython/issues">
+            File a bug</a></li>
+  </ul>
+
+<div style="margin-top:10px">  <!-- sharing buttons -->
+  <!-- twitter -->
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ipython.org" data-text="IPython - interactive computing." data-via="ipythondev" data-hashtags="ipython" data-dnt="true">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  <!-- google+ -->
+<g:plusone size="medium" annotation="none"></g:plusone>
+</div><!-- sharing buttons -->
+
+</div>
+
+
+<div class="sidebarblock">
+<h3>Book</h3>
+
+<a href="http://www.packtpub.com/learning-ipython-for-interactive-computing-and-data-visualization/book"><img src="_static/ipython-book.jpg"
+title="Packt Publishing donates a portion of the proceeds from this book to
+support IPython's development." > </a>
+
+</div>
+
+
+<div class="sidebarblock">
+  <h3>For developers</h3>
+  <ul class="simple">
+    <li><a class="reference external" href="http://www.hipchat.com/ghtNzvmfC">
+            Development Chat Room</a></li>
+    <li><a class="reference external"
+    href="https://github.com/ipython/ipython/wiki/Dev:-Index">Development information</a></li>
+    <li><a class="reference external" href="https://jenkins.shiningpanda.com/ipython/">
+        Shining Panda</a></li>
+    <li><a class="reference external" href="http://travis-ci.org/#!/ipython/ipython">
+        Travis CI</a></li>
+  </ul>          
+</div>
+
+<div class="sidebarblock">
+
+  <div class="tile" id="donate">
+    <h4>Support IPython</h4>
+
+    <center>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="hosted_button_id" value="SMCAHLP2ST42G">
+    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+    </form>
+    
+    </center>
+    <a href="donate.html">Find out more...</a>
+
+  </div>
+</div>
+        </div>
+      </div>
+        
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="ipython-user-survey-2013">
+<h1>IPython User Survey 2013<a class="headerlink" href="#ipython-user-survey-2013" title="Permalink to this headline">¶</a></h1>
+<p>The full responses, and summaries of responses to some questions, are available
+as <a class="reference external" href="https://docs.google.com/spreadsheet/pub?key=0AqIElKUDQl8tdHF2WmlKdTZTRlZVRGFGTDgtUXFBVUE&amp;output=html">a Google Spreadsheet</a>.</p>
+<div class="section" id="countries">
+<h2>Countries<a class="headerlink" href="#countries" title="Permalink to this headline">¶</a></h2>
+<p>42% of respondents were in the USA, followed by the UK (7.1%) and Germany (6.7%).
+These numbers are largely similar to the last user survey, two years ago, but
+the diversity of countries in the &#8216;tail&#8217; has increased. In total, respondents
+came from 48 countries (in descending order of frequency):</p>
+<p>USA, UK, Germany, France, Brazil, Canada, Spain, Argentina, Belgium, Netherlands,
+Austria, Australia, Norway, Colombia, Russia, Mexico, Italy, Czech Republic,
+India, Bermuda, Ireland, Denmark, New Zealand, Romania, Serbia, Singapore, Chile,
+Vietnam, Croatia, Switzerland, Portugal, China, Taiwan, Maldives, Ecuador,
+Israel, El Salvador, Slovenia, Thailand, Poland, Finland, Belarus, Estonia,
+Egypt, South Africa, Peru, Greece, Japan</p>
+<a class="reference internal image-reference" href="_images/countries1.png"><img alt="_images/countries1.png" src="_images/countries1.png" style="width: 697.5px; height: 459.0px;" /></a>
+<p>See the &#8216;Countries&#8217; sheet of the results spreadsheet for the cleaned data.</p>
+</div>
+<div class="section" id="ipython-versions">
+<h2>IPython versions<a class="headerlink" href="#ipython-versions" title="Permalink to this headline">¶</a></h2>
+<p>We see a rapid changeover - IPython 1.0 was released while the survey was
+running, and by the end of the survey, more people reported using 1.0 than
+0.13, the previous release. Very few people were using older releases, although
+two people mentioned using the 0.8 series.</p>
+<p>The survey respondents are probably biased towards people who actively update
+IPython to newer versions, so we can assume that a greater proportion of the
+total population of users are on older versions. Nonetheless, the take up rates
+are encouraging.</p>
+<img alt="_images/ipy_versions.png" src="_images/ipy_versions.png" />
+</div>
+<div class="section" id="ipython-components">
+<h2>IPython components<a class="headerlink" href="#ipython-components" title="Permalink to this headline">¶</a></h2>
+<p>The notebook was the most popular component, with 84% saying they use it, followed
+by the classic terminal interface (76%). The Qt console was the least used
+interface (27%).</p>
+<p>Over half of respondents use pylab (55%). 16% use the parallel computing framework
+in IPython.</p>
+<p>Other components that people mentioned include nbconvert, nbviewer, rmagic
+and traitlets. We should include some of these in future surveys.</p>
+<img alt="_images/components.png" src="_images/components.png" />
+</div>
+<div class="section" id="platforms">
+<h2>Platforms<a class="headerlink" href="#platforms" title="Permalink to this headline">¶</a></h2>
+<p>These results were similar to the previous survey. Linux was the most popular
+operating system (81%), while roughly equal numbers use Windows (34%) and Mac
+(39%). Of the cloud platforms, only Amazon EC2 has any significant usage, with
+6% of respondents.</p>
+<p>Minor platforms: two people listed Wakari here (others listed it under embedding
+products). Two people use Microsoft Azure. FreeBSD, AIX, Rackspace and Raspberry
+Pi were each mentioned once.</p>
+<img alt="_images/platforms1.png" src="_images/platforms1.png" />
+</div>
+<div class="section" id="python-versions">
+<h2>Python versions<a class="headerlink" href="#python-versions" title="Permalink to this headline">¶</a></h2>
+<p>As expected, Python 2.7 is the most widely used release (97%). However, a
+significant fraction (22%) have also used IPython with Python 3.3. 7% of users
+still use Python 2.6, and 4% use 3.2 - we will be dropping support for both of
+these versions in IPython 2.0. Very few are on even older versions.</p>
+<img alt="_images/py_versions.png" src="_images/py_versions.png" />
+</div>
+<div class="section" id="projects-integrating-ipython">
+<h2>Projects integrating IPython<a class="headerlink" href="#projects-integrating-ipython" title="Permalink to this headline">¶</a></h2>
+<p>59 people (13%) reported using IPython with the <a class="reference external" href="http://code.google.com/p/spyderlib/">Spyder IDE</a>.
+Anecdotally, we have seen more people using Spyder in Europe than in North America,
+and the results somewhat support this. Although the US was still the largest single
+country among users of IPython and Spyder, it accounted for only 20% of
+the users, less than the 42% from the US in the whole survey.</p>
+<p>Projects integrating IPython with the two heavyweight editors, vim and emacs,
+have 12 and 10 users respectively. A long list of other integrations included
+editors, Python packages and hosted services on the web, but only a few
+respondents mentioned each one.</p>
+<p>See the &#8216;Integration&#8217; sheet of the results spreadsheet for the cleaned data.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>No one installation method dominated. The leading techniques were pip/easy_install
+(48%), Linux distribution repositories (44%) and Python distributions (38%).</p>
+<img alt="_images/installation.png" src="_images/installation.png" />
+</div>
+<div class="section" id="support-resources">
+<h2>Support resources<a class="headerlink" href="#support-resources" title="Permalink to this headline">¶</a></h2>
+<p>Almost all users (91%) report using the online documentation, highlighting the
+importance of keeping this up to date. Stackoverflow is also very important (68%).
+In contrast, only 3% of respondents have used our Hipchat chat rooms - though
+these are quite new, so people may not be aware of them yet.</p>
+<img alt="_images/help_resources.png" src="_images/help_resources.png" />
+</div>
+<div class="section" id="role">
+<h2>Role<a class="headerlink" href="#role" title="Permalink to this headline">¶</a></h2>
+<p>Once again, many of our users are in academia (65%), but we also have a
+significant group of users in industry (38%) and &#8216;hobby&#8217; usage (37%), i.e. people
+using IPython outside their jobs. These numbers are not directly comparable to
+the last survey, because last time, the categories were taken from a free text
+answer.</p>
+<p>24% of respondents also said they were using IPython in education. In the future,
+we could break this down more to look at teaching and learning.</p>
+<img alt="_images/role.png" src="_images/role.png" />
+</div>
+<div class="section" id="use-cases">
+<h2>Use cases<a class="headerlink" href="#use-cases" title="Permalink to this headline">¶</a></h2>
+<p>People&#8217;s descriptions of the projects where they use IPython were many and varied.
+A few specific highlights include modelling quantum computing systems (row 93 in the results spreadsheet),
+computer vision (162), phylogenetic relationships of languages (201), e-Democracy
+(261), pressure measurements under animals&#8217; feet (423), and processing data from
+particle colliders (195) and gamma ray telescopes (454).</p>
+<p>Grouping the responses, people are using IPython in at least these areas:</p>
+<ul class="simple">
+<li>Finance/economics</li>
+<li>Bioinformatics</li>
+<li>Neuroscience</li>
+<li>Chemistry</li>
+<li>Astronomy</li>
+<li>Physics</li>
+</ul>
+<p>And in these ways:</p>
+<ul class="simple">
+<li>Machine learning</li>
+<li>Data cleaning</li>
+<li>Writing papers</li>
+<li>Developing other application and libraries</li>
+<li>Matlab replacement</li>
+</ul>
+</div>
+<div class="section" id="suggestions-box">
+<h2>Suggestions box<a class="headerlink" href="#suggestions-box" title="Permalink to this headline">¶</a></h2>
+<p>Categorised suggestions are listed on the &#8216;Suggestions&#8217; sheet of the result
+spreadsheet. Some responses were split into multiple suggestions.</p>
+<p>A number of themes appeared:</p>
+<ul class="simple">
+<li>nbconvert: Already much improved since the survey, and we continue to improve it.</li>
+<li>File navigation, notebooks in different directories: Coming in IPython 2!</li>
+<li>Widgets: Coming in IPython 2!</li>
+<li>Interactive plots: Various projects are exploring this, and the new widget
+machinery in IPython 2 will provide a foundation for further work.</li>
+<li>Variable explorer: One can be built on top of the widget framework.</li>
+<li>Keyboard shortcuts: Much improved, and much more customisable, in IPython 2.</li>
+<li>JS API: IPython 2 has an &#8216;nbextension&#8217; system, and the Javascript API is
+gradually becoming more stable.</li>
+<li>Better ways to deal with long notebooks: On the radar for IPython 3.</li>
+<li>Integration with other languages: IPython 3 will take a big step by integrating
+multiple kernel types into the UI.</li>
+<li>Multi-user support: A multi-user server is a goal for IPython 3. Other projects
+like Jiffylab and IPydra provide another model of multi-user server.</li>
+<li>Docs: We&#8217;re improving them, but we could still do better.</li>
+<li>Parallel: ipcluster&#8217;s launchers are in need of various improvements. We
+plan to rewrite the ipcluster script as an RPC service, which should improve
+many of these cases, especially SSH. The documentation could also use a lot of
+attention, especially because there were several requests for features that already exist.</li>
+<li>Security: After long discussion, we have created a new security model for
+IPython 2.</li>
+<li>Installation: We point new users to Anaconda, which is one download including
+Python, IPython, numpy, and many other packages. We know installation can be
+painful, but we don&#8217;t know how to solve this well at the moment.</li>
+<li>Hiding cells: We plan to add options for this to nbconvert. We&#8217;re also planning
+a way to tag cells in the notebook UI, which could be used to control what
+nbconvert shows.</li>
+<li>Concurrent editing: On the radar, but some way off. We need to get multi-user
+sorted out first.</li>
+<li>Python 3 support: I (Thomas) use Python 3 daily, and I&#8217;ll keep improving docs,
+examples, etc.</li>
+<li>Editor features: We are enabling CodeMirror features like bracket matching.
+Features like refactoring tools and static analysis should be possible to write
+as extensions.</li>
+<li>Sphinx integration: On the radar. The yt project has done some work on this.</li>
+<li>Slideshows: Exporting to static slides with nbconvert has been improved since
+1.0, and there&#8217;s ongoing development of an extension to present live,
+executable notebooks as slides.</li>
+<li>Integration with version control: No current plans.</li>
+<li>Debugger: No current plans.</li>
+</ul>
+</div>
+<div class="section" id="other-comments">
+<h2>Other comments<a class="headerlink" href="#other-comments" title="Permalink to this headline">¶</a></h2>
+<p>Categorised comments are listed on the &#8216;Comments&#8217; sheet of the result
+spreadsheet.</p>
+<p>Thank-you to everyone who used the comments or suggestions fields to thank
+or compliment us. We honestly weren&#8217;t fishing for complements when we wrote the
+survey.</p>
+<p>A few more people wanted better documentation - see the section above.</p>
+<p>Other than that, there was no theme apparent in the comments. All of them have
+been read. If you want to follow up, please get in touch with us - the survey was
+anonymous, so we can&#8217;t get in touch with you.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+    </div>
+    </div>
+
+    <div class="footer-wrapper">
+      
+    <div class="footer">
+        &copy; Copyright the IPython development team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+    </div>
+
+  </body>
+</html>
