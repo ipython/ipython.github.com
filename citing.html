@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -26,7 +27,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -168,9 +169,23 @@ Share your notebooks
 <div class="sidebarblock">
 <h3>Book</h3>
 
-<a href="http://www.packtpub.com/learning-ipython-for-interactive-computing-and-data-visualization/book"><img src="_static/ipython-book.jpg"
+<a href="books.html"><img
 title="Packt Publishing donates a portion of the proceeds from this book to
-support IPython's development." > </a>
+support IPython's development." width="160" height="200" id="sidebar-book-cover"
+style="margin-bottom: 10px;"></a>
+<script language="javascript">
+  window.onload = function() {
+    var x = Math.random();
+    var img;
+    if (x < 0.333) {
+      url = "_static/ipython-book.jpg";
+    }
+    else {
+      url = "_static/ipython-cookbook.jpg";
+    }
+    $("#sidebar-book-cover").attr("src", url);
+  }
+</script>
 
 </div>
 
@@ -222,8 +237,8 @@ support IPython's development." > </a>
 please acknowledge that fact by citing the project.  As of now, the canonical
 academic reference for IPython is <a class="reference external" href="http://fperez.org/papers/ipython07_pe-gr_cise.pdf">this paper</a>, for which here are both
 a BibTex and a plaintext reference you can use:</p>
-<div class="highlight-python"><div class="highlight"><pre>@Article{PER-GRA:2007,
-  Author    = {P\&#39;erez, Fernando and Granger, Brian E.},
+<div class="highlight-python"><pre>@Article{PER-GRA:2007,
+  Author    = {P\'erez, Fernando and Granger, Brian E.},
   Title     = {{IP}ython: a System for Interactive Scientific Computing},
   Journal   = {Computing in Science and Engineering},
   Volume    = {9},
@@ -231,12 +246,11 @@ a BibTex and a plaintext reference you can use:</p>
   Pages     = {21--29},
   month     = may,
   year      = 2007,
-  url       = &quot;http://ipython.org&quot;,
-  ISSN      = &quot;1521-9615&quot;,
+  url       = "http://ipython.org",
+  ISSN      = "1521-9615",
   doi       = {10.1109/MCSE.2007.53},
   publisher = {IEEE Computer Society},
-}
-</pre></div>
+}</pre>
 </div>
 <p>or in plaintext:</p>
 <blockquote>
@@ -259,7 +273,7 @@ pp. 21-29, May/June 2007, doi:10.1109/MCSE.2007.53. URL: http://ipython.org</div
       
     <div class="footer">
         &copy; Copyright the IPython development team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
     </div>
 
