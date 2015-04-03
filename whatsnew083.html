@@ -37,7 +37,7 @@
     <link rel="top" title="IPython" href="index.html" />
     <link rel="prev" title="WhatsNew082" href="whatsnew082.html" /> 
   </head>
-  <body>
+  <body role="document">
     <div class="header-wrapper">
       <div class="header">
           <div class="logo"><a href="index.html">
@@ -60,7 +60,7 @@
       <div class="content">
              
             
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper"> 
 <div class="sidebarblock">
     <div id="cse-search-form" style="width: 100%;">Loading</div>
@@ -99,7 +99,7 @@
 <h3>Versions</h3>
 
 <div class="tile"><h4>Stable</h4>
-     3.0 &ndash; February 2015<br/>
+     3.1 &ndash; April 2015<br/>
     <a href="install.html">Install</a>
 </div>
 
@@ -227,7 +227,7 @@ style="margin-bottom: 10px;"></a>
             
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="new-features-in-0-8-3">
 <h1>New features in 0.8.3<a class="headerlink" href="#new-features-in-0-8-3" title="Permalink to this headline">¶</a></h1>
@@ -250,8 +250,8 @@ deadlocks. IPython also recovers from deadlock within few seconds if it happens,
 </li>
 <li><p class="first">New command line arguments:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">-pydb</span></tt> to tell ipython to use pydb as the default debugger (it is no longer assumed when pydb is installed)</li>
-<li><tt class="docutils literal"><span class="pre">-twisted</span></tt> installs a twisted reactor in IPython process, where all entered commands are run in a deferred twisted call.
+<li><code class="docutils literal"><span class="pre">-pydb</span></code> to tell ipython to use pydb as the default debugger (it is no longer assumed when pydb is installed)</li>
+<li><code class="docutils literal"><span class="pre">-twisted</span></code> installs a twisted reactor in IPython process, where all entered commands are run in a deferred twisted call.
 This ensures that everything, apart from input IPython line entry, occurs in same thread.</li>
 </ul>
 </li>
@@ -298,9 +298,9 @@ Recommended if you have used &#8220;bzr shell&#8221; from bzrtools previously.</
 
     <div class="footer-wrapper">
       
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright the IPython development team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
     </div>
 

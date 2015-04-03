@@ -38,7 +38,7 @@
     <link rel="next" title="New features in 0.8.3" href="whatsnew083.html" />
     <link rel="prev" title="Videos and Screencasts" href="videos.html" /> 
   </head>
-  <body>
+  <body role="document">
     <div class="header-wrapper">
       <div class="header">
           <div class="logo"><a href="index.html">
@@ -61,7 +61,7 @@
       <div class="content">
              
             
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper"> 
 <div class="sidebarblock">
     <div id="cse-search-form" style="width: 100%;">Loading</div>
@@ -100,7 +100,7 @@
 <h3>Versions</h3>
 
 <div class="tile"><h4>Stable</h4>
-     3.0 &ndash; February 2015<br/>
+     3.1 &ndash; April 2015<br/>
     <a href="install.html">Install</a>
 </div>
 
@@ -228,7 +228,7 @@ style="margin-bottom: 10px;"></a>
             
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="whatsnew082">
 <h1>WhatsNew082<a class="headerlink" href="#whatsnew082" title="Permalink to this headline">¶</a></h1>
@@ -255,7 +255,7 @@ ipythonrc-scipy.</li>
 <li>new extensions:<ul>
 <li>ipy_traits_completer.py: complete Traits attributes</li>
 <li>ipy_legacy.py: enable deprecated features</li>
-<li>mglob.py: enhanced globbing - <tt class="docutils literal"><span class="pre">%mglob</span> <span class="pre">!.svn/</span> <span class="pre">rec:*.py</span></tt></li>
+<li>mglob.py: enhanced globbing - <code class="docutils literal"><span class="pre">%mglob</span> <span class="pre">!.svn/</span> <span class="pre">rec:*.py</span></code></li>
 <li>ipy_exportdb.py: create a portable .py file from your %store&#8217;d macros,
 aliases, strings and bookmarks for distribution. <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/IpyExportDb">See cookbook</a> .</li>
 <li>ipy_render.py: win32: render templates using Itpl format to clipboard
@@ -316,9 +316,9 @@ readline support itself.  We&#8217;re investigating the issue.</li>
 
     <div class="footer-wrapper">
       
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright the IPython development team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
     </div>
 
