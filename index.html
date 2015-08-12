@@ -99,12 +99,12 @@
 <h3>Versions</h3>
 
 <div class="tile"><h4>Stable</h4>
-     3.2 &ndash; June 2015<br/>
+     4.0 &ndash; August 2015<br/>
     <a href="install.html">Install</a>
 </div>
 
 <div class="tile"><h4>Development</h4>
-    4.0.dev<br/>
+    4.1.dev<br/>
     <a href="https://github.com/ipython/ipython">GitHub</a>
 </div>
 
@@ -229,24 +229,14 @@ style="margin-bottom: 10px;"></a>
             
   <p>IPython provides a rich architecture for interactive computing with:</p>
 <ul class="simple">
-<li>Powerful interactive shells (terminal and <a class="reference external" href="http://ipython.org/ipython-doc/stable/interactive/qtconsole.html">Qt-based</a>).</li>
-<li>A browser-based <a class="reference external" href="notebook.html">notebook</a> with support for code, rich text, mathematical
-expressions, inline plots and other rich media.</li>
+<li>A powerful interactive shell.</li>
+<li>A kernel for <a class="reference external" href="https://jupyter.org">Jupyter</a>.</li>
 <li>Support for interactive data visualization and use of <a class="reference external" href="http://ipython.org/ipython-doc/stable/interactive/reference.html#gui-event-loop-support">GUI toolkits</a>.</li>
 <li>Flexible, <a class="reference external" href="http://ipython.org/ipython-doc/stable/interactive/reference.html#embedding-ipython">embeddable</a> interpreters to load into your own projects.</li>
 <li>Easy to use, high performance tools for <a class="reference external" href="http://ipython.org/ipython-doc/stable/parallel/parallel_intro.html">parallel computing</a>.</li>
 </ul>
 <a class="reference external image-reference" href="_static/ipy_0.13.png"><img alt="IPython clients" src="_images/ipy_0.13.png" style="width: 400px;" /></a>
-<p>While the focus of the project is Python, our architecture is designed in a
-language-agnostic way to facilitate interactive computing in any language.  An
-interactive kernel speaks to clients such as the terminal or web notebook via a
-well-specified <a class="reference external" href="http://ipython.org/ipython-doc/stable/development/messaging.html">protocol</a>, and all features of a kernel are available to all
-clients.  We ship the official IPython kernel, but kernels for other languages
-such as <a class="reference external" href="https://github.com/JuliaLang/IJulia.jl">Julia</a> and <a class="reference external" href="https://github.com/gibiansky/IHaskell">Haskell</a> are actively developed and used.
-Additionally, the IPython kernel supports multi-language
-integration, letting you for example mix Python code with <a class="reference external" href="http://docs.cython.org/src/quickstart/build.html#using-the-ipython-notebook">Cython</a>, <a class="reference external" href="http://rpy.sourceforge.net/rpy2/doc-2.4/html/interactive.html#module-rpy2.ipython.rmagic">R</a>, <a class="reference external" href="http://nbviewer.ipython.org/github/blink1073/oct2py/blob/master/example/octavemagic_extension.ipynb">Octave</a>,
-and scripting in <a class="reference external" href="http://nbviewer.ipython.org/github/ipython/ipython/blob/master/examples/IPython%20Kernel/Script%20Magics.ipynb">Bash, Perl or Ruby</a>.</p>
-<p>To get started with the IPython Notebook, see our <a class="reference external" href="http://nbviewer.ipython.org/github/ipython/ipython/blob/master/examples/Index.ipynb">official example
+<p>To get started with IPython in the Jupyter Notebook, see our <a class="reference external" href="http://nbviewer.ipython.org/github/ipython/ipython/blob/master/examples/Index.ipynb">official example
 collection</a>.  Our <a class="reference external" href="https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks">notebook gallery</a> is an excellent way to see the many
 things you can do with IPython while learning about a variety of topics, from
 basic programming to advanced statistics or quantum mechanics.</p>
@@ -260,18 +250,19 @@ Python 2.6 and 3.2.</p>
 <div class="section" id="jupyter-and-the-future-of-ipython">
 <h1>Jupyter and the future of IPython<a class="headerlink" href="#jupyter-and-the-future-of-ipython" title="Permalink to this headline">¶</a></h1>
 <p>IPython is a growing project, with increasingly language-agnostic components.
-IPython 3.x will be the last monolithic release of IPython,
-containing the notebook server, qtconsole, etc. The language-agnostic parts of the project:
+IPython 3.x was the last monolithic release of IPython,
+containing the notebook server, qtconsole, etc.
+As of IPython 4.0, the language-agnostic parts of the project:
 the notebook format, message protocol, qtconsole, notebook web application, etc.
-will move to new projects under the name <a class="reference external" href="https://jupyter.org">Jupyter</a>.
-IPython itself will return to being focused on interactive Python,
-part of which will be providing a Python kernel for Jupyter.
-IPython 3.0 contains some indications of the project transition,
-including the logo in the notebook web UI being that of Jupyter.</p>
+have moved to new projects under the name <a class="reference external" href="https://jupyter.org">Jupyter</a>.
+IPython itself is focused on interactive Python,
+part of which is providing a Python kernel for Jupyter.</p>
 </div>
 <div class="section" id="announcements">
 <h1>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
+<li><strong>IPython 4.0</strong>: We are pleased to announce the availability of IPython 4.0,
+aka The Big Split, splitting the monolithic IPython repo into smaller subpackages.</li>
 <li><strong>IPython 3.0</strong>: We are pleased to announce the availability of IPython 3.0,
 a major new release featuring integrated support for multiple languages, along
 with lots of smaller new features and bugfixes.
