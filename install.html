@@ -204,32 +204,30 @@ style="margin-bottom: 10px;"></a>
 <h1>Installing IPython<a class="headerlink" href="#installing-ipython" title="Permalink to this headline">¶</a></h1>
 <p>There are multiple ways of installing IPython. This page contains simplified installation
 instructions that should work for most users. Our official documentation
-contains <a class="reference external" href="http://ipython.org/ipython-doc/stable/install/install.html">detailed instructions</a>
+contains <a class="reference external" href="https://ipython.readthedocs.org/en/stable/install/install.html">more detailed instructions</a>
 for manual installation targeted at advanced users and developers.</p>
+<p>If you are looking for installation documentation for the notebook and/or qtconsole,
+those are now part of <a class="reference external" href="https://jupyter.readthedocs.org/en/latest/install.html">Jupyter</a>.</p>
 <div class="section" id="i-already-have-python">
 <h2>I already have Python<a class="headerlink" href="#i-already-have-python" title="Permalink to this headline">¶</a></h2>
 <p>If you already have Python installed and are familiar with installing packages, you can get IPython with <strong class="command">pip</strong>:</p>
 <div class="highlight-python"><div class="highlight"><pre>pip install ipython
 </pre></div>
 </div>
-<p>Or if you want to also get the dependencies for the IPython notebook:</p>
-<div class="highlight-python"><div class="highlight"><pre>pip install &quot;ipython[notebook]&quot;
-</pre></div>
-</div>
 </div>
 <div class="section" id="i-am-getting-started-with-python">
 <h2>I am getting started with Python<a class="headerlink" href="#i-am-getting-started-with-python" title="Permalink to this headline">¶</a></h2>
 <p>For new users who want to install a full Python environment for scientific computing and
-data science, we suggest installing the Anaconda or Canopy Python distributions, which provide Python 2.7, IPython and all of its dependences as well as a complete set of open source packages
+data science, we suggest installing the Anaconda or Canopy Python distributions, which provide Python, IPython and all of its dependences as well as a complete set of open source packages
 for scientific computing and data science.</p>
 <ol class="arabic simple">
-<li>Download and install Continuum&#8217;s <a class="reference external" href="http://continuum.io/downloads.html">Anaconda</a> or the free edition of Enthought&#8217;s <a class="reference external" href="https://www.enthought.com/downloads/">Canopy</a>.</li>
+<li>Download and install Continuum&#8217;s <a class="reference external" href="https://www.continuum.io/downloads">Anaconda</a> or the free edition of Enthought&#8217;s <a class="reference external" href="https://www.enthought.com/downloads/">Canopy</a>.</li>
 <li>Update IPython to the current version using the Terminal:</li>
 </ol>
 <blockquote>
 <div><p>Anaconda:</p>
 <div class="highlight-python"><div class="highlight"><pre>conda update conda
-conda update ipython ipython-notebook ipython-qtconsole
+conda update ipython
 </pre></div>
 </div>
 <p>Enthought Canopy:</p>
@@ -242,7 +240,7 @@ conda update ipython ipython-notebook ipython-qtconsole
 <span id="id1"></span><h2>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">¶</a></h2>
 <p>You can manually download IPython from  <a class="reference external" href="http://github.com/ipython/ipython/releases">GitHub</a> or <a class="reference external" href="http://pypi.python.org/pypi/ipython">PyPI</a>.  To install one of these versions, unpack it and run
 the following from the top-level source directory using the Terminal:</p>
-<div class="highlight-python"><div class="highlight"><pre>python setup.py install
+<div class="highlight-python"><div class="highlight"><pre>pip install .
 </pre></div>
 </div>
 </div>
