@@ -15,7 +15,7 @@
       ga('create', 'UA-38683231-1', 'auto');
       ga('send', 'pageview');
     </script>
-    <title>The IPython Notebook &mdash; IPython</title>
+    <title>The Jupyter Notebook &mdash; IPython</title>
     
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -262,79 +262,15 @@ style="margin-bottom: 10px;"></a>
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="the-ipython-notebook">
-<span id="notebook"></span><h1>The IPython Notebook<a class="headerlink" href="#the-ipython-notebook" title="Permalink to this headline">¶</a></h1>
-<p>The IPython Notebook is an interactive computational environment, in which you
-can combine code execution, rich text, mathematics, plots and rich media, as
-shown in this example session:</p>
-<div align="center"><a class="reference external image-reference" href="_static/sloangrant/9_home_fperez_prof_grants_1207-sloan-ipython_proposal_fig_ipython-notebook-specgram.png"><img alt="The IPython notebook with embedded rich text, code, mathematics and figures." src="_images/9_home_fperez_prof_grants_1207-sloan-ipython_proposal_fig_ipython-notebook-specgram.png" style="width: 350px;" /></a>
-</div><p>It aims to be an agile tool for both exploratory computation and data analysis,
-and provides a platform to support <strong>reproducible research</strong>, since all inputs
-and outputs may be stored in a one-to-one way in notebook documents.</p>
-<p>There are two components:</p>
-<ul class="simple">
-<li>The <strong>IPython Notebook</strong> web application, for interactive authoring of literate computations, in which explanatory text, mathematics, computations and rich media output may be combined. Input and output are stored in persistent cells that may be edited in-place.</li>
-<li>Plain text documents, called <strong>notebooks</strong>, for recording and distributing the results of the rich computations.</li>
-</ul>
-<p>The Notebook app automatically saves the current state of the computation in
-the web browser to the corresponding notebook, which is just a standard text
-file with the extension <code class="docutils literal"><span class="pre">.ipynb</span></code>, stored in a working directory on your
-computer. This file can be easily put under version control and shared with
-colleagues.</p>
-<p>Despite the fact that the notebook documents are plain text files, they use
-the JSON format in order to store a <strong>complete</strong>, <strong>reproducible</strong> copy of the
-current state of the computation inside the Notebook app.</p>
-<div class="section" id="features-of-the-ipython-notebook-web-app">
-<h2>Features of the IPython Notebook web app<a class="headerlink" href="#features-of-the-ipython-notebook-web-app" title="Permalink to this headline">¶</a></h2>
-<p>Some of the main features of the IPython Notebook app include:</p>
-<ul class="simple">
-<li>Display rich data representations (e.g. HTML / LaTeX / SVG) in the browser as a result of computations.</li>
-<li>Compose rich text using <a class="reference external" href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> and HTML.</li>
-<li>Include mathematical equations, rendered directly in the browser by <a class="reference external" href="http://mathjax.org">MathJax</a>.</li>
-<li>Import standard Python scripts.</li>
-<li>In-browser editing, syntax highlighting, tab completion and autoindentation.</li>
-<li>Inline figures rendered by the <a class="reference external" href="http://matplotlib.org">matplotlib</a> library with publication quality, in a range of formats (SVG / PDF / PNG).</li>
-</ul>
-<p>If you have ever used the Mathematica or SAGE notebooks (the latter is also
-<a class="reference external" href="http://sagenb.org">web-based</a>) you should feel right at home.  If you have not, you will be
-able to learn how to use the IPython Notebook in just a few minutes.</p>
+  <div class="section" id="the-jupyter-notebook">
+<span id="notebook"></span><h1>The Jupyter Notebook<a class="headerlink" href="#the-jupyter-notebook" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="formerly-known-as-the-ipython-notebook">
+<h2>(Formerly known as the IPython Notebook)<a class="headerlink" href="#formerly-known-as-the-ipython-notebook" title="Permalink to this headline">¶</a></h2>
+<p>The IPython Notebook is now known as the Jupyter Notebook. It is an interactive
+computational environment, in which you can combine code execution, rich text,
+mathematics, plots and rich media. For more details on the Jupyter Notebook,
+please see the <a class="reference external" href="http://jupyter.org/">Jupyter</a> website.</p>
 </div>
-<div class="section" id="notebook-documents">
-<h2>Notebook documents<a class="headerlink" href="#notebook-documents" title="Permalink to this headline">¶</a></h2>
-<p>Notebook documents (or notebooks) are files which record all computations
-carried out and the results obtained in a literate way, including inputs,
-outputs, together with descriptive text and mathematics.</p>
-<p>They are plain text files, which are thus easy to share with colleagues and
-place under version control. But, by using the JSON format, they can record
-all aspects of the computation, including embedding rich media output. The
-standard file extension for notebook documents is <code class="docutils literal"><span class="pre">.ipynb</span></code>.</p>
-<p>Notebooks may easily be <a class="reference external" href="http://ipython.org/ipython-doc/stable/interactive/nbconvert.html">exported</a> to a range of static formats, including HTML
-(for example, for blog posts), PDF and slide shows. Any publicly
-available notebook may be shared via the <a class="reference external" href="http://nbviewer.ipython.org">IPython Notebook Viewer</a> service, which will provide it as a static web
-page. This makes it easy to give your colleagues a document they
-can read immediately without having to install anything.</p>
-<p>To learn more about using the IPython Notebook, you can visit our <a class="reference external" href="http://nbviewer.ipython.org/github/ipython/ipython/blob/2.x/examples/Notebook/Index.ipynb">example
-collection</a>, and you can read the <a class="reference external" href="http://ipython.org/ipython-doc/stable/interactive/notebook.html">documentation</a> for all the details on how
-to use and configure the system. The <a class="reference external" href="https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks">notebook gallery</a> showcases many
-interesting notebooks covering a variety of topics, from basic programming to
-advanced scientific computing.</p>
-<p>Here is a short demo of the IPython Notebook&#8217;s basic features by the
-<a class="reference external" href="http://pybonacci.org">Pybonacci</a> team:</p>
-<div align="center">
-<iframe title="YouTube video player2"
-width="550" height="350"
-src="http://www.youtube.com/embed/H6dLGQw9yFQ"
-frameborder="0" allowfullscreen>
-</iframe></div><br><p>For a thorough introduction to the IPython Notebook, you can check out the
-<em>IPython in Depth</em> tutorial from the <a class="reference internal" href="#scipy-2013">SciPy 2013</a> scientific Python
-conference, led by the two creators of the IPython package, Fernando Pérez
-and Brian Granger:</p>
-<div align="center">
-<iframe title="YouTube video player3"
-<iframe width="560" height="315"
-src="http://www.youtube.com/embed/xe_ATRmw0KM" frameborder="0"
-allowfullscreen></iframe>
-</div><br><span class="target" id="scipy-2013"></span></div>
 </div>
 
 
@@ -350,7 +286,7 @@ allowfullscreen></iframe>
       
     <div class="footer" role="contentinfo">
         &copy; Copyright the IPython development team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.
     </div>
     </div>
 
