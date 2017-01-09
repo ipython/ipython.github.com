@@ -277,40 +277,11 @@ style="margin-bottom: 10px;"></a>
             
   <div class="section" id="pyreadline">
 <h1><strong>PyReadline</strong><a class="headerlink" href="#pyreadline" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="pyreadline-a-ctypes-based-readline-for-windows">
-<h2>PyReadline: a ctypes-based readline for Windows<a class="headerlink" href="#pyreadline-a-ctypes-based-readline-for-windows" title="Permalink to this headline">¶</a></h2>
-<p>pyreadline is based on UNC readline by Gary Bishop and its development is now
-led by Jörgen Stenarson.  The following new features have been added over the
-original UNC readline:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Support for international characters (if you have the correct codepage active)</li>
-<li>Copy and paste using the clipboard</li>
-<li>Smart paste for convenient use with ipython. Converting tab separated data
-to python list or numpy array. Converting file paths to use / and escaping
-any spaces using .</li>
-<li>Pasting of multiline code removing empty lines</li>
-<li>System bell is disabled by default, can be activated in config file.</li>
-</ul>
-</div></blockquote>
-<p>Note: UNC readline is not being developed further by Gary, and PyReadline can
-be considered the continuation of that project. This was done in full agreement
-with Gary, given his current development priorities.</p>
-</div>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>You can install PyReadline from <a class="reference external" href="http://pypi.python.org/pypi/pyreadline">PyPI</a>,
-where you can find binary installers and source downloads.</p>
-</div>
-<div class="section" id="mailing-list">
-<h2>Mailing list<a class="headerlink" href="#mailing-list" title="Permalink to this headline">¶</a></h2>
-<p>Questions and bug reports can be directed to the <a class="reference external" href="http://projects.scipy.org/mailman/listinfo/ipython-dev">ipython</a> mailing list.</p>
-</div>
-<div class="section" id="status-and-development">
-<h2>Status and development<a class="headerlink" href="#status-and-development" title="Permalink to this headline">¶</a></h2>
-<p>The current stable release is 1.7.</p>
-<p>Development is hosted at <a class="reference external" href="https://github.com/pyreadline/pyreadline">github</a>. The <a class="reference external" href="https://github.com/pyreadline/pyreadline/issues">issue tracker</a> is hosted there as well.</p>
-</div>
+<p>PyReadline is a Python module providing a readline API on Windows, using ctypes.</p>
+<p>IPython previously used PyReadline to run on Windows, but moved away from it for
+IPython 5.0. PyReadline is not actively developed at the moment (early 2017),
+but you can still find it <a class="reference external" href="http://pypi.python.org/pypi/pyreadline">on PyPI</a>
+and <a class="reference external" href="https://github.com/pyreadline/pyreadline">on GitHub</a>.</p>
 </div>
 
 
@@ -326,7 +297,7 @@ where you can find binary installers and source downloads.</p>
       
     <div class="footer" role="contentinfo">
         &#169; Copyright the IPython development team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
     </div>
     </div>
 
