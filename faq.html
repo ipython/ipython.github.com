@@ -1,7 +1,7 @@
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -40,7 +40,7 @@
     <link rel="next" title="Installing IPython" href="install.html" />
     <link rel="prev" title="Support IPython Development" href="donate.html" /> 
   </head>
-  <body role="document">
+  <body>
     <!-- Flipcause integration: -->
     <script>
     function open_window(cause_id) {
@@ -284,7 +284,7 @@ style="margin-bottom: 10px;"></a>
             
   <div class="section" id="faq">
 <h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
-<p>If your question isn&#8217;t answered below, check <a class="reference external" href="http://ipython.org/ipython-doc/">the docs</a>, then ask on the <a class="reference external" href="http://mail.scipy.org/mailman/listinfo/ipython-dev">mailing list</a>.</p>
+<p>If your question isn’t answered below, check <a class="reference external" href="http://ipython.org/ipython-doc/">the docs</a>, then ask on the <a class="reference external" href="http://mail.scipy.org/mailman/listinfo/ipython-dev">mailing list</a>.</p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><a class="reference internal" href="#can-ipython-run-under-ironpython-pypy-jython-other-python-interpreters" id="id1">Can IPython run under IronPython/PyPy/Jython/other Python interpreters?</a></li>
@@ -311,7 +311,7 @@ which should now work.</p>
 <p><strong>Answer:</strong> This is due to a bug in the readline library from the official builds. There are a few solutions you can take:</p>
 <blockquote>
 <div><ol class="arabic">
-<li><p class="first">Use a different Python version from Apple&#8217;s default (MacPython or Fink have been reported to work)</p>
+<li><p class="first">Use a different Python version from Apple’s default (MacPython or Fink have been reported to work)</p>
 </li>
 <li><p class="first">You can disable in your ipythonrc file the following lines by commenting them out:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">readline_parse_and_bind</span> <span class="s2">&quot;\e[A&quot;</span><span class="p">:</span> <span class="n">history</span><span class="o">-</span><span class="n">search</span><span class="o">-</span><span class="n">backward</span>
@@ -321,7 +321,7 @@ which should now work.</p>
 </li>
 </ol>
 </div></blockquote>
-<p>You will lose searching in your history with the arrow keys, but at least Python won&#8217;t crash.</p>
+<p>You will lose searching in your history with the arrow keys, but at least Python won’t crash.</p>
 </div>
 <div class="section" id="does-ipython-play-well-with-windows">
 <h2>Does IPython play well with Windows?<a class="headerlink" href="#does-ipython-play-well-with-windows" title="Permalink to this headline">¶</a></h2>
@@ -332,7 +332,7 @@ the installation documentation</a>.</p>
 <h2>What is the best way to install IPython?<a class="headerlink" href="#what-is-the-best-way-to-install-ipython" title="Permalink to this headline">¶</a></h2>
 <p>See <a class="reference external" href="http://ipython.org/ipython-doc/stable/install/install.html#installing-ipython-itself">the installation documentation</a> for full details.</p>
 <p>The standard Python installation mechanisms (<code class="docutils literal"><span class="pre">setup.py</span></code>, <code class="docutils literal"><span class="pre">pip</span></code> or <code class="docutils literal"><span class="pre">easy_install</span></code>) all work for installing IPython to use in a terminal. Windows users are best off installing <a class="reference external" href="https://pypi.python.org/pypi/distribute">distribute</a>, then running the .exe installer, to create start menu shortcuts.</p>
-<p>To use the notebook or the Qt console, it&#8217;s easiest to install through a package manager, or download a Python distribution such as <a class="reference external" href="https://store.continuum.io/cshop/anaconda">Anaconda</a> or <a class="reference external" href="https://www.enthought.com/downloads/">Enthought Canopy</a>. Otherwise, you will need to install pyzmq, along with tornado for the notebook, and PyQt4/PySide and pygments for the Qt console.</p>
+<p>To use the notebook or the Qt console, it’s easiest to install through a package manager, or download a Python distribution such as <a class="reference external" href="https://store.continuum.io/cshop/anaconda">Anaconda</a> or <a class="reference external" href="https://www.enthought.com/downloads/">Enthought Canopy</a>. Otherwise, you will need to install pyzmq, along with tornado for the notebook, and PyQt4/PySide and pygments for the Qt console.</p>
 </div>
 </div>
 
@@ -349,7 +349,7 @@ the installation documentation</a>.</p>
       
     <div class="footer" role="contentinfo">
         &#169; Copyright the IPython development team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
     </div>
     </div>
 
