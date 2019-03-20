@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/ipython.css" />
-    <link rel="stylesheet" type="text/css" href="_static/flipcause.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
@@ -30,56 +29,6 @@
     <link rel="next" title="Support IPython Development" href="donate.html" />
     <link rel="prev" title="Citing IPython" href="citing.html" /> 
   </head><body>
-    <!-- Flipcause integration: -->
-    <script>
-    function open_window(cause_id) {
-      var protocol=String(document.location.protocol);
-      var new_url;
-      if(protocol != 'https' || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-        new_url="https://www.flipcause.com/widget/"+cause_id
-        window.open(new_url);
-      }
-      else {
-        document.getElementById("fc-fade").style.display="block";
-        document.getElementById("fc-fade").style.webkitAnimation="backfadesin 1s";
-        document.getElementById("fc-fade").style.animation="backfadesin 1s";
-        document.getElementById("fc-fade").style.mozAnimation="backfadesin 1s";
-        document.getElementById("fc-light").style.display="block";
-        document.getElementById("fc-light").style.webkitAnimation="fadesin 1.5s";
-        document.getElementById("fc-light").style.animation="fadesin 1.5s";
-        document.getElementById("fc-light").style.mozAnimation="fadesin 1.5s";
-        document.getElementById("fc-main").style.display="block";
-        document.getElementById("fc-main").style.webkitAnimation="fadesin 1.5s";
-        document.getElementById("fc-main").style.animation="fadesin 1.5s";
-        document.getElementById("fc-main").style.mozAnimation="fadesin 1.5s";
-        document.getElementById("fc-close").style.display="block";
-        document.getElementById("fc-close").style.webkitAnimation="fadesin 1.5s";
-        document.getElementById("fc-close").style.animation="fadesin 1.5s";
-        document.getElementById("fc-close").style.mozAnimation="fadesin 1.5s";
-        document.getElementById("fc-myFrame").style.display="block";
-        document.getElementById("fc-myFrame").style.webkitAnimation="fadesin 1.5s";
-        document.getElementById("fc-myFrame").style.animation="fadesin 1.5s";
-        document.getElementById("fc-myFrame").style.mozAnimation="fadesin 1.5s";
-        document.getElementById("fc-myFrame").src="https://www.flipcause.com/widget/"+cause_id;
-      }
-    }
-    function close_window() {
-      document.getElementById("fc-fade").style.display="none";
-      document.getElementById("fc-light").style.display="none";
-      document.getElementById("fc-main").style.display="none";
-      document.getElementById("fc-close").style.display="none";
-      document.getElementById("fc-myFrame").style.display="none";
-    }
-    </script>
-    <div id="fc-fade" class="fc-black_overlay" onclick="close_window()"></div>
-    <div id="fc-light" class="fc-white_content">
-     <div id="fc-main" class="fc-main-box">
-      <div id="fc-close" class="fc-widget_close" onclick="close_window()"></div>
-      <iframe id="fc-myFrame" iframe height="580" width="925" style="border: 0; border-radius:5px 5px 5px 5px; box-shadow:0 0 8px rgba(0, 0, 0, 0.5);" scrolling="no" src=""></iframe>
-     </div>
-    </div>
-    <!-- /flipcause -->
-
     <div class="header-wrapper">
       <div class="header">
           <div class="logo"><a href="index.html">
@@ -243,7 +192,7 @@ style="margin-bottom: 10px;"></a>
     <h4>Support IPython</h4>
 
     <!--This relies on some CSS & JS which is added in the _templates folder-->
-<div style="background: #34677c;
+<a style="background: #34677c;
     border-radius:0px 0px 0px 0px;
     font-weight:normal;
     font-family:Arial, Helvetica, sans-serif;
@@ -261,7 +210,7 @@ style="margin-bottom: 10px;"></a>
     color:#fff;
     text-decoration: none;
     z-index:1"
-  onclick="open_window('MjI1Ng==')">Donate Now</div>
+  href="https://numfocus.salsalabs.org/donate-to-ipython/index.html">Donate Now</a>
     <a href="donate.html">Find out more...</a>
 
   </div>
@@ -336,7 +285,7 @@ the config system used by IPython and Jupyter</li>
       
     <div class="footer" role="contentinfo">
         &#169; Copyright the IPython development team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
     </div>
 
