@@ -1,22 +1,20 @@
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>FAQ &#8212; IPython</title>
-    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/ipython.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/agogo.css" />
+    <link rel="stylesheet" href="_static/ipython.css" type="text/css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Installing IPython" href="install.html" />
     <link rel="prev" title="Support IPython Development" href="donate.html" /> 
@@ -115,14 +113,6 @@ Share your notebooks
             Reddit</a></li>
   </ul>
 
-<div style="margin-top:10px">  <!-- sharing buttons -->
-  <!-- twitter -->
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ipython.org" data-text="IPython - interactive computing." data-via="ipythondev" data-hashtags="ipython" data-dnt="true">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  <!-- google+ -->
-<g:plusone size="medium" annotation="none"></g:plusone>
-</div><!-- sharing buttons -->
-
 </div>
 
 <div class="sidebarblock">
@@ -216,18 +206,18 @@ style="margin-bottom: 10px;"></a>
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="faq">
+  <section id="faq">
 <h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
 <p>If your question isn’t answered below, check <a class="reference external" href="https://ipython.org/ipython-doc/">the docs</a>, then ask on the <a class="reference external" href="https://mail.python.org/mailman/listinfo/ipython-dev">mailing list</a>.</p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#can-ipython-run-under-ironpython-pypy-jython-other-python-interpreters" id="id1">Can IPython run under IronPython/PyPy/Jython/other Python interpreters?</a></li>
-<li><a class="reference internal" href="#ipython-crashes-under-os-x-when-using-the-arrow-keys" id="id2">IPython crashes under OS X when using the arrow keys</a></li>
-<li><a class="reference internal" href="#does-ipython-play-well-with-windows" id="id3">Does IPython play well with Windows?</a></li>
-<li><a class="reference internal" href="#what-is-the-best-way-to-install-ipython" id="id4">What is the best way to install IPython?</a></li>
+<li><p><a class="reference internal" href="#can-ipython-run-under-ironpython-pypy-jython-other-python-interpreters" id="id1">Can IPython run under IronPython/PyPy/Jython/other Python interpreters?</a></p></li>
+<li><p><a class="reference internal" href="#ipython-crashes-under-os-x-when-using-the-arrow-keys" id="id2">IPython crashes under OS X when using the arrow keys</a></p></li>
+<li><p><a class="reference internal" href="#does-ipython-play-well-with-windows" id="id3">Does IPython play well with Windows?</a></p></li>
+<li><p><a class="reference internal" href="#what-is-the-best-way-to-install-ipython" id="id4">What is the best way to install IPython?</a></p></li>
 </ul>
 </div>
-<div class="section" id="can-ipython-run-under-ironpython-pypy-jython-other-python-interpreters">
+<section id="can-ipython-run-under-ironpython-pypy-jython-other-python-interpreters">
 <h2>Can IPython run under IronPython/PyPy/Jython/other Python interpreters?<a class="headerlink" href="#can-ipython-run-under-ironpython-pypy-jython-other-python-interpreters" title="Permalink to this headline">¶</a></h2>
 <p>The terminal-based shell should run on any interpreter which complies with
 the necessary version of Python. IPython 0.11 requires Python 2.6
@@ -238,16 +228,15 @@ which might also work under IronPython. PyPy ships its own readline module,
 which should now work.</p>
 <p>If IPython does not work under a supported interpreter, please
 <a class="reference external" href="https://github.com/ipython/ipython/issues">file a bug</a>.</p>
-</div>
-<div class="section" id="ipython-crashes-under-os-x-when-using-the-arrow-keys">
+</section>
+<section id="ipython-crashes-under-os-x-when-using-the-arrow-keys">
 <h2>IPython crashes under OS X when using the arrow keys<a class="headerlink" href="#ipython-crashes-under-os-x-when-using-the-arrow-keys" title="Permalink to this headline">¶</a></h2>
 <p>Under some circumstances, using the arrow keys to navigate your input history can cause a complete crash of the Python interpreter.</p>
 <p><strong>Answer:</strong> This is due to a bug in the readline library from the official builds. There are a few solutions you can take:</p>
 <blockquote>
 <div><ol class="arabic">
-<li><p class="first">Use a different Python version from Apple’s default (MacPython or Fink have been reported to work)</p>
-</li>
-<li><p class="first">You can disable in your ipythonrc file the following lines by commenting them out:</p>
+<li><p>Use a different Python version from Apple’s default (MacPython or Fink have been reported to work)</p></li>
+<li><p>You can disable in your ipythonrc file the following lines by commenting them out:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">readline_parse_and_bind</span> <span class="s2">&quot;\e[A&quot;</span><span class="p">:</span> <span class="n">history</span><span class="o">-</span><span class="n">search</span><span class="o">-</span><span class="n">backward</span>
 <span class="n">readline_parse_and_bind</span> <span class="s2">&quot;\e[B&quot;</span><span class="p">:</span> <span class="n">history</span><span class="o">-</span><span class="n">search</span><span class="o">-</span><span class="n">forward</span>
 </pre></div>
@@ -256,21 +245,22 @@ which should now work.</p>
 </ol>
 </div></blockquote>
 <p>You will lose searching in your history with the arrow keys, but at least Python won’t crash.</p>
-</div>
-<div class="section" id="does-ipython-play-well-with-windows">
+</section>
+<section id="does-ipython-play-well-with-windows">
 <h2>Does IPython play well with Windows?<a class="headerlink" href="#does-ipython-play-well-with-windows" title="Permalink to this headline">¶</a></h2>
 <p>Yes, it most definitely does! There are some things that should be noted: <a class="reference external" href="https://ipython.org/ipython-doc/stable/install/install.html#windows">see
 the installation documentation</a>.</p>
-</div>
-<div class="section" id="what-is-the-best-way-to-install-ipython">
+</section>
+<section id="what-is-the-best-way-to-install-ipython">
 <h2>What is the best way to install IPython?<a class="headerlink" href="#what-is-the-best-way-to-install-ipython" title="Permalink to this headline">¶</a></h2>
 <p>See <a class="reference external" href="https://ipython.org/ipython-doc/stable/install/install.html#installing-ipython-itself">the installation documentation</a> for full details.</p>
 <p>The standard Python installation mechanisms (<code class="docutils literal notranslate"><span class="pre">setup.py</span></code>, <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">easy_install</span></code>) all work for installing IPython to use in a terminal. Windows users are best off installing <a class="reference external" href="https://pypi.python.org/pypi/distribute">distribute</a>, then running the .exe installer, to create start menu shortcuts.</p>
 <p>To use the notebook or the Qt console, it’s easiest to install through a package manager, or download a Python distribution such as <a class="reference external" href="https://store.continuum.io/cshop/anaconda">Anaconda</a> or <a class="reference external" href="https://www.enthought.com/downloads/">Enthought Canopy</a>. Otherwise, you will need to install pyzmq, along with tornado for the notebook, and PyQt4/PySide and pygments for the Qt console.</p>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -282,8 +272,8 @@ the installation documentation</a>.</p>
     <div class="footer-wrapper">
       
     <div class="footer" role="contentinfo">
-        &#169; Copyright the IPython development team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+        &#169; Copyright the IPython development team. Python is trademark of the Python Software Foundation.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
     </div>
     </div>
 

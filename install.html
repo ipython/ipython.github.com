@@ -1,22 +1,20 @@
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Installing IPython &#8212; IPython</title>
-    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/ipython.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/agogo.css" />
+    <link rel="stylesheet" href="_static/ipython.css" type="text/css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Microsoft Corporation sponsors IPython" href="microsoft-donation-2013.html" />
     <link rel="prev" title="FAQ" href="faq.html" /> 
@@ -115,14 +113,6 @@ Share your notebooks
             Reddit</a></li>
   </ul>
 
-<div style="margin-top:10px">  <!-- sharing buttons -->
-  <!-- twitter -->
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ipython.org" data-text="IPython - interactive computing." data-via="ipythondev" data-hashtags="ipython" data-dnt="true">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  <!-- google+ -->
-<g:plusone size="medium" annotation="none"></g:plusone>
-</div><!-- sharing buttons -->
-
 </div>
 
 <div class="sidebarblock">
@@ -216,7 +206,7 @@ style="margin-bottom: 10px;"></a>
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="installing-ipython">
+  <section id="installing-ipython">
 <h1>Installing IPython<a class="headerlink" href="#installing-ipython" title="Permalink to this headline">¶</a></h1>
 <p>There are multiple ways of installing IPython. This page contains simplified installation
 instructions that should work for most users. Our official documentation
@@ -224,21 +214,21 @@ contains <a class="reference external" href="https://ipython.readthedocs.io/en/s
 for manual installation targeted at advanced users and developers.</p>
 <p>If you are looking for installation documentation for the notebook and/or qtconsole,
 those are now part of <a class="reference external" href="https://jupyter.readthedocs.io/en/latest/install.html">Jupyter</a>.</p>
-<div class="section" id="i-already-have-python">
+<section id="i-already-have-python">
 <h2>I already have Python<a class="headerlink" href="#i-already-have-python" title="Permalink to this headline">¶</a></h2>
 <p>If you already have Python installed and are familiar with installing packages, you can get IPython with <strong class="command">pip</strong>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ipython</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="i-am-getting-started-with-python">
+</section>
+<section id="i-am-getting-started-with-python">
 <h2>I am getting started with Python<a class="headerlink" href="#i-am-getting-started-with-python" title="Permalink to this headline">¶</a></h2>
 <p>For new users who want to install a full Python environment for scientific computing and
 data science, we suggest installing the Anaconda or Canopy Python distributions, which provide Python, IPython and all of its dependences as well as a complete set of open source packages
 for scientific computing and data science.</p>
 <ol class="arabic simple">
-<li>Download and install Continuum’s <a class="reference external" href="https://www.continuum.io/downloads">Anaconda</a> or the free edition of Enthought’s <a class="reference external" href="https://www.enthought.com/downloads/">Canopy</a>.</li>
-<li>Update IPython to the current version using the Terminal:</li>
+<li><p>Download and install Continuum’s <a class="reference external" href="https://www.continuum.io/downloads">Anaconda</a> or the free edition of Enthought’s <a class="reference external" href="https://www.enthought.com/downloads/">Canopy</a>.</p></li>
+<li><p>Update IPython to the current version using the Terminal:</p></li>
 </ol>
 <blockquote>
 <div><p>Anaconda:</p>
@@ -251,18 +241,19 @@ for scientific computing and data science.</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="downloads">
+</section>
+<section id="downloads">
 <span id="id1"></span><h2>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">¶</a></h2>
 <p>You can manually download IPython from  <a class="reference external" href="http://github.com/ipython/ipython/releases">GitHub</a> or <a class="reference external" href="http://pypi.python.org/pypi/ipython">PyPI</a>.  To install one of these versions, unpack it and run
 the following from the top-level source directory using the Terminal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -274,8 +265,8 @@ the following from the top-level source directory using the Terminal:</p>
     <div class="footer-wrapper">
       
     <div class="footer" role="contentinfo">
-        &#169; Copyright the IPython development team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+        &#169; Copyright the IPython development team. Python is trademark of the Python Software Foundation.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
     </div>
     </div>
 

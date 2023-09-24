@@ -1,22 +1,20 @@
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>WhatsNew082 &#8212; IPython</title>
-    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/ipython.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/agogo.css" />
+    <link rel="stylesheet" href="_static/ipython.css" type="text/css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="New features in 0.8.3" href="whatsnew083.html" />
     <link rel="prev" title="IPython User Survey 2013" href="usersurvey2013.html" /> 
@@ -115,14 +113,6 @@ Share your notebooks
             Reddit</a></li>
   </ul>
 
-<div style="margin-top:10px">  <!-- sharing buttons -->
-  <!-- twitter -->
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ipython.org" data-text="IPython - interactive computing." data-via="ipythondev" data-hashtags="ipython" data-dnt="true">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  <!-- google+ -->
-<g:plusone size="medium" annotation="none"></g:plusone>
-</div><!-- sharing buttons -->
-
 </div>
 
 <div class="sidebarblock">
@@ -216,82 +206,84 @@ style="margin-bottom: 10px;"></a>
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="whatsnew082">
+  <section id="whatsnew082">
 <h1>WhatsNew082<a class="headerlink" href="#whatsnew082" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="new-features-in-0-8-2">
+<section id="new-features-in-0-8-2">
 <h2>New features in 0.8.2<a class="headerlink" href="#new-features-in-0-8-2" title="Permalink to this headline">¶</a></h2>
 <p>This does not list bugfixes, enhanced internals or api additions.</p>
 <blockquote>
 <div><ul class="simple">
-<li>“Shadow history” remembers everything you’ve entered, forever. Remember that
+<li><p>“Shadow history” remembers everything you’ve entered, forever. Remember that
 arcane command line you entered three weeks ago? Just grep the shadow
-history with “%hist -g”! <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/ShadowHistory">See cookbook</a> for details.</li>
-<li>%rep is a new magic function that allows you to fetch command lines from
-history for editing. Do “%rep?” for details.</li>
-<li>System command aliases (created by %rehashx) are lower case in win32.</li>
-<li>Macros can now take arguments. <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/MacroArguments">See cookbook</a>.</li>
-<li>%macro without arguments lists available macros.</li>
-<li>Directory history (the easiest way to see it is by doing ‘cd -&lt;TAB&gt;’) is now
-persistent across sessions.</li>
-<li>ipython -i -c &lt;cmd&gt;: -i (interact) prevents IPython session from exiting
+history with “%hist -g”! <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/ShadowHistory">See cookbook</a> for details.</p></li>
+<li><p>%rep is a new magic function that allows you to fetch command lines from
+history for editing. Do “%rep?” for details.</p></li>
+<li><p>System command aliases (created by %rehashx) are lower case in win32.</p></li>
+<li><p>Macros can now take arguments. <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/MacroArguments">See cookbook</a>.</p></li>
+<li><p>%macro without arguments lists available macros.</p></li>
+<li><p>Directory history (the easiest way to see it is by doing ‘cd -&lt;TAB&gt;’) is now
+persistent across sessions.</p></li>
+<li><p>ipython -i -c &lt;cmd&gt;: -i (interact) prevents IPython session from exiting
 after executing &lt;cmd&gt;. &lt;cmd&gt; can now contain IPython syntax (!foo, %magic
-etc).</li>
-<li>new profiles: doctest, zope. scipy is now in ipy_profile_scipy.py instead of
-ipythonrc-scipy.</li>
-<li>new extensions:<ul>
-<li>ipy_traits_completer.py: complete Traits attributes</li>
-<li>ipy_legacy.py: enable deprecated features</li>
-<li>mglob.py: enhanced globbing - <code class="docutils literal notranslate"><span class="pre">%mglob</span> <span class="pre">!.svn/</span> <span class="pre">rec:*.py</span></code></li>
-<li>ipy_exportdb.py: create a portable .py file from your %store’d macros,
-aliases, strings and bookmarks for distribution. <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/IpyExportDb">See cookbook</a> .</li>
-<li>ipy_render.py: win32: render templates using Itpl format to clipboard
-(e.g. render ‘hello $a’).  <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/IpyRender">See cookbook</a>.</li>
-<li>ipy_editors.py: Bunch of popular editors readily configured for
-IPython. See ipy_user_conf.py for instructions on how to enable them.</li>
-<li>ipy_fsops.py: Has useful shell utils for plain (non-cygwin enabled) win32
+etc).</p></li>
+<li><p>new profiles: doctest, zope. scipy is now in ipy_profile_scipy.py instead of
+ipythonrc-scipy.</p></li>
+<li><p>new extensions:</p>
+<ul>
+<li><p>ipy_traits_completer.py: complete Traits attributes</p></li>
+<li><p>ipy_legacy.py: enable deprecated features</p></li>
+<li><p>mglob.py: enhanced globbing - <code class="docutils literal notranslate"><span class="pre">%mglob</span> <span class="pre">!.svn/</span> <span class="pre">rec:*.py</span></code></p></li>
+<li><p>ipy_exportdb.py: create a portable .py file from your %store’d macros,
+aliases, strings and bookmarks for distribution. <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/IpyExportDb">See cookbook</a> .</p></li>
+<li><p>ipy_render.py: win32: render templates using Itpl format to clipboard
+(e.g. render ‘hello $a’).  <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/IpyRender">See cookbook</a>.</p></li>
+<li><p>ipy_editors.py: Bunch of popular editors readily configured for
+IPython. See ipy_user_conf.py for instructions on how to enable them.</p></li>
+<li><p>ipy_fsops.py: Has useful shell utils for plain (non-cygwin enabled) win32
 installations: icp, imv, imkdir, igrep, irm, collect (collect is useful
-for others as well).</li>
+for others as well).</p></li>
 </ul>
 </li>
-<li>py2exe version supported (ipykit)</li>
-<li>The title bar of IPython window shows the currently executing system
-command.</li>
-<li>Prompt on win32 in pysh (‘-p sh’ profile) now has the drive letter for
-enhanced location awareness, and uses / instead of .</li>
-<li>Errors from misusing magics are much less verbose now (due to UserError
-exception).</li>
-<li>String Lists provide a convenient way to manipulate command output. See
-<a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/StringListProcessing">Cookbook</a>.</li>
-<li>Directory stack (%pushd, %popd, %dirs) works more predictably now.</li>
-<li>%time allows IPython expressions (which includes system commands - e.g. try
-“%time !ls”)</li>
-<li>Callable aliases can be used to extend IPython (provide new commands) in a
+<li><p>py2exe version supported (ipykit)</p></li>
+<li><p>The title bar of IPython window shows the currently executing system
+command.</p></li>
+<li><p>Prompt on win32 in pysh (‘-p sh’ profile) now has the drive letter for
+enhanced location awareness, and uses / instead of .</p></li>
+<li><p>Errors from misusing magics are much less verbose now (due to UserError
+exception).</p></li>
+<li><p>String Lists provide a convenient way to manipulate command output. See
+<a class="reference external" href="http://ipython.scipy.org/moin/Cookbook/StringListProcessing">Cookbook</a>.</p></li>
+<li><p>Directory stack (%pushd, %popd, %dirs) works more predictably now.</p></li>
+<li><p>%time allows IPython expressions (which includes system commands - e.g. try
+“%time !ls”)</p></li>
+<li><p>Callable aliases can be used to extend IPython (provide new commands) in a
 more elegant manner than magic commands. Also, no % is
-necessary/allowed. See ipy_fsops.py for examples.</li>
-<li>Improved Leopard support for tab-completion, though a few issues remain.</li>
+necessary/allowed. See ipy_fsops.py for examples.</p></li>
+<li><p>Improved Leopard support for tab-completion, though a few issues remain.</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="known-issues">
+</section>
+<section id="known-issues">
 <h2>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>We still get crashes from KeyboardInterrupt occasionally (caused by pressing
-ctrl+C or ctrl+break)</li>
-<li>Unicode support is not yet perfect, so expect problems on Unicode
-input/output.</li>
-<li>The manual is hopelessly out of date. This is something we will look into
+<li><p>We still get crashes from KeyboardInterrupt occasionally (caused by pressing
+ctrl+C or ctrl+break)</p></li>
+<li><p>Unicode support is not yet perfect, so expect problems on Unicode
+input/output.</p></li>
+<li><p>The manual is hopelessly out of date. This is something we will look into
 during 0.8.3 cycle; in the meantime, see the documentation page on the wiki
-[superseded], and the user-maintained <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook">cookbook</a>.</li>
-<li>Under OSX Leopard, we are seeing some readline-related problems with history
+[superseded], and the user-maintained <a class="reference external" href="http://ipython.scipy.org/moin/Cookbook">cookbook</a>.</p></li>
+<li><p>Under OSX Leopard, we are seeing some readline-related problems with history
 recall.  It is not clear yet whether the issue is with IPython or Leopard’s
-readline support itself.  We’re investigating the issue.</li>
+readline support itself.  We’re investigating the issue.</p></li>
 </ul>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -303,8 +295,8 @@ readline support itself.  We’re investigating the issue.</li>
     <div class="footer-wrapper">
       
     <div class="footer" role="contentinfo">
-        &#169; Copyright the IPython development team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+        &#169; Copyright the IPython development team. Python is trademark of the Python Software Foundation.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
     </div>
     </div>
 
