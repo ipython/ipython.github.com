@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import PageHeader from '../components/PageHeader.astro';
+import GitHubContributors from '../components/GitHubContributors';
 import fs from 'fs';
 import path from 'path';
 
@@ -74,6 +75,40 @@ function getFetchHeaders() {
   }
   return headers;
 }
+
+// Check GitHub API rate limits at build start
+async function checkRateLimit() {
+  try {
+    const response = await fetch('https://api.github.com/rate_limit', {
+      headers: getFetchHeaders(),
+    });
+    if (response.ok) {
+      const data = await response.json();
+      const core = data.resources?.core || {};
+      const remaining = core.remaining ?? 0;
+      const limit = core.limit ?? 0;
+      const resetTime = core.reset ? new Date(core.reset * 1000).toLocaleString() : 'unknown';
+      console.log(`[GitHub API] Rate limit: ${remaining}/${limit} requests remaining (resets at ${resetTime})`);
+      if (remaining === 0) {
+        console.error('[GitHub API] ⚠ WARNING: No API requests remaining! Build may fail.');
+      }
+      return { remaining, limit, resetTime };
+    } else {
+      const errorText = await response.text();
+      console.error(`[GitHub API] ✗ Failed to check rate limit: ${response.status} ${response.statusText}`);
+      console.error(`[GitHub API] Response: ${errorText}`);
+    }
+  } catch (error) {
+    console.error('[GitHub API] ✗ Error checking rate limit:', error);
+    if (error instanceof Error) {
+      console.error('[GitHub API] Error details:', error.message);
+    }
+  }
+  return null;
+}
+
+// Check rate limits at build start
+await checkRateLimit();
 
 // Helper function to load cache
 function loadCache(): CacheData | null {
@@ -166,6 +201,12 @@ if (cachedData) {
   maintainer = cachedData.maintainer || null;
   carreauContributions = cachedData.carreauContributions;
   
+  if (isDev) {
+    console.log('[Static Data] 📦 Using static contributor/maintainer data from last build (cached)');
+  } else {
+    console.log('[Static Data] 📦 Using static contributor/maintainer data from last build');
+  }
+  
   // Double-check we have valid data
   if (contributors.length === 0 && !maintainer) {
     if (isDev) {
@@ -177,6 +218,11 @@ if (cachedData) {
 
 if (!cachedData) {
   // Fetch fresh data
+  if (isDev) {
+    console.log('[GitHub API] 🔄 Fetching live contributor data from GitHub API...');
+  } else {
+    console.log('[GitHub API] 🔄 Fetching live contributor data from GitHub API (build time)...');
+  }
   
   try {
     const response = await fetch('https://api.github.com/repos/ipython/ipython/contributors?per_page=30', {
@@ -197,78 +243,109 @@ if (!cachedData) {
     if (response.ok) {
       const contributorsData = await response.json();
       
-      // Find Carreau's contribution count
-      const carreauData = contributorsData.find((c: Contributor) => c.login === 'Carreau');
-      if (carreauData) {
-        carreauContributions = carreauData.contributions;
-      }
-      
-      // Fetch user details for each contributor to get their names
-      // Limit to first 20 to avoid too many API calls
-      if (isDev) {
-        console.log(`[GitHub API] Fetching user details for ${Math.min(contributorsData.length, 20)} contributors...`);
-      }
-      
-      const contributorsWithNames = await Promise.all(
-        contributorsData.slice(0, 20).map(async (contributor: Contributor) => {
-          try {
-            const userResponse = await fetch(`https://api.github.com/users/${contributor.login}`, {
-              headers: getFetchHeaders(),
-            });
-            if (userResponse.ok) {
-              const userData = await userResponse.json();
-              return {
-                ...contributor,
-                name: userData.name || contributor.login,
-              };
+      // Check if response is empty or invalid
+      if (!Array.isArray(contributorsData) || contributorsData.length === 0) {
+        const errorMsg = '[GitHub API] ✗ Contributors response is empty or invalid';
+        console.error(errorMsg);
+        console.error('[GitHub API] Response data:', JSON.stringify(contributorsData, null, 2));
+        contributorsError = true;
+        if (!isDev) {
+          throw new Error(errorMsg);
+        }
+      } else {
+        // Find Carreau's contribution count
+        const carreauData = contributorsData.find((c: Contributor) => c.login === 'Carreau');
+        if (carreauData) {
+          carreauContributions = carreauData.contributions;
+        }
+        
+        // Fetch user details for each contributor to get their names
+        // Limit to first 20 to avoid too many API calls
+        if (isDev) {
+          console.log(`[GitHub API] Fetching user details for ${Math.min(contributorsData.length, 20)} contributors...`);
+        }
+        
+        const contributorsWithNames = await Promise.all(
+          contributorsData.slice(0, 20).map(async (contributor: Contributor) => {
+            try {
+              const userResponse = await fetch(`https://api.github.com/users/${contributor.login}`, {
+                headers: getFetchHeaders(),
+              });
+              if (userResponse.ok) {
+                const userData = await userResponse.json();
+                return {
+                  ...contributor,
+                  name: userData.name || contributor.login,
+                };
+              } else {
+                const errorText = await userResponse.text();
+                console.error(`[GitHub API] Failed to fetch user ${contributor.login}: ${userResponse.status} ${userResponse.statusText}`);
+                console.error(`[GitHub API] Response: ${errorText}`);
+              }
+            } catch (error) {
+              console.error(`[GitHub API] Failed to fetch user ${contributor.login}:`, error);
+              if (error instanceof Error) {
+                console.error(`[GitHub API] Error details: ${error.message}`);
+              }
             }
-          } catch (error) {
-            console.error(`[GitHub API] Failed to fetch user ${contributor.login}:`, error);
-          }
-          return {
-            ...contributor,
-            name: contributor.login,
-          };
-        })
-      );
-      
-      contributors = contributorsWithNames;
-      if (isDev) {
-        console.log('[GitHub API] ✓ Successfully fetched contributors');
+            return {
+              ...contributor,
+              name: contributor.login,
+            };
+          })
+        );
+        
+        contributors = contributorsWithNames;
+        if (isDev) {
+          console.log(`[GitHub API] ✓ Live data: Fetched ${contributors.length} contributors`);
+        } else {
+          console.log(`[GitHub API] ✓ Live data (build time): Fetched ${contributors.length} contributors`);
+        }
       }
-    } else if (response.status === 403) {
-      // Rate limit or forbidden
+    } else {
+      const errorText = await response.text();
+      let errorMessage = `Failed to fetch contributors: ${response.status} ${response.statusText}`;
+      try {
+        const errorJson = JSON.parse(errorText);
+        errorMessage = errorJson.message || errorMessage;
+        if (errorJson.documentation_url) {
+          errorMessage += `\n  Documentation: ${errorJson.documentation_url}`;
+        }
+      } catch (e) {
+        // Not JSON, use raw text
+      }
+      
       contributorsError = true;
-      if (isDev) {
-        console.error('[GitHub API] ✗ Rate limit exceeded or forbidden (403)');
+      console.error(`[GitHub API] ✗ ${errorMessage}`);
+      console.error(`[GitHub API] Response: ${errorText}`);
+      
+      if (response.status === 403) {
         const retryAfter = response.headers.get('retry-after');
         if (retryAfter) {
           console.error(`[GitHub API] Retry after ${retryAfter} seconds`);
         }
-      }
-    } else if (response.status === 401) {
-      // Unauthorized - token issue
-      contributorsError = true;
-      if (isDev) {
-        const errorBody = await response.text();
-        let errorMessage = 'Unauthorized (401)';
-        try {
-          const errorJson = JSON.parse(errorBody);
-          errorMessage = errorJson.message || errorMessage;
-        } catch (e) {
-          // Ignore JSON parse errors
+        const xRateLimitRemaining = response.headers.get('x-ratelimit-remaining');
+        if (xRateLimitRemaining === '0') {
+          console.error('[GitHub API] Rate limit exhausted!');
         }
-        console.error(`[GitHub API] ✗ Authentication failed: ${errorMessage}`);
-        console.error(`[GitHub API]   Check if token is valid and has correct permissions`);
+      } else if (response.status === 401) {
+        console.error(`[GitHub API] Check if token is valid and has correct permissions`);
       }
-    } else {
-      if (isDev) {
-        console.error(`[GitHub API] ✗ Failed to fetch contributors: ${response.status} ${response.statusText}`);
+      
+      if (!isDev) {
+        throw new Error(errorMessage);
       }
     }
   } catch (error) {
-    console.error('[GitHub API] Failed to fetch contributors:', error);
     contributorsError = true;
+    console.error('[GitHub API] ✗ Failed to fetch contributors:', error);
+    if (error instanceof Error) {
+      console.error('[GitHub API] Error details:', error.message);
+      console.error('[GitHub API] Stack:', error.stack);
+    }
+    if (!isDev) {
+      throw error;
+    }
   }
 
   // Fetch maintainer (Carreau)
@@ -277,52 +354,81 @@ if (!cachedData) {
   }
   
   try {
+    if (isDev) {
+      console.log('[GitHub API] 🔄 Fetching live maintainer data from GitHub API...');
+    } else {
+      console.log('[GitHub API] 🔄 Fetching live maintainer data from GitHub API (build time)...');
+    }
     const maintainerResponse = await fetch('https://api.github.com/users/Carreau', {
       headers: getFetchHeaders(),
     });
     
     if (maintainerResponse.ok) {
       const maintainerData = await maintainerResponse.json();
-      maintainer = {
-        login: maintainerData.login,
-        avatar_url: maintainerData.avatar_url,
-        html_url: maintainerData.html_url,
-        name: maintainerData.name || maintainerData.login,
-        bio: maintainerData.bio,
-        contributions: carreauContributions,
-      };
-      if (isDev) {
-        console.log('[GitHub API] ✓ Successfully fetched maintainer');
-      }
-    } else if (maintainerResponse.status === 403) {
-      // Rate limit or forbidden
-      maintainerError = true;
-      if (isDev) {
-        console.error('[GitHub API] ✗ Rate limit exceeded or forbidden (403) for maintainer');
-      }
-    } else if (maintainerResponse.status === 401) {
-      // Unauthorized - token issue
-      maintainerError = true;
-      if (isDev) {
-        const errorBody = await maintainerResponse.text();
-        let errorMessage = 'Unauthorized (401)';
-        try {
-          const errorJson = JSON.parse(errorBody);
-          errorMessage = errorJson.message || errorMessage;
-        } catch (e) {
-          // Ignore JSON parse errors
+      
+      if (!maintainerData || !maintainerData.login) {
+        const errorMsg = '[GitHub API] ✗ Maintainer response is empty or invalid';
+        console.error(errorMsg);
+        console.error('[GitHub API] Response data:', JSON.stringify(maintainerData, null, 2));
+        maintainerError = true;
+        if (!isDev) {
+          throw new Error(errorMsg);
         }
-        console.error(`[GitHub API] ✗ Authentication failed for maintainer: ${errorMessage}`);
-        console.error(`[GitHub API]   Check if token is valid and has correct permissions`);
+      } else {
+        maintainer = {
+          login: maintainerData.login,
+          avatar_url: maintainerData.avatar_url,
+          html_url: maintainerData.html_url,
+          name: maintainerData.name || maintainerData.login,
+          bio: maintainerData.bio,
+          contributions: carreauContributions,
+        };
+        if (isDev) {
+          console.log('[GitHub API] ✓ Live data: Fetched maintainer info');
+        } else {
+          console.log('[GitHub API] ✓ Live data (build time): Fetched maintainer info');
+        }
       }
     } else {
-      if (isDev) {
-        console.error(`[GitHub API] ✗ Failed to fetch maintainer: ${maintainerResponse.status} ${maintainerResponse.statusText}`);
+      const errorText = await maintainerResponse.text();
+      let errorMessage = `Failed to fetch maintainer: ${maintainerResponse.status} ${maintainerResponse.statusText}`;
+      try {
+        const errorJson = JSON.parse(errorText);
+        errorMessage = errorJson.message || errorMessage;
+        if (errorJson.documentation_url) {
+          errorMessage += `\n  Documentation: ${errorJson.documentation_url}`;
+        }
+      } catch (e) {
+        // Not JSON, use raw text
+      }
+      
+      maintainerError = true;
+      console.error(`[GitHub API] ✗ ${errorMessage}`);
+      console.error(`[GitHub API] Response: ${errorText}`);
+      
+      if (maintainerResponse.status === 403) {
+        const retryAfter = maintainerResponse.headers.get('retry-after');
+        if (retryAfter) {
+          console.error(`[GitHub API] Retry after ${retryAfter} seconds`);
+        }
+      } else if (maintainerResponse.status === 401) {
+        console.error(`[GitHub API] Check if token is valid and has correct permissions`);
+      }
+      
+      if (!isDev) {
+        throw new Error(errorMessage);
       }
     }
   } catch (error) {
-    console.error('[GitHub API] Failed to fetch maintainer:', error);
     maintainerError = true;
+    console.error('[GitHub API] ✗ Failed to fetch maintainer:', error);
+    if (error instanceof Error) {
+      console.error('[GitHub API] Error details:', error.message);
+      console.error('[GitHub API] Stack:', error.stack);
+    }
+    if (!isDev) {
+      throw error;
+    }
   }
 
   // Save to cache (dev mode only) - only if we have valid data
@@ -352,6 +458,58 @@ if (!cachedData) {
   
   if (isDev) {
     console.log(''); // Empty line for readability
+  }
+
+  // Save build-time data to static JSON file in /public/
+  // Only save if we have valid data (not empty and no errors)
+  if (!contributorsError && !maintainerError && (contributors.length > 0 || maintainer)) {
+    try {
+      const publicDir = path.join(process.cwd(), 'public');
+      if (!fs.existsSync(publicDir)) {
+        fs.mkdirSync(publicDir, { recursive: true });
+      }
+
+      const contributorsDataFile = path.join(publicDir, 'build-data-contributors.json');
+      fs.writeFileSync(
+        contributorsDataFile,
+        JSON.stringify(
+          {
+            contributors: contributors || [],
+            maintainer: maintainer || null,
+            carreauContributions,
+            timestamp: Date.now(),
+          },
+          null,
+          2
+        )
+      );
+      if (isDev) {
+        console.log(
+          `[Build Data] ✓ Saved contributors/maintainer data to ${contributorsDataFile} (${contributors.length} contributors, maintainer: ${maintainer ? 'Yes' : 'No'})`
+        );
+      } else {
+        console.log(
+          `[Build Data] ✓ Saved contributors/maintainer data (${contributors.length} contributors, maintainer: ${maintainer ? 'Yes' : 'No'})`
+        );
+      }
+    } catch (error) {
+      console.error('[Build Data] ✗ Failed to save build-time data:', error);
+    }
+  } else {
+    if (isDev) {
+      console.log('[Build Data] ⚠ Not saving contributors/maintainer data - no valid data or API errors occurred');
+      if (contributorsError) {
+        console.log('[Build Data]   - Contributors fetch failed');
+      }
+      if (maintainerError) {
+        console.log('[Build Data]   - Maintainer fetch failed');
+      }
+      if (contributors.length === 0 && !maintainer) {
+        console.log('[Build Data]   - No data available');
+      }
+    } else {
+      console.error('[Build Data] ✗ Cannot save contributors/maintainer data - GitHub API errors or no data available');
+    }
   }
 }
 ---
@@ -427,122 +585,8 @@ if (!cachedData) {
           </p>
         </div>
 
-        <!-- Current Maintainer -->
-        <div>
-          <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Current Maintainer</h2>
-          {maintainerError ? (
-            <div class="bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-400 rounded-lg p-6">
-              <p class="text-gray-700 dark:text-gray-300">
-                Unable to load maintainer information at this time. This may be due to GitHub API rate limits. 
-                Please visit <a href="https://github.com/Carreau" target="_blank" rel="noopener noreferrer" class="text-theme-secondary hover:text-theme-secondary/80 transition-colors underline">@Carreau's GitHub profile</a> directly.
-              </p>
-            </div>
-          ) : maintainer ? (
-            <div class="gradient-stats-cyan-blue border-2 border-theme-secondary rounded-lg p-8">
-              <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-                <a
-                  href={maintainer.html_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex-shrink-0 group"
-                >
-                  <img
-                    src={maintainer.avatar_url}
-                    alt={`${maintainer.name}'s avatar`}
-                    class="w-24 h-24 rounded-full border-4 border-theme-secondary group-hover:scale-110 transition-transform"
-                  />
-                </a>
-                <div class="flex-1 text-center sm:text-left">
-                  <a
-                    href={maintainer.html_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="block"
-                  >
-                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-1 hover:text-theme-secondary transition-colors">
-                      {maintainer.name}
-                    </h3>
-                    <p class="text-theme-secondary mb-3">@{maintainer.login}</p>
-                  </a>
-                  {maintainer.contributions !== undefined && (
-                    <p class="text-gray-600 dark:text-gray-400 mb-2">
-                      {maintainer.contributions} {maintainer.contributions === 1 ? 'contribution' : 'contributions'}
-                    </p>
-                  )}
-                  {maintainer.bio && (
-                    <p class="text-gray-600 dark:text-gray-400">{maintainer.bio}</p>
-                  )}
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div class="bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-400 rounded-lg p-6">
-              <p class="text-gray-700 dark:text-gray-300">
-                Unable to load maintainer information at this time. 
-                Please visit <a href="https://github.com/Carreau" target="_blank" rel="noopener noreferrer" class="text-theme-secondary hover:text-theme-secondary/80 transition-colors underline">@Carreau's GitHub profile</a> directly.
-              </p>
-            </div>
-          )}
-        </div>
-
-        <!-- Developers -->
-        <div>
-          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Developers & Contributors</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-6">
-            IPython is built and maintained by a vibrant community of developers and contributors from around the world. Here are some of the key contributors to the project:
-          </p>
-          {contributorsError ? (
-            <div class="bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-400 rounded-lg p-6">
-              <p class="text-gray-700 dark:text-gray-300 mb-2">
-                Unable to load contributors at this time. This may be due to GitHub API rate limits.
-              </p>
-              <p class="text-gray-700 dark:text-gray-300">
-                Please visit our <a href="https://github.com/ipython/ipython/graphs/contributors" target="_blank" rel="noopener noreferrer" class="text-theme-secondary hover:text-theme-secondary/80 transition-colors underline">GitHub contributors page</a> to see all contributors.
-              </p>
-            </div>
-          ) : contributors.length > 0 ? (
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {contributors
-                .filter((c) => c.login !== 'Carreau')
-                .map((contributor) => (
-                  <a
-                    href={contributor.html_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex flex-col items-center p-4 rounded-lg border border-gray-200 dark:border-ipython-slate hover:border-theme-secondary hover:shadow-lg dark:hover:shadow-xl dark:hover:shadow-theme-secondary/20 transition-all group"
-                  >
-                    <img
-                      src={contributor.avatar_url}
-                      alt={`${contributor.name || contributor.login}'s avatar`}
-                      class="w-16 h-16 rounded-full mb-2 group-hover:scale-110 transition-transform"
-                      loading="lazy"
-                    />
-                    <span class="text-sm font-medium text-gray-900 dark:text-white text-center truncate w-full">
-                      {contributor.name || contributor.login}
-                    </span>
-                    <span class="text-xs text-gray-500 dark:text-gray-400 text-center truncate w-full">
-                      @{contributor.login}
-                    </span>
-                    <span class="text-xs text-gray-500 dark:text-gray-400">
-                      {contributor.contributions} {contributor.contributions === 1 ? 'contribution' : 'contributions'}
-                    </span>
-                  </a>
-                ))}
-            </div>
-          ) : (
-            <div class="bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-400 rounded-lg p-6">
-              <p class="text-gray-700 dark:text-gray-300 mb-2">
-                Unable to load contributors at this time.
-              </p>
-              <p class="text-gray-700 dark:text-gray-300">
-                Please visit our <a href="https://github.com/ipython/ipython/graphs/contributors" target="_blank" rel="noopener noreferrer" class="text-theme-secondary hover:text-theme-secondary/80 transition-colors underline">GitHub contributors page</a> to see all contributors.
-              </p>
-            </div>
-          )}
-          <p class="text-gray-600 dark:text-gray-400 mt-6">
-            Want to contribute? Check out our <a href="https://github.com/ipython/ipython" class="text-theme-secondary hover:text-theme-secondary/80 transition-colors">GitHub repository</a> to get started!
-          </p>
-        </div>
+        <!-- Current Maintainer & Developers -->
+        <GitHubContributors client:load initialContributors={contributors} initialMaintainer={maintainer} />
 
 
         <!-- License -->

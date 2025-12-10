@@ -5,7 +5,11 @@ import Footer from '../components/Footer.astro';
 import AnimatedTerminal from '../components/AnimatedTerminal';
 import VelvetSilkBackground from '../components/VelvetSilkBackground';
 import SunBackground from '../components/SunBackground';
+import GitHubPRCount from '../components/GitHubPRCount';
+import PyPIRelease from '../components/PyPIRelease';
 import { baseUrl } from '../lib/utils';
+import fs from 'fs';
+import path from 'path';
 
 // Fetch GitHub token for API calls
 const isDev = import.meta.env.DEV;
@@ -30,40 +34,174 @@ function getFetchHeaders() {
   return headers;
 }
 
+// Check GitHub API rate limits at build start
+async function checkRateLimit() {
+  try {
+    const response = await fetch('https://api.github.com/rate_limit', {
+      headers: getFetchHeaders(),
+    });
+    if (response.ok) {
+      const data = await response.json();
+      const core = data.resources?.core || {};
+      const remaining = core.remaining ?? 0;
+      const limit = core.limit ?? 0;
+      const resetTime = core.reset ? new Date(core.reset * 1000).toLocaleString() : 'unknown';
+      console.log(`[GitHub API] Rate limit: ${remaining}/${limit} requests remaining (resets at ${resetTime})`);
+      if (remaining === 0) {
+        console.error('[GitHub API] ⚠ WARNING: No API requests remaining! Build may fail.');
+      }
+      return { remaining, limit, resetTime };
+    } else {
+      const errorText = await response.text();
+      console.error(`[GitHub API] ✗ Failed to check rate limit: ${response.status} ${response.statusText}`);
+      console.error(`[GitHub API] Response: ${errorText}`);
+    }
+  } catch (error) {
+    console.error('[GitHub API] ✗ Error checking rate limit:', error);
+  }
+  return null;
+}
+
+// Check rate limits at build start
+await checkRateLimit();
+
 // Fetch open PRs count using GitHub search API
 let openPRsCount: number | null = null;
+if (isDev) {
+  console.log('[GitHub API] 🔄 Fetching live PR count from GitHub API...');
+}
 try {
   const prResponse = await fetch('https://api.github.com/search/issues?q=repo:ipython/ipython+type:pr+state:open', {
     headers: getFetchHeaders(),
   });
+  
   if (prResponse.ok) {
     const prData = await prResponse.json();
-    openPRsCount = prData.total_count || 0;
+    openPRsCount = prData.total_count ?? null;
+    
+    if (openPRsCount === null || openPRsCount === undefined) {
+      const errorMsg = '[GitHub API] ✗ PR count response is empty or invalid';
+      console.error(errorMsg);
+      console.error('[GitHub API] Response data:', JSON.stringify(prData, null, 2));
+      if (!isDev) {
+        throw new Error(errorMsg);
+      }
+    } else {
+      if (isDev) {
+        console.log(`[GitHub API] ✓ Live data: ${openPRsCount} open PRs`);
+      } else {
+        console.log(`[Static Data] 📦 Using static PR count from last build: ${openPRsCount}`);
+      }
+    }
+  } else {
+    const errorText = await prResponse.text();
+    const errorMsg = `[GitHub API] ✗ Failed to fetch PR count: ${prResponse.status} ${prResponse.statusText}`;
+    console.error(errorMsg);
+    console.error('[GitHub API] Response:', errorText);
+    if (!isDev) {
+      throw new Error(errorMsg);
+    }
   }
 } catch (error) {
-  console.error('Failed to fetch PR count:', error);
+  const errorMsg = '[GitHub API] ✗ Failed to fetch PR count';
+  console.error(errorMsg, error);
+  if (error instanceof Error) {
+    console.error('[GitHub API] Error details:', error.message);
+    console.error('[GitHub API] Stack:', error.stack);
+  }
+  if (!isDev) {
+    throw error;
+  }
 }
 
 // Fetch latest PyPI release
 let pypiVersion: string | null = null;
 let pypiReleaseDate: string | null = null;
+if (isDev) {
+  console.log('[PyPI API] 🔄 Fetching live version from PyPI API...');
+}
 try {
   const pypiResponse = await fetch('https://pypi.org/pypi/ipython/json');
   if (pypiResponse.ok) {
     const pypiData = await pypiResponse.json();
-    pypiVersion = pypiData.info.version;
-    // Get the release date from the latest release
-    const releases = pypiData.releases[pypiVersion];
-    if (releases && releases.length > 0) {
-      const latestRelease = releases[releases.length - 1];
-      if (latestRelease.upload_time) {
-        const releaseDate = new Date(latestRelease.upload_time);
-        pypiReleaseDate = releaseDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    pypiVersion = pypiData.info?.version ?? null;
+    
+    if (!pypiVersion) {
+      const errorMsg = '[PyPI API] ✗ PyPI version response is empty or invalid';
+      console.error(errorMsg);
+      console.error('[PyPI API] Response data:', JSON.stringify(pypiData, null, 2));
+      if (!isDev) {
+        throw new Error(errorMsg);
       }
+    } else {
+      // Get the release date from the latest release
+      const releases = pypiData.releases?.[pypiVersion];
+      if (releases && releases.length > 0) {
+        const latestRelease = releases[releases.length - 1];
+        if (latestRelease.upload_time) {
+          const releaseDate = new Date(latestRelease.upload_time);
+          pypiReleaseDate = releaseDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+      }
+      if (isDev) {
+        console.log(`[PyPI API] ✓ Live data: v${pypiVersion} (${pypiReleaseDate || 'date unknown'})`);
+      } else {
+        console.log(`[Static Data] 📦 Using static PyPI version from last build: v${pypiVersion} (${pypiReleaseDate || 'date unknown'})`);
+      }
+    }
+  } else {
+    const errorText = await pypiResponse.text();
+    const errorMsg = `[PyPI API] ✗ Failed to fetch PyPI data: ${pypiResponse.status} ${pypiResponse.statusText}`;
+    console.error(errorMsg);
+    console.error('[PyPI API] Response:', errorText);
+    if (!isDev) {
+      throw new Error(errorMsg);
     }
   }
 } catch (error) {
-  console.error('Failed to fetch PyPI data:', error);
+  const errorMsg = '[PyPI API] ✗ Failed to fetch PyPI data';
+  console.error(errorMsg, error);
+  if (error instanceof Error) {
+    console.error('[PyPI API] Error details:', error.message);
+    console.error('[PyPI API] Stack:', error.stack);
+  }
+  if (!isDev) {
+    throw error;
+  }
+}
+
+// Save build-time data to static JSON files in /public/
+try {
+  const publicDir = path.join(process.cwd(), 'public');
+  if (!fs.existsSync(publicDir)) {
+    fs.mkdirSync(publicDir, { recursive: true });
+  }
+
+  // Save PR count
+  const prDataFile = path.join(publicDir, 'build-data-pr.json');
+  fs.writeFileSync(
+    prDataFile,
+    JSON.stringify({ count: openPRsCount, timestamp: Date.now() }, null, 2)
+  );
+  if (isDev) {
+    console.log(`[Build Data] ✓ Saved PR count to ${prDataFile} (${openPRsCount !== null ? openPRsCount : 'null'})`);
+  }
+
+  // Save PyPI version
+  const pypiDataFile = path.join(publicDir, 'build-data-pypi.json');
+  fs.writeFileSync(
+    pypiDataFile,
+    JSON.stringify(
+      { version: pypiVersion, releaseDate: pypiReleaseDate, timestamp: Date.now() },
+      null,
+      2
+    )
+  );
+  if (isDev) {
+    console.log(`[Build Data] ✓ Saved PyPI data to ${pypiDataFile} (${pypiVersion || 'null'})`);
+  }
+} catch (error) {
+  console.error('[Build Data] ✗ Failed to save build-time data:', error);
 }
 ---
 
@@ -104,39 +242,10 @@ try {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- Open PRs -->
-          {openPRsCount !== null ? (
-            <div class="gradient-stats-cyan-blue rounded-lg p-6 border border-theme-secondary/20">
-              <div class="flex items-center justify-between">
-                <div>
-                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">Open Pull Requests</p>
-                  <p class="text-3xl font-bold text-gray-900 dark:text-white">{openPRsCount}</p>
-                </div>
-                <a href="https://github.com/ipython/ipython/pulls" target="_blank" rel="noopener noreferrer" class="text-theme-secondary hover:text-theme-primary transition-colors">
-                  <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          ) : null}
+          <GitHubPRCount client:load initialCount={openPRsCount} />
           
           <!-- Latest PyPI Release -->
-          {pypiVersion && pypiReleaseDate ? (
-            <div class="gradient-stats-green-cyan rounded-lg p-6 border border-theme-accent/20">
-              <div class="flex items-center justify-between">
-                <div>
-                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">Latest Release</p>
-                  <p class="text-2xl font-bold text-gray-900 dark:text-white mb-1">v{pypiVersion}</p>
-                  <p class="text-sm text-gray-600 dark:text-gray-400">Released {pypiReleaseDate}</p>
-                </div>
-                <a href="https://pypi.org/project/ipython/" target="_blank" rel="noopener noreferrer" class="text-theme-secondary hover:text-theme-primary transition-colors">
-                  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          ) : null}
+          <PyPIRelease client:load initialVersion={pypiVersion} initialReleaseDate={pypiReleaseDate} />
         </div>
       </div>
     </section>
