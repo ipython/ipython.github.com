@@ -16,6 +16,14 @@ interface AnimatedTerminalProps {
 function dedentAndSplit(text: string): string[] {
   const lines = text.split("\n");
 
+  // Trim leading and trailing empty lines
+  while (lines.length > 0 && lines[0].trim().length === 0) {
+    lines.shift();
+  }
+  while (lines.length > 0 && lines[lines.length - 1].trim().length === 0) {
+    lines.pop();
+  }
+
   // Find the minimum indentation (excluding empty lines)
   let minIndent = Infinity;
   for (const line of lines) {
@@ -91,15 +99,14 @@ const getExamples = (version: string = "9.8.0"): TerminalExample[] => [
       $ ipython
       IPython ${version} -- An enhanced Interactive Python
     
-      # we will use await at top level !
-      
-      In [1]: import asyncio
+      In [1]: # we will use await at top level !
+         ...: import asyncio
       
       In [2]: async def fetch_data():
          ...:     await asyncio.sleep(0.1)
          ...:     return "Data fetched!"
          ...: 
-      
+
       In [3]: await fetch_data()
       Out[3]: 'Data fetched!'
       
@@ -109,7 +116,6 @@ const getExamples = (version: string = "9.8.0"): TerminalExample[] => [
          ...:         await asyncio.sleep(0.05)
          ...:         results.append(item * 2)
          ...:     return results
-         ...: 
       
       In [5]: await process_items([1, 2, 3])
       Out[5]: [2, 4, 6]
@@ -263,9 +269,9 @@ export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
 
   // Calculate max height based on the longest example
   const maxLines = Math.max(...examples.map((ex) => ex.lines.length));
-  const lineHeight = 1.5; // rem (24px for text-sm)
-  const padding = 1.5 * 2; // rem (top + bottom padding)
-  const controlsHeight = 2.5; // rem (window controls height)
+  const lineHeight = 1.25; // rem (20px for text-sm)
+  const padding = 1 * 2; // rem (top + bottom padding)
+  const controlsHeight = 2; // rem (window controls height)
   const minHeight = `${maxLines * lineHeight + padding + controlsHeight}rem`;
 
   return (
@@ -282,7 +288,7 @@ export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
         </div>
 
         {/* Terminal Content */}
-        <div className="p-6 whitespace-pre">
+        <div className="p-3 whitespace-pre">
           {displayedLines.map((line, index) => {
             const { prefix, content, prefixColor } = getLinePrefix(line);
             const lineColor = getLineColor(line);
