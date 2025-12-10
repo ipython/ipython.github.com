@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { baseUrl } from '../lib/utils';
+---
+
+<BaseLayout title="Roadmap to 1.0 and Beyond">
+  <Navigation />
+  <PageHeader title="Roadmap to 1.0 and Beyond" />
+  
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="prose prose-lg dark:prose-invert max-w-none">
+      <p><strong>TL;DR summary:</strong> Hi! IPython 1.0 coming mid-August 2013. See the <a href={baseUrl('sloan-grant')}>grant</a> which is funding the bulk of the work, as well as our <a href="https://github.com/ipython/ipython/wiki/Roadmap:-IPython" target="_blank" rel="noopener noreferrer">roadmap</a> for achieving the grant's objectives.</p>
+      
+      <p>There's been a lot of excitement on about the grant the IPython team received from the Sloan Foundation. The easiest way to communicate the contents of the Sloan grant is to just provide it in its entirety, which is what we've done with direct links for <a href={baseUrl('_static/sloangrant/sloan-grant.html')}>html</a> and <a href={baseUrl('_static/sloangrant/sloan-grant.pdf')}>pdf</a> version.</p>
+      
+      <p>The interested reader will find a description of changes coming to IPython over the next two years, as well as the motivation behind them, and the personnel involved. (For example, the astute reader of the grant will correctly infer that this email is one way in which I am filling my responsibility as "community engagement and evangelism"… GO TEAM!)</p>
+      
+      <p>Two weeks ago, the bulk of IPython's core contributors had a series of planning sessions. For three days, <a href="https://github.com/ellisonbg" target="_blank" rel="noopener noreferrer">Brian</a>, <a href="https://github.com/fperez" target="_blank" rel="noopener noreferrer">Fernando</a>, <a href="https://github.com/minrk" target="_blank" rel="noopener noreferrer">Min</a>, and <a href="https://github.com/ivanov" target="_blank" rel="noopener noreferrer">I</a> met on campus in Berkeley, with <a href="https://github.com/takluyver" target="_blank" rel="noopener noreferrer">Thomas</a> and <a href="https://github.com/Carreau" target="_blank" rel="noopener noreferrer">Matthias</a> joining in via video teleconference (and <a href="https://github.com/bfroehle" target="_blank" rel="noopener noreferrer">Brad</a>, for one of the days, too).</p>
+      
+      <p>You can see the <a href="https://github.com/ipython/ipython/wiki/Dev:-Meeting-notes,-February-6,-2013" target="_blank" rel="noopener noreferrer">full notes from those meetings</a>.</p>
+      
+      <p>Our primary objective was to outline a plan of what work we want to accomplish in the next two years (broadly speaking) as well as to make concrete goals for our next (1.0!) release, which will land around mid-August 2013.</p>
+      
+      <p>It's kind of funny that there's a message from Fernando to [ipython-user] back in April of 2005 titled <a href="http://mail.scipy.org/pipermail/ipython-user/2005-April/002648.html" target="_blank" rel="noopener noreferrer">"Towards IPython 1.0, the famous big cleanup"</a>. In it, Fernando makes a last call for outstanding critical bugs because he's preparing users for a transition toward big changes in the IPython code base. Because, once he makes the first commit and starts working on the cleanup, he'll have to ignore every request made "until the new shiny ipython emerges from the process, reborn in a glory which shall blind the world." Toward the end of the email, he finishes with: "I hope the changes will be worth it, and when the dust settles, we'll have something we can call IPython 1.0"… And eight years and a few months after that email was sent, we will! :)</p>
+      
+      <p>What will 1.0 look like? Biggest changes on the user side will be the integration of <a href="https://github.com/jupyter/nbconvert" target="_blank" rel="noopener noreferrer">nbconvert</a> into IPython proper. But that's just my summary of it, the interested reader is encouraged to read the gory details in the <a href="https://github.com/ipython/ipython/wiki/Roadmap:-IPython" target="_blank" rel="noopener noreferrer">roadmap</a>.</p>
+      
+      <p>that's it from me for now,</p>
+      
+      <p>best,</p>
+      
+      <p>Paul Ivanov</p>
+    </div>
+  </main>
+  
+  <Footer />
+</BaseLayout>

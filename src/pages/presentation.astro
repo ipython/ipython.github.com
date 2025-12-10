@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<BaseLayout title="Presentations on IPython">
+  <Navigation />
+  <PageHeader title="Presentations on IPython" />
+  
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="prose prose-lg dark:prose-invert max-w-none">
+      <p>We have given a number of talks and presentations about IPython:</p>
+      
+      <h2>2014</h2>
+      <ul>
+        <li>Fernando gave a keynote address at PyCon 2014 entitled <em>Python and Science: How OSS and Python are transforming science</em>. The <a href="https://www.youtube.com/watch?v=2NSbuKFYyvc" target="_blank" rel="noopener noreferrer">video is available</a> on the PyCon 2014 YouTube site.</li>
+        <li>At PyCon 2014 there was also a tutorial <em>IPython in depth: high productivity interactive and parallel python</em>. The entire 3 hour long tutorial can be viewed <a href="https://www.youtube.com/watch?v=XFw1JVXKJss" target="_blank" rel="noopener noreferrer">here</a>.</li>
+      </ul>
+      
+      <h2>2013</h2>
+      <ul>
+        <li>Fernando's SciPy 2013 Keynote entitled <em>IPython: from the shell to a book with a single tool…the method behind the madness</em> can be viewed <a href="https://www.youtube.com/watch?v=j9YpkSX7NNM" target="_blank" rel="noopener noreferrer">on YouTube</a>.</li>
+        <li>The SciPy tutorial <em>IPython in Depth</em> is also available: <a href="https://www.youtube.com/watch?v=xe_ATRmw0KM" target="_blank" rel="noopener noreferrer">Part 1</a>, <a href="https://www.youtube.com/watch?v=A8VbS-YX2Lo" target="_blank" rel="noopener noreferrer">Part 2</a>, <a href="https://www.youtube.com/watch?v=4tJKZWWRs6s" target="_blank" rel="noopener noreferrer">Part 3</a>.</li>
+      </ul>
+      
+      <h2>2012</h2>
+      <ul>
+        <li>Fernando's talk <em>IPython: Python at your fingertips</em> is available in <a href="http://fperez.org/talks/1203_ipython_pycon.pdf" target="_blank" rel="noopener noreferrer">PDF</a> and PyVideos.org also posted the <a href="https://www.youtube.com/watch?v=26wgEsg9Mcc" target="_blank" rel="noopener noreferrer">full video</a>.</li>
+        <li>From our <a href="https://us.pycon.org/2012/schedule/presentation/121/" target="_blank" rel="noopener noreferrer">IPython in-depth PyCon 2012 tutorial</a>, we have PDF slides both for the <a href="http://archive.ipython.org/media/PyCon2012-IPythonTutorial-Intro.pdf" target="_blank" rel="noopener noreferrer">introduction</a> and for the <a href="http://archive.ipython.org/media/PyCon2012-IPythonTutorial-Notebook.pdf" target="_blank" rel="noopener noreferrer">notebook</a>. The full 3+ hour tutorial video is also <a href="https://www.youtube.com/watch?v=2G5YTlheCbw" target="_blank" rel="noopener noreferrer">available on YouTube</a>. Note that <em>all</em> PyCon 2012 videos are online at the incredible <a href="http://pyvideo.org/category/17/pycon-us-2012" target="_blank" rel="noopener noreferrer">PyVideo.org site</a>.</li>
+      </ul>
+      
+      <h2>2011</h2>
+      <ul>
+        <li><a href="http://archive.ipython.org/media/sheff_python_presentation.pdf" target="_blank" rel="noopener noreferrer">Slides</a> from a talk about IPython for the Sheffield Python user group.</li>
+        <li><a href="http://fperez.org/talks/1107_ipython_scipy.pdf" target="_blank" rel="noopener noreferrer">Slides</a> and <a href="http://www.archive.org/details/Wednesday-203-6-IpythonANewArchitectureForInteractiveAndParallel" target="_blank" rel="noopener noreferrer">video</a> of a presentation about the new features in IPython 0.11 at the Scipy 2011 conference.</li>
+        <li>A <a href="http://minrk.github.com/scipy-tutorial-2011" target="_blank" rel="noopener noreferrer">tutorial</a> on using IPython for parallel computing with our new ZeroMQ infrastructure.</li>
+      </ul>
+      
+      <h2>2010</h2>
+      <ul>
+        <li><a href="http://ipython.scipy.org/moin/About/Presentations?action=AttachFile&do=get&target=ipython_scipy10_india.pdf" target="_blank" rel="noopener noreferrer">Slides</a> from a talk that Fernando Perez presented at the <a href="http://scipy.in/scipyin/2010" target="_blank" rel="noopener noreferrer">SciPy India 2010 conference</a>.</li>
+        <li>Brian Granger has written a whitepaper describing the new support that ipcluster has for Windows HPC Server 2008. If you use IPython's parallel computing architecture on Windows, this provides a very nice way of starting the controller and engines on a cluster. The whitepaper shows how to get started with IPython and Windows HPC Server 2008 as well two examples of using IPython to perform an interactive parallel computation. Many thanks to Microsoft for funding Brian Granger to work on this.</li>
+      </ul>
+      
+      <h2>2009</h2>
+      <ul>
+        <li>At <a href="http://conference.scipy.org/" target="_blank" rel="noopener noreferrer">SciPy '09</a>, we had a <a href="https://cirl.berkeley.edu/fperez/talks/0908_scipy_state_ipython.pdf" target="_blank" rel="noopener noreferrer">lightning talk</a> on the state of IPython.</li>
+        <li>At the <a href="http://www.siam.org/meetings/cse09/" target="_blank" rel="noopener noreferrer">IAM CSE09 conference</a> we gave two presentations about IPython: a <a href="http://ipython.scipy.org/talks/0903_siamcse09_ipython_interact_fperez.pdf" target="_blank" rel="noopener noreferrer">general one</a> and another focused on <a href="http://ipython.scipy.org/talks/0903_siamcse09_ipython_dist_bgranger.pdf" target="_blank" rel="noopener noreferrer">parallel and distributed computing</a>. If you are interested, the slides from all the presentations at this meeting <a href="https://cirl.berkeley.edu/fperez/py4science/2009_siam_cse/" target="_blank" rel="noopener noreferrer">are available</a>.</li>
+      </ul>
+      
+      <h2>2008</h2>
+      <ul>
+        <li>A <a href="http://ipython.scipy.org/talks/0809_23andme_ipython.pdf" target="_blank" rel="noopener noreferrer">talk</a> at <a href="http://23andme.com" target="_blank" rel="noopener noreferrer">23andMe</a> where Fernando spoke about ipython in general, with some details about its facilities for distributed computing.</li>
+      </ul>
+      
+      <h2>2007</h2>
+      <ul>
+        <li><a href="http://ipython.scipy.org/doc/talks/0712_pit_architecture.pdf" target="_blank" rel="noopener noreferrer">Slides</a> from Dave Hudak, from the Ohio Supercomputing Center, about a "proposed" system using IPython for high-level, fully managed access to supercomputing resources (this system hasn't been implemented yet as of Sept 2008).</li>
+        <li>An <a href="http://amath.colorado.edu/faculty/fperez/preprints/ipython-cise-final.pdf" target="_blank" rel="noopener noreferrer">article about IPython</a>, written by Fernando Perez and Brian Granger, published in the <a href="http://scitation.aip.org/content/aip/journal/cise/9/3" target="_blank" rel="noopener noreferrer">May/June 2007 issue</a> of the journal "Computing in Science and Engineering".</li>
+        <li>A <a href="http://ipython.scipy.org/talks/Trilinos-IPython.pdf" target="_blank" rel="noopener noreferrer">set of slides</a> by Bill Spotz, from Sandia National Labs, on using IPython to interactively use the <a href="http://trilinos.sandia.gov/" target="_blank" rel="noopener noreferrer">Trilinos</a> parallel solvers.</li>
+        <li>Two <a href="http://ipython.scipy.org/talks/0702_pycon/" target="_blank" rel="noopener noreferrer">talks</a> about IPython at <a href="http://us.pycon.org/TX2007/HomePage" target="_blank" rel="noopener noreferrer">PyCon2007</a> (see the demos and movies as well).</li>
+        <li>A <a href="http://ipython.scipy.org/moin/About/Presentations?action=AttachFile&do=get&target=ipython_msri07.pdf" target="_blank" rel="noopener noreferrer">talk</a> at an <a href="http://www.msri.org/calendar/workshops/WorkshopInfo/410/show_workshop" target="_blank" rel="noopener noreferrer">Interactive Parallel Computation in Support of Research in Algebra, Geometry and Number Theory</a>.</li>
+      </ul>
+      
+      <h2>2006</h2>
+      <ul>
+        <li><a href="http://ipython.scipy.org/moin/About/Presentations?action=AttachFile&do=get&target=ipython_cu06.pdf" target="_blank" rel="noopener noreferrer">Slides</a> of a talk entitled "Interactive Parallel Computing with Python and IPython," at CU Boulder.</li>
+        <li>A <a href="http://ipython.scipy.org/moin/About/Presentations?action=AttachFile&do=get&target=ipython_DANSE06.pdf" target="_blank" rel="noopener noreferrer">poster</a> at the <a href="http://www.cacr.caltech.edu/projects/danse/meetings/kickoff/" target="_blank" rel="noopener noreferrer">DANSE kickoff meeting</a>.</li>
+        <li>A <a href="http://ipython.scipy.org/moin/About/Presentations?action=AttachFile&do=get&target=ipython_scipy06.pdf" target="_blank" rel="noopener noreferrer">lightning talk</a> at <a href="http://www.scipy.org/SciPy2006" target="_blank" rel="noopener noreferrer">SciPy'06</a> about the Parallel Computing capabilities of IPython.</li>
+        <li><a href="http://modular.ucsd.edu/sage/days1/perez.pdf" target="_blank" rel="noopener noreferrer">Slides</a> and <a href="http://modular.ucsd.edu/sage/days1/audio/day1/voice004.mp3" target="_blank" rel="noopener noreferrer">MP3 audio</a> of a talk at <a href="http://modular.ucsd.edu/sage/days1/index.html" target="_blank" rel="noopener noreferrer">SAGE Days 2006</a>.</li>
+        <li>A <a href="http://ipython.scipy.org/moin/About/Presentations?action=AttachFile&do=get&target=ipython_SIAMpp06.pdf" target="_blank" rel="noopener noreferrer">poster</a> presented at <a href="http://www.siam.org/meetings/pp06/" target="_blank" rel="noopener noreferrer">SIAM's Parallel Processing '06 conference</a>.</li>
+      </ul>
+      
+      <h2>2005</h2>
+      <ul>
+        <li>Two talks at SciPy'05: one about <a href="http://ipython.scipy.org/misc/scipy05_parallel.pdf" target="_blank" rel="noopener noreferrer">parallel computing</a> and one about <a href="http://ipython.scipy.org/misc/ipython-notebooks-scipy05.pdf" target="_blank" rel="noopener noreferrer">interactive notebooks</a>.</li>
+      </ul>
+      
+      <h2>2004</h2>
+      <ul>
+        <li>A <a href="http://ipython.scipy.org/misc/ipython_scipy04.pdf" target="_blank" rel="noopener noreferrer">talk</a> at SciPy'04.</li>
+      </ul>
+      
+      <h2>2003</h2>
+      <ul>
+        <li>An <a href="http://ipython.scipy.org/misc/ipython_scipy03.pdf" target="_blank" rel="noopener noreferrer">overview of IPython</a> at SciPy'03.</li>
+      </ul>
+    </div>
+  </main>
+  
+  <Footer />
+</BaseLayout>

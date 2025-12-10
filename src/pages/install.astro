@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<BaseLayout title="Installation Guide">
+  <Navigation />
+
+  <main class="min-h-screen bg-white dark:bg-ipython-dark">
+    <PageHeader 
+      title="Installation Guide" 
+      description="Get IPython up and running on your system"
+    />
+
+    <!-- Content -->
+    <section class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Quick Install -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Quick Install</h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">If you already have Python installed, the easiest way to install IPython is with pip:</p>
+
+        <div class="bg-gray-900 rounded-lg p-6 mb-6 relative">
+          <pre class="text-gray-50 font-mono text-sm"><code>pip install ipython</code></pre>
+          <button class="absolute top-4 right-4 bg-theme-secondary hover:bg-theme-secondary/80 text-white px-4 py-2 rounded transition-colors" onclick="navigator.clipboard.writeText('pip install ipython')">Copy</button>
+        </div>
+
+        <p class="text-gray-600 dark:text-gray-400 mb-6">You can also view IPython on <a href="https://pypi.org/project/ipython/" target="_blank" rel="noopener noreferrer" class="text-theme-secondary hover:text-theme-secondary/80 transition-colors underline">PyPI</a> to see version history, download statistics, and more.</p>
+
+        <p class="text-gray-600 dark:text-gray-400">After installation, start IPython by running:</p>
+        <div class="bg-gray-900 rounded-lg p-6 relative">
+          <pre class="text-gray-50 font-mono text-sm"><code>ipython</code></pre>
+          <button class="absolute top-4 right-4 bg-theme-secondary hover:bg-theme-secondary/80 text-white px-4 py-2 rounded transition-colors" onclick="navigator.clipboard.writeText('ipython')">Copy</button>
+        </div>
+      </div>
+
+      <!-- Package Managers -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Package Managers</h2>
+
+        <div class="space-y-8">
+          <!-- Conda -->
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Conda / Anaconda</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">If you use Conda (Anaconda or Miniconda):</p>
+            <div class="bg-gray-900 rounded-lg p-6 relative">
+              <pre class="text-gray-50 font-mono text-sm"><code>conda install ipython</code></pre>
+              <button class="absolute top-4 right-4 bg-theme-secondary hover:bg-theme-secondary/80 text-white px-4 py-2 rounded transition-colors" onclick="navigator.clipboard.writeText('conda install ipython')">Copy</button>
+            </div>
+          </div>
+
+          <!-- macOS Homebrew -->
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">macOS Homebrew</h3>
+            <div class="bg-gray-900 rounded-lg p-6 relative">
+              <pre class="text-gray-50 font-mono text-sm"><code>brew install ipython</code></pre>
+              <button class="absolute top-4 right-4 bg-theme-secondary hover:bg-theme-secondary/80 text-white px-4 py-2 rounded transition-colors" onclick="navigator.clipboard.writeText('brew install ipython')">Copy</button>
+            </div>
+          </div>
+
+          <!-- Linux Package Managers -->
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Linux Package Managers</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">On Ubuntu/Debian:</p>
+            <div class="bg-gray-900 rounded-lg p-6 relative mb-6">
+              <pre class="text-gray-50 font-mono text-sm"><code>sudo apt install ipython3</code></pre>
+              <button class="absolute top-4 right-4 bg-theme-secondary hover:bg-theme-secondary/80 text-white px-4 py-2 rounded transition-colors" onclick="navigator.clipboard.writeText('sudo apt install ipython3')">Copy</button>
+            </div>
+
+            <p class="text-gray-600 dark:text-gray-400 mb-4">On Fedora:</p>
+            <div class="bg-gray-900 rounded-lg p-6 relative">
+              <pre class="text-gray-50 font-mono text-sm"><code>sudo dnf install ipython</code></pre>
+              <button class="absolute top-4 right-4 bg-theme-secondary hover:bg-theme-secondary/80 text-white px-4 py-2 rounded transition-colors" onclick="navigator.clipboard.writeText('sudo dnf install ipython')">Copy</button>
+            </div>
+          </div>
+
+          <!-- Pipx -->
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Pipx (Isolated Installation)</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">For an isolated IPython installation:</p>
+            <div class="bg-gray-900 rounded-lg p-6 relative">
+              <pre class="text-gray-50 font-mono text-sm"><code>pipx install ipython</code></pre>
+              <button class="absolute top-4 right-4 bg-theme-secondary hover:bg-theme-secondary/80 text-white px-4 py-2 rounded transition-colors" onclick="navigator.clipboard.writeText('pipx install ipython')">Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Verification -->
+      <div>
+        <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Verify Installation</h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">Check your IPython installation:</p>
+        <div class="bg-gray-900 rounded-lg p-6 relative">
+          <pre class="text-gray-50 font-mono text-sm"><code>ipython --version</code></pre>
+          <button class="absolute top-4 right-4 bg-theme-secondary hover:bg-theme-secondary/80 text-white px-4 py-2 rounded transition-colors" onclick="navigator.clipboard.writeText('ipython --version')">Copy</button>
+        </div>
+
+        <p class="text-gray-600 dark:text-gray-400 mt-6 mb-4">For detailed installation instructions and troubleshooting, see the <a href="https://ipython.readthedocs.io/en/stable/install/install.html" class="text-theme-secondary hover:text-theme-secondary/80 transition-colors">official documentation</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

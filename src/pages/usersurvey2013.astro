@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { baseUrl } from '../lib/utils';
+---
+
+<BaseLayout title="IPython User Survey 2013">
+  <Navigation />
+  <PageHeader title="IPython User Survey 2013" />
+  
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="prose prose-lg dark:prose-invert max-w-none">
+      <p>The full responses, and summaries of responses to some questions, are available as <a href="https://docs.google.com/spreadsheet/pub?key=0AqIElKUDQl8tdHF2WmlKdTZTRlZVRGFGTDgtUXFBVUE&output=html" target="_blank" rel="noopener noreferrer">a Google Spreadsheet</a>.</p>
+      
+      <h2>Countries</h2>
+      <p>42% of respondents were in the USA, followed by the UK (7.1%) and Germany (6.7%). These numbers are largely similar to the last user survey, two years ago, but the diversity of countries in the 'tail' has increased. In total, respondents came from 48 countries (in descending order of frequency):</p>
+      <p>USA, UK, Germany, France, Brazil, Canada, Spain, Argentina, Belgium, Netherlands, Austria, Australia, Norway, Colombia, Russia, Mexico, Italy, Czech Republic, India, Bermuda, Ireland, Denmark, New Zealand, Romania, Serbia, Singapore, Chile, Vietnam, Croatia, Switzerland, Portugal, China, Taiwan, Maldives, Ecuador, Israel, El Salvador, Slovenia, Thailand, Poland, Finland, Belarus, Estonia, Egypt, South Africa, Peru, Greece, Japan</p>
+      <img src={baseUrl('_static/survey2013/countries.png')} alt="Countries" class="max-w-2xl mx-auto" />
+      <p>See the 'Countries' sheet of the results spreadsheet for the cleaned data.</p>
+      
+      <h2>IPython versions</h2>
+      <p>We see a rapid changeover - IPython 1.0 was released while the survey was running, and by the end of the survey, more people reported using 1.0 than 0.13, the previous release. Very few people were using older releases, although two people mentioned using the 0.8 series.</p>
+      <p>The survey respondents are probably biased towards people who actively update IPython to newer versions, so we can assume that a greater proportion of the total population of users are on older versions. Nonetheless, the take up rates are encouraging.</p>
+      <img src={baseUrl('_static/survey2013/ipy_versions.png')} alt="IPython Versions" class="max-w-2xl mx-auto" />
+      
+      <h2>IPython components</h2>
+      <p>The notebook was the most popular component, with 84% saying they use it, followed by the classic terminal interface (76%). The Qt console was the least used interface (27%).</p>
+      <p>Over half of respondents use pylab (55%). 16% use the parallel computing framework in IPython.</p>
+      <p>Other components that people mentioned include nbconvert, nbviewer, rmagic and traitlets. We should include some of these in future surveys.</p>
+      <img src={baseUrl('_static/survey2013/components.png')} alt="Components" class="max-w-2xl mx-auto" />
+      
+      <h2>Platforms</h2>
+      <p>These results were similar to the previous survey. Linux was the most popular operating system (81%), while roughly equal numbers use Windows (34%) and Mac (39%). Of the cloud platforms, only Amazon EC2 has any significant usage, with 6% of respondents.</p>
+      <p>Minor platforms: two people listed Wakari here (others listed it under embedding products). Two people use Microsoft Azure. FreeBSD, AIX, Rackspace and Raspberry Pi were each mentioned once.</p>
+      <img src={baseUrl('_static/survey2013/platforms.png')} alt="Platforms" class="max-w-2xl mx-auto" />
+      
+      <h2>Python versions</h2>
+      <p>As expected, Python 2.7 is the most widely used release (97%). However, a significant fraction (22%) have also used IPython with Python 3.3. 7% of users still use Python 2.6, and 4% use 3.2 - we will be dropping support for both of these versions in IPython 2.0. Very few are on even older versions.</p>
+      <img src={baseUrl('_static/survey2013/py_versions.png')} alt="Python Versions" class="max-w-2xl mx-auto" />
+      
+      <h2>Projects integrating IPython</h2>
+      <p>59 people (13%) reported using IPython with the <a href="http://code.google.com/p/spyderlib/" target="_blank" rel="noopener noreferrer">Spyder IDE</a>. Anecdotally, we have seen more people using Spyder in Europe than in North America, and the results somewhat support this. Although the US was still the largest single country among users of IPython and Spyder, it accounted for only 20% of the users, less than the 42% from the US in the whole survey.</p>
+      <p>Projects integrating IPython with the two heavyweight editors, vim and emacs, have 12 and 10 users respectively. A long list of other integrations included editors, Python packages and hosted services on the web, but only a few respondents mentioned each one.</p>
+      <p>See the 'Integration' sheet of the results spreadsheet for the cleaned data.</p>
+      
+      <h2>Installation</h2>
+      <p>No one installation method dominated. The leading techniques were pip/easy_install (48%), Linux distribution repositories (44%) and Python distributions (38%).</p>
+      <img src={baseUrl('_static/survey2013/installation.png')} alt="Installation" class="max-w-2xl mx-auto" />
+      
+      <h2>Support resources</h2>
+      <p>Almost all users (91%) report using the online documentation, highlighting the importance of keeping this up to date. Stackoverflow is also very important (68%). In contrast, only 3% of respondents have used our Hipchat chat rooms - though these are quite new, so people may not be aware of them yet.</p>
+      <img src={baseUrl('_static/survey2013/help_resources.png')} alt="Help Resources" class="max-w-2xl mx-auto" />
+      
+      <h2>Role</h2>
+      <p>Once again, many of our users are in academia (65%), but we also have a significant group of users in industry (38%) and 'hobby' usage (37%), i.e. people using IPython outside their jobs. These numbers are not directly comparable to the last survey, because last time, the categories were taken from a free text answer.</p>
+      <p>24% of respondents also said they were using IPython in education. In the future, we could break this down more to look at teaching and learning.</p>
+      <img src={baseUrl('_static/survey2013/role.png')} alt="Role" class="max-w-2xl mx-auto" />
+      
+      <h2>Use cases</h2>
+      <p>People's descriptions of the projects where they use IPython were many and varied. A few specific highlights include modelling quantum computing systems (row 93 in the results spreadsheet), computer vision (162), phylogenetic relationships of languages (201), e-Democracy (261), pressure measurements under animals' feet (423), and processing data from particle colliders (195) and gamma ray telescopes (454).</p>
+      <p>Grouping the responses, people are using IPython in at least these areas:</p>
+      <ul>
+        <li>Finance/economics</li>
+        <li>Bioinformatics</li>
+        <li>Neuroscience</li>
+        <li>Chemistry</li>
+        <li>Astronomy</li>
+        <li>Physics</li>
+      </ul>
+      <p>And in these ways:</p>
+      <ul>
+        <li>Machine learning</li>
+        <li>Data cleaning</li>
+        <li>Writing papers</li>
+        <li>Developing other application and libraries</li>
+        <li>Matlab replacement</li>
+      </ul>
+      
+      <h2>Suggestions box</h2>
+      <p>Categorised suggestions are listed on the 'Suggestions' sheet of the result spreadsheet. Some responses were split into multiple suggestions.</p>
+      <p>A number of themes appeared:</p>
+      <ul>
+        <li>nbconvert: Already much improved since the survey, and we continue to improve it.</li>
+        <li>File navigation, notebooks in different directories: Coming in IPython 2!</li>
+        <li>Widgets: Coming in IPython 2!</li>
+        <li>Interactive plots: Various projects are exploring this, and the new widget machinery in IPython 2 will provide a foundation for further work.</li>
+        <li>Variable explorer: One can be built on top of the widget framework.</li>
+        <li>Keyboard shortcuts: Much improved, and much more customisable, in IPython 2.</li>
+        <li>JS API: IPython 2 has an 'nbextension' system, and the Javascript API is gradually becoming more stable.</li>
+        <li>Better ways to deal with long notebooks: On the radar for IPython 3.</li>
+        <li>Integration with other languages: IPython 3 will take a big step by integrating multiple kernel types into the UI.</li>
+        <li>Multi-user support: A multi-user server is a goal for IPython 3. Other projects like Jiffylab and IPydra provide another model of multi-user server.</li>
+        <li>Docs: We're improving them, but we could still do better.</li>
+        <li>Parallel: ipcluster's launchers are in need of various improvements. We plan to rewrite the ipcluster script as an RPC service, which should improve many of these cases, especially SSH. The documentation could also use a lot of attention, especially because there were several requests for features that already exist.</li>
+        <li>Security: After long discussion, we have created a new security model for IPython 2.</li>
+        <li>Installation: We point new users to Anaconda, which is one download including Python, IPython, numpy, and many other packages. We know installation can be painful, but we don't know how to solve this well at the moment.</li>
+        <li>Hiding cells: We plan to add options for this to nbconvert. We're also planning a way to tag cells in the notebook UI, which could be used to control what nbconvert shows.</li>
+        <li>Concurrent editing: On the radar, but some way off. We need to get multi-user sorted out first.</li>
+        <li>Python 3 support: I (Thomas) use Python 3 daily, and I'll keep improving docs, examples, etc.</li>
+        <li>Editor features: We are enabling CodeMirror features like bracket matching. Features like refactoring tools and static analysis should be possible to write as extensions.</li>
+        <li>Sphinx integration: On the radar. The yt project has done some work on this.</li>
+        <li>Slideshows: Exporting to static slides with nbconvert has been improved since 1.0, and there's ongoing development of an extension to present live, executable notebooks as slides.</li>
+        <li>Integration with version control: No current plans.</li>
+        <li>Debugger: No current plans.</li>
+      </ul>
+      
+      <h2>Other comments</h2>
+      <p>Categorised comments are listed on the 'Comments' sheet of the result spreadsheet.</p>
+      <p>Thank-you to everyone who used the comments or suggestions fields to thank or compliment us. We honestly weren't fishing for complements when we wrote the survey.</p>
+      <p>A few more people wanted better documentation - see the section above.</p>
+      <p>Other than that, there was no theme apparent in the comments. All of them have been read. If you want to follow up, please get in touch with us - the survey was anonymous, so we can't get in touch with you.</p>
+    </div>
+  </main>
+  
+  <Footer />
+</BaseLayout>

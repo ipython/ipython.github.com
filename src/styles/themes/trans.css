@@ -1,0 +1,109 @@
+/* Trans theme */
+[data-color-theme="trans"] {
+  --theme-primary: #5bcefa;
+  --theme-secondary: #f5a9b8;
+  --theme-accent: #ffffff;
+}
+
+:not(.dark)[data-color-theme="trans"] .gradient-hero {
+  background-image: linear-gradient(to bottom right, 
+    #5BCEFA 0%, #5BCEFA 20%,
+    #F5A9B8 20%, #F5A9B8 40%,
+    #FFFFFF 40%, #FFFFFF 60%,
+    #F5A9B8 60%, #F5A9B8 80%,
+    #5BCEFA 80%, #5BCEFA 100%) !important;
+}
+
+.dark[data-color-theme="trans"] .gradient-hero {
+  background-image: linear-gradient(to bottom right, 
+    #5BCEFA 0%, #5BCEFA 20%,
+    #F5A9B8 20%, #F5A9B8 40%,
+    var(--ipython-dark) 40%, var(--ipython-dark) 60%,
+    #F5A9B8 60%, #F5A9B8 80%,
+    #5BCEFA 80%, #5BCEFA 100%) !important;
+}
+
+:not(.dark)[data-color-theme="trans"] .gradient-header {
+  background-image: linear-gradient(to right, 
+    #5BCEFA 0%, #5BCEFA 33%,
+    #F5A9B8 33%, #F5A9B8 66%,
+    #FFFFFF 66%, #FFFFFF 100%);
+}
+
+.dark[data-color-theme="trans"] .gradient-header {
+  background-image: linear-gradient(to right, 
+    #5BCEFA 0%, #5BCEFA 33%,
+    #F5A9B8 33%, #F5A9B8 66%,
+    #0f172a 66%, #0f172a 100%) !important;
+}
+
+[data-color-theme="trans"] .gradient-text {
+  background: linear-gradient(
+    to right,
+    #5bcefa 0%,
+    #5bcefa 25%,
+    #f5a9b8 25%,
+    #f5a9b8 75%,
+    #5bcefa 75%,
+    #5bcefa 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Add backdrop blur to gradient sections */
+[data-color-theme="trans"] section.gradient-hero .max-w-7xl.py-20,
+[data-color-theme="trans"] section.gradient-header .max-w-7xl.py-20,
+[data-color-theme="trans"] section.gradient-hero .max-w-7xl.py-8.text-center,
+[data-color-theme="trans"] section.gradient-header .max-w-7xl.py-8.text-center,
+[data-color-theme="trans"] section.gradient-hero .max-w-7xl.text-center,
+[data-color-theme="trans"] section.gradient-header .max-w-7xl.text-center,
+[data-color-theme="trans"] section.gradient-hero .max-w-7xl:has(h1.gradient-text-hero),
+[data-color-theme="trans"] section.gradient-header .max-w-7xl:has(h1.gradient-text-hero) {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+}
+
+.dark[data-color-theme="trans"] section.gradient-hero .max-w-7xl.py-20,
+.dark[data-color-theme="trans"] section.gradient-header .max-w-7xl.py-20,
+.dark[data-color-theme="trans"] section.gradient-hero .max-w-7xl.py-8.text-center,
+.dark[data-color-theme="trans"] section.gradient-header .max-w-7xl.py-8.text-center,
+.dark[data-color-theme="trans"] section.gradient-hero .max-w-7xl.text-center,
+.dark[data-color-theme="trans"] section.gradient-header .max-w-7xl.text-center,
+.dark[data-color-theme="trans"] section.gradient-hero .max-w-7xl:has(h1.gradient-text-hero),
+.dark[data-color-theme="trans"] section.gradient-header .max-w-7xl:has(h1.gradient-text-hero) {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+}
+
+/* Ensure white sections are fully opaque on Trans theme - light mode only */
+:not(.dark)[data-color-theme="trans"] .bg-white,
+:not(.dark)[data-color-theme="trans"] section.bg-white {
+  background: #ffffff !important;
+}
+
+/* Override for dark mode - must come after light mode rules */
+.dark[data-color-theme="trans"] .bg-white,
+.dark[data-color-theme="trans"] section.bg-white,
+.dark[data-color-theme="trans"] .bg-white.dark\:bg-ipython-dark,
+.dark[data-color-theme="trans"] nav.bg-white {
+  background: #0f172a !important;
+}
+
+/* Ensure gray sections are fully opaque white on Trans theme - light mode only */
+:not(.dark)[data-color-theme="trans"] section.bg-gray-50 {
+  background: #ffffff !important;
+}
+
+.dark[data-color-theme="trans"] section.bg-gray-50 {
+  background: #0f172a !important;
+}
+
+/* Ensure icon containers have visible backgrounds on Trans theme */
+[data-color-theme="trans"] .bg-theme-secondary {
+  background: #5bcefa !important;
+}

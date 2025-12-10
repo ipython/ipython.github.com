@@ -1,0 +1,6 @@
+/* Emerald theme */
+[data-color-theme="emerald"] {
+  --theme-primary: #047857;
+  --theme-secondary: #059669;
+  --theme-accent: #34d399;
+}

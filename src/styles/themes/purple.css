@@ -1,0 +1,6 @@
+/* Purple theme */
+[data-color-theme="purple"] {
+  --theme-primary: #6b21a8;
+  --theme-secondary: #9333ea;
+  --theme-accent: #c084fc;
+}

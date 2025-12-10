@@ -1,0 +1,105 @@
+/* Gay theme */
+[data-color-theme="gay"] {
+  --theme-primary: #078D70;
+  --theme-secondary: #26CEAA;
+  --theme-accent: #98E8C1;
+}
+
+[data-color-theme="gay"] .gradient-hero {
+  background-image: linear-gradient(to bottom right, 
+    #078D70 0%, #078D70 14.28%,
+    #26CEAA 14.28%, #26CEAA 28.56%,
+    #98E8C1 28.56%, #98E8C1 42.84%,
+    #FFFFFF 42.84%, #FFFFFF 57.12%,
+    #7BADE2 57.12%, #7BADE2 71.4%,
+    #5049CC 71.4%, #5049CC 85.68%,
+    #3D1A78 85.68%, #3D1A78 100%) !important;
+}
+
+[data-color-theme="gay"] .gradient-header {
+  background-image: linear-gradient(to right, 
+    #078D70 0%, #078D70 14.28%,
+    #26CEAA 14.28%, #26CEAA 28.56%,
+    #98E8C1 28.56%, #98E8C1 42.84%,
+    #FFFFFF 42.84%, #FFFFFF 57.12%,
+    #7BADE2 57.12%, #7BADE2 71.4%,
+    #5049CC 71.4%, #5049CC 85.68%,
+    #3D1A78 85.68%, #3D1A78 100%) !important;
+}
+
+[data-color-theme="gay"] .gradient-text {
+  background: linear-gradient(
+    to right,
+    #078D70 0%,
+    #078D70 16.67%,
+    #26CEAA 16.67%,
+    #26CEAA 33.33%,
+    #98E8C1 33.33%,
+    #98E8C1 50%,
+    #7BADE2 50%,
+    #7BADE2 66.67%,
+    #5049CC 66.67%,
+    #5049CC 83.33%,
+    #3D1A78 83.33%,
+    #3D1A78 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Add backdrop blur to gradient sections */
+[data-color-theme="gay"] section.gradient-hero .max-w-7xl.py-20,
+[data-color-theme="gay"] section.gradient-header .max-w-7xl.py-20,
+[data-color-theme="gay"] section.gradient-hero .max-w-7xl.py-8.text-center,
+[data-color-theme="gay"] section.gradient-header .max-w-7xl.py-8.text-center,
+[data-color-theme="gay"] section.gradient-hero .max-w-7xl.text-center,
+[data-color-theme="gay"] section.gradient-header .max-w-7xl.text-center,
+[data-color-theme="gay"] section.gradient-hero .max-w-7xl:has(h1.gradient-text-hero),
+[data-color-theme="gay"] section.gradient-header .max-w-7xl:has(h1.gradient-text-hero) {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+}
+
+.dark[data-color-theme="gay"] section.gradient-hero .max-w-7xl.py-20,
+.dark[data-color-theme="gay"] section.gradient-header .max-w-7xl.py-20,
+.dark[data-color-theme="gay"] section.gradient-hero .max-w-7xl.py-8.text-center,
+.dark[data-color-theme="gay"] section.gradient-header .max-w-7xl.py-8.text-center,
+.dark[data-color-theme="gay"] section.gradient-hero .max-w-7xl.text-center,
+.dark[data-color-theme="gay"] section.gradient-header .max-w-7xl.text-center,
+.dark[data-color-theme="gay"] section.gradient-hero .max-w-7xl:has(h1.gradient-text-hero),
+.dark[data-color-theme="gay"] section.gradient-header .max-w-7xl:has(h1.gradient-text-hero) {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+}
+
+/* Ensure white sections are fully opaque on Gay theme - light mode only */
+:not(.dark)[data-color-theme="gay"] .bg-white,
+:not(.dark)[data-color-theme="gay"] section.bg-white {
+  background: #ffffff !important;
+}
+
+/* Override for dark mode - must come after light mode rules */
+.dark[data-color-theme="gay"] .bg-white,
+.dark[data-color-theme="gay"] section.bg-white,
+.dark[data-color-theme="gay"] .bg-white.dark\:bg-ipython-dark,
+.dark[data-color-theme="gay"] nav.bg-white {
+  background: #0f172a !important;
+}
+
+/* Ensure gray sections are fully opaque white on Gay theme - light mode only */
+:not(.dark)[data-color-theme="gay"] section.bg-gray-50 {
+  background: #ffffff !important;
+}
+
+.dark[data-color-theme="gay"] section.bg-gray-50 {
+  background: #0f172a !important;
+}
+
+/* Ensure icon containers have visible backgrounds on Gay theme */
+[data-color-theme="gay"] .bg-theme-secondary {
+  background: #1f2937 !important;
+}

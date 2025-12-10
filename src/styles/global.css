@@ -1,0 +1,397 @@
+/* Import tw-animate-css for animations - must be first */
+@import "tw-animate-css";
+
+/* Import all theme files - must come before other CSS rules */
+@import "./themes/purple.css";
+@import "./themes/orange.css";
+@import "./themes/pink.css";
+@import "./themes/indigo.css";
+@import "./themes/emerald.css";
+@import "./themes/rainbow.css";
+@import "./themes/gay.css";
+@import "./themes/lesbian.css";
+@import "./themes/trans.css";
+@import "./themes/winter.css";
+@import "./themes/christmas.css";
+@import "./themes/ocean.css";
+@import "./themes/velvet.css";
+@import "./themes/sun.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  /* Default IPython theme */
+  --theme-primary: #0d5c63;
+  --theme-secondary: #008b95;
+  --theme-accent: #059669;
+  --ipython-dark: #0f172a;
+  
+  /* Inspira UI variables */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.141 0.005 285.823);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.141 0.005 285.823);
+  --primary: oklch(0.21 0.006 285.885);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.967 0.001 286.375);
+  --muted-foreground: oklch(0.552 0.016 285.938);
+  --accent: oklch(0.967 0.001 286.375);
+  --accent-foreground: oklch(0.21 0.006 285.885);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.92 0.004 286.32);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.705 0.015 286.067);
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
+}
+
+:root.dark {
+  color-scheme: dark;
+  
+  /* Inspira UI dark mode variables */
+  --background: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.141 0.005 285.823);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.141 0.005 285.823);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.21 0.006 285.885);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.274 0.006 286.033);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.274 0.006 286.033);
+  --input: oklch(0.274 0.006 286.033);
+  --ring: oklch(0.442 0.017 285.786);
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light dark;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-white dark:bg-ipython-dark text-gray-900 dark:text-gray-50 transition-colors duration-300;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  *:focus-visible {
+    outline-color: var(--ring);
+    outline-width: 2px;
+    outline-offset: 2px;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+/* Simplified gradient classes for sections */
+.gradient-hero {
+  @apply bg-gradient-to-br from-theme-primary;
+  --tw-gradient-to: var(--theme-accent) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from),
+    var(--theme-secondary) var(--tw-gradient-via-position),
+    var(--theme-accent) var(--tw-gradient-to-position);
+}
+
+.gradient-header {
+  @apply bg-gradient-to-r from-theme-primary;
+  --tw-gradient-to: var(--theme-secondary) var(--tw-gradient-to-position);
+}
+
+/* Simplified gradient classes with opacity for stats cards */
+.gradient-stats-cyan-blue {
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--theme-secondary) 10%, transparent),
+    color-mix(in srgb, var(--theme-primary) 10%, transparent)
+  );
+}
+
+.dark .gradient-stats-cyan-blue {
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--theme-secondary) 20%, transparent),
+    color-mix(in srgb, var(--theme-primary) 20%, transparent)
+  );
+}
+
+.gradient-stats-green-cyan {
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--theme-accent) 10%, transparent),
+    color-mix(in srgb, var(--theme-secondary) 10%, transparent)
+  );
+}
+
+.dark .gradient-stats-green-cyan {
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--theme-accent) 20%, transparent),
+    color-mix(in srgb, var(--theme-secondary) 20%, transparent)
+  );
+}
+
+/* Text utilities */
+a {
+  @apply transition-colors duration-200 text-theme-primary hover:text-theme-secondary underline underline-offset-2;
+}
+
+.prose a {
+  @apply text-theme-primary hover:text-theme-secondary font-medium;
+}
+
+/* Code highlighting */
+pre {
+  @apply bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 p-3 rounded-lg overflow-x-auto;
+}
+
+code {
+  @apply font-mono text-sm;
+}
+
+pre code {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+/* Paragraph spacing */
+p {
+  @apply my-4 text-gray-700 dark:text-gray-300;
+}
+
+.prose p {
+  @apply my-4;
+}
+
+/* List styling */
+ul, ol {
+  @apply my-4 ml-6;
+}
+
+ul {
+  @apply list-disc;
+}
+
+ol {
+  @apply list-decimal;
+}
+
+li {
+  @apply my-2 text-gray-700 dark:text-gray-300;
+}
+
+ul ul, ol ol, ul ol, ol ul {
+  @apply my-2;
+}
+
+/* Image sizing for historical pages */
+.prose img {
+  @apply my-6 rounded-lg;
+}
+
+/* Survey images should be smaller */
+.prose img[src*="survey"] {
+  @apply max-w-2xl mx-auto;
+}
+
+/* Gradient text for headers - use CSS variables for theme support */
+.gradient-text {
+  background: linear-gradient(
+    to right,
+    var(--theme-primary),
+    var(--theme-secondary),
+    var(--theme-accent)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Gradient text for hero (brighter, contrasts with gradient bg) */
+.gradient-text-hero {
+  @apply bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent;
+}
+
+.dark .gradient-text-hero {
+  @apply bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300 bg-clip-text text-transparent;
+}
+
+/* Theme-aware border colors */
+.border-theme-secondary {
+  border-color: var(--theme-secondary);
+}
+
+.border-theme-accent {
+  border-color: var(--theme-accent);
+}
+
+/* Theme-aware text colors */
+.text-theme-primary {
+  color: var(--theme-primary);
+}
+
+.text-theme-secondary {
+  color: var(--theme-secondary);
+}
+
+.text-theme-accent {
+  color: var(--theme-accent);
+}
+
+/* Theme-aware background colors */
+.bg-theme-secondary {
+  background-color: var(--theme-secondary);
+}
+
+.bg-theme-accent {
+  background-color: var(--theme-accent);
+}
+
+/* Theme-aware hover colors */
+.hover\:text-theme-primary:hover {
+  color: var(--theme-primary);
+}
+
+.hover\:text-theme-secondary:hover {
+  color: var(--theme-secondary);
+}
+
+/* Override Tailwind gradient classes with CSS variables */
+.from-theme-primary {
+  --tw-gradient-from: var(--theme-primary) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(13 92 99 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+h2 {
+  @apply gradient-text;
+}
+
+h3 {
+  @apply gradient-text;
+}
+
+/* Override gradient text for headers on gradient backgrounds */
+h1.text-white,
+h2.text-white,
+h3.text-white {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: white !important;
+  color: white !important;
+}
+
+/* Mute white text in dark mode */
+.dark .text-white {
+  color: rgb(209 213 219) !important; /* gray-300 */
+}
+
+.dark h1.text-white,
+.dark h2.text-white,
+.dark h3.text-white {
+  -webkit-text-fill-color: rgb(209 213 219) !important; /* gray-300 */
+  color: rgb(209 213 219) !important; /* gray-300 */
+}
+
+.dark .text-gray-100 {
+  color: rgb(156 163 175) !important; /* gray-400 */
+}
+
+.dark .text-gray-50 {
+  color: rgb(156 163 175) !important; /* gray-400 */
+}
+
+/* Mute button text in dark mode */
+.dark button.text-white,
+.dark a.text-white {
+  color: rgb(209 213 219) !important; /* gray-300 */
+}
+
+/* Mute stats numbers in dark mode */
+.dark .text-3xl.text-white,
+.dark .text-2xl.text-white {
+  color: rgb(209 213 219) !important; /* gray-300 */
+}
+
+/* Mute header description text in dark mode */
+.dark section.gradient-header .text-gray-100 {
+  color: rgb(156 163 175) !important; /* gray-400 */
+}
+
+/* Mute CTA section text in dark mode */
+.dark section.gradient-header h2.text-white {
+  color: rgb(209 213 219) !important; /* gray-300 */
+}
+
+.dark section.gradient-header p.text-gray-100 {
+  color: rgb(156 163 175) !important; /* gray-400 */
+}

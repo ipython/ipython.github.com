@@ -1,0 +1,6 @@
+/* Orange theme */
+[data-color-theme="orange"] {
+  --theme-primary: #c2410c;
+  --theme-secondary: #ea580c;
+  --theme-accent: #fb923c;
+}

@@ -1,0 +1,207 @@
+/* Red Velvet Luxurious theme */
+[data-color-theme="velvet"] {
+  --theme-primary: #6b0f2a;   /* Deep velvet red */
+  --theme-secondary: #8b1538; /* Rich carmine */
+  --theme-accent: #a91d3d;     /* Warm velvet */
+}
+
+:not(.dark)[data-color-theme="velvet"] .gradient-hero {
+  background-image: linear-gradient(to bottom right, 
+    #6b0f2a,
+    #8b1538,
+    #a91d3d,
+    #c41e3a) !important;
+}
+
+.dark[data-color-theme="velvet"] .gradient-hero {
+  background-image: linear-gradient(to bottom right, 
+    #4a0a1d,
+    #6b0f2a,
+    #8b1538,
+    #a91d3d) !important;
+}
+
+:not(.dark)[data-color-theme="velvet"] .gradient-header {
+  background-image: linear-gradient(to right, 
+    #6b0f2a,
+    #8b1538,
+    #a91d3d) !important;
+}
+
+.dark[data-color-theme="velvet"] .gradient-header {
+  background-image: linear-gradient(to right, 
+    #4a0a1d,
+    #6b0f2a,
+    #8b1538) !important;
+}
+
+[data-color-theme="velvet"] .gradient-text {
+  background: linear-gradient(
+    to right,
+    #6b0f2a,
+    #8b1538,
+    #a91d3d,
+    #c41e3a
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Add backdrop blur to gradient sections */
+[data-color-theme="velvet"] section.gradient-hero .max-w-7xl.py-20,
+[data-color-theme="velvet"] section.gradient-header .max-w-7xl.py-20,
+[data-color-theme="velvet"] section.gradient-hero .max-w-7xl.py-8.text-center,
+[data-color-theme="velvet"] section.gradient-header .max-w-7xl.py-8.text-center,
+[data-color-theme="velvet"] section.gradient-hero .max-w-7xl.text-center,
+[data-color-theme="velvet"] section.gradient-header .max-w-7xl.text-center,
+[data-color-theme="velvet"] section.gradient-hero .max-w-7xl:has(h1.gradient-text-hero),
+[data-color-theme="velvet"] section.gradient-header .max-w-7xl:has(h1.gradient-text-hero) {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 32px rgba(107, 15, 42, 0.4);
+}
+
+.dark[data-color-theme="velvet"] section.gradient-hero .max-w-7xl.py-20,
+.dark[data-color-theme="velvet"] section.gradient-header .max-w-7xl.py-20,
+.dark[data-color-theme="velvet"] section.gradient-hero .max-w-7xl.py-8.text-center,
+.dark[data-color-theme="velvet"] section.gradient-header .max-w-7xl.py-8.text-center,
+.dark[data-color-theme="velvet"] section.gradient-hero .max-w-7xl.text-center,
+.dark[data-color-theme="velvet"] section.gradient-header .max-w-7xl.text-center,
+.dark[data-color-theme="velvet"] section.gradient-hero .max-w-7xl:has(h1.gradient-text-hero),
+.dark[data-color-theme="velvet"] section.gradient-header .max-w-7xl:has(h1.gradient-text-hero) {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 32px rgba(107, 15, 42, 0.5);
+}
+
+/* Luxurious text effect for headings */
+[data-color-theme="velvet"] h1,
+[data-color-theme="velvet"] h2,
+[data-color-theme="velvet"] h3,
+[data-color-theme="velvet"] h4,
+[data-color-theme="velvet"] h5,
+[data-color-theme="velvet"] h6 {
+  background: linear-gradient(
+    135deg,
+    #6b0f2a,
+    #8b1538,
+    #a91d3d,
+    #c41e3a
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 
+    0 1px 2px rgba(107, 15, 42, 0.2);
+  position: relative;
+}
+
+/* Dark mode adjustments */
+.dark[data-color-theme="velvet"] h1,
+.dark[data-color-theme="velvet"] h2,
+.dark[data-color-theme="velvet"] h3,
+.dark[data-color-theme="velvet"] h4,
+.dark[data-color-theme="velvet"] h5,
+.dark[data-color-theme="velvet"] h6 {
+  background: linear-gradient(
+    135deg,
+    #8b1538,
+    #a91d3d,
+    #c41e3a,
+    #d32f2f
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 
+    0 1px 2px rgba(139, 21, 56, 0.3);
+}
+
+/* Override for white text headings */
+[data-color-theme="velvet"] h1.text-white,
+[data-color-theme="velvet"] h2.text-white,
+[data-color-theme="velvet"] h3.text-white,
+[data-color-theme="velvet"] h4.text-white,
+[data-color-theme="velvet"] h5.text-white,
+[data-color-theme="velvet"] h6.text-white {
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #ffebee,
+    #ffcdd2,
+    #f8bbd0,
+    #ffffff
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  text-shadow: 
+    0 1px 2px rgba(169, 29, 61, 0.3);
+}
+
+.dark[data-color-theme="velvet"] h1.text-white,
+.dark[data-color-theme="velvet"] h2.text-white,
+.dark[data-color-theme="velvet"] h3.text-white,
+.dark[data-color-theme="velvet"] h4.text-white,
+.dark[data-color-theme="velvet"] h5.text-white,
+.dark[data-color-theme="velvet"] h6.text-white {
+  background: linear-gradient(
+    135deg,
+    #fce4ec,
+    #f8bbd0,
+    #f48fb1,
+    #f8bbd0,
+    #fce4ec
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  text-shadow: 
+    0 1px 2px rgba(139, 21, 56, 0.4);
+}
+
+/* Special styling for gradient-text-hero */
+[data-color-theme="velvet"] h1.gradient-text-hero,
+[data-color-theme="velvet"] .gradient-text-hero {
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #ffebee,
+    #ffcdd2,
+    #f8bbd0,
+    #ffcdd2,
+    #ffffff
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  text-shadow: 
+    0 1px 2px rgba(169, 29, 61, 0.3);
+}
+
+.dark[data-color-theme="velvet"] h1.gradient-text-hero,
+.dark[data-color-theme="velvet"] .gradient-text-hero {
+  background: linear-gradient(
+    135deg,
+    #fce4ec,
+    #f8bbd0,
+    #f48fb1,
+    #f8bbd0,
+    #fce4ec
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  text-shadow: 
+    0 1px 2px rgba(139, 21, 56, 0.4);
+}

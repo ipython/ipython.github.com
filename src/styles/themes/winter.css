@@ -1,0 +1,279 @@
+/* Winter theme */
+[data-color-theme="winter"] {
+  --theme-primary: #1e40af;   /* Deep blue */
+  --theme-secondary: #3b82f6; /* Bright blue */
+  --theme-accent: #e0f2fe;     /* Light blue/ice */
+}
+
+:not(.dark)[data-color-theme="winter"] .gradient-hero {
+  background-image: linear-gradient(to bottom right, 
+    #1e40af 0%, #1e40af 20%,
+    #3b82f6 20%, #3b82f6 40%,
+    #60a5fa 40%, #60a5fa 60%,
+    #93c5fd 60%, #93c5fd 80%,
+    #e0f2fe 80%, #e0f2fe 100%) !important;
+}
+
+.dark[data-color-theme="winter"] .gradient-hero {
+  background-image: linear-gradient(to bottom right, 
+    #1e3a8a 0%, #1e3a8a 20%,
+    #1e40af 20%, #1e40af 40%,
+    #3b82f6 40%, #3b82f6 60%,
+    #60a5fa 60%, #60a5fa 80%,
+    #93c5fd 80%, #93c5fd 100%) !important;
+}
+
+:not(.dark)[data-color-theme="winter"] .gradient-header {
+  background-image: linear-gradient(to right, 
+    #1e40af 0%, #1e40af 33%,
+    #3b82f6 33%, #3b82f6 66%,
+    #93c5fd 66%, #93c5fd 100%) !important;
+}
+
+.dark[data-color-theme="winter"] .gradient-header {
+  background-image: linear-gradient(to right, 
+    #1e3a8a 0%, #1e3a8a 33%,
+    #1e40af 33%, #1e40af 66%,
+    #3b82f6 66%, #3b82f6 100%) !important;
+}
+
+[data-color-theme="winter"] .gradient-text {
+  background: linear-gradient(
+    to right,
+    #1e40af 0%,
+    #1e40af 25%,
+    #3b82f6 25%,
+    #3b82f6 50%,
+    #60a5fa 50%,
+    #60a5fa 75%,
+    #93c5fd 75%,
+    #93c5fd 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Add backdrop blur to gradient sections */
+[data-color-theme="winter"] section.gradient-hero .max-w-7xl.py-20,
+[data-color-theme="winter"] section.gradient-header .max-w-7xl.py-20,
+[data-color-theme="winter"] section.gradient-hero .max-w-7xl.py-8.text-center,
+[data-color-theme="winter"] section.gradient-header .max-w-7xl.py-8.text-center,
+[data-color-theme="winter"] section.gradient-hero .max-w-7xl.text-center,
+[data-color-theme="winter"] section.gradient-header .max-w-7xl.text-center,
+[data-color-theme="winter"] section.gradient-hero .max-w-7xl:has(h1.gradient-text-hero),
+[data-color-theme="winter"] section.gradient-header .max-w-7xl:has(h1.gradient-text-hero) {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+}
+
+.dark[data-color-theme="winter"] section.gradient-hero .max-w-7xl.py-20,
+.dark[data-color-theme="winter"] section.gradient-header .max-w-7xl.py-20,
+.dark[data-color-theme="winter"] section.gradient-hero .max-w-7xl.py-8.text-center,
+.dark[data-color-theme="winter"] section.gradient-header .max-w-7xl.py-8.text-center,
+.dark[data-color-theme="winter"] section.gradient-hero .max-w-7xl.text-center,
+.dark[data-color-theme="winter"] section.gradient-header .max-w-7xl.text-center,
+.dark[data-color-theme="winter"] section.gradient-hero .max-w-7xl:has(h1.gradient-text-hero),
+.dark[data-color-theme="winter"] section.gradient-header .max-w-7xl:has(h1.gradient-text-hero) {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+}
+
+/* Frosty font styling for winter theme */
+[data-color-theme="winter"] h1,
+[data-color-theme="winter"] h2,
+[data-color-theme="winter"] h3,
+[data-color-theme="winter"] h4,
+[data-color-theme="winter"] h5,
+[data-color-theme="winter"] h6 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Frozen/Ice text effect for headings in winter theme */
+[data-color-theme="winter"] h1,
+[data-color-theme="winter"] h2,
+[data-color-theme="winter"] h3,
+[data-color-theme="winter"] h4,
+[data-color-theme="winter"] h5,
+[data-color-theme="winter"] h6 {
+  background: linear-gradient(
+    135deg,
+    #e0f2fe 0%,
+    #bfdbfe 25%,
+    #93c5fd 50%,
+    #60a5fa 75%,
+    #3b82f6 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 
+    0 0 10px rgba(191, 219, 254, 0.5),
+    0 0 20px rgba(147, 197, 253, 0.3),
+    0 0 30px rgba(96, 165, 250, 0.2),
+    0 2px 4px rgba(59, 130, 246, 0.4),
+    0 4px 8px rgba(30, 64, 175, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.1),
+    0 -1px 0 rgba(30, 64, 175, 0.3);
+  filter: drop-shadow(0 0 8px rgba(147, 197, 253, 0.4)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  position: relative;
+  -webkit-text-stroke: 0.5px rgba(191, 219, 254, 0.3);
+  text-stroke: 0.5px rgba(191, 219, 254, 0.3);
+}
+
+/* Dark mode adjustments for ice effect */
+.dark[data-color-theme="winter"] h1,
+.dark[data-color-theme="winter"] h2,
+.dark[data-color-theme="winter"] h3,
+.dark[data-color-theme="winter"] h4,
+.dark[data-color-theme="winter"] h5,
+.dark[data-color-theme="winter"] h6 {
+  background: linear-gradient(
+    135deg,
+    #dbeafe 0%,
+    #bfdbfe 20%,
+    #93c5fd 40%,
+    #60a5fa 60%,
+    #3b82f6 80%,
+    #2563eb 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 
+    0 0 15px rgba(219, 234, 254, 0.6),
+    0 0 30px rgba(147, 197, 253, 0.4),
+    0 0 45px rgba(96, 165, 250, 0.3),
+    0 2px 4px rgba(59, 130, 246, 0.5),
+    0 4px 8px rgba(37, 99, 235, 0.3),
+    0 1px 0 rgba(255, 255, 255, 0.2),
+    0 -1px 0 rgba(37, 99, 235, 0.4);
+  filter: drop-shadow(0 0 12px rgba(147, 197, 253, 0.5)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+  -webkit-text-stroke: 0.5px rgba(219, 234, 254, 0.4);
+  text-stroke: 0.5px rgba(219, 234, 254, 0.4);
+}
+
+/* Override for white text headings (on gradient backgrounds) */
+[data-color-theme="winter"] h1.text-white,
+[data-color-theme="winter"] h2.text-white,
+[data-color-theme="winter"] h3.text-white,
+[data-color-theme="winter"] h4.text-white,
+[data-color-theme="winter"] h5.text-white,
+[data-color-theme="winter"] h6.text-white {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #e0f2fe 30%,
+    #bfdbfe 60%,
+    #93c5fd 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  text-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(224, 242, 254, 0.6),
+    0 0 60px rgba(191, 219, 254, 0.4),
+    0 0 80px rgba(147, 197, 253, 0.3),
+    0 2px 4px rgba(147, 197, 253, 0.5),
+    0 4px 8px rgba(59, 130, 246, 0.3),
+    0 1px 0 rgba(255, 255, 255, 0.3),
+    0 -1px 0 rgba(59, 130, 246, 0.4);
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 25px rgba(191, 219, 254, 0.4)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.2);
+  text-stroke: 0.5px rgba(255, 255, 255, 0.2);
+}
+
+.dark[data-color-theme="winter"] h1.text-white,
+.dark[data-color-theme="winter"] h2.text-white,
+.dark[data-color-theme="winter"] h3.text-white,
+.dark[data-color-theme="winter"] h4.text-white,
+.dark[data-color-theme="winter"] h5.text-white,
+.dark[data-color-theme="winter"] h6.text-white {
+  background: linear-gradient(
+    135deg,
+    #f0f9ff 0%,
+    #dbeafe 25%,
+    #bfdbfe 50%,
+    #93c5fd 75%,
+    #60a5fa 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  text-shadow: 
+    0 0 25px rgba(240, 249, 255, 0.9),
+    0 0 50px rgba(219, 234, 254, 0.7),
+    0 0 75px rgba(191, 219, 254, 0.5),
+    0 0 100px rgba(147, 197, 253, 0.4),
+    0 2px 4px rgba(147, 197, 253, 0.6),
+    0 4px 8px rgba(96, 165, 250, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.4),
+    0 -1px 0 rgba(96, 165, 250, 0.5);
+  filter: drop-shadow(0 0 20px rgba(240, 249, 255, 0.7)) drop-shadow(0 0 35px rgba(191, 219, 254, 0.5)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+  -webkit-text-stroke: 0.5px rgba(240, 249, 255, 0.3);
+  text-stroke: 0.5px rgba(240, 249, 255, 0.3);
+}
+
+/* Special styling for gradient-text-hero in winter theme */
+[data-color-theme="winter"] h1.gradient-text-hero,
+[data-color-theme="winter"] .gradient-text-hero {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f0f9ff 20%,
+    #e0f2fe 40%,
+    #bfdbfe 60%,
+    #93c5fd 80%,
+    #ffffff 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  text-shadow: 
+    0 0 15px rgba(255, 255, 255, 0.5),
+    0 0 30px rgba(224, 242, 254, 0.3),
+    0 2px 4px rgba(147, 197, 253, 0.3),
+    0 1px 0 rgba(255, 255, 255, 0.2);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 16px rgba(191, 219, 254, 0.2));
+  -webkit-text-stroke: 0.3px rgba(255, 255, 255, 0.2);
+  text-stroke: 0.3px rgba(255, 255, 255, 0.2);
+}
+
+.dark[data-color-theme="winter"] h1.gradient-text-hero,
+.dark[data-color-theme="winter"] .gradient-text-hero {
+  background: linear-gradient(
+    135deg,
+    #f0f9ff 0%,
+    #dbeafe 25%,
+    #bfdbfe 50%,
+    #93c5fd 75%,
+    #60a5fa 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  text-shadow: 
+    0 0 20px rgba(240, 249, 255, 0.6),
+    0 0 40px rgba(219, 234, 254, 0.4),
+    0 2px 4px rgba(147, 197, 253, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.3);
+  filter: drop-shadow(0 0 12px rgba(240, 249, 255, 0.5)) drop-shadow(0 0 24px rgba(191, 219, 254, 0.3));
+  -webkit-text-stroke: 0.3px rgba(240, 249, 255, 0.3);
+  text-stroke: 0.3px rgba(240, 249, 255, 0.3);
+}

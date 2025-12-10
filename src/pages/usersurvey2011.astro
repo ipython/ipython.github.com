@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { baseUrl } from '../lib/utils';
+---
+
+<BaseLayout title="IPython User Survey 2011">
+  <Navigation />
+  <PageHeader title="IPython User Survey 2011" />
+  
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="prose prose-lg dark:prose-invert max-w-none">
+      <p>The first IPython user survey was run from 20 May 2011 to 21 September 2011, and was promoted via the ipython-user mailing list and from the <a href={baseUrl('')}>IPython homepage</a>. The questions (all optional) were:</p>
+      
+      <ul>
+        <li>What country do you live in?</li>
+        <li>On what platforms do you use IPython? (Windows, Mac OS X, Linux, Other)</li>
+        <li>What parts of IPython do you use? (Interactive Shell, Parallel computing, Other)</li>
+        <li>How do you use IPython?</li>
+        <li>How would you like IPython to improve in the future?</li>
+      </ul>
+      
+      <p>In total, it attracted 240 responses, which can be viewed <a href="https://docs.google.com/spreadsheet/ccc?key=0AqIElKUDQl8tdDMzREtNSk9pX282N3lxaXhiTmxyN0E&authkey=CNOmu-QC&hl=en_GB&authkey=CNOmu-QC" target="_blank" rel="noopener noreferrer">here</a>. Thank-you to everyone who answered our questions.</p>
+      
+      <h2>Countries</h2>
+      <p>42% of respondents were in the USA, followed by the UK (11%) and Germany (9%). In order of decreasing frequency, the full list of countries is:</p>
+      <p>USA, UK, Germany, France, Canada, Austria, Spain, Switzerland, Sweden, Australia, Denmark, Norway, China, Singapore, Argentina, Greece, ** Romania, Russia, Finland, Ireland, Italy, Brazil, Japan, Colombia, Peru, India, Uruguay, South Africa, Taipei, New Zealand, Saudi Arabia, Holland, Ukraine, Belgium, Slovenia, Israel, Luxembourg, Czech Republic</p>
+      <p>** Countries after this marker were only recorded by one respondent.</p>
+      <img src={baseUrl('_static/survey2011/countries.png')} alt="Countries" class="max-w-2xl mx-auto" />
+      
+      <h2>Platforms</h2>
+      <p>The majority of users use IPython on Linux (80%), with Windows (38%) and Macs (32%) roughly equal. One user listed NetBSD, and one listed Solaris.</p>
+      <img src={baseUrl('_static/survey2011/platforms.png')} alt="Platforms" class="max-w-2xl mx-auto" />
+      
+      <h2>Usage</h2>
+      <p>Predictably, all respondents use the interactive shell. 15% also use parallel computing features. Among 'Other', the only recurring answer was embedding IPython. Note that the Qt console & HTML notebook were not included, as they weren't released when the survey started.</p>
+      <img src={baseUrl('_static/survey2011/partsused.png')} alt="Parts Used" class="max-w-2xl mx-auto" />
+      
+      <h2>Sector</h2>
+      <p>Many respondents are in academia (37%), and they mentioned diverse branches of the sciences. 20% of respondents are in some form of industry (five mentioned finance), and 16% use it for personal or hobby development.</p>
+      <p>There was considerable overlap between groups, with many users in academia and industry also using IPython at home. In addition, six respondents mentioned that they were learning Python or programming, and three that they use it for teaching.</p>
+      <p>Note that these figures are collected from a free text answer, so they're somewhat subjective.</p>
+      <img src={baseUrl('_static/survey2011/sector.png')} alt="Sector" class="max-w-2xl mx-auto" />
+      <p>Among the interesting areas in which IPython is used are:</p>
+      <ul>
+        <li>Programming hospital equipment</li>
+        <li>Calibrating spaceflight instruments</li>
+        <li>In the US Army Corps of Engineers</li>
+        <li>Cinema ticketing systems</li>
+        <li>Development of rolling stock (trains)</li>
+        <li>Controlling a synchotron</li>
+      </ul>
+      
+      <h2>Requests</h2>
+      <p>No theme seemed to appear in the answers to where future development should go. I interpret this as a good sign—there's nothing our users feel is clearly wrong.</p>
+      <p>Some users requested features that already exist, especially features in the latest release (e.g. multiline editing, Python 3 support). Hopefully this will improve as new releases get into distributions' repositories, but maybe we should promote key features better.</p>
+      <p>10 respondents suggested that the documentation could be improved.</p>
+      <p>At least 8 users talked about better ways to reload modules. This seems to be a fundamental difference between Python and MATLAB, but perhaps there are ways of easing the experience for switchers.</p>
+      <p>8 respondents either use IPython in Emacs, or said that they'd like better emacs bindings. Unfortunately, none of the core developers are motivated to learn Emacs lisp, but we welcome contributions from Emacs users.</p>
+      <p>5 people mentioned better support for Windows. We're keen to support any platform, and we have fixed many Windows bugs, but the main developers are Linux or Mac users, so we rely on others to report issues. We have a productive collaboration with Enthought, who bring IPython to many Windows users through EPD.</p>
+      
+      <h2>Design of the survey</h2>
+      <p>Next time, we could collect better data about:</p>
+      <ul>
+        <li>How many people use IPython in their own projects, e.g. embedding it or creating CLIs for libraries</li>
+        <li>How people get IPython, e.g. via EPD, repositories or PyPI</li>
+        <li>Whether people have used similar software before, e.g. MATLAB</li>
+        <li>What sector respondents are in, in a more structured form</li>
+      </ul>
+      <p>Every question, however, must be balanced against keeping the survey short so that people finish answering it.</p>
+    </div>
+  </main>
+  
+  <Footer />
+</BaseLayout>

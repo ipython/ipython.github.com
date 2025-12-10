@@ -1,0 +1,107 @@
+/* Sun/Astronomy theme - Yellow based */
+[data-color-theme="sun"] {
+  --theme-primary: #f59e0b;   /* Bright amber/yellow */
+  --theme-secondary: #fbbf24; /* Golden yellow */
+  --theme-accent: #fcd34d;     /* Light yellow */
+}
+
+:not(.dark)[data-color-theme="sun"] .gradient-hero {
+  background-image: linear-gradient(to bottom right, 
+    #f59e0b,
+    #fbbf24,
+    #fcd34d,
+    #fde047,
+    #fef08a) !important;
+}
+
+.dark[data-color-theme="sun"] .gradient-hero {
+  background-image: linear-gradient(to bottom right, 
+    #d97706,
+    #f59e0b,
+    #fbbf24,
+    #fcd34d,
+    #fde047) !important;
+}
+
+:not(.dark)[data-color-theme="sun"] .gradient-header {
+  background-image: linear-gradient(to right, 
+    #f59e0b,
+    #fbbf24,
+    #fcd34d) !important;
+}
+
+.dark[data-color-theme="sun"] .gradient-header {
+  background-image: linear-gradient(to right, 
+    #d97706,
+    #f59e0b,
+    #fbbf24) !important;
+}
+
+[data-color-theme="sun"] .gradient-text {
+  background: linear-gradient(
+    to right,
+    #f59e0b,
+    #fbbf24,
+    #fcd34d,
+    #fde047
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Add backdrop blur to gradient sections */
+[data-color-theme="sun"] section.gradient-hero .max-w-7xl.py-20,
+[data-color-theme="sun"] section.gradient-header .max-w-7xl.py-20,
+[data-color-theme="sun"] section.gradient-hero .max-w-7xl.py-8.text-center,
+[data-color-theme="sun"] section.gradient-header .max-w-7xl.py-8.text-center,
+[data-color-theme="sun"] section.gradient-hero .max-w-7xl.text-center,
+[data-color-theme="sun"] section.gradient-header .max-w-7xl.text-center,
+[data-color-theme="sun"] section.gradient-hero .max-w-7xl:has(h1.gradient-text-hero),
+[data-color-theme="sun"] section.gradient-header .max-w-7xl:has(h1.gradient-text-hero) {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+}
+
+.dark[data-color-theme="sun"] section.gradient-hero .max-w-7xl.py-20,
+.dark[data-color-theme="sun"] section.gradient-header .max-w-7xl.py-20,
+.dark[data-color-theme="sun"] section.gradient-hero .max-w-7xl.py-8.text-center,
+.dark[data-color-theme="sun"] section.gradient-header .max-w-7xl.py-8.text-center,
+.dark[data-color-theme="sun"] section.gradient-hero .max-w-7xl.text-center,
+.dark[data-color-theme="sun"] section.gradient-header .max-w-7xl.text-center,
+.dark[data-color-theme="sun"] section.gradient-hero .max-w-7xl:has(h1.gradient-text-hero),
+.dark[data-color-theme="sun"] section.gradient-header .max-w-7xl:has(h1.gradient-text-hero) {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+}
+
+/* Ensure white sections are fully opaque on Sun theme - light mode only */
+:not(.dark)[data-color-theme="sun"] .bg-white,
+:not(.dark)[data-color-theme="sun"] section.bg-white {
+  background: #ffffff !important;
+}
+
+/* Override for dark mode - must come after light mode rules */
+.dark[data-color-theme="sun"] .bg-white,
+.dark[data-color-theme="sun"] section.bg-white,
+.dark[data-color-theme="sun"] .bg-white.dark\:bg-ipython-dark,
+.dark[data-color-theme="sun"] nav.bg-white {
+  background: #0f172a !important;
+}
+
+/* Ensure gray sections are fully opaque white on Sun theme - light mode only */
+:not(.dark)[data-color-theme="sun"] section.bg-gray-50 {
+  background: #ffffff !important;
+}
+
+.dark[data-color-theme="sun"] section.bg-gray-50 {
+  background: #0f172a !important;
+}
+
+/* Ensure icon containers have visible backgrounds on Sun theme */
+[data-color-theme="sun"] .bg-theme-secondary {
+  background: #fbbf24 !important;
+}

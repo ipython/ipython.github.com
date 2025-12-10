@@ -1,0 +1,6 @@
+/* Pink theme */
+[data-color-theme="pink"] {
+  --theme-primary: #be185d;
+  --theme-secondary: #ec4899;
+  --theme-accent: #f472b6;
+}

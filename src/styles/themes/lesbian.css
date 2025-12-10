@@ -1,0 +1,163 @@
+/* Lesbian theme */
+[data-color-theme="lesbian"] {
+  --theme-primary: #D52D00;
+  --theme-secondary: #EF7627;
+  --theme-accent: #FF9A56;
+}
+
+:not(.dark)[data-color-theme="lesbian"] .gradient-hero {
+  background-image: linear-gradient(
+    to bottom right,
+    #D52D00 0%,
+    #D52D00 14.28%,
+    #EF7627 14.28%,
+    #EF7627 28.56%,
+    #FF9A56 28.56%,
+    #FF9A56 42.84%,
+    #FFFFFF 42.84%,
+    #FFFFFF 57.12%,
+    #D162A4 57.12%,
+    #D162A4 71.4%,
+    #B55690 71.4%,
+    #B55690 85.68%,
+    #A30262 85.68%,
+    #A30262 100%
+  );
+}
+
+.dark[data-color-theme="lesbian"] .gradient-hero {
+  background-image: linear-gradient(
+    to bottom right,
+    #D52D00 0%,
+    #D52D00 14.28%,
+    #EF7627 14.28%,
+    #EF7627 28.56%,
+    #FF9A56 28.56%,
+    #FF9A56 42.84%,
+    var(--ipython-dark) 42.84%,
+    var(--ipython-dark) 57.12%,
+    #D162A4 57.12%,
+    #D162A4 71.4%,
+    #B55690 71.4%,
+    #B55690 85.68%,
+    #A30262 85.68%,
+    #A30262 100%
+  ) !important;
+}
+
+:not(.dark)[data-color-theme="lesbian"] .gradient-header {
+  background-image: linear-gradient(
+    to right,
+    #D52D00 0%,
+    #D52D00 14.28%,
+    #EF7627 14.28%,
+    #EF7627 28.56%,
+    #FF9A56 28.56%,
+    #FF9A56 42.84%,
+    #FFFFFF 42.84%,
+    #FFFFFF 57.12%,
+    #D162A4 57.12%,
+    #D162A4 71.4%,
+    #B55690 71.4%,
+    #B55690 85.68%,
+    #A30262 85.68%,
+    #A30262 100%
+  );
+}
+
+.dark[data-color-theme="lesbian"] .gradient-header {
+  background-image: linear-gradient(
+    to right,
+    #D52D00 0%,
+    #D52D00 14.28%,
+    #EF7627 14.28%,
+    #EF7627 28.56%,
+    #FF9A56 28.56%,
+    #FF9A56 42.84%,
+    #0f172a 42.84%,
+    #0f172a 57.12%,
+    #D162A4 57.12%,
+    #D162A4 71.4%,
+    #B55690 71.4%,
+    #B55690 85.68%,
+    #A30262 85.68%,
+    #A30262 100%
+  ) !important;
+}
+
+[data-color-theme="lesbian"] .gradient-text {
+  background: linear-gradient(
+    to right,
+    #D52D00 0%,
+    #D52D00 16.67%,
+    #EF7627 16.67%,
+    #EF7627 33.33%,
+    #FF9A56 33.33%,
+    #FF9A56 50%,
+    #D162A4 50%,
+    #D162A4 66.67%,
+    #B55690 66.67%,
+    #B55690 83.33%,
+    #A30262 83.33%,
+    #A30262 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Add backdrop blur to gradient sections */
+[data-color-theme="lesbian"] section.gradient-hero .max-w-7xl.py-20,
+[data-color-theme="lesbian"] section.gradient-header .max-w-7xl.py-20,
+[data-color-theme="lesbian"] section.gradient-hero .max-w-7xl.py-8.text-center,
+[data-color-theme="lesbian"] section.gradient-header .max-w-7xl.py-8.text-center,
+[data-color-theme="lesbian"] section.gradient-hero .max-w-7xl.text-center,
+[data-color-theme="lesbian"] section.gradient-header .max-w-7xl.text-center,
+[data-color-theme="lesbian"] section.gradient-hero .max-w-7xl:has(h1.gradient-text-hero),
+[data-color-theme="lesbian"] section.gradient-header .max-w-7xl:has(h1.gradient-text-hero) {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+}
+
+.dark[data-color-theme="lesbian"] section.gradient-hero .max-w-7xl.py-20,
+.dark[data-color-theme="lesbian"] section.gradient-header .max-w-7xl.py-20,
+.dark[data-color-theme="lesbian"] section.gradient-hero .max-w-7xl.py-8.text-center,
+.dark[data-color-theme="lesbian"] section.gradient-header .max-w-7xl.py-8.text-center,
+.dark[data-color-theme="lesbian"] section.gradient-hero .max-w-7xl.text-center,
+.dark[data-color-theme="lesbian"] section.gradient-header .max-w-7xl.text-center,
+.dark[data-color-theme="lesbian"] section.gradient-hero .max-w-7xl:has(h1.gradient-text-hero),
+.dark[data-color-theme="lesbian"] section.gradient-header .max-w-7xl:has(h1.gradient-text-hero) {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+}
+
+/* Ensure white sections are fully opaque on Lesbian theme - light mode only */
+:not(.dark)[data-color-theme="lesbian"] .bg-white,
+:not(.dark)[data-color-theme="lesbian"] section.bg-white {
+  background: #ffffff !important;
+}
+
+/* Override for dark mode - must come after light mode rules */
+.dark[data-color-theme="lesbian"] .bg-white,
+.dark[data-color-theme="lesbian"] section.bg-white,
+.dark[data-color-theme="lesbian"] .bg-white.dark\:bg-ipython-dark,
+.dark[data-color-theme="lesbian"] nav.bg-white {
+  background: #0f172a !important;
+}
+
+/* Ensure gray sections are fully opaque white on Lesbian theme - light mode only */
+:not(.dark)[data-color-theme="lesbian"] section.bg-gray-50 {
+  background: #ffffff !important;
+}
+
+.dark[data-color-theme="lesbian"] section.bg-gray-50 {
+  background: #0f172a !important;
+}
+
+/* Ensure icon containers have visible backgrounds on Lesbian theme */
+[data-color-theme="lesbian"] .bg-theme-secondary {
+  background: #d62900 !important;
+}

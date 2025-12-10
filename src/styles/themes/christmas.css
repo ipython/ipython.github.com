@@ -1,0 +1,240 @@
+/* Christmas theme */
+[data-color-theme="christmas"] {
+  --theme-primary: #c8102e;   /* Deep Christmas Red */
+  --theme-secondary: #006b3c;  /* Forest Green */
+  --theme-accent: #ffffff;     /* White/Snow */
+}
+
+:not(.dark)[data-color-theme="christmas"] .gradient-hero {
+  background-image: linear-gradient(to bottom right, 
+    #c8102e 0%, #c8102e 30%,
+    #006b3c 30%, #006b3c 60%,
+    #ffffff 60%, #ffffff 80%,
+    #c8102e 80%, #c8102e 100%) !important;
+}
+
+.dark[data-color-theme="christmas"] .gradient-hero {
+  background-image: linear-gradient(to bottom right, 
+    #a00d25 0%, #a00d25 30%,
+    #004d2a 30%, #004d2a 60%,
+    #e0e0e0 60%, #e0e0e0 80%,
+    #a00d25 80%, #a00d25 100%) !important;
+}
+
+:not(.dark)[data-color-theme="christmas"] .gradient-header {
+  background-image: linear-gradient(to right, 
+    #c8102e 0%, #c8102e 50%,
+    #006b3c 50%, #006b3c 100%) !important;
+}
+
+.dark[data-color-theme="christmas"] .gradient-header {
+  background-image: linear-gradient(to right, 
+    #a00d25 0%, #a00d25 50%,
+    #004d2a 50%, #004d2a 100%) !important;
+}
+
+[data-color-theme="christmas"] .gradient-text {
+  background: linear-gradient(
+    to right,
+    #c8102e 0%,
+    #c8102e 40%,
+    #006b3c 40%,
+    #006b3c 80%,
+    #ffffff 80%,
+    #ffffff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Add backdrop blur to gradient sections */
+[data-color-theme="christmas"] section.gradient-hero .max-w-7xl.py-20,
+[data-color-theme="christmas"] section.gradient-header .max-w-7xl.py-20,
+[data-color-theme="christmas"] section.gradient-hero .max-w-7xl.py-8.text-center,
+[data-color-theme="christmas"] section.gradient-header .max-w-7xl.py-8.text-center,
+[data-color-theme="christmas"] section.gradient-hero .max-w-7xl.text-center,
+[data-color-theme="christmas"] section.gradient-header .max-w-7xl.text-center,
+[data-color-theme="christmas"] section.gradient-hero .max-w-7xl:has(h1.gradient-text-hero),
+[data-color-theme="christmas"] section.gradient-header .max-w-7xl:has(h1.gradient-text-hero) {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+}
+
+.dark[data-color-theme="christmas"] section.gradient-hero .max-w-7xl.py-20,
+.dark[data-color-theme="christmas"] section.gradient-header .max-w-7xl.py-20,
+.dark[data-color-theme="christmas"] section.gradient-hero .max-w-7xl.py-8.text-center,
+.dark[data-color-theme="christmas"] section.gradient-header .max-w-7xl.py-8.text-center,
+.dark[data-color-theme="christmas"] section.gradient-hero .max-w-7xl.text-center,
+.dark[data-color-theme="christmas"] section.gradient-header .max-w-7xl.text-center,
+.dark[data-color-theme="christmas"] section.gradient-hero .max-w-7xl:has(h1.gradient-text-hero),
+.dark[data-color-theme="christmas"] section.gradient-header .max-w-7xl:has(h1.gradient-text-hero) {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+}
+
+/* Festive text effect for headings in Christmas theme */
+[data-color-theme="christmas"] h1,
+[data-color-theme="christmas"] h2,
+[data-color-theme="christmas"] h3,
+[data-color-theme="christmas"] h4,
+[data-color-theme="christmas"] h5,
+[data-color-theme="christmas"] h6 {
+  background: linear-gradient(
+    135deg,
+    #c8102e 0%,
+    #c8102e 40%,
+    #006b3c 40%,
+    #006b3c 80%,
+    #ffffff 80%,
+    #ffffff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 
+    0 0 10px rgba(200, 16, 46, 0.4),
+    0 0 20px rgba(0, 107, 60, 0.3),
+    0 2px 4px rgba(255, 255, 255, 0.2);
+  filter: drop-shadow(0 0 6px rgba(200, 16, 46, 0.3)) drop-shadow(0 0 12px rgba(0, 107, 60, 0.2));
+  position: relative;
+  animation: christmas-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes christmas-shimmer {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(200, 16, 46, 0.3)) drop-shadow(0 0 12px rgba(0, 107, 60, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 20px rgba(200, 16, 46, 0.4)) drop-shadow(0 0 30px rgba(0, 107, 60, 0.3));
+  }
+}
+
+/* Dark mode adjustments */
+.dark[data-color-theme="christmas"] h1,
+.dark[data-color-theme="christmas"] h2,
+.dark[data-color-theme="christmas"] h3,
+.dark[data-color-theme="christmas"] h4,
+.dark[data-color-theme="christmas"] h5,
+.dark[data-color-theme="christmas"] h6 {
+  background: linear-gradient(
+    135deg,
+    #e63946 0%,
+    #e63946 40%,
+    #2a9d8f 40%,
+    #2a9d8f 80%,
+    #f1faee 80%,
+    #f1faee 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 
+    0 0 15px rgba(230, 57, 70, 0.5),
+    0 0 30px rgba(42, 157, 143, 0.4),
+    0 2px 4px rgba(241, 250, 238, 0.3);
+  filter: drop-shadow(0 0 8px rgba(230, 57, 70, 0.4)) drop-shadow(0 0 16px rgba(42, 157, 143, 0.3));
+}
+
+/* Override for white text headings */
+[data-color-theme="christmas"] h1.text-white,
+[data-color-theme="christmas"] h2.text-white,
+[data-color-theme="christmas"] h3.text-white,
+[data-color-theme="christmas"] h4.text-white,
+[data-color-theme="christmas"] h5.text-white,
+[data-color-theme="christmas"] h6.text-white {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #fecaca 20%,
+    #bbf7d0 40%,
+    #fef3c7 60%,
+    #fecaca 80%,
+    #ffffff 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  text-shadow: 
+    0 0 15px rgba(255, 255, 255, 0.6),
+    0 0 30px rgba(254, 202, 202, 0.4),
+    0 2px 4px rgba(187, 247, 208, 0.3);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 20px rgba(254, 202, 202, 0.3));
+}
+
+.dark[data-color-theme="christmas"] h1.text-white,
+.dark[data-color-theme="christmas"] h2.text-white,
+.dark[data-color-theme="christmas"] h3.text-white,
+.dark[data-color-theme="christmas"] h4.text-white,
+.dark[data-color-theme="christmas"] h5.text-white,
+.dark[data-color-theme="christmas"] h6.text-white {
+  background: linear-gradient(
+    135deg,
+    #fef2f2 0%,
+    #fecaca 25%,
+    #dcfce7 50%,
+    #fef3c7 75%,
+    #fef2f2 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  text-shadow: 
+    0 0 20px rgba(254, 242, 242, 0.7),
+    0 0 40px rgba(254, 202, 202, 0.5),
+    0 2px 4px rgba(220, 252, 231, 0.4);
+  filter: drop-shadow(0 0 15px rgba(254, 242, 242, 0.6)) drop-shadow(0 0 30px rgba(254, 202, 202, 0.4));
+}
+
+/* Special styling for gradient-text-hero */
+[data-color-theme="christmas"] h1.gradient-text-hero,
+[data-color-theme="christmas"] .gradient-text-hero {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #fecaca 20%,
+    #fbbf24 40%,
+    #bbf7d0 60%,
+    #fecaca 80%,
+    #ffffff 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  text-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.7),
+    0 0 40px rgba(254, 202, 202, 0.5),
+    0 2px 4px rgba(251, 191, 36, 0.4);
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 24px rgba(254, 202, 202, 0.4));
+  animation: christmas-shimmer 3s ease-in-out infinite;
+}
+
+.dark[data-color-theme="christmas"] h1.gradient-text-hero,
+.dark[data-color-theme="christmas"] .gradient-text-hero {
+  background: linear-gradient(
+    135deg,
+    #fef2f2 0%,
+    #fecaca 25%,
+    #fbbf24 50%,
+    #dcfce7 75%,
+    #fef2f2 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  text-shadow: 
+    0 0 25px rgba(254, 242, 242, 0.8),
+    0 0 50px rgba(254, 202, 202, 0.6),
+    0 2px 4px rgba(251, 191, 36, 0.5);
+  filter: drop-shadow(0 0 18px rgba(254, 242, 242, 0.7)) drop-shadow(0 0 36px rgba(254, 202, 202, 0.5));
+  animation: christmas-shimmer 3s ease-in-out infinite;
+}

@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { baseUrl } from '../lib/utils';
+---
+
+<BaseLayout title="Microsoft Corporation sponsors IPython">
+  <Navigation />
+  <PageHeader title="Microsoft Corporation sponsors IPython" />
+  
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="prose prose-lg dark:prose-invert max-w-none">
+      <img src={baseUrl('_images/microsoft-logo.png')} alt="Microsoft Logo" class="mb-6" />
+      
+      <p>We are thrilled to announce that in August 2013, Microsoft made a donation of $100,000 to sponsor IPython's continued development.</p>
+      
+      <p>This donation was received through NumFOCUS, and is the next step in a fruitful collaboration IPython has had with Microsoft:</p>
+      
+      <ul>
+        <li>In 2009 we added integration with Windows HPC Server for IPython's parallel computing capabilities.</li>
+        <li>In 2010, the <a href="http://pytools.codeplex.com" target="_blank" rel="noopener noreferrer">Python Tools for Visual Studio</a> team developed integration with IPython into the PTVS project.</li>
+        <li>In 2012, we showed how IPython could be integrated into an <a href="http://www.windowsazure.com/en-us/develop/python/tutorials/ipython-notebook" target="_blank" rel="noopener noreferrer">Azure-based workflow</a>, using the Notebook to easily control computational resources in Microsoft's cloud platform.</li>
+      </ul>
+      
+      <p>We are extremely grateful for this contribution, which we will use to continue strengthening multiple aspects of IPython. While we have other sources of funding and the support of the larger open source community, these new funds will help us to focus effort in specific areas where we identify additional challenges or opportunities beyond the scope of those resources.</p>
+    </div>
+  </main>
+  
+  <Footer />
+</BaseLayout>

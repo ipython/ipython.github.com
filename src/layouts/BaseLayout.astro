@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+import ConditionalSnow from '../components/ConditionalSnow.tsx';
+import ConditionalChristmas from '../components/ConditionalChristmas.tsx';
+import ConditionalOcean from '../components/ConditionalOcean.tsx';
+import { baseUrl } from '../lib/utils';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'IPython - Productive Interactive Computing' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href={baseUrl('ipython-logo.png')} />
+    <link rel="apple-touch-icon" href={baseUrl('ipython-logo.png')} />
+    <title>{title} | IPython</title>
+    <meta name="description" content={description} />
+
+    <script is:inline>
+      // Prevent flash of wrong theme
+      const theme = localStorage.getItem('theme') || 'light';
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+  </head>
+  <body class="bg-white dark:bg-ipython-dark text-gray-900 dark:text-gray-50">
+    <slot />
+    <ConditionalSnow client:load />
+    <ConditionalChristmas client:load />
+    <ConditionalOcean client:load />
+  </body>
+</html>

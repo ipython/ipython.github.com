@@ -1,0 +1,6 @@
+/* Indigo theme */
+[data-color-theme="indigo"] {
+  --theme-primary: #4338ca;
+  --theme-secondary: #6366f1;
+  --theme-accent: #818cf8;
+}
