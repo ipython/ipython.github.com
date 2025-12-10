@@ -12,7 +12,17 @@ export type Theme = {
 export const themes: Theme[] = [
   {
     id: "default",
-    name: "IPython Default",
+    name: "Default",
+    colors: {
+      primary: "#0D5C63", // ipython-blue
+      secondary: "#008B95", // ipython-cyan
+      accent: "#059669", // ipython-green
+    },
+    dotGradient: "linear-gradient(to bottom right, #0D5C63, #008B95, #059669)",
+  },
+  {
+    id: "ipython-default",
+    name: "Teal",
     colors: {
       primary: "#0D5C63", // ipython-blue
       secondary: "#008B95", // ipython-cyan
@@ -234,7 +244,8 @@ export function applyTheme(
   root.setAttribute("data-color-theme", actualThemeId);
 
   // Store preference with date (store 'random' if that's what was selected)
-  if (storePreference) {
+  // Don't store if theme is 'default' (non-persistent default theme)
+  if (storePreference && themeId !== "default") {
     const today = new Date();
     const dateString = `${today.getFullYear()}-${String(
       today.getMonth() + 1
@@ -244,6 +255,9 @@ export function applyTheme(
       date: dateString,
     };
     localStorage.setItem("colorTheme", JSON.stringify(storage));
+  } else if (themeId === "default" && typeof localStorage !== "undefined") {
+    // Remove any stored theme when switching to default
+    localStorage.removeItem("colorTheme");
   }
 }
 
