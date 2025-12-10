@@ -121,6 +121,97 @@ const getExamples = (version: string = "9.8.0"): TerminalExample[] => [
       Out[5]: [2, 4, 6]
     `),
   },
+  {
+    name: "Object Introspection",
+    lines: dedentAndSplit(`
+      $ ipython
+      IPython ${version} -- An enhanced Interactive Python
+      
+      In [1]: import json
+      
+      In [2]: json.dumps?
+      Signature: json.dumps(obj, *, skipkeys=False, ensure_ascii=True, ...)
+      Docstring: Serialize obj to a JSON formatted str.
+      
+      In [3]: json.dumps??
+      Source:
+      def dumps(obj, *, skipkeys=False, ensure_ascii=True, ...):
+          return _default_encoder.encode(obj)
+    `),
+  },
+  {
+    name: "History System",
+    lines: dedentAndSplit(`
+      $ ipython
+      IPython ${version} -- An enhanced Interactive Python
+      
+      In [1]: x = 42
+      
+      In [2]: y = x * 2
+      
+      In [3]: y
+      Out[3]: 84
+      
+      In [4]: _
+      Out[4]: 84
+      
+      In [5]: _ih[1]
+      Out[5]: 'y = x * 2'
+    `),
+  },
+  {
+    name: "System Integration",
+    lines: dedentAndSplit(`
+      $ ipython
+      IPython ${version} -- An enhanced Interactive Python
+      
+      In [1]: !echo "Hello from shell"
+      Hello from shell
+      
+      In [2]: files = !ls *.py
+      
+      In [3]: len(files)
+      Out[3]: 5
+      
+      In [4]: %cd /tmp
+      /tmp
+    `),
+  },
+  {
+    name: "Magic Commands",
+    lines: dedentAndSplit(`
+      $ ipython
+      IPython ${version} -- An enhanced Interactive Python
+      
+      In [1]: def slow_func():
+         ...:     return sum(range(10000))
+         ...: 
+      
+      In [2]: %timeit slow_func()
+      245 µs ± 12.3 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+      
+      In [3]: %prun slow_func()
+           5 function calls in 0.000 seconds
+    `),
+  },
+  {
+    name: "Data Science",
+    lines: dedentAndSplit(`
+      $ ipython
+      IPython ${version} -- An enhanced Interactive Python
+      
+      In [1]: import pandas as pd
+      
+      In [2]: df = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]})
+      
+      In [3]: df.describe()
+      Out[3]: 
+                 A         B
+      count  3.000000  3.000000
+      mean   2.000000  5.000000
+      std    1.000000  1.000000
+    `),
+  },
 ];
 
 const EXAMPLE_DELAY = 4000; // Delay before starting next example
