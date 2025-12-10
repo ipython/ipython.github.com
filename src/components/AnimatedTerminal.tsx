@@ -3,63 +3,99 @@ import { useEffect, useState, useMemo, useRef } from 'react';
 type TerminalExample = {
   name: string;
   lines: string[];
-  delay: number; // Delay before starting next example
 };
 
 interface AnimatedTerminalProps {
   version?: string | null;
 }
 
+/**
+ * Dedent a multiline string by removing common leading whitespace
+ * and split it into lines
+ */
+function dedentAndSplit(text: string): string[] {
+  const lines = text.split('\n');
+  
+  // Trim leading and trailing empty lines
+  while (lines.length > 0 && lines[0].trim().length === 0) {
+    lines.shift();
+  }
+  while (lines.length > 0 && lines[lines.length - 1].trim().length === 0) {
+    lines.pop();
+  }
+  
+  // Find the minimum indentation (excluding empty lines)
+  let minIndent = Infinity;
+  for (const line of lines) {
+    if (line.trim().length > 0) {
+      const indent = line.match(/^(\s*)/)?.[1].length || 0;
+      minIndent = Math.min(minIndent, indent);
+    }
+  }
+  
+  // If no indentation found, return lines as-is
+  if (minIndent === Infinity) {
+    return lines;
+  }
+  
+  // Remove the common indentation from all lines
+  return lines.map(line => {
+    if (line.trim().length === 0) {
+      return '';
+    }
+    return line.slice(minIndent);
+  });
+}
+
 const getExamples = (version: string = '9.8.0'): TerminalExample[] => [
   {
     name: 'NumPy Basics',
-    lines: [
-      '$ ipython',
-      `IPython ${version} -- An enhanced Interactive Python`,
-      "Type 'copyright', 'credits' or 'license' for more information",
-      '',
-      'In [1]: import numpy as np',
-      '',
-      'In [2]: data = np.array([1, 2, 3, 4, 5])',
-      '',
-      'In [3]: data.mean()',
-      'Out[3]: 3.0',
-    ],
-    delay: 4000,
+    lines: dedentAndSplit(`
+      $ ipython
+      IPython ${version} -- An enhanced Interactive Python
+      Type 'copyright', 'credits' or 'license' for more information
+      
+      In [1]: import numpy as np
+      
+      In [2]: data = np.array([1, 2, 3, 4, 5])
+      
+      In [3]: data.mean()
+      Out[3]: 3.0
+    `),
   },
   {
     name: 'Performance & Plotting',
-    lines: [
-      '$ ipython',
-      `IPython ${version} -- An enhanced Interactive Python`,
-      '',
-      'In [1]: %timeit sum(range(1000))',
-      '14.2 µs ± 245 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)',
-      '',
-      'In [2]: %matplotlib inline',
-      '',
-      'In [3]: import matplotlib.pyplot as plt',
-    ],
-    delay: 4000,
+    lines: dedentAndSplit(`
+      $ ipython
+      IPython ${version} -- An enhanced Interactive Python
+      
+      In [1]: %timeit sum(range(1000))
+      14.2 µs ± 245 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+      
+      In [2]: %matplotlib inline
+      
+      In [3]: import matplotlib.pyplot as plt
+    `),
   },
   {
     name: 'Functions',
-    lines: [
-      '$ ipython',
-      `IPython ${version} -- An enhanced Interactive Python`,
-      '',
-      'In [1]: def fibonacci(n):',
-      '   ...:     if n <= 1:',
-      '   ...:         return n',
-      '   ...:     return fibonacci(n-1) + fibonacci(n-2)',
-      '   ...: ',
-      '',
-      'In [2]: fibonacci(10)',
-      'Out[2]: 55',
-    ],
-    delay: 4000,
+    lines: dedentAndSplit(`
+      $ ipython
+      IPython ${version} -- An enhanced Interactive Python
+      
+      In [1]: def fibonacci(n):
+         ...:     if n <= 1:
+         ...:         return n
+         ...:     return fibonacci(n-1) + fibonacci(n-2)
+         ...: 
+      
+      In [2]: fibonacci(10)
+      Out[2]: 55
+    `),
   },
 ];
+
+const EXAMPLE_DELAY = 4000; // Delay before starting next example
 
 export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
   const examples = useMemo(() => getExamples(version || undefined), [version]);
@@ -139,7 +175,7 @@ export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
           setCurrentLineIndex(0);
           setDisplayedLines([]);
         }
-      }, example.delay);
+      }, EXAMPLE_DELAY);
 
       return () => clearTimeout(timer);
     }
