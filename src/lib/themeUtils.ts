@@ -496,17 +496,40 @@ export function initializeThemeWatcher(): () => void {
   // Poll for changes (fallback)
   const interval = setInterval(checkTheme, 10000);
 
-  // Apply initial theme
-  // Check if we should auto-apply winter theme
-  if (shouldAutoApplyWinterTheme()) {
-    console.log("will apply winter");
-    applyTheme("winter", false); // Apply winter but don't store it
-    notifyThemeChange("winter"); // Notify with the stored theme, not 'winter'
-  } else {
-    const initialTheme = getStoredTheme();
-    applyTheme(initialTheme);
-    if (initialTheme === "random") {
-      startRandomThemeRotation();
+  // Check for theme URL parameter and apply it
+  const urlParams = new URLSearchParams(window.location.search);
+  const themeParam = urlParams.get("theme");
+  let themeParamApplied = false;
+  
+  if (themeParam) {
+    // Validate theme exists
+    const themeExists = themes.some((t) => t.id === themeParam);
+    if (themeExists) {
+      changeTheme(themeParam);
+      themeParamApplied = true;
+    }
+    // Remove theme parameter from URL without page reload
+    urlParams.delete("theme");
+    const newUrl =
+      urlParams.toString() === ""
+        ? window.location.pathname
+        : `${window.location.pathname}?${urlParams.toString()}`;
+    window.history.replaceState({}, "", newUrl);
+  }
+
+  // Apply initial theme (only if no valid theme parameter was provided)
+  if (!themeParamApplied) {
+    // Check if we should auto-apply winter theme
+    if (shouldAutoApplyWinterTheme()) {
+      console.log("will apply winter");
+      applyTheme("winter", false); // Apply winter but don't store it
+      notifyThemeChange("winter"); // Notify with the stored theme, not 'winter'
+    } else {
+      const initialTheme = getStoredTheme();
+      applyTheme(initialTheme);
+      if (initialTheme === "random") {
+        startRandomThemeRotation();
+      }
     }
   }
 
