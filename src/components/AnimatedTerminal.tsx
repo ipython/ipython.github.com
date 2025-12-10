@@ -267,6 +267,151 @@ export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
     return "text-gray-700 dark:text-gray-300";
   };
 
+  /**
+   * Highlight Python syntax in a line of code
+   */
+  const highlightPython = (text: string): JSX.Element[] => {
+    if (!text.trim()) {
+      return [<span key="empty">{text || "\u00A0"}</span>];
+    }
+
+    const keywords = [
+      "def",
+      "async",
+      "await",
+      "import",
+      "from",
+      "if",
+      "elif",
+      "else",
+      "return",
+      "for",
+      "in",
+      "as",
+      "and",
+      "or",
+      "not",
+      "True",
+      "False",
+      "None",
+    ];
+
+    // Find comment position (comments take priority)
+    const commentMatch = text.match(/#.*$/);
+    const commentIndex = commentMatch ? commentMatch.index! : text.length;
+    const codeText = text.slice(0, commentIndex);
+    const commentText = commentMatch ? commentMatch[0] : "";
+
+    // Match strings (single and double quoted)
+    const stringRegex = /(['"])(?:(?=(\\?))\2.)*?\1/g;
+    let stringMatch;
+    const stringMatches: Array<{ start: number; end: number; text: string }> = [];
+    while ((stringMatch = stringRegex.exec(codeText)) !== null) {
+      stringMatches.push({
+        start: stringMatch.index,
+        end: stringMatch.index + stringMatch[0].length,
+        text: stringMatch[0],
+      });
+    }
+
+    // Match numbers
+    const numberRegex = /\b\d+\.?\d*\b/g;
+    let numberMatch;
+    const numberMatches: Array<{ start: number; end: number; text: string }> = [];
+    while ((numberMatch = numberRegex.exec(codeText)) !== null) {
+      numberMatches.push({
+        start: numberMatch.index,
+        end: numberMatch.index + numberMatch[0].length,
+        text: numberMatch[0],
+      });
+    }
+
+    // Match keywords
+    const keywordRegex = new RegExp(`\\b(${keywords.join("|")})\\b`, "g");
+    let keywordMatch;
+    const keywordMatches: Array<{ start: number; end: number; text: string }> = [];
+    while ((keywordMatch = keywordRegex.exec(codeText)) !== null) {
+      keywordMatches.push({
+        start: keywordMatch.index,
+        end: keywordMatch.index + keywordMatch[0].length,
+        text: keywordMatch[0],
+      });
+    }
+
+    // Combine all matches and sort by position
+    const allMatches = [
+      ...stringMatches.map((m) => ({ ...m, type: "string" })),
+      ...numberMatches.map((m) => ({ ...m, type: "number" })),
+      ...keywordMatches.map((m) => ({ ...m, type: "keyword" })),
+    ].sort((a, b) => a.start - b.start);
+
+    // Remove overlapping matches (strings take priority, then numbers, then keywords)
+    const filteredMatches: typeof allMatches = [];
+    for (const match of allMatches) {
+      const overlaps = filteredMatches.some(
+        (existing) =>
+          (match.start >= existing.start && match.start < existing.end) ||
+          (match.end > existing.start && match.end <= existing.end) ||
+          (match.start <= existing.start && match.end >= existing.end)
+      );
+      if (!overlaps) {
+        filteredMatches.push(match);
+      }
+    }
+
+    // Build parts array for the code part (before comment)
+    const resultParts: Array<{ text: string; type: string }> = [];
+    let currentIndex = 0;
+    filteredMatches.forEach((match) => {
+      if (match.start > currentIndex) {
+        resultParts.push({
+          text: codeText.slice(currentIndex, match.start),
+          type: "text",
+        });
+      }
+      resultParts.push({ text: match.text, type: match.type });
+      currentIndex = match.end;
+    });
+    if (currentIndex < codeText.length) {
+      resultParts.push({
+        text: codeText.slice(currentIndex),
+        type: "text",
+      });
+    }
+
+    // If no matches were found, add the whole codeText as text
+    if (resultParts.length === 0 && codeText.length > 0) {
+      resultParts.push({ text: codeText, type: "text" });
+    }
+
+    // Add comment if it exists
+    if (commentText) {
+      resultParts.push({ text: commentText, type: "comment" });
+    }
+
+    if (resultParts.length === 0) {
+      resultParts.push({ text, type: "text" });
+    }
+
+    return resultParts.map((part, index) => {
+      const className =
+        part.type === "keyword"
+          ? "text-theme-primary"
+          : part.type === "string"
+            ? "text-theme-secondary"
+            : part.type === "number"
+              ? "text-theme-accent"
+              : part.type === "comment"
+                ? "text-gray-500 dark:text-gray-400 italic opacity-75"
+                : "";
+      return (
+        <span key={index} className={className}>
+          {part.text}
+        </span>
+      );
+    });
+  };
+
   // Calculate max height based on the longest example
   const maxLines = Math.max(...examples.map((ex) => ex.lines.length));
   const lineHeight = 1.25; // rem (20px for text-sm)
@@ -292,11 +437,19 @@ export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
           {displayedLines.map((line, index) => {
             const { prefix, content, prefixColor } = getLinePrefix(line);
             const lineColor = getLineColor(line);
+            
+            // Check if this line should have syntax highlighting (Python code)
+            const isPythonCode =
+              line.startsWith("In [") ||
+              line.startsWith("   ...:") ||
+              (line.startsWith("Out[") && content.trim().length > 0);
 
             return (
               <div key={index} className={`${lineColor} whitespace-pre`}>
                 {prefix && <span className={prefixColor}>{prefix}</span>}
-                {content || "\u00A0"}
+                {isPythonCode && content.trim()
+                  ? highlightPython(content)
+                  : content || "\u00A0"}
               </div>
             );
           })}
