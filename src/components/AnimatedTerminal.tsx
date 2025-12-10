@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo, useRef } from 'react';
 
 type TerminalExample = {
+  name: string;
   lines: string[];
   delay: number; // Delay before starting next example
 };
@@ -11,6 +12,7 @@ interface AnimatedTerminalProps {
 
 const getExamples = (version: string = '9.8.0'): TerminalExample[] => [
   {
+    name: 'NumPy Basics',
     lines: [
       '$ ipython',
       `IPython ${version} -- An enhanced Interactive Python`,
@@ -26,6 +28,7 @@ const getExamples = (version: string = '9.8.0'): TerminalExample[] => [
     delay: 4000,
   },
   {
+    name: 'Performance & Plotting',
     lines: [
       '$ ipython',
       `IPython ${version} -- An enhanced Interactive Python`,
@@ -40,6 +43,7 @@ const getExamples = (version: string = '9.8.0'): TerminalExample[] => [
     delay: 4000,
   },
   {
+    name: 'Functions',
     lines: [
       '$ ipython',
       `IPython ${version} -- An enhanced Interactive Python`,
@@ -96,6 +100,15 @@ export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
       window.removeEventListener('focus', handleWindowFocus);
     };
   }, []);
+
+  // Function to switch to a specific example
+  const switchToExample = (index: number) => {
+    if (index >= 0 && index < examples.length) {
+      setCurrentExample(index);
+      setCurrentLineIndex(0);
+      setDisplayedLines([]);
+    }
+  };
 
   useEffect(() => {
     // Pause animation when page is not visible
@@ -175,30 +188,49 @@ export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
   const minHeight = `${maxLines * lineHeight + padding + controlsHeight}rem`;
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden font-mono text-sm" style={{ minHeight }}>
-      {/* macOS Window Controls */}
-      <div className="bg-gray-200 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700 px-4 py-2 flex items-center gap-2">
-        <div className="w-3 h-3 rounded-full bg-red-500"></div>
-        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+    <div>
+      <div className="bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden font-mono text-sm" style={{ minHeight }}>
+        {/* macOS Window Controls */}
+        <div className="bg-gray-200 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700 px-4 py-2 flex items-center gap-2">
+          <div className="w-3 h-3 rounded-full bg-red-500"></div>
+          <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+          <div className="w-3 h-3 rounded-full bg-green-500"></div>
+        </div>
+        
+        {/* Terminal Content */}
+        <div className="p-6 whitespace-pre">
+          {displayedLines.map((line, index) => {
+            const { prefix, content, prefixColor } = getLinePrefix(line);
+            const lineColor = getLineColor(line);
+
+            return (
+              <div key={index} className={`${lineColor} whitespace-pre`}>
+                {prefix && <span className={prefixColor}>{prefix}</span>}
+                {content}
+              </div>
+            );
+          })}
+          {displayedLines.length === 0 && (
+            <div className="text-theme-secondary whitespace-pre">$ ipython</div>
+          )}
+        </div>
       </div>
       
-      {/* Terminal Content */}
-      <div className="p-6">
-        {displayedLines.map((line, index) => {
-          const { prefix, content, prefixColor } = getLinePrefix(line);
-          const lineColor = getLineColor(line);
-
-          return (
-            <div key={index} className={lineColor}>
-              {prefix && <span className={prefixColor}>{prefix}</span>}
-              {content}
-            </div>
-          );
-        })}
-        {displayedLines.length === 0 && (
-          <div className="text-theme-secondary">$ ipython</div>
-        )}
+      {/* Indicator Dots */}
+      <div className="flex justify-center items-center gap-2 mt-4">
+        {examples.map((example, index) => (
+          <button
+            key={index}
+            onClick={() => switchToExample(index)}
+            className={`transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-theme-primary focus:ring-offset-2 rounded-full ${
+              index === currentExample
+                ? 'w-3 h-3 bg-theme-accent border-2 border-theme-primary scale-125'
+                : 'w-2 h-2 bg-gray-400 dark:bg-gray-600 hover:bg-gray-500 dark:hover:bg-gray-500'
+            }`}
+            aria-label={`Go to ${example.name}`}
+            title={example.name}
+          />
+        ))}
       </div>
     </div>
   );
