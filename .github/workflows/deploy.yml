@@ -49,7 +49,23 @@ jobs:
           BASE_PATH: ${{ steps.base_path.outputs.base_path }}
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
           # If you have other environment variables, set them here
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Copy build-time JSON files to dist
+        run: |
+          # Copy JSON files from public/ to dist/ (they're written during build but after public/ is copied)
+          if [ -f "public/build-data-pr.json" ]; then
+            cp public/build-data-pr.json dist/build-data-pr.json
+            echo "✓ Copied build-data-pr.json to dist/"
+          fi
+          if [ -f "public/build-data-pypi.json" ]; then
+            cp public/build-data-pypi.json dist/build-data-pypi.json
+            echo "✓ Copied build-data-pypi.json to dist/"
+          fi
+          if [ -f "public/build-data-contributors.json" ]; then
+            cp public/build-data-contributors.json dist/build-data-contributors.json
+            echo "✓ Copied build-data-contributors.json to dist/"
+          fi
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
