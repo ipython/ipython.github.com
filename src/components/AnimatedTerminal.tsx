@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo, useRef } from 'react';
+import { useEffect, useState, useMemo, useRef } from "react";
 
 type TerminalExample = {
   name: string;
@@ -14,16 +14,8 @@ interface AnimatedTerminalProps {
  * and split it into lines
  */
 function dedentAndSplit(text: string): string[] {
-  const lines = text.split('\n');
-  
-  // Trim leading and trailing empty lines
-  while (lines.length > 0 && lines[0].trim().length === 0) {
-    lines.shift();
-  }
-  while (lines.length > 0 && lines[lines.length - 1].trim().length === 0) {
-    lines.pop();
-  }
-  
+  const lines = text.split("\n");
+
   // Find the minimum indentation (excluding empty lines)
   let minIndent = Infinity;
   for (const line of lines) {
@@ -32,24 +24,24 @@ function dedentAndSplit(text: string): string[] {
       minIndent = Math.min(minIndent, indent);
     }
   }
-  
+
   // If no indentation found, return lines as-is
   if (minIndent === Infinity) {
     return lines;
   }
-  
+
   // Remove the common indentation from all lines
-  return lines.map(line => {
+  return lines.map((line) => {
     if (line.trim().length === 0) {
-      return '';
+      return "";
     }
     return line.slice(minIndent);
   });
 }
 
-const getExamples = (version: string = '9.8.0'): TerminalExample[] => [
+const getExamples = (version: string = "9.8.0"): TerminalExample[] => [
   {
-    name: 'NumPy Basics',
+    name: "NumPy Basics",
     lines: dedentAndSplit(`
       $ ipython
       IPython ${version} -- An enhanced Interactive Python
@@ -64,7 +56,7 @@ const getExamples = (version: string = '9.8.0'): TerminalExample[] => [
     `),
   },
   {
-    name: 'Performance & Plotting',
+    name: "Performance & Plotting",
     lines: dedentAndSplit(`
       $ ipython
       IPython ${version} -- An enhanced Interactive Python
@@ -78,7 +70,7 @@ const getExamples = (version: string = '9.8.0'): TerminalExample[] => [
     `),
   },
   {
-    name: 'Functions',
+    name: "Functions",
     lines: dedentAndSplit(`
       $ ipython
       IPython ${version} -- An enhanced Interactive Python
@@ -91,6 +83,36 @@ const getExamples = (version: string = '9.8.0'): TerminalExample[] => [
       
       In [2]: fibonacci(10)
       Out[2]: 55
+    `),
+  },
+  {
+    name: "Async",
+    lines: dedentAndSplit(`
+      $ ipython
+      IPython ${version} -- An enhanced Interactive Python
+    
+      # we will use await at top level !
+      
+      In [1]: import asyncio
+      
+      In [2]: async def fetch_data():
+         ...:     await asyncio.sleep(0.1)
+         ...:     return "Data fetched!"
+         ...: 
+      
+      In [3]: await fetch_data()
+      Out[3]: 'Data fetched!'
+      
+      In [4]: async def process_items(items):
+         ...:     results = []
+         ...:     for item in items:
+         ...:         await asyncio.sleep(0.05)
+         ...:         results.append(item * 2)
+         ...:     return results
+         ...: 
+      
+      In [5]: await process_items([1, 2, 3])
+      Out[5]: [2, 4, 6]
     `),
   },
 ];
@@ -123,17 +145,17 @@ export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
       setIsVisible(visible);
     };
 
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    window.addEventListener('blur', handleWindowBlur);
-    window.addEventListener('focus', handleWindowFocus);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("blur", handleWindowBlur);
+    window.addEventListener("focus", handleWindowFocus);
     const initialVisible = !document.hidden && document.hasFocus();
     isVisibleRef.current = initialVisible;
     setIsVisible(initialVisible);
 
     return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-      window.removeEventListener('blur', handleWindowBlur);
-      window.removeEventListener('focus', handleWindowFocus);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("blur", handleWindowBlur);
+      window.removeEventListener("focus", handleWindowFocus);
     };
   }, []);
 
@@ -155,13 +177,22 @@ export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
     const example = examples[currentExample];
     if (!example) return;
 
-    const lineDelay = 400; // delay between lines appearing
+    const baseLineDelay = 300; // delay between lines appearing
+    const currentLine = example.lines[currentLineIndex];
+    // Add 100ms delay for empty lines
+    const lineDelay =
+      currentLine && currentLine.trim().length === 0
+        ? baseLineDelay + 300
+        : baseLineDelay;
 
     if (currentLineIndex < example.lines.length) {
       // Show next line
       const timer = setTimeout(() => {
         if (isVisibleRef.current) {
-          setDisplayedLines((prev) => [...prev, example.lines[currentLineIndex]]);
+          setDisplayedLines((prev) => [
+            ...prev,
+            example.lines[currentLineIndex],
+          ]);
           setCurrentLineIndex((prev) => prev + 1);
         }
       }, lineDelay);
@@ -181,43 +212,57 @@ export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
     }
   }, [currentExample, currentLineIndex, examples, isVisible]);
 
-  const getLinePrefix = (line: string): { prefix: string; content: string; prefixColor: string } => {
-    if (line.startsWith('In [')) {
+  const getLinePrefix = (
+    line: string
+  ): { prefix: string; content: string; prefixColor: string } => {
+    if (line.startsWith("In [")) {
       const match = line.match(/^(In \[\d+\]:\s*)(.*)$/);
       if (match) {
-        return { prefix: match[1], content: match[2], prefixColor: 'text-theme-primary' };
+        return {
+          prefix: match[1],
+          content: match[2],
+          prefixColor: "text-theme-primary",
+        };
       }
     }
-    if (line.startsWith('Out[')) {
+    if (line.startsWith("Out[")) {
       const match = line.match(/^(Out\[\d+\]:\s*)(.*)$/);
       if (match) {
-        return { prefix: match[1], content: match[2], prefixColor: 'text-theme-accent' };
+        return {
+          prefix: match[1],
+          content: match[2],
+          prefixColor: "text-theme-accent",
+        };
       }
     }
-    if (line.startsWith('   ...:')) {
-      return { prefix: '   ...: ', content: line.substring(8), prefixColor: 'text-gray-500 dark:text-gray-400' };
+    if (line.startsWith("   ...:")) {
+      return {
+        prefix: "   ...: ",
+        content: line.substring(8),
+        prefixColor: "text-gray-500 dark:text-gray-400",
+      };
     }
-    return { prefix: '', content: line, prefixColor: '' };
+    return { prefix: "", content: line, prefixColor: "" };
   };
 
   const getLineColor = (line: string): string => {
-    if (line.startsWith('$')) {
-      return 'text-theme-secondary';
+    if (line.startsWith("$")) {
+      return "text-theme-secondary";
     }
-    if (line.startsWith('Out[')) {
-      return 'text-theme-accent';
+    if (line.startsWith("Out[")) {
+      return "text-theme-accent";
     }
-    if (line.startsWith('IPython') || line.includes('Type')) {
-      return 'text-gray-600 dark:text-gray-300';
+    if (line.startsWith("IPython") || line.includes("Type")) {
+      return "text-gray-600 dark:text-gray-300";
     }
-    if (line.trim() === '') {
-      return 'text-gray-500 dark:text-gray-400';
+    if (line.trim() === "") {
+      return "text-gray-500 dark:text-gray-400";
     }
-    return 'text-gray-700 dark:text-gray-300';
+    return "text-gray-700 dark:text-gray-300";
   };
 
   // Calculate max height based on the longest example
-  const maxLines = Math.max(...examples.map(ex => ex.lines.length));
+  const maxLines = Math.max(...examples.map((ex) => ex.lines.length));
   const lineHeight = 1.5; // rem (24px for text-sm)
   const padding = 1.5 * 2; // rem (top + bottom padding)
   const controlsHeight = 2.5; // rem (window controls height)
@@ -225,14 +270,17 @@ export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
 
   return (
     <div>
-      <div className="bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden font-mono text-sm" style={{ minHeight }}>
+      <div
+        className="bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden font-mono text-sm"
+        style={{ minHeight }}
+      >
         {/* macOS Window Controls */}
         <div className="bg-gray-200 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700 px-4 py-2 flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-red-500"></div>
           <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
           <div className="w-3 h-3 rounded-full bg-green-500"></div>
         </div>
-        
+
         {/* Terminal Content */}
         <div className="p-6 whitespace-pre">
           {displayedLines.map((line, index) => {
@@ -242,7 +290,7 @@ export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
             return (
               <div key={index} className={`${lineColor} whitespace-pre`}>
                 {prefix && <span className={prefixColor}>{prefix}</span>}
-                {content}
+                {content || "\u00A0"}
               </div>
             );
           })}
@@ -251,7 +299,7 @@ export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
           )}
         </div>
       </div>
-      
+
       {/* Indicator Dots */}
       <div className="flex justify-center items-center gap-2 mt-4">
         {examples.map((example, index) => (
@@ -260,8 +308,8 @@ export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
             onClick={() => switchToExample(index)}
             className={`transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-theme-primary focus:ring-offset-2 rounded-full ${
               index === currentExample
-                ? 'w-3 h-3 bg-theme-accent border-2 border-theme-primary scale-125'
-                : 'w-2 h-2 bg-gray-400 dark:bg-gray-600 hover:bg-gray-500 dark:hover:bg-gray-500'
+                ? "w-3 h-3 bg-theme-accent border-2 border-theme-primary scale-125"
+                : "w-2 h-2 bg-gray-400 dark:bg-gray-600 hover:bg-gray-500 dark:hover:bg-gray-500"
             }`}
             aria-label={`Go to ${example.name}`}
             title={example.name}
