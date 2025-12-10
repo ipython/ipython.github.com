@@ -62,25 +62,33 @@ export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
   const [currentExample, setCurrentExample] = useState(0);
   const [displayedLines, setDisplayedLines] = useState<string[]>([]);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
   const isVisibleRef = useRef(true);
 
   useEffect(() => {
     const handleVisibilityChange = () => {
-      isVisibleRef.current = !document.hidden;
+      const visible = !document.hidden;
+      isVisibleRef.current = visible;
+      setIsVisible(visible);
     };
 
     const handleWindowBlur = () => {
       isVisibleRef.current = false;
+      setIsVisible(false);
     };
 
     const handleWindowFocus = () => {
-      isVisibleRef.current = true;
+      const visible = !document.hidden;
+      isVisibleRef.current = visible;
+      setIsVisible(visible);
     };
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
     window.addEventListener('blur', handleWindowBlur);
     window.addEventListener('focus', handleWindowFocus);
-    isVisibleRef.current = !document.hidden && document.hasFocus();
+    const initialVisible = !document.hidden && document.hasFocus();
+    isVisibleRef.current = initialVisible;
+    setIsVisible(initialVisible);
 
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
@@ -91,7 +99,7 @@ export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
 
   useEffect(() => {
     // Pause animation when page is not visible
-    if (!isVisibleRef.current) {
+    if (!isVisible) {
       return;
     }
 
@@ -122,7 +130,7 @@ export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
 
       return () => clearTimeout(timer);
     }
-  }, [currentExample, currentLineIndex, examples]);
+  }, [currentExample, currentLineIndex, examples, isVisible]);
 
   const getLinePrefix = (line: string): { prefix: string; content: string; prefixColor: string } => {
     if (line.startsWith('In [')) {
