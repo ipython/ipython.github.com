@@ -28,7 +28,7 @@
   --theme-secondary: #008b95;
   --theme-accent: #059669;
   --ipython-dark: #0f172a;
-  
+
   /* Inspira UI variables */
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.141 0.005 285.823);
@@ -54,7 +54,7 @@
 
 :root.dark {
   color-scheme: dark;
-  
+
   /* Inspira UI dark mode variables */
   --background: oklch(0.141 0.005 285.823);
   --foreground: oklch(0.985 0 0);
@@ -231,7 +231,8 @@ p {
 }
 
 /* List styling */
-ul, ol {
+ul,
+ol {
   @apply my-4 ml-6;
 }
 
@@ -247,7 +248,10 @@ li {
   @apply my-2 text-gray-700 dark:text-gray-300;
 }
 
-ul ul, ol ol, ul ol, ol ul {
+ul ul,
+ol ol,
+ul ol,
+ol ul {
   @apply my-2;
 }
 
@@ -394,4 +398,12 @@ h3.text-white {
 
 .dark section.gradient-header p.text-gray-100 {
   color: rgb(156 163 175) !important; /* gray-400 */
+}
+
+#mobile-menu > a {
+  @apply block w-full px-4 py-3 text-gray-700 dark:text-gray-200 active:bg-gray-100 dark:active:bg-ipython-slate font-medium no-underline border-b border-gray-200 dark:border-ipython-slate;
+}
+
+#mobile-menu > a:last-child {
+  @apply border-b-0;
 }
