@@ -30,6 +30,20 @@ const { title, description = 'IPython - Productive Interactive Computing' } = As
         document.documentElement.classList.add('dark');
       }
     </script>
+    <script defer src="https://plausible.io/js/pa-B75UO5--FNXYQSG7GBWkf.js"></script>
+    <script is:inline>
+      window.plausible =
+        window.plausible ||
+        function () {
+          (window.plausible.q = window.plausible.q || []).push(arguments);
+        };
+      plausible.init =
+        plausible.init ||
+        function (i) {
+          plausible.o = i || {};
+        };
+      plausible.init({ hashBasedRouting: true });
+    </script>
   </head>
   <body class="bg-white dark:bg-ipython-dark text-gray-900 dark:text-gray-50">
     <slot />

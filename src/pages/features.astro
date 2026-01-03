@@ -19,8 +19,8 @@ import PageHeader from '../components/PageHeader.astro';
       <div class="space-y-12">
         <!-- Smart Tab Completion -->
         <div>
-          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Smart Tab Completion</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">IPython's intelligent tab completion is powered by Jedi, providing context-aware suggestions for:</p>
+          <h2 class="heading-lg">Smart Tab Completion</h2>
+          <p class="body-text">IPython's intelligent tab completion is powered by Jedi, providing context-aware suggestions for:</p>
           <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400 mb-6">
             <li>Object attributes and methods</li>
             <li>Function parameters and arguments</li>
@@ -37,14 +37,14 @@ import PageHeader from '../components/PageHeader.astro';
 
         <!-- Magic Commands -->
         <div>
-          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Magic Commands</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">Built-in special commands for interactive computing:</p>
+          <h2 class="heading-lg">Magic Commands</h2>
+          <p class="body-text">Built-in special commands for interactive computing:</p>
           <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400 mb-6">
-            <li><code class="bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded">%timeit</code> - Time code execution</li>
-            <li><code class="bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded">%debug</code> - Enter debugger on exception</li>
-            <li><code class="bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded">%run</code> - Execute Python scripts</li>
-            <li><code class="bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded">%prun</code> - Profile code performance</li>
-            <li><code class="bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded">%matplotlib</code> - Enable matplotlib integration</li>
+            <li><code class="inline-code">%timeit</code> - Time code execution</li>
+            <li><code class="inline-code">%debug</code> - Enter debugger on exception</li>
+            <li><code class="inline-code">%run</code> - Execute Python scripts</li>
+            <li><code class="inline-code">%prun</code> - Profile code performance</li>
+            <li><code class="inline-code">%matplotlib</code> - Enable matplotlib integration</li>
           </ul>
           <div class="bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700">
             <pre class="text-gray-700 dark:text-gray-300 font-mono text-sm p-3"><code><span class="text-theme-primary">In [1]:</span> %timeit sum(range(1000))
@@ -59,12 +59,12 @@ import PageHeader from '../components/PageHeader.astro';
 
         <!-- Object Introspection -->
         <div>
-          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Object Introspection</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">Explore objects and code interactively:</p>
+          <h2 class="heading-lg">Object Introspection</h2>
+          <p class="body-text">Explore objects and code interactively:</p>
           <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400 mb-6">
-            <li><code class="bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded">?</code> - Show object documentation</li>
-            <li><code class="bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded">??</code> - Show source code</li>
-            <li><code class="bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded">help()</code> - Access Python help system</li>
+            <li><code class="inline-code">?</code> - Show object documentation</li>
+            <li><code class="inline-code">??</code> - Show source code</li>
+            <li><code class="inline-code">help()</code> - Access Python help system</li>
           </ul>
           <div class="bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700">
             <pre class="text-gray-700 dark:text-gray-300 font-mono text-sm p-3"><code><span class="text-theme-primary">In [1]:</span> import numpy
@@ -83,8 +83,8 @@ ndarray(shape, dtype=float, buffer=None, offset=0,
 
         <!-- Rich Display System -->
         <div>
-          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Rich Display System</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">Display rich output including:</p>
+          <h2 class="heading-lg">Rich Display System</h2>
+          <p class="body-text">Display rich output including:</p>
           <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
             <li>HTML, Markdown, and LaTeX rendering</li>
             <li>PNG, JPEG, and SVG images</li>
@@ -95,12 +95,12 @@ ndarray(shape, dtype=float, buffer=None, offset=0,
 
         <!-- History System -->
         <div>
-          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Rich History System</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">Powerful command history with:</p>
+          <h2 class="heading-lg">Rich History System</h2>
+          <p class="body-text">Powerful command history with:</p>
           <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400 mb-6">
             <li>Persistent history across sessions</li>
             <li>Search and filter history</li>
-            <li>Access previous input/output with <code class="bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded">_</code> and <code class="bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded">_ih</code></li>
+            <li>Access previous input/output with <code class="inline-code">_</code> and <code class="inline-code">_ih</code></li>
             <li>History persistence to SQLite database</li>
           </ul>
           <div class="bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700">
@@ -121,13 +121,13 @@ ndarray(shape, dtype=float, buffer=None, offset=0,
 
         <!-- System Integration -->
         <div>
-          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">System Integration</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">Seamlessly integrate shell commands:</p>
+          <h2 class="heading-lg">System Integration</h2>
+          <p class="body-text">Seamlessly integrate shell commands:</p>
           <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400 mb-6">
-            <li>Run shell commands with <code class="bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded">!</code></li>
+            <li>Run shell commands with <code class="inline-code">!</code></li>
             <li>Capture command output to variables</li>
             <li>Access environment variables</li>
-            <li>Change directory with <code class="bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded">%cd</code></li>
+            <li>Change directory with <code class="inline-code">%cd</code></li>
           </ul>
           <div class="bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700">
             <pre class="text-gray-700 dark:text-gray-300 font-mono text-sm p-3"><code><span class="text-theme-primary">In [1]:</span> !ls
@@ -143,8 +143,8 @@ ndarray(shape, dtype=float, buffer=None, offset=0,
 
         <!-- Jupyter Integration -->
         <div>
-          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Jupyter Kernel</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">IPython powers the Jupyter ecosystem:</p>
+          <h2 class="heading-lg">Jupyter Kernel</h2>
+          <p class="body-text">IPython powers the Jupyter ecosystem:</p>
           <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
             <li>Backend for Jupyter Notebook</li>
             <li>Powers JupyterLab interactive environment</li>

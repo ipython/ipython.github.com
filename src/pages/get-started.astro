@@ -20,8 +20,8 @@ import { baseUrl } from '../lib/utils';
       <div class="space-y-12">
         <!-- Starting IPython -->
         <div>
-          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Starting IPython</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">Once installed, start IPython by typing:</p>
+          <h2 class="heading-lg">Starting IPython</h2>
+          <p class="body-text">Once installed, start IPython by typing:</p>
           <div class="bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 mb-6">
             <pre class="text-gray-700 dark:text-gray-300 font-mono text-sm p-3"><code><span class="text-theme-secondary">$</span> ipython
 IPython 8.18.1 -- An enhanced Interactive Python
@@ -30,13 +30,13 @@ IPython -- Productive Interactive Computing
 
 <span class="text-theme-primary">In [1]:</span></code></pre>
           </div>
-          <p class="text-gray-600 dark:text-gray-400">You're now in the IPython shell! Type Python code and press Enter to execute it.</p>
+          <p class="body-text-base">You're now in the IPython shell! Type Python code and press Enter to execute it.</p>
         </div>
 
         <!-- Basic Python -->
         <div>
-          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Basic Python Code</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">IPython works like standard Python, but with enhanced features:</p>
+          <h2 class="heading-lg">Basic Python Code</h2>
+          <p class="body-text">IPython works like standard Python, but with enhanced features:</p>
           <div class="bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700">
             <pre class="text-gray-700 dark:text-gray-300 font-mono text-sm p-3"><code><span class="text-theme-primary">In [1]:</span> x = 10
 
@@ -54,12 +54,12 @@ IPython -- Productive Interactive Computing
 
         <!-- Tab Completion -->
         <div>
-          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Tab Completion</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">Press Tab to complete code. This works for:</p>
+          <h2 class="heading-lg">Tab Completion</h2>
+          <p class="body-text">Press Tab to complete code. This works for:</p>
           <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400 mb-6">
-            <li><strong>Object attributes:</strong> <code class="bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded">import numpy; numpy.[TAB]</code></li>
-            <li><strong>Function parameters:</strong> <code class="bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded">open([TAB]</code></li>
-            <li><strong>Filenames:</strong> <code class="bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded">open('/path/to/[TAB]</code></li>
+            <li><strong>Object attributes:</strong> <code class="inline-code">import numpy; numpy.[TAB]</code></li>
+            <li><strong>Function parameters:</strong> <code class="inline-code">open([TAB]</code></li>
+            <li><strong>Filenames:</strong> <code class="inline-code">open('/path/to/[TAB]</code></li>
           </ul>
           <div class="bg-gray-50 dark:bg-ipython-slate p-4 rounded text-sm text-gray-700 dark:text-gray-300">
             Try typing something and pressing Tab - IPython will suggest completions!
@@ -68,8 +68,8 @@ IPython -- Productive Interactive Computing
 
         <!-- Object Introspection -->
         <div>
-          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Explore Objects with ? and ??</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">View help and source code instantly:</p>
+          <h2 class="heading-lg">Explore Objects with ? and ??</h2>
+          <p class="body-text">View help and source code instantly:</p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div class="bg-gray-50 dark:bg-ipython-slate p-4 rounded">
               <code class="font-mono text-sm text-gray-700 dark:text-gray-300">function_name?</code>
@@ -94,8 +94,8 @@ ndarray(shape, dtype=float, buffer=None, offset=0,
 
         <!-- Magic Commands -->
         <div>
-          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Magic Commands</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">IPython special commands starting with <code class="bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded">%</code> or <code class="bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded">%%</code>:</p>
+          <h2 class="heading-lg">Magic Commands</h2>
+          <p class="body-text">IPython special commands starting with <code class="inline-code">%</code> or <code class="inline-code">%%</code>:</p>
           <div class="space-y-4">
             <div class="bg-gray-50 dark:bg-ipython-slate p-4 rounded">
               <code class="font-mono text-sm font-bold text-gray-700 dark:text-gray-300">%timeit sum(range(100))</code>
@@ -114,8 +114,8 @@ ndarray(shape, dtype=float, buffer=None, offset=0,
 
         <!-- Shell Integration -->
         <div>
-          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Shell Integration</h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">Execute shell commands directly with <code class="bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded">!</code>:</p>
+          <h2 class="heading-lg">Shell Integration</h2>
+          <p class="body-text">Execute shell commands directly with <code class="inline-code">!</code>:</p>
           <div class="bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 mb-6">
             <pre class="text-gray-700 dark:text-gray-300 font-mono text-sm p-3"><code><span class="text-theme-primary">In [1]:</span> !ls
 
@@ -124,12 +124,12 @@ ndarray(shape, dtype=float, buffer=None, offset=0,
 <span class="text-theme-primary">In [3]:</span> len(files)
 <span class="text-theme-accent">Out[3]:</span> 42</code></pre>
           </div>
-          <p class="text-gray-600 dark:text-gray-400">Capture command output directly into Python variables!</p>
+          <p class="body-text-base">Capture command output directly into Python variables!</p>
         </div>
 
         <!-- Next Steps -->
         <div class="bg-blue-50 dark:bg-ipython-slate border-l-4 border-theme-secondary p-6 rounded">
-          <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Next Steps</h3>
+          <h3 class="heading-md">Next Steps</h3>
           <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
             <li>Explore the <a href={baseUrl('features')} class="text-theme-secondary hover:text-theme-secondary/80 transition-colors">Features page</a> for more advanced capabilities</li>
             <li>Read the <a href="https://ipython.readthedocs.io/" class="text-theme-secondary hover:text-theme-secondary/80 transition-colors">official documentation</a></li>

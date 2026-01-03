@@ -407,3 +407,118 @@ h3.text-white {
 #mobile-menu > a:last-child {
   @apply border-b-0;
 }
+
+/* Desktop navigation links */
+.nav-links > a {
+  color: var(--theme-primary);
+  @apply dark:text-gray-200 hover:transition-colors font-medium;
+}
+
+.nav-links > a:hover {
+  color: var(--theme-primary);
+}
+
+.dark .nav-links > a:hover {
+  color: var(--theme-secondary);
+}
+
+/* Core text patterns - 27 occurrences */
+.text-theme {
+  color: var(--theme-primary);
+}
+
+/* Body text - 24 occurrences */
+.body-text {
+  @apply text-gray-600 dark:text-gray-400 mb-4;
+}
+
+/* Body text without margin - 15 occurrences */
+.body-text-base {
+  @apply text-gray-600 dark:text-gray-400;
+}
+
+/* Muted text - 8 occurrences */
+.text-muted {
+  @apply text-gray-500 dark:text-gray-400;
+}
+
+/* Small text - 6 occurrences */
+.text-small {
+  @apply text-sm text-gray-600 dark:text-gray-400;
+}
+
+/* Small text with top margin - 5 occurrences */
+.text-small-spaced {
+  @apply text-sm text-gray-600 dark:text-gray-400 mt-2;
+}
+
+/* Headings - 22 occurrences */
+.heading-md {
+  @apply text-xl font-bold mb-3 text-gray-900 dark:text-white;
+}
+
+/* Headings large - 18 occurrences */
+.heading-lg {
+  @apply text-3xl font-bold mb-4 text-gray-900 dark:text-white;
+}
+
+/* Headings large with more space - 7 occurrences */
+.heading-lg-spaced {
+  @apply text-3xl font-bold mb-6 text-gray-900 dark:text-white;
+}
+
+/* Inline code - 16 occurrences */
+.inline-code {
+  @apply bg-gray-100 dark:bg-ipython-slate px-2 py-1 rounded;
+}
+
+/* Interactive links - 15 occurrences */
+.link-hover {
+  @apply text-gray-600 dark:text-gray-400 transition-colors;
+  color: var(--theme-primary);
+}
+
+.link-hover:hover {
+  color: var(--theme-secondary);
+}
+
+/* Theme button - 11 occurrences */
+.btn-theme {
+  color: var(--theme-secondary);
+}
+
+.btn-theme:hover {
+  opacity: 0.8;
+}
+
+/* Container centered - 12 occurrences */
+.container-centered {
+  @apply max-w-2xl mx-auto;
+}
+
+/* Card section - 7 occurrences */
+.card-section {
+  @apply bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700;
+}
+
+/* Icon sizing - 6 occurrences */
+.icon-sm {
+  @apply w-6 h-6 text-white;
+}
+
+/* Section heading styles using child combinators */
+section > div > h2,
+section > div > div > h2 {
+  @apply heading-lg;
+}
+
+/* Centered section headings */
+.section-header {
+  @apply text-center;
+}
+
+/* Section headings with different text styles */
+section.gradient-header > div > h2 {
+  color: white;
+  @apply text-4xl font-bold mb-6;
+}

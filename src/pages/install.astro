@@ -18,7 +18,7 @@ import PageHeader from '../components/PageHeader.astro';
     <section class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Quick Install -->
       <div class="mb-16">
-        <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Quick Install</h2>
+        <h2>Quick Install</h2>
         <p class="text-gray-600 dark:text-gray-400 mb-6">If you already have Python installed, the easiest way to install IPython is with pip:</p>
 
         <div class="bg-gray-900 rounded-lg p-6 mb-6 relative">
@@ -28,7 +28,7 @@ import PageHeader from '../components/PageHeader.astro';
 
         <p class="text-gray-600 dark:text-gray-400 mb-6">You can also view IPython on <a href="https://pypi.org/project/ipython/" target="_blank" rel="noopener noreferrer" class="text-theme-secondary hover:text-theme-secondary/80 transition-colors underline">PyPI</a> to see version history, download statistics, and more.</p>
 
-        <p class="text-gray-600 dark:text-gray-400">After installation, start IPython by running:</p>
+        <p class="body-text-base">After installation, start IPython by running:</p>
         <div class="bg-gray-900 rounded-lg p-6 relative">
           <pre class="text-gray-50 font-mono text-sm"><code>ipython</code></pre>
           <button class="absolute top-4 right-4 bg-theme-secondary hover:bg-theme-secondary/80 text-white px-4 py-2 rounded transition-colors" onclick="navigator.clipboard.writeText('ipython')">Copy</button>
@@ -37,13 +37,13 @@ import PageHeader from '../components/PageHeader.astro';
 
       <!-- Package Managers -->
       <div class="mb-16">
-        <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Package Managers</h2>
+        <h2>Package Managers</h2>
 
         <div class="space-y-8">
           <!-- Conda -->
           <div>
-            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Conda / Anaconda</h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">If you use Conda (Anaconda or Miniconda):</p>
+            <h3 class="heading-md">Conda / Anaconda</h3>
+            <p class="body-text">If you use Conda (Anaconda or Miniconda):</p>
             <div class="bg-gray-900 rounded-lg p-6 relative">
               <pre class="text-gray-50 font-mono text-sm"><code>conda install ipython</code></pre>
               <button class="absolute top-4 right-4 bg-theme-secondary hover:bg-theme-secondary/80 text-white px-4 py-2 rounded transition-colors" onclick="navigator.clipboard.writeText('conda install ipython')">Copy</button>
@@ -52,7 +52,7 @@ import PageHeader from '../components/PageHeader.astro';
 
           <!-- macOS Homebrew -->
           <div>
-            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">macOS Homebrew</h3>
+            <h3 class="heading-md">macOS Homebrew</h3>
             <div class="bg-gray-900 rounded-lg p-6 relative">
               <pre class="text-gray-50 font-mono text-sm"><code>brew install ipython</code></pre>
               <button class="absolute top-4 right-4 bg-theme-secondary hover:bg-theme-secondary/80 text-white px-4 py-2 rounded transition-colors" onclick="navigator.clipboard.writeText('brew install ipython')">Copy</button>
@@ -61,14 +61,14 @@ import PageHeader from '../components/PageHeader.astro';
 
           <!-- Linux Package Managers -->
           <div>
-            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Linux Package Managers</h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">On Ubuntu/Debian:</p>
+            <h3 class="heading-md">Linux Package Managers</h3>
+            <p class="body-text">On Ubuntu/Debian:</p>
             <div class="bg-gray-900 rounded-lg p-6 relative mb-6">
               <pre class="text-gray-50 font-mono text-sm"><code>sudo apt install ipython3</code></pre>
               <button class="absolute top-4 right-4 bg-theme-secondary hover:bg-theme-secondary/80 text-white px-4 py-2 rounded transition-colors" onclick="navigator.clipboard.writeText('sudo apt install ipython3')">Copy</button>
             </div>
 
-            <p class="text-gray-600 dark:text-gray-400 mb-4">On Fedora:</p>
+            <p class="body-text">On Fedora:</p>
             <div class="bg-gray-900 rounded-lg p-6 relative">
               <pre class="text-gray-50 font-mono text-sm"><code>sudo dnf install ipython</code></pre>
               <button class="absolute top-4 right-4 bg-theme-secondary hover:bg-theme-secondary/80 text-white px-4 py-2 rounded transition-colors" onclick="navigator.clipboard.writeText('sudo dnf install ipython')">Copy</button>
@@ -77,8 +77,8 @@ import PageHeader from '../components/PageHeader.astro';
 
           <!-- Pipx -->
           <div>
-            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Pipx (Isolated Installation)</h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">For an isolated IPython installation:</p>
+            <h3 class="heading-md">Pipx (Isolated Installation)</h3>
+            <p class="body-text">For an isolated IPython installation:</p>
             <div class="bg-gray-900 rounded-lg p-6 relative">
               <pre class="text-gray-50 font-mono text-sm"><code>pipx install ipython</code></pre>
               <button class="absolute top-4 right-4 bg-theme-secondary hover:bg-theme-secondary/80 text-white px-4 py-2 rounded transition-colors" onclick="navigator.clipboard.writeText('pipx install ipython')">Copy</button>
@@ -90,8 +90,8 @@ import PageHeader from '../components/PageHeader.astro';
 
       <!-- Verification -->
       <div>
-        <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Verify Installation</h2>
-        <p class="text-gray-600 dark:text-gray-400 mb-4">Check your IPython installation:</p>
+        <h2>Verify Installation</h2>
+        <p class="body-text">Check your IPython installation:</p>
         <div class="bg-gray-900 rounded-lg p-6 relative">
           <pre class="text-gray-50 font-mono text-sm"><code>ipython --version</code></pre>
           <button class="absolute top-4 right-4 bg-theme-secondary hover:bg-theme-secondary/80 text-white px-4 py-2 rounded transition-colors" onclick="navigator.clipboard.writeText('ipython --version')">Copy</button>

@@ -230,7 +230,7 @@ export function applyTheme(
   if (themeId === "random") {
     actualThemeId = getRandomTheme();
   }
-  console.log("Applying them", themeId);
+  console.log("Applying theme", themeId);
 
   const theme = themes.find((t) => t.id === actualThemeId) || themes[0];
   const root = document.documentElement;
@@ -514,7 +514,7 @@ export function initializeThemeWatcher(): () => void {
   const urlParams = new URLSearchParams(window.location.search);
   const themeParam = urlParams.get("theme");
   let themeParamApplied = false;
-  
+
   if (themeParam) {
     // Validate theme exists
     const themeExists = themes.some((t) => t.id === themeParam);
