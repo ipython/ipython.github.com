@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo, useRef } from "react";
+import { useEffect, useState, useMemo, useRef, type ReactElement } from "react";
 
 type TerminalExample = {
   name: string;
@@ -361,7 +361,7 @@ export default function AnimatedTerminal({ version }: AnimatedTerminalProps) {
   /**
    * Highlight Python syntax in a line of code
    */
-  const highlightPython = (text: string): JSX.Element[] => {
+  const highlightPython = (text: string): ReactElement[] => {
     if (!text.trim()) {
       return [<span key="empty">{text || "\u00A0"}</span>];
     }

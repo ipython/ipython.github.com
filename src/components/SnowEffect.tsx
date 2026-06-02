@@ -25,7 +25,7 @@ interface Accumulation {
 
 export default function SnowEffect() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | undefined>(undefined);
   const snowflakesRef = useRef<Snowflake[]>([]);
   const windRef = useRef(0);
   const accumulationsRef = useRef<Map<HTMLElement, Accumulation>>(new Map());

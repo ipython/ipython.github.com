@@ -11,7 +11,7 @@ interface Bubble {
 
 export default function OceanWaves() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | undefined>(undefined);
   const bubblesRef = useRef<Bubble[]>([]);
   const waveOffsetRef = useRef(0);
   const sectionDividersRef = useRef<Array<{ y: number; inverted: boolean }>>([]);

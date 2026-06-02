@@ -12,7 +12,7 @@ interface Sparkle {
 
 export default function ChristmasSparkles() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | undefined>(undefined);
   const sparklesRef = useRef<Sparkle[]>([]);
   const isVisibleRef = useRef(true);
 
