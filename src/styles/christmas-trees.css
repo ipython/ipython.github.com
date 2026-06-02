@@ -1,0 +1,80 @@
+/* Christmas Tree Dance Animations */
+
+.tree-wrapper {
+  animation: tree-dance 3s ease-in-out infinite;
+  animation-delay: var(--animation-delay, 0s);
+}
+
+@keyframes tree-dance {
+  0% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  25% {
+    transform: rotate(-3deg) translateY(-4px);
+  }
+  50% {
+    transform: rotate(3deg) translateY(-8px);
+  }
+  75% {
+    transform: rotate(-2deg) translateY(-4px);
+  }
+  100% {
+    transform: rotate(0deg) translateY(0px);
+  }
+}
+
+/* Ornament lights twinkling */
+.ornament-light {
+  animation: ornament-twinkle 1.5s ease-in-out infinite;
+}
+
+@keyframes ornament-twinkle {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 2px currentColor);
+  }
+  50% {
+    opacity: 0.5;
+    filter: drop-shadow(0 0 6px currentColor);
+  }
+}
+
+/* Tree star twinkling */
+.tree-star {
+  animation: star-twinkle 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 3px #ffd700);
+  }
+  50% {
+    opacity: 0.4;
+    filter: drop-shadow(0 0 10px #ffd700);
+  }
+}
+
+/* Enhanced dancing tree with more complex movement */
+.dancing-tree {
+  animation: dancing-tree-movement 4s ease-in-out infinite;
+}
+
+@keyframes dancing-tree-movement {
+  0% {
+    transform: scaleY(1);
+  }
+  25% {
+    transform: scaleY(0.98) scaleX(0.99);
+  }
+  50% {
+    transform: scaleY(1.02) scaleX(1.01);
+  }
+  75% {
+    transform: scaleY(0.99) scaleX(0.995);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}

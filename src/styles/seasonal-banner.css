@@ -1,0 +1,107 @@
+/* Seasonal banner — styled as an executed IPython cell.
+   The entrance animates the row height from 0 -> content height (via the
+   grid-template-rows 0fr/1fr trick) so the in-flow island's hydration shift
+   reads as the intended reveal rather than a jump. */
+
+.sb-shell {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sb-shell.is-open {
+  grid-template-rows: 1fr;
+}
+.sb-clip {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.sb-bar {
+  position: relative;
+  /* Deep terminal teal — a dark surface that reads as an embedded REPL against
+     the page, regardless of the page's light/dark mode. */
+  background:
+    radial-gradient(
+      120% 220% at 10% -60%,
+      rgba(99, 230, 190, 0.12),
+      transparent 55%
+    ),
+    linear-gradient(180deg, #07292e 0%, #04181b 100%);
+  opacity: 0;
+  transform: translateY(-3px);
+  transition: opacity 0.45s ease 0.06s, transform 0.45s ease 0.06s;
+}
+.is-open .sb-bar {
+  opacity: 1;
+  transform: none;
+}
+
+/* The pride flag (or season gradient) as a crisp top strip. */
+.sb-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+/* Blinking terminal cursor. */
+.sb-cursor {
+  display: inline-block;
+  width: 0.5ch;
+  height: 1.05em;
+  vertical-align: text-bottom;
+  background: #3fb950;
+  animation: sb-blink 1.05s steps(1, end) infinite;
+}
+@keyframes sb-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Staggered reveal of the prompt -> command -> message, like a cell running. */
+.sb-fade {
+  opacity: 0;
+}
+.is-open .sb-fade {
+  animation: sb-in 0.4s ease forwards;
+}
+.is-open .sb-d1 {
+  animation-delay: 0.16s;
+}
+.is-open .sb-d2 {
+  animation-delay: 0.26s;
+}
+.is-open .sb-d3 {
+  animation-delay: 0.36s;
+}
+@keyframes sb-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sb-shell,
+  .sb-bar,
+  .sb-fade {
+    transition: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .sb-cursor {
+    animation: none !important;
+  }
+}
