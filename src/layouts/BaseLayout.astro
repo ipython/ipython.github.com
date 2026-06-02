@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import SeasonalBanner from '../components/SeasonalBanner.tsx';
 import ConditionalSnow from '../components/ConditionalSnow.tsx';
 import ConditionalChristmas from '../components/ConditionalChristmas.tsx';
 import ConditionalOcean from '../components/ConditionalOcean.tsx';
@@ -38,6 +39,7 @@ const { title, description = 'IPython - Productive Interactive Computing' } = As
     </script>
   </head>
   <body class="bg-white dark:bg-ipython-dark text-gray-900 dark:text-gray-50">
+    <SeasonalBanner client:load />
     <slot />
     <ConditionalSnow client:load />
     <ConditionalChristmas client:load />

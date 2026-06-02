@@ -274,26 +274,83 @@ export function getCurrentTheme(): string {
 }
 
 /**
- * Check if we should auto-apply winter theme
- * Returns true if current month is December or January,
- * and the last theme change was NOT in December or January
+ * Configuration for a seasonal period.
+ * - id: stable identifier for the season (used to remember banner dismissal)
+ * - themeId: the color theme auto-applied during this season
+ * - banner: dismissable banner text shown during this season (empty string = no banner)
  */
-function shouldAutoApplyWinterTheme(): boolean {
-  if (typeof localStorage === "undefined") {
-    return true;
+export interface SeasonalConfig {
+  id: string;
+  themeId: string;
+  banner: string;
+}
+
+/**
+ * Seasonal configuration keyed by month (0 = January, 11 = December).
+ * Edit the `banner` text here to change what the seasonal banner says.
+ */
+export const seasonalConfigs: Record<number, SeasonalConfig> = {
+  0: {
+    id: "winter",
+    themeId: "winter",
+    banner: "❄️ Happy holidays from the IPython team!",
+  },
+  5: {
+    id: "pride",
+    themeId: "rainbow",
+    banner:
+      "🏳️‍🌈 Happy Pride Month! IPython celebrates and supports our diverse community.",
+  },
+  11: {
+    id: "winter",
+    themeId: "winter",
+    banner: "❄️ Happy holidays from the IPython team!",
+  },
+};
+
+/**
+ * Get the seasonal configuration for a given month, or null if none.
+ */
+export function getSeasonalConfigForMonth(month: number): SeasonalConfig | null {
+  return seasonalConfigs[month] ?? null;
+}
+
+/**
+ * Get the current month's seasonal configuration, or null if none.
+ */
+export function getCurrentSeasonalConfig(): SeasonalConfig | null {
+  return getSeasonalConfigForMonth(new Date().getMonth());
+}
+
+/**
+ * Get the seasonal theme for a given month (0 = January, 11 = December),
+ * or null if that month has no seasonal theme.
+ */
+function getSeasonalThemeForMonth(month: number): string | null {
+  return getSeasonalConfigForMonth(month)?.themeId ?? null;
+}
+
+/**
+ * Determine which seasonal theme should be auto-applied right now, if any.
+ * Returns the seasonal theme id (e.g. "winter" or "rainbow") when the current
+ * month has one and the user has NOT manually picked a theme during the same
+ * season; otherwise returns null.
+ */
+function getAutoSeasonalTheme(): string | null {
+  const now = new Date();
+  const seasonalTheme = getSeasonalThemeForMonth(now.getMonth());
+
+  if (!seasonalTheme) {
+    console.info("Nothing specific using default theme");
+    return null;
   }
 
-  const now = new Date();
-  const currentMonth = now.getMonth(); // 0 = January, 11 = December
-  const isDecOrJan = currentMonth === 11 || currentMonth === 0;
-
-  if (!isDecOrJan) {
-    console.info("Nothing specific using default theme");
-    return false;
+  if (typeof localStorage === "undefined") {
+    return seasonalTheme;
   }
 
   const stored = localStorage.getItem("colorTheme");
-  if (!stored) return true; // No stored theme, apply winter
+  if (!stored) return seasonalTheme; // No stored theme, apply seasonal
 
   try {
     const parsed = JSON.parse(stored);
@@ -308,19 +365,21 @@ function shouldAutoApplyWinterTheme(): boolean {
     }
 
     if (storedDate) {
-      const storedMonth = storedDate.getMonth();
-      const storedIsDecOrJan = storedMonth === 11 || storedMonth === 0;
-      // If stored date is NOT in Dec/Jan, auto-apply winter
-      return !storedIsDecOrJan;
+      // If the stored theme was chosen during the current season, respect the
+      // user's choice; otherwise auto-apply the seasonal theme.
+      const storedSeasonalTheme = getSeasonalThemeForMonth(
+        storedDate.getMonth()
+      );
+      return storedSeasonalTheme === seasonalTheme ? null : seasonalTheme;
     }
   } catch {
     console.log("Something wrong in local storage");
 
-    // If parsing fails, assume old format - apply winter
-    return true;
+    // If parsing fails, assume old format - apply seasonal
+    return seasonalTheme;
   }
 
-  return false;
+  return seasonalTheme;
 }
 
 /**
@@ -444,15 +503,16 @@ export function initializeThemeWatcher(): () => void {
   themeWatcherInitialized = true;
 
   const checkTheme = () => {
-    // Check if we should auto-apply winter theme first
-    if (shouldAutoApplyWinterTheme()) {
+    // Check if we should auto-apply a seasonal theme first
+    const seasonalTheme = getAutoSeasonalTheme();
+    if (seasonalTheme) {
       const currentApplied = getCurrentTheme();
-      // Only apply winter if it's not already applied
-      if (currentApplied !== "winter") {
-        applyTheme("winter", false); // Apply winter but don't store it
-        notifyThemeChange(getStoredTheme()); // Notify with stored theme, not 'winter'
+      // Only apply the seasonal theme if it's not already applied
+      if (currentApplied !== seasonalTheme) {
+        applyTheme(seasonalTheme, false); // Apply seasonal theme but don't store it
+        notifyThemeChange(getStoredTheme()); // Notify with stored theme, not the seasonal one
       }
-      return; // Don't check stored theme when winter is auto-applied
+      return; // Don't check stored theme when a seasonal theme is auto-applied
     }
 
     const storedTheme = getStoredTheme();
@@ -533,11 +593,12 @@ export function initializeThemeWatcher(): () => void {
 
   // Apply initial theme (only if no valid theme parameter was provided)
   if (!themeParamApplied) {
-    // Check if we should auto-apply winter theme
-    if (shouldAutoApplyWinterTheme()) {
-      console.log("will apply winter");
-      applyTheme("winter", false); // Apply winter but don't store it
-      notifyThemeChange("winter"); // Notify with the stored theme, not 'winter'
+    // Check if we should auto-apply a seasonal theme
+    const seasonalTheme = getAutoSeasonalTheme();
+    if (seasonalTheme) {
+      console.log("will apply seasonal theme", seasonalTheme);
+      applyTheme(seasonalTheme, false); // Apply seasonal theme but don't store it
+      notifyThemeChange(seasonalTheme);
     } else {
       const initialTheme = getStoredTheme();
       applyTheme(initialTheme);
