@@ -517,8 +517,16 @@ section > div > div > h2 {
   @apply text-center;
 }
 
-/* Section headings with different text styles */
+/* Section headings on the gradient background: render solid white, not the
+   gradient-clipped text (which would match the background and be unreadable).
+   Must reset the background/clip/fill that `h2 { @apply gradient-text }` sets.
+   The text-shadow keeps white legible even over the bright Pride flag bands. */
 section.gradient-header > div > h2 {
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: white;
   color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
   @apply text-4xl font-bold mb-6;
 }
