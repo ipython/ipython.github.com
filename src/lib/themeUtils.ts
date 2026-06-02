@@ -33,10 +33,13 @@ export const themes: Theme[] = [
   {
     id: "rainbow",
     name: "Rainbow Pride",
+    // Functional colors (links, buttons, gradients) use softened, readable
+    // jewel tones so text stays legible. The full 6-color flag lives only in
+    // decorative gradients (dot below, .gradient-hero/header/text in rainbow.css).
     colors: {
-      primary: "#E40303", // Red
-      secondary: "#FF8C00", // Orange
-      accent: "#FFED00", // Yellow
+      primary: "#D6336C", // Raspberry (readable on white & dark)
+      secondary: "#7048E8", // Violet
+      accent: "#0B7285", // Deep teal
     },
     dotGradient:
       "linear-gradient(to bottom right, #E40303 0%, #E40303 16.67%, #FF8C00 16.67%, #FF8C00 33.33%, #FFED00 33.33%, #FFED00 50%, #008026 50%, #008026 66.67%, #004CFF 66.67%, #004CFF 83.33%, #732982 83.33%, #732982 100%)",
@@ -278,34 +281,51 @@ export function getCurrentTheme(): string {
  * - id: stable identifier for the season (used to remember banner dismissal)
  * - themeId: the color theme auto-applied during this season
  * - banner: dismissable banner text shown during this season (empty string = no banner)
+ * - command: optional faux IPython input rendered before the banner, e.g.
+ *   `celebrate('pride')`. Shown as `In [<month>]: <command>`.
+ * - accentGradient: optional CSS gradient for the banner's top strip. Falls back
+ *   to the active theme's gradient when omitted.
  */
 export interface SeasonalConfig {
   id: string;
   themeId: string;
   banner: string;
+  command?: string;
+  accentGradient?: string;
 }
+
+// The authentic 6-color Pride flag as hard-edged horizontal bands.
+const PRIDE_FLAG_GRADIENT =
+  "linear-gradient(to right, " +
+  "#E40303 0 16.66%, #FF8C00 16.66% 33.33%, #FFED00 33.33% 50%, " +
+  "#008026 50% 66.66%, #004CFF 66.66% 83.33%, #732982 83.33% 100%)";
+
+const WINTER_SEASON: SeasonalConfig = {
+  id: "winter",
+  themeId: "winter",
+  banner: "❄️ Happy holidays from the IPython team!",
+  command: "celebrate('holidays')",
+  accentGradient:
+    "linear-gradient(to right, #0ea5e9, #38bdf8, #e0f2fe, #38bdf8, #0ea5e9)",
+};
+
+const PRIDE_SEASON: SeasonalConfig = {
+  id: "pride",
+  themeId: "rainbow",
+  banner:
+    "🏳️‍🌈 Happy Pride Month! IPython celebrates and supports our diverse community.",
+  command: "celebrate('pride')",
+  accentGradient: PRIDE_FLAG_GRADIENT,
+};
 
 /**
  * Seasonal configuration keyed by month (0 = January, 11 = December).
- * Edit the `banner` text here to change what the seasonal banner says.
+ * Edit the `banner` text (and `command`) above to change what the banner says.
  */
 export const seasonalConfigs: Record<number, SeasonalConfig> = {
-  0: {
-    id: "winter",
-    themeId: "winter",
-    banner: "❄️ Happy holidays from the IPython team!",
-  },
-  5: {
-    id: "pride",
-    themeId: "rainbow",
-    banner:
-      "🏳️‍🌈 Happy Pride Month! IPython celebrates and supports our diverse community.",
-  },
-  11: {
-    id: "winter",
-    themeId: "winter",
-    banner: "❄️ Happy holidays from the IPython team!",
-  },
+  0: WINTER_SEASON,
+  5: PRIDE_SEASON,
+  11: WINTER_SEASON,
 };
 
 /**

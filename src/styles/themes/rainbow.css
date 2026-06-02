@@ -1,8 +1,11 @@
 /* Rainbow theme */
+/* Functional colors are softened for readability (see themeUtils.ts, the live
+   source — these mirror it as the pre-hydration fallback). The bright 6-color
+   flag is kept only in the decorative gradients below. */
 [data-color-theme="rainbow"] {
-  --theme-primary: #e40303;
-  --theme-secondary: #ff8c00;
-  --theme-accent: #ffed00;
+  --theme-primary: #d6336c; /* Raspberry */
+  --theme-secondary: #7048e8; /* Violet */
+  --theme-accent: #0b7285; /* Deep teal */
 }
 
 [data-color-theme="rainbow"] .gradient-hero {
@@ -25,27 +28,10 @@
     #732982 83.33%, #732982 100%) !important;
 }
 
-[data-color-theme="rainbow"] .gradient-text {
-  background: linear-gradient(
-    to right,
-    #E40303 0%,
-    #E40303 16.67%,
-    #FF8C00 16.67%,
-    #FF8C00 33.33%,
-    #FFED00 33.33%,
-    #FFED00 50%,
-    #008026 50%,
-    #008026 66.67%,
-    #004CFF 66.67%,
-    #004CFF 83.33%,
-    #732982 83.33%,
-    #732982 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
+/* Note: headings (h2/h3) use the base `.gradient-text`, which is driven by the
+   softened, readable theme vars above. We intentionally do NOT clip the full
+   6-color flag into heading text — its yellow band is unreadable on white
+   sections. The flag stays in the decorative section backgrounds below. */
 
 /* Add backdrop blur to gradient sections */
 [data-color-theme="rainbow"] section.gradient-hero .max-w-7xl.py-20,
