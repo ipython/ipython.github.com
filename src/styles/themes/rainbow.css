@@ -28,10 +28,37 @@
     #732982 83.33%, #732982 100%) !important;
 }
 
-/* Note: headings (h2/h3) use the base `.gradient-text`, which is driven by the
-   softened, readable theme vars above. We intentionally do NOT clip the full
-   6-color flag into heading text — its yellow band is unreadable on white
-   sections. The flag stays in the decorative section backgrounds below. */
+/* Headings (h2/h3 use .gradient-text): a full-spectrum rainbow so the pride
+   feel comes through, but with deepened tones — and a readable gold in place of
+   pure yellow — so every glyph stays AA (>=4.5:1) on white sections. */
+[data-color-theme="rainbow"] .gradient-text {
+  background-image: linear-gradient(
+    to right,
+    #e11d48,
+    #c2410c,
+    #a16207,
+    #15803d,
+    #1d4ed8,
+    #7c3aed
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Dark mode: brighter rainbow tones, readable on the dark surface. */
+.dark[data-color-theme="rainbow"] .gradient-text {
+  background-image: linear-gradient(
+    to right,
+    #fb7185,
+    #fdba74,
+    #fde047,
+    #86efac,
+    #93c5fd,
+    #c4b5fd
+  );
+}
 
 /* Add backdrop blur to gradient sections */
 [data-color-theme="rainbow"] section.gradient-hero .max-w-7xl.py-20,

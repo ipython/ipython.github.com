@@ -45,6 +45,24 @@
   height: 3px;
 }
 
+/* The banner message as bright rainbow-clipped text (readable on the dark
+   terminal surface). The flag emoji renders in full color regardless. */
+.sb-msg {
+  background-image: linear-gradient(
+    90deg,
+    #fb7185,
+    #fdba74,
+    #fde047,
+    #86efac,
+    #93c5fd,
+    #c4b5fd
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
 /* Blinking terminal cursor. */
 .sb-cursor {
   display: inline-block;

@@ -13,7 +13,6 @@ const C = {
   fn: '#79c0ff', // function name blue
   str: '#ffa657', // string literal amber
   punc: '#8b949e', // parens / punctuation slate
-  message: '#f0f6fc', // output text, near-white
 };
 
 /** Minimal tokenizer to syntax-highlight the faux command, e.g. celebrate('pride'). */
@@ -128,9 +127,9 @@ export default function SeasonalBanner() {
               Out[{month}]:
             </span>
 
-            {/* the message itself — the cell's output */}
-            <span className="sb-fade sb-d3 font-medium" style={{ color: C.message }}>
-              {config.banner}
+            {/* the message itself — the cell's output, rainbow-clipped text */}
+            <span className="sb-fade sb-d3 font-medium">
+              <span className="sb-msg">{config.banner}</span>
               <span className="sb-cursor ml-1.5" aria-hidden="true" />
             </span>
           </div>
