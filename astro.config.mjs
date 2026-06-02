@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 
 // Get base path from environment variable
 // For GitHub Pages: if repo is username.github.io, use "" (root)
@@ -23,7 +23,10 @@ const site = base
   : `https://${owner}.github.io`;
 
 export default defineConfig({
-  integrations: [react(), tailwind()],
+  integrations: [react()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   base: base,
   site: site,
   output: "static",
