@@ -42,7 +42,9 @@
 [data-color-theme="rainbow"] section.gradient-header .max-w-7xl.text-center,
 [data-color-theme="rainbow"] section.gradient-hero .max-w-7xl:has(h1.gradient-text-hero),
 [data-color-theme="rainbow"] section.gradient-header .max-w-7xl:has(h1.gradient-text-hero) {
-  background: rgba(0, 0, 0, 0.25);
+  /* Darkened enough that white hero text clears AA on every flag band,
+     including the yellow one (white-on-yellow was only ~2.2:1 at 0.25). */
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 16px;
   backdrop-filter: blur(4px);
 }
